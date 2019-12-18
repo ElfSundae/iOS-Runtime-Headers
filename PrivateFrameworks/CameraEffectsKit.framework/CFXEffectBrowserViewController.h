@@ -54,6 +54,7 @@
 - (void).cxx_destruct;
 - (void)CFX_addSticker:(id)arg1 atDropTarget:(id)arg2;
 - (void)CFX_updateAVTAvatarPickerforMessagesAppViewController:(id)arg1;
+- (bool)_canShowWhileLocked;
 - (void)addSticker:(id)arg1;
 - (void)addSticker:(id)arg1 atDropTarget:(id)arg2;
 - (id)animatedPreviewProcessingGroup;

@@ -14,7 +14,7 @@
     double  _ppt_delay;
     bool  _ppt_presentComposeRecipientView;
     bool  _ppt_scrollComposeRecipientsView;
-    bool  _publishOriginals;
+    NSDictionary * _preparationOptionsPerAsset;
     PXCMMSendBackSuggestionSource * _sendBackSuggestionSource;
     unsigned long long  _sourceType;
     PXCMMViewModel * _viewModel;
@@ -37,7 +37,7 @@
 @property (nonatomic) double ppt_delay;
 @property (nonatomic, readonly) bool ppt_presentComposeRecipientView;
 @property (nonatomic, readonly) bool ppt_scrollComposeRecipientsView;
-@property (nonatomic, readonly) bool publishOriginals;
+@property (nonatomic, readonly) NSDictionary *preparationOptionsPerAsset;
 @property (nonatomic, readonly) PXCMMSendBackSuggestionSource *sendBackSuggestionSource;
 @property (nonatomic, readonly) unsigned long long sourceType;
 @property (readonly) Class superclass;
@@ -63,7 +63,7 @@
 - (double)ppt_delay;
 - (bool)ppt_presentComposeRecipientView;
 - (bool)ppt_scrollComposeRecipientsView;
-- (bool)publishOriginals;
+- (id)preparationOptionsPerAsset;
 - (id)sendBackSuggestionSource;
 - (void)setPpt_delay:(double)arg1;
 - (unsigned long long)sourceType;

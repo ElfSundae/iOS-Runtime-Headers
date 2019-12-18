@@ -74,9 +74,7 @@
 
 - (void).cxx_destruct;
 - (void)_cancelProvidingItemAtURL:(id)arg1 toReaderWithID:(id)arg2;
-- (void)_createProvidedItemsDirectoryWithCompletion:(id /* block */)arg1;
 - (id)_fileReactorID;
-- (void)_performForAllCoordinationProviders:(id /* block */)arg1 completion:(id /* block */)arg2;
 - (id)_physicalURLForURL:(id)arg1;
 - (void)_provideItemAtURL:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_provideItemAtURL:(id)arg1 toReaderWithID:(id)arg2 completionHandler:(id /* block */)arg3;
@@ -84,6 +82,7 @@
 - (void)_providedItemAtURL:(id)arg1 didLosePresenterWithID:(id)arg2;
 - (void)_providedItemAtURL:(id)arg1 withPresenterWithID:(id)arg2 didMoveToURL:(id)arg3;
 - (id)_providedItemsOperationQueue;
+- (void)_registerFileCoordinatorWithCompletion:(id /* block */)arg1;
 - (id)_removeProgressForProvidingItemAtURL:(id)arg1 toReaderWithID:(id)arg2;
 - (void)_setupRecoveryTimer;
 - (bool)_shouldDisconnect;
@@ -144,7 +143,6 @@
 - (id)providerDomain;
 - (id)providerDomainID;
 - (id)purposeIdentifier;
-- (void)reconnectToFileCoordinatorForURL:(id)arg1 completion:(id /* block */)arg2;
 - (id)rootURLs;
 - (id)serialQueue;
 - (id)session;
@@ -169,6 +167,5 @@
 - (bool)userEnabled;
 - (void)valuesForAttributes:(id)arg1 forURL:(id)arg2 request:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)workingSetDidChangeWithCompletionHandler:(id /* block */)arg1;
-- (void)writeCheckReportTo:(id)arg1 limitNumberOfItems:(bool)arg2 completionHandler:(id /* block */)arg3;
 
 @end

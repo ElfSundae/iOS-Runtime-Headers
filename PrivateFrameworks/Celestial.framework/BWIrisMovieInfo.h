@@ -18,6 +18,7 @@
     bool  _finalEnqueuedIrisRequest;
     bool  _finalReferenceMovie;
     bool  _isMomentCaptureMovieRecording;
+    bool  _isOverlappingRequest;
     struct { 
         long long value; 
         int timescale; 
@@ -85,6 +86,54 @@
     int  _stillImageCaptureType;
     bool  _stillImageEncoderKeyFrameEmitted;
     bool  _stillImageVISKeyFrameTagged;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  _stillTimeOffsetToAudioPrerollStartInMilliseconds;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  _stillTimeOffsetToAudioPrerollStartTime;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  _stillTimeOffsetToAudioPrerollStopInMilliseconds;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  _stillTimeOffsetToAudioPrerollStopTime;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  _stillTimeOffsetToVideoPrerollStartInMilliseconds;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  _stillTimeOffsetToVideoPrerollStartTime;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  _stillTimeOffsetToVideoPrerollStopInMilliseconds;
+    struct { 
+        long long value; 
+        int timescale; 
+        unsigned int flags; 
+        long long epoch; 
+    }  _stillTimeOffsetToVideoPrerollStopTime;
     NSURL * _temporaryMovieURL;
     NSURL * _temporaryURLForSDOFOriginalMovie;
     float  _vitalityScore;
@@ -97,6 +146,7 @@
 @property (nonatomic, readonly) bool containsTrims;
 @property (getter=isFinalEnqueuedIrisRequest, nonatomic) bool finalEnqueuedIrisRequest;
 @property (getter=isFinalReferenceMovie, nonatomic) bool finalReferenceMovie;
+@property (nonatomic) bool isOverlappingRequest;
 @property (nonatomic, readonly) NSString *livePhotoMetadataStillImageKeyFrameSettingsID;
 @property (nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } masterMovieStartTime;
 @property (nonatomic, retain) NSURL *masterMovieURL;
@@ -124,6 +174,10 @@
 @property (nonatomic, readonly) int stillImageCaptureType;
 @property (nonatomic) bool stillImageEncoderKeyFrameEmitted;
 @property (nonatomic) bool stillImageVISKeyFrameTagged;
+@property (nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } stillTimeOffsetToAudioPrerollStartTime;
+@property (nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } stillTimeOffsetToAudioPrerollStopTime;
+@property (nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } stillTimeOffsetToVideoPrerollStartTime;
+@property (nonatomic) struct { long long x1; int x2; unsigned int x3; long long x4; } stillTimeOffsetToVideoPrerollStopTime;
 @property (nonatomic, retain) NSURL *temporaryMovieURL;
 @property (nonatomic, copy) NSURL *temporaryURLForSDOFOriginalMovie;
 @property (nonatomic) float vitalityScore;
@@ -146,6 +200,7 @@
 - (bool)isFinalReferenceMovie;
 - (bool)isMomentCaptureMovieRecording;
 - (bool)isOriginalPhotoRecording;
+- (bool)isOverlappingRequest;
 - (bool)isVitalityScoreValid;
 - (id)livePhotoMetadataStillImageKeyFrameSettingsID;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })masterMovieStartTime;
@@ -165,6 +220,7 @@
 - (void)setBeginTrimMasterPTS:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (void)setFinalEnqueuedIrisRequest:(bool)arg1;
 - (void)setFinalReferenceMovie:(bool)arg1;
+- (void)setIsOverlappingRequest:(bool)arg1;
 - (void)setMasterMovieStartTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (void)setMasterMovieURL:(id)arg1;
 - (void)setMomentCaptureMovieRecording:(bool)arg1;
@@ -187,6 +243,10 @@
 - (void)setStillImageCaptureTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (void)setStillImageEncoderKeyFrameEmitted:(bool)arg1;
 - (void)setStillImageVISKeyFrameTagged:(bool)arg1;
+- (void)setStillTimeOffsetToAudioPrerollStartTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
+- (void)setStillTimeOffsetToAudioPrerollStopTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
+- (void)setStillTimeOffsetToVideoPrerollStartTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
+- (void)setStillTimeOffsetToVideoPrerollStopTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (void)setTemporaryMovieURL:(id)arg1;
 - (void)setTemporaryURLForSDOFOriginalMovie:(id)arg1;
 - (void)setVitalityScore:(float)arg1;
@@ -203,6 +263,10 @@
 - (int)stillImageCaptureType;
 - (bool)stillImageEncoderKeyFrameEmitted;
 - (bool)stillImageVISKeyFrameTagged;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })stillTimeOffsetToAudioPrerollStartTime;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })stillTimeOffsetToAudioPrerollStopTime;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })stillTimeOffsetToVideoPrerollStartTime;
+- (struct { long long x1; int x2; unsigned int x3; long long x4; })stillTimeOffsetToVideoPrerollStopTime;
 - (id)temporaryMovieURL;
 - (id)temporaryURLForSDOFOriginalMovie;
 - (float)vitalityScore;

@@ -9,6 +9,7 @@
 - (NSString *)contentSizeCategory;
 - (long long)horizontalSizeClass;
 - (bool)isBundleSubscriber;
+- (bool)isBundleTrialEligible;
 - (bool)isChannelSubscriber;
 - (unsigned long long)numberOfColumns;
 - (bool)testing;

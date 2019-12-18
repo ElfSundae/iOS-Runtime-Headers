@@ -8,7 +8,7 @@
     int  _saveFlag;
 }
 
-+ (struct BindingEvaluator { id x1; id x2; id x3; id x4; id x5; struct LSVersionNumber { unsigned char x_6_1_1[32]; } x6; bool x7; unsigned long long x8; unsigned int x9; unsigned int x10; struct vector<LSBundleClass, std::__1::allocator<LSBundleClass> > { unsigned int *x_11_1_1; unsigned int *x_11_1_2; struct __compressed_pair<LSBundleClass *, std::__1::allocator<LSBundleClass> > { unsigned int *x_3_2_1; } x_11_1_3; } x11; id /* block */ x12; id x13; id /* block */ x14; id x15; })bindingEvaluatorForScheme:(id)arg1;
++ (struct BindingEvaluator { id x1; id x2; id x3; id x4; id x5; id x6; struct LSVersionNumber { unsigned char x_7_1_1[32]; } x7; bool x8; unsigned long long x9; unsigned int x10; unsigned int x11; struct vector<LSBundleClass, std::__1::allocator<LSBundleClass> > { unsigned int *x_12_1_1; unsigned int *x_12_1_2; struct __compressed_pair<LSBundleClass *, std::__1::allocator<LSBundleClass> > { unsigned int *x_3_2_1; } x_12_1_3; } x12; id /* block */ x13; id x14; id /* block */ x15; id x16; })bindingEvaluatorForScheme:(id)arg1;
 + (id)queryForApplicationsAvailableForOpeningURL:(id)arg1;
 + (id)sharedManager;
 

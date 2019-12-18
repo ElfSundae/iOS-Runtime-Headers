@@ -4,6 +4,7 @@
 
 @interface NewsArticles.ReportConcernDetailModule : NSObject {
     void resolver;
+    void tracker;
 }
 
 - (void).cxx_destruct;

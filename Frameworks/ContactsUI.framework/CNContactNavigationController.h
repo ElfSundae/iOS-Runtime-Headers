@@ -6,6 +6,7 @@
     CNAccountsAndGroupsDataSource * _accountsAndGroupsDataSource;
     CNAccountsAndGroupsViewController * _accountsAndGroupsViewController;
     CNUIUserActivityManager * _activityManager;
+    UIBarButtonItem * _addContactBarButtonItem;
     UIKeyCommand * _addKeyCommand;
     bool  _allowsCanceling;
     bool  _allowsCardDeletion;
@@ -33,6 +34,7 @@
 @property (nonatomic, retain) CNAccountsAndGroupsDataSource *accountsAndGroupsDataSource;
 @property (nonatomic) CNAccountsAndGroupsViewController *accountsAndGroupsViewController;
 @property (nonatomic, retain) CNUIUserActivityManager *activityManager;
+@property (nonatomic, retain) UIBarButtonItem *addContactBarButtonItem;
 @property (nonatomic, retain) UIKeyCommand *addKeyCommand;
 @property (nonatomic) bool allowsCanceling;
 @property (nonatomic) bool allowsCardDeletion;
@@ -72,6 +74,7 @@
 - (id)activityManager;
 - (void)addContact:(id)arg1;
 - (void)addContact:(id)arg1 animated:(bool)arg2;
+- (id)addContactBarButtonItem;
 - (id)addContactPresenter;
 - (id)addKeyCommand;
 - (bool)allowsCanceling;
@@ -134,6 +137,7 @@
 - (void)setAccountsAndGroupsDataSource:(id)arg1;
 - (void)setAccountsAndGroupsViewController:(id)arg1;
 - (void)setActivityManager:(id)arg1;
+- (void)setAddContactBarButtonItem:(id)arg1;
 - (void)setAddKeyCommand:(id)arg1;
 - (void)setAllowsCanceling:(bool)arg1;
 - (void)setAllowsCardDeletion:(bool)arg1;

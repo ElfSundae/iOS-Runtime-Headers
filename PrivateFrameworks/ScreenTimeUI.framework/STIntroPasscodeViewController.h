@@ -3,6 +3,8 @@
  */
 
 @interface STIntroPasscodeViewController : UIViewController <BFFPasscodeInputViewDelegate> {
+    NSString * _altDSID;
+    bool  _askForRecoveryAppleID;
     id /* block */  _continueHandler;
     NSString * _initialPasscode;
     STIntroductionModel * _model;
@@ -11,6 +13,8 @@
     long long  _passcodeState;
 }
 
+@property (readonly, copy) NSString *altDSID;
+@property (readonly) bool askForRecoveryAppleID;
 @property (readonly, copy) id /* block */ continueHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -24,8 +28,11 @@
 
 - (void).cxx_destruct;
 - (id)_passcodeView;
+- (void)_transitionToFirstPasscodePaneWithState:(long long)arg1;
+- (id)altDSID;
+- (bool)askForRecoveryAppleID;
 - (id /* block */)continueHandler;
-- (id)initWithIntroductionModel:(id)arg1 continueHandler:(id /* block */)arg2;
+- (id)initWithIntroductionModel:(id)arg1 askForRecoveryAppleID:(bool)arg2 altDSID:(id)arg3 continueHandler:(id /* block */)arg4;
 - (id)initialPasscode;
 - (bool)isNumeric;
 - (void)loadView;

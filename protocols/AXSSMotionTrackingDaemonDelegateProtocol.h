@@ -5,12 +5,6 @@
 
 @required
 
-- (void)motionTrackingDaemonExpressionEnded:(NSNumber *)arg1;
-- (void)motionTrackingDaemonExpressionStarted:(NSNumber *)arg1;
-- (void)motionTrackingDaemonFailedToTrackFaceWithError:(NSError *)arg1;
-- (void)motionTrackingDaemonFoundFace;
-- (void)motionTrackingDaemonLostFace;
-- (void)motionTrackingDaemonTrackedPoint:(NSValue *)arg1;
-- (void)motionTrackingDaemonWasInterrupted;
+- (void)motionTrackingDaemonUpdatedState:(AXSSMotionTrackingState *)arg1;
 
 @end

@@ -3,6 +3,7 @@
  */
 
 @interface MSVLyricsLine : MSVLyricsTextElement {
+    bool  _instrumentalBreak;
     long long  _lineIndex;
     MSVLyricsLine * _nextLine;
     long long  _originalLineIndex;
@@ -11,6 +12,7 @@
     NSArray * _words;
 }
 
+@property (getter=isInstrumentalBreak, nonatomic) bool instrumentalBreak;
 @property (nonatomic) long long lineIndex;
 @property (nonatomic, retain) MSVLyricsLine *nextLine;
 @property (nonatomic) long long originalLineIndex;
@@ -22,10 +24,12 @@
 - (bool)containsTimeOffset:(double)arg1 withErrorMargin:(double)arg2;
 - (id)description;
 - (id)init;
+- (bool)isInstrumentalBreak;
 - (long long)lineIndex;
 - (id)nextLine;
 - (long long)originalLineIndex;
 - (id)parentSection;
+- (void)setInstrumentalBreak:(bool)arg1;
 - (void)setLineIndex:(long long)arg1;
 - (void)setNextLine:(id)arg1;
 - (void)setOriginalLineIndex:(long long)arg1;

@@ -23,8 +23,10 @@
 - (void)_sendMessage:(id)arg1 object:(id)arg2 info:(id)arg3 reply:(id /* block */)arg4;
 - (void)activate;
 - (void)activate:(id /* block */)arg1;
+- (void)barrierOnXPC:(id /* block */)arg1;
 - (void)cancelQuery:(id)arg1;
 - (void)clearInput:(id)arg1;
+- (id)connectionQueue;
 - (id)daemonName;
 - (void)deactivate;
 - (void)dealloc;

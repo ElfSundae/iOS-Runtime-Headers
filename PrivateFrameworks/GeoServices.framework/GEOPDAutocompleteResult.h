@@ -3,6 +3,7 @@
  */
 
 @interface GEOPDAutocompleteResult : PBCodable <NSCopying> {
+    GEOPDAutocompleteSessionData * _autocompleteSessionData;
     NSMutableArray * _clientRankingFeatureMetadatas;
     bool  _enableRap;
     struct { 
@@ -13,10 +14,12 @@
         unsigned int has_shouldDifferentiateClientAndServerResults : 1; 
         unsigned int has_shouldDisplayNoResults : 1; 
         unsigned int read_unknownFields : 1; 
+        unsigned int read_autocompleteSessionData : 1; 
         unsigned int read_clientRankingFeatureMetadatas : 1; 
         unsigned int read_sections : 1; 
         unsigned int read_sortPriorityMappings : 1; 
         unsigned int wrote_unknownFields : 1; 
+        unsigned int wrote_autocompleteSessionData : 1; 
         unsigned int wrote_clientRankingFeatureMetadatas : 1; 
         unsigned int wrote_sections : 1; 
         unsigned int wrote_sortPriorityMappings : 1; 
@@ -43,8 +46,10 @@
     PBUnknownFields * _unknownFields;
 }
 
+@property (nonatomic, retain) GEOPDAutocompleteSessionData *autocompleteSessionData;
 @property (nonatomic, retain) NSMutableArray *clientRankingFeatureMetadatas;
 @property (nonatomic) bool enableRap;
+@property (nonatomic, readonly) bool hasAutocompleteSessionData;
 @property (nonatomic) bool hasEnableRap;
 @property (nonatomic) bool hasIsNoResultFromNegativeCache;
 @property (nonatomic) bool hasIsTopSectionTypeQuery;
@@ -69,12 +74,14 @@
 - (void)_addNoFlagsClientRankingFeatureMetadata:(id)arg1;
 - (void)_addNoFlagsSections:(id)arg1;
 - (void)_addNoFlagsSortPriorityMapping:(id)arg1;
+- (void)_readAutocompleteSessionData;
 - (void)_readClientRankingFeatureMetadatas;
 - (void)_readSections;
 - (void)_readSortPriorityMappings;
 - (void)addClientRankingFeatureMetadata:(id)arg1;
 - (void)addSections:(id)arg1;
 - (void)addSortPriorityMapping:(id)arg1;
+- (id)autocompleteSessionData;
 - (void)clearClientRankingFeatureMetadatas;
 - (void)clearSections;
 - (void)clearSensitiveFields;
@@ -88,6 +95,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (bool)enableRap;
+- (bool)hasAutocompleteSessionData;
 - (bool)hasEnableRap;
 - (bool)hasIsNoResultFromNegativeCache;
 - (bool)hasIsTopSectionTypeQuery;
@@ -107,6 +115,7 @@
 - (id)sections;
 - (id)sectionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)sectionsCount;
+- (void)setAutocompleteSessionData:(id)arg1;
 - (void)setClientRankingFeatureMetadatas:(id)arg1;
 - (void)setEnableRap:(bool)arg1;
 - (void)setHasEnableRap:(bool)arg1;

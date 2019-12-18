@@ -3,24 +3,24 @@
  */
 
 @interface MessageSaveToCameraRollActivity : UISaveToCameraRollActivity {
-    <MFAttachmentHandlingDelegate> * _attachmentHandlingDelegate;
     long long  _context;
+    <ContentRepresentationHandlingDelegate> * _delegate;
 }
 
-@property (nonatomic) <MFAttachmentHandlingDelegate> *attachmentHandlingDelegate;
 @property (nonatomic) long long context;
+@property (nonatomic) <ContentRepresentationHandlingDelegate> *delegate;
 
 - (void).cxx_destruct;
-- (id)_activityImage;
 - (id)_beforeActivity;
 - (void)_prepareWithActivityItems:(id)arg1;
+- (id)activityImage;
 - (id)activityType;
-- (id)attachmentHandlingDelegate;
 - (long long)context;
+- (id)delegate;
 - (id)init;
 - (id)initWithAttachmentHandlingDelegate:(id)arg1 context:(long long)arg2;
 - (void)prepareWithActivityItems:(id)arg1;
-- (void)setAttachmentHandlingDelegate:(id)arg1;
 - (void)setContext:(long long)arg1;
+- (void)setDelegate:(id)arg1;
 
 @end

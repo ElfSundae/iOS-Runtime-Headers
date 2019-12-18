@@ -296,6 +296,7 @@
 - (bool)_removingDuplicatedCloudAssetGuid:(id)arg1;
 - (bool)_renumberLocalAvailabilityAndLocalAvailabilityTargetsInStore:(id)arg1;
 - (void)_repairCloudPlaceholderKindForVideoAsset:(id)arg1;
+- (bool)_repairLegacyMigrationDuplicateVersionCloudResources:(id)arg1;
 - (void)_repairMetadataAndSingletonsForMigrationType:(long long)arg1 forced:(bool)arg2;
 - (bool)_repairOrphanedProjectAlbumsInStore:(id)arg1;
 - (void)_repairPotentialModelCorruption;

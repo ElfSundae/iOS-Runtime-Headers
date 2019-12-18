@@ -3,6 +3,7 @@
  */
 
 @interface _ASCredentialListViewController : _ASExtensionViewController {
+    _ASIncomingCallObserver * _callObserver;
     <_ASCredentialListViewControllerDelegate> * _delegate;
 }
 

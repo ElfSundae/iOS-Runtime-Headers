@@ -18,6 +18,8 @@
 - (id)mutableData;
 - (float*)mutablePtr;
 - (void)processValuesInPlaceWithBlock:(id /* block */)arg1;
+- (void)scaleInPlaceWithFactor:(float)arg1;
 - (void)scaleInPlaceWithInversedFactor:(float)arg1;
+- (void)sumInPlaceWithVector:(id)arg1;
 
 @end

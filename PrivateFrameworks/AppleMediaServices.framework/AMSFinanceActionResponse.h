@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
  */
 
-@interface AMSFinanceActionResponse : NSObject <AMSFinanceActionHandling> {
+@interface AMSFinanceActionResponse : NSObject <AMSFinancePerformable> {
     NSURL * _URL;
     ACAccount * _account;
     NSString * _creditString;
@@ -13,7 +13,11 @@
 @property (nonatomic, retain) NSURL *URL;
 @property (nonatomic, retain) ACAccount *account;
 @property (nonatomic, retain) NSString *creditString;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long kind;
+@property (readonly) Class superclass;
 @property (nonatomic, retain) AMSURLTaskInfo *taskInfo;
 
 + (id)actionWithActionDictionary:(id)arg1 taskInfo:(id)arg2;
@@ -28,7 +32,7 @@
 - (id)creditString;
 - (id)initWithTaskInfo:(id)arg1;
 - (long long)kind;
-- (id)runAction;
+- (id)performWithTaskInfo:(id)arg1;
 - (void)setAccount:(id)arg1;
 - (void)setCreditString:(id)arg1;
 - (void)setKind:(long long)arg1;

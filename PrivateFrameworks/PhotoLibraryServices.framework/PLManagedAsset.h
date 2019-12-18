@@ -1029,6 +1029,7 @@
 - (bool)repairAssetScopeValidationErrors:(id)arg1;
 - (void)requestDeletionOfDeferredPhotoProcessingIntermediates;
 - (id)resourceForCPLType:(unsigned long long)arg1 version:(unsigned int)arg2;
+- (unsigned long long)resourceTypeForUnadjustedFlattenedLivePhotoAssetResourceType:(unsigned long long)arg1 sourceAsset:(id)arg2;
 - (id)resourcesSortedByQuality;
 - (id)resourcesWithVersion:(unsigned int)arg1;
 - (void)revalidateFaceAreaPoints;

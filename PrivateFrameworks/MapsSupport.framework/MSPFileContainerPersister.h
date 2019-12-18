@@ -3,9 +3,11 @@
  */
 
 @interface MSPFileContainerPersister : MSPContainerPersister {
+    NSObject<OS_dispatch_queue> * _ioQueue;
     NSURL * _persistenceFileURL;
 }
 
+@property (nonatomic, retain) NSObject<OS_dispatch_queue> *ioQueue;
 @property (nonatomic, readonly) NSURL *persistenceFileURL;
 
 + (void)initialize;
@@ -20,8 +22,10 @@
 - (bool)getSnapshot:(out id*)arg1 data:(out id*)arg2 mergingCurrentState:(id)arg3 withState:(id)arg4 mergeOptions:(id)arg5 error:(out id*)arg6;
 - (id)init;
 - (id)initWithPersistenceFileAtURL:(id)arg1;
+- (id)ioQueue;
 - (id)newStateSnapshot;
 - (id)persistenceFileURL;
+- (void)setIoQueue:(id)arg1;
 - (id)stateSnapshotFromData:(id)arg1;
 
 @end

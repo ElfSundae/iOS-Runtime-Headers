@@ -64,6 +64,7 @@
 - (id)initShareIDWithRecordID:(id)arg1 serverZone:(id)arg2;
 - (id)initShareIDWithRecordID:(id)arg1 zoneID:(id)arg2 session:(id)arg3;
 - (id)initShareIDWithShareableItem:(id)arg1;
+- (bool)locateSideCarServerZone:(id*)arg1 withSession:(id)arg2;
 - (void)sqliteBind:(struct sqlite3_stmt { }*)arg1 index:(int)arg2;
 
 // Image: /System/Library/PrivateFrameworks/CloudKitDaemon.framework/CloudKitDaemon

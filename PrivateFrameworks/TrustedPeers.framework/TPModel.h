@@ -67,6 +67,7 @@
 - (bool)isRecoveryKeyEnrolled;
 - (unsigned long long)latestEpochAmongPeerIDs:(id)arg1;
 - (unsigned long long)maxClock;
+- (id)peerCountsByMachineID;
 - (id)peerIDThatTrustsRecoveryKeys:(id)arg1;
 - (id)peerWithID:(id)arg1;
 - (id)peersByID;

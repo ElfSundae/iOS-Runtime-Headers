@@ -9,9 +9,9 @@
     void dismissButtonTitle;
     void offerButtonAction;
     void offerDisplayProperties;
+    void openAppAction;
     void pageMetrics;
     void pageType;
-    void postSubscribeAction;
 }
 
 @end

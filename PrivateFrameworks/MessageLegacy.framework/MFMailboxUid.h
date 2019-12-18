@@ -14,7 +14,7 @@
     NSNumber * _pendingLevel;
     NSString * _realFullPath;
     MailAccount * _representedAccount;
-    int  _type;
+    _Atomic int  _type;
     NSMutableDictionary * _userInfo;
     bool  allCriteriaMustBeSatisfied;
     NSString * uniqueId;
@@ -28,6 +28,7 @@
 @property (nonatomic, readonly, copy) NSString *ef_publicDescription;
 @property (nonatomic, retain) NSArray *extraAttributes;
 @property (readonly) unsigned long long hash;
+@property int mailboxType;
 @property (nonatomic, readonly, copy) NSString *name;
 @property (nonatomic, readonly) EMObjectID *objectID;
 @property (nonatomic, readonly, copy) NSString *persistentID;

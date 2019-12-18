@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NewsUI2.framework/NewsUI2
  */
 
-@interface NewsUI2.MagazineCategoriesViewController : UIViewController <TUPluggable> {
+@interface NewsUI2.MagazineCategoriesViewController : UIViewController <TUDeselectable, TUKeyCommandTraversable, TUPluggable> {
     void blueprintViewController;
     void config;
     void eventHandler;
@@ -15,6 +15,7 @@
 @property (nonatomic) <TUPluggableDelegate> *pluggableDelegate;
 
 - (void).cxx_destruct;
+- (void)deselect;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)initializeWithCompletion:(id /* block */)arg1;
@@ -23,6 +24,7 @@
 - (void)relayoutWithCompletion:(id /* block */)arg1;
 - (void)setIsBeingUsedAsPlugin:(bool)arg1;
 - (void)setPluggableDelegate:(id)arg1;
+- (void)startTraversingWithDirection:(long long)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;

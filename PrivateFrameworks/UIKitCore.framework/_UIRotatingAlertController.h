@@ -15,6 +15,7 @@
 @property (nonatomic) <_UIRotatingAlertControllerDelegate> *rotatingSheetDelegate;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_didRotateAndLayout;
 - (void)_presentingViewControllerDidChange:(id)arg1;
 - (void)_presentingViewControllerWillChange:(id)arg1;

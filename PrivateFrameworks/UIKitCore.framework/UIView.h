@@ -2959,6 +2959,7 @@
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })tv_focusMargin;
 - (id)tv_highlightColor;
 - (id)tv_impressionableElementsForDocument:(id)arg1;
+- (id)tv_impressionableElementsForDocument:(id)arg1 parentViewController:(id)arg2;
 - (double)tv_interitemSpacing;
 - (bool)tv_isAnimationDisabledForProperty:(id)arg1;
 - (bool)tv_isPrototypeView;

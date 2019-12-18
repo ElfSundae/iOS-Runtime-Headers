@@ -188,6 +188,7 @@
 - (void)setIsModelInitialized:(bool)arg1;
 - (oneway void)setLocations:(id)arg1;
 - (bool)shouldHandleErrorInFWK:(id)arg1;
+- (void)showMeDeviceAlert;
 - (void)showShareMyLocationRestrictedAlert;
 - (void)showShareMyLocationiCloudSettingsOffAlert;
 - (void)stopSharingMyLocationWithHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 completion:(id /* block */)arg4;

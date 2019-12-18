@@ -126,7 +126,6 @@
 
 - (void).cxx_destruct;
 - (bool)_allowsKeyFrameCreation;
-- (bool)_canShowWhileLocked;
 - (void)_createRendererIfNeeded;
 - (struct { long long x1; int x2; unsigned int x3; long long x4; })_currentPlayerScaledTimeFromOriginalTime:(struct { long long x1; int x2; unsigned int x3; long long x4; })arg1;
 - (id)_currentVideoAsset;

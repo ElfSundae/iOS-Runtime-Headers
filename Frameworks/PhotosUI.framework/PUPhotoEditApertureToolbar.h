@@ -41,7 +41,6 @@
 @property (nonatomic, retain) UILabel *valueLabel;
 
 - (void).cxx_destruct;
-- (bool)_canShowWhileLocked;
 - (void)_updateBackgroundAnimated:(bool)arg1;
 - (void)apertureSliderDidChangeApertureValue:(id)arg1;
 - (double)apertureValue;

@@ -4,6 +4,7 @@
 
 @interface SFPasswordPickerServiceViewController : SFPasswordServiceViewController <SFCredentialProviderExtensionManagerObserver, SFPasswordPickerServiceViewControllerProtocol, UIPresentationControllerDelegatePrivate, _ASCredentialListViewControllerDelegate, _ASPasswordCredentialAuthenticationViewControllerDelegate, _SFAuthenticationClient, _SFAuthenticationContextDelegate> {
     double  _authenticationGracePeriod;
+    _ASIncomingCallObserver * _callObserver;
     _SFAuthenticationContext * _context;
     _ASPasswordCredentialAuthenticationViewController * _externalCredentialViewController;
     NSArray * _externallyVerifiedAssociatedDomains;

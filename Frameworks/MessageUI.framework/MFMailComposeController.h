@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
  */
 
-@interface MFMailComposeController : UIViewController <CNAutocompleteGroupDetailViewControllerDelegate, CNComposeHeaderViewDelegate, CNContactContentViewControllerDelegate, CNContactPickerDelegate, MFComposeActivityHandoffOperationDelegate, MFComposeImageSizeViewDelegate, MFComposeSubjectViewDelegate, MFComposeTypeFactoryDelegate, MFMailComposeRecipientTextViewDelegate, MFMailComposeToFieldDelegate, MFMailComposeViewDelegate, MFPhotoPickerControllerDelegate, MFSecureMIMECompositionManagerDelegate, NSUserActivityDelegate, QLPreviewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate, VNDocumentCameraViewControllerDelegate> {
+@interface MFMailComposeController : UIViewController <CNAutocompleteGroupDetailViewControllerDelegate, CNComposeHeaderViewDelegate, CNContactContentViewControllerDelegate, CNContactPickerDelegate, MFComposeActivityHandoffOperationDelegate, MFComposeImageSizeViewDelegate, MFComposeStyleSelectorViewControllerDelegate, MFComposeSubjectViewDelegate, MFComposeTypeFactoryDelegate, MFMailComposeRecipientTextViewDelegate, MFMailComposeToFieldDelegate, MFMailComposeViewDelegate, MFPhotoPickerControllerDelegate, MFSecureMIMECompositionManagerDelegate, NSUserActivityDelegate, QLPreviewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate, UIPresentationControllerDelegatePrivate, VNDocumentCameraViewControllerDelegate, _MFMailCompositionContextDelegate> {
     MFLANHandoffAgent * _LANHandoffAgent;
     <MFMailAccountProxyGenerator> * _accountProxyGenerator;
     NSString * _addressForMissingIdentity;
@@ -20,18 +20,17 @@
     NSTimer * _autosaveTimer;
     NSDate * _autosavedDate;
     NSArray * _bccAddresses;
-    UIView<MFComposeBodyField> * _bodyField;
-    struct { 
-        bool respondsToCompositionWillFinish; 
-        bool respondsToCompositionDidFailToFinish; 
-    }  _bodyFieldFlags;
     unsigned int  _bodyTextChanged;
-    UIView * _bodyTextView;
     UIImagePickerController * _cameraPickerController;
     NSArray * _ccAddresses;
     MFMailComposeRecipientTextView * _ccField;
     NSDictionary * _certificatesByRecipient;
     UIBarButtonItem * _closeButtonItem;
+    MFComposeWebView * _composeWebView;
+    struct { 
+        bool respondsToCompositionWillFinish; 
+        bool respondsToCompositionDidFailToFinish; 
+    }  _composeWebViewFlags;
     _MFMailCompositionContext * _compositionContext;
     CNContactViewController * _contactViewController;
     EFFuture * _content;
@@ -46,11 +45,13 @@
     EMMailboxObjectID * _draftMailboxObjectID;
     NSMutableSet * _drawingFileAttachments;
     long long  _drawingInsertCount;
+    unsigned long long  _drawingSequenceNumber;
     int  _encryptionIdentityStatus;
     bool  _encryptionOverrideSetting;
     bool  _encryptionStatusIsKnown;
     NSDictionary * _errorsByRecipient;
     UIKeyCommand * _escapeKeyCommand;
+    NSDictionary * _fontAttributes;
     unsigned int  _fromAddressPickerWasVisible;
     MFComposeActivityHandoffOperation * _handoffOperation;
     UIProgressView * _handoffProgressView;
@@ -67,7 +68,7 @@
     unsigned int  _isPopoverVisible;
     unsigned int  _isSuspended;
     NSDate * _lastActiveDate;
-    EMMessageObjectID * _lastDraftMessageObjectID;
+    EMMessage * _lastDraftMessage;
     MFMailComposeRecipientTextView * _lastFocusedRecipientView;
     unsigned short  _lastTypedCharacter;
     unsigned long long  _markupReplyAttachmentLoadingProgress;
@@ -88,6 +89,7 @@
     CNRecentComposeRecipient * _recentRecipientPresentingCard;
     int  _recipientFieldWhileViewUnloaded;
     CNComposeRecipient * _recipientPresentingCard;
+    id /* block */  _releaseActiveFocusedState;
     id  _remoteViewControllerProxy;
     int  _resolution;
     unsigned int  _rotationSnapshotTaken;
@@ -107,6 +109,7 @@
     int  _signingIdentityStatus;
     int  _sourceAccountManagement;
     unsigned int  _stillLoading;
+    MFComposeStyleSelectorViewController * _styleSelector;
     NSString * _subject;
     MFComposeSubjectView * _subjectField;
     NSArray * _toAddresses;
@@ -141,10 +144,11 @@
 @property (nonatomic, retain) NSMutableSet *drawingFileAttachments;
 @property (nonatomic) long long drawingInsertCount;
 @property (nonatomic, retain) NSDictionary *errorsByRecipient;
+@property (nonatomic, retain) NSDictionary *fontAttributes;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool insertingDrawing;
 @property (nonatomic) bool isModal;
-@property (nonatomic, readonly) EMMessageObjectID *lastDraftMessageObjectID;
+@property (nonatomic, readonly) EMMessage *lastDraftMessage;
 @property (nonatomic) unsigned long long markupReplyAttachmentLoadingProgress;
 @property (nonatomic, copy) NSString *originatingBundleID;
 @property (nonatomic, retain) CNContactPickerViewController *peoplePicker;
@@ -155,11 +159,11 @@
 @property (nonatomic, retain) CNComposeRecipient *recipientPresentingCard;
 @property (nonatomic, retain) id remoteViewControllerProxy;
 @property (nonatomic) int sourceAccountManagement;
+@property (nonatomic, retain) MFComposeStyleSelectorViewController *styleSelector;
 @property (readonly) Class superclass;
 @property (nonatomic) bool useMailDrop;
 @property (getter=isVerticallyCompact, nonatomic, readonly) bool verticallyCompact;
 
-+ (id)allocWithZone:(struct _NSZone { }*)arg1;
 + (void)initialize;
 + (bool)isSetupForDeliveryAllowingRestrictedAccounts:(bool)arg1;
 + (bool)isSetupForDeliveryAllowingRestrictedAccounts:(bool)arg1 originatingBundleID:(id)arg2 sourceAccountManagement:(int)arg3;
@@ -170,7 +174,6 @@
 - (void)_accountsChanged:(id)arg1;
 - (id)_addressFieldForField:(int)arg1;
 - (id)_allRecipientViews;
-- (id)_allocateComposeView;
 - (id)_alternateTitleView;
 - (bool)_anyRecipientViewContainsAddress:(id)arg1;
 - (void)_attachmentLoaderFinishedWithOriginalContent:(id)arg1;
@@ -179,7 +182,6 @@
 - (id)_availableAccountProxies;
 - (id)_backgroundColorForMarkupController;
 - (void)_beginBlockingBodyScroll;
-- (unsigned long long)_bodyFieldTextContentLength;
 - (void)_bodyTextChanged;
 - (void)_checkForCanSendMailWithContinuation:(id /* block */)arg1;
 - (void)_checkForEmptySubjectWithContinuation:(id /* block */)arg1;
@@ -190,12 +192,12 @@
 - (void)_clearMessageValues;
 - (void)_close;
 - (void)_composeViewDidDraw:(id)arg1;
+- (unsigned long long)_composeWebViewTextContentLength;
 - (id)_contactViewControllerForRecipient:(id)arg1;
 - (id)_copyMessageDataForActivityHandoff;
 - (id)_copyMessagePlainTextForDonation;
 - (id)_copyMessagePlainTextForDonationRemoveQuotes:(bool)arg1;
 - (void)_createAndAddHandoffProgressViewIfNecessary;
-- (id)_createSignatureController;
 - (id)_defaultAccount;
 - (unsigned long long)_defaultAtomPresentationOptions;
 - (Class)_deliveryClass;
@@ -203,6 +205,8 @@
 - (void)_dismissAndCleanupCameraPickerController;
 - (void)_dismissPeoplePicker:(id)arg1;
 - (void)_dismissPersonCard;
+- (void)_dismissPresentedHalfSheet;
+- (void)_dismissPresentedViewController;
 - (void)_displayMetricsDidChange;
 - (void)_displayPopoverAlert:(id)arg1;
 - (void)_documentCameraViewControllerDidFinish;
@@ -241,10 +245,10 @@
 - (id)_messageToDonate;
 - (id)_messageWithCompositionSpecification:(id)arg1 useSuspendInfo:(bool)arg2 endingEditing:(bool)arg3;
 - (id)_missingIdentityErrorWithFormat:(id)arg1 title:(id)arg2;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_optimalRectForPresentingPopoverInBodyField;
+- (id)_nextDrawingName;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_optimalRectForPresentingPopoverInComposeWebView;
 - (id)_outgoingMessageWithSubstituteDocument:(id)arg1 compositionSpecification:(id)arg2 useSuspendInfo:(bool)arg3 endingEditing:(bool)arg4;
 - (void)_physicallyScaleImagesToScale:(unsigned long long)arg1;
-- (void)_placeCaretAtStartOfBodyField;
 - (void)_popoverWillBePresented:(id)arg1;
 - (void)_prepareCompositionContextForLoading:(id)arg1;
 - (void)_prepareForSuspend;
@@ -262,12 +266,13 @@
 - (void)_resetSecureCompositionManager;
 - (void)_resetSecureCompositionManagerUsingNewAccount:(bool)arg1;
 - (void)_restoreMessageValues;
+- (void)_retainFocusOfComposeWebViewIfRequired:(id)arg1;
 - (void)_saveMessageValues;
 - (void)_scaleImages;
 - (bool)_secureCompositionManagerHasRecipients;
 - (id)_selectedAttachmentURLs;
 - (void)_setAutosaveIsValid:(bool)arg1;
-- (void)_setBodyFieldAutocorrectionContext:(id)arg1;
+- (void)_setComposeWebViewAutocorrectionContext:(id)arg1;
 - (void)_setInitialStateForImageField;
 - (void)_setIsLoading:(bool)arg1;
 - (void)_setLastFocusedRecipientView:(id)arg1;
@@ -299,7 +304,7 @@
 - (void)_unscaleImages;
 - (void)_updateAutoBccSendingAddress:(id)arg1 withNewSendingAddress:(id)arg2;
 - (void)_updateAutosaveSession;
-- (void)_updateBodyFieldAutoCorrectionContext;
+- (void)_updateComposeWebViewAutoCorrectionContext;
 - (void)_updateIdentityStatus:(int*)arg1 withPolicy:(int)arg2 identity:(struct __SecIdentity { }*)arg3 error:(id)arg4;
 - (void)_updateImageSizeTitles;
 - (void)_updateNavigationBarTitleAnimated:(bool)arg1;
@@ -319,17 +324,17 @@
 - (void)activityHandoffOperation:(id)arg1 didFinishReceivingData:(id)arg2;
 - (void)activityHandoffOperation:(id)arg1 didFinishSendingDataWithResult:(long long)arg2;
 - (void)activityHandoffOperationReceivedBytes:(id)arg1;
+- (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)addAddress:(id)arg1 field:(int)arg2;
 - (void)addSignature:(bool)arg1;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })additionalContentInsetForComposeWebView:(id)arg1;
 - (id)addressForMissingIdentity;
 - (id)addressesForField:(int)arg1;
 - (void)applicationDidResume;
 - (void)applicationWillSuspend;
 - (id)atomPresentingCard;
-- (void)attachmentFinishedLoading:(id)arg1;
 - (bool)attachmentToMarkupIsLoaded;
 - (id)attachments;
-- (void)attachmentsRemoved:(id)arg1;
 - (void)autocompleteGroupDetailViewController:(id)arg1 didAskToRemoveGroup:(id)arg2;
 - (void)autocompleteGroupDetailViewController:(id)arg1 didTapComposeRecipient:(id)arg2;
 - (void)autocompleteGroupDetailViewControllerDidCancel:(id)arg1;
@@ -343,7 +348,6 @@
 - (void)backUpDraft;
 - (bool)bccAddressesDirtied;
 - (id)bccRecipients;
-- (id)bodyField;
 - (bool)canBecomeFirstResponder;
 - (bool)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (bool)canShowAttachmentPicker;
@@ -377,6 +381,14 @@
 - (void)composeRecipientViewReturnPressed:(id)arg1;
 - (bool)composeRecipientViewShowingSearchResults:(id)arg1;
 - (void)composeShortcutInvoked:(id)arg1;
+- (void)composeStyleSelector:(id)arg1 didChangeFont:(id)arg2;
+- (void)composeStyleSelector:(id)arg1 didChangeFontSize:(double)arg2;
+- (void)composeStyleSelector:(id)arg1 didChangeTextColor:(id)arg2;
+- (void)composeStyleSelector:(id)arg1 didSelectStyle:(id)arg2;
+- (void)composeStyleSelectorDidCancel:(id)arg1;
+- (void)composeStyleSelectorDidDismissFontPicker:(id)arg1;
+- (void)composeStyleSelectorDidPresentColorPicker:(id)arg1;
+- (id)composeStyleSelectorPresentationContext:(id)arg1;
 - (void)composeSubjectViewDidSelectContentVariationButton:(id)arg1;
 - (void)composeSubjectViewDidSelectNotifyButton:(id)arg1;
 - (void)composeSubjectViewTextFieldDidBecomeFirstResponder:(id)arg1;
@@ -384,6 +396,8 @@
 - (void)composeSubjectViewWillRemoveContent:(id)arg1;
 - (int)composeType;
 - (void)composeViewBodyTextChanged:(id)arg1;
+- (id)composeWebView;
+- (void)composeWebViewDidChangeFontAttributes:(id)arg1;
 - (id)compositionContext;
 - (int)compositionType;
 - (void)contactPicker:(id)arg1 didSelectContact:(id)arg2;
@@ -407,6 +421,7 @@
 - (void)didBecomeActiveComposeController;
 - (void)didInsertAttachment:(id)arg1;
 - (void)didInsertBodyText:(id)arg1;
+- (void)didRemoveAttachment:(id)arg1;
 - (void)didRotateFromInterfaceOrientation:(long long)arg1;
 - (void)didSelectCellAtRow:(unsigned long long)arg1;
 - (id)dismissActionsForPreviewController:(id)arg1;
@@ -426,6 +441,7 @@
 - (id)errorsByRecipient;
 - (void)finalizeSignature:(id /* block */)arg1;
 - (void)finishedBackingUpDraftWithSuccess:(bool)arg1;
+- (id)fontAttributes;
 - (void)forceSaveAsDraft;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })frameForAttachmentWithIdentifier:(id)arg1;
 - (void)handleLargeMessageComposeHandoffWithInputStream:(id)arg1 outputStream:(id)arg2 error:(id)arg3;
@@ -449,11 +465,12 @@
 - (bool)isShowingRecentPersonCard;
 - (bool)isVerticallyCompact;
 - (id)keyCommands;
-- (id)lastDraftMessageObjectID;
+- (id)lastDraftMessage;
 - (void)loadView;
 - (id)mailComposeView;
 - (void)markupAttachment:(id)arg1;
 - (unsigned long long)markupReplyAttachmentLoadingProgress;
+- (void)messageDidChangeForCompositionContext:(id)arg1 newMessage:(id)arg2;
 - (id)navigationBarTitle;
 - (id)navigationControllerForRecentPersonCard;
 - (bool)needsDelivery;
@@ -477,6 +494,7 @@
 - (void)prepareForPopoverPresentation:(id)arg1;
 - (void)presentSaveDeleteDialogOrClose;
 - (bool)presentSearchResultsForComposeRecipientView:(id)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (unsigned long long)presentationOptionsForRecipient:(id)arg1;
 - (id)presentationViewController;
 - (id)previewController;
@@ -533,10 +551,11 @@
 - (void)setDelegate:(id)arg1;
 - (void)setDisplayMetrics:(id)arg1;
 - (void)setDocumentCameraViewController:(id)arg1;
-- (void)setDraftMessageObjectID:(id)arg1;
+- (void)setDraftMessage:(id)arg1;
 - (void)setDrawingFileAttachments:(id)arg1;
 - (void)setDrawingInsertCount:(long long)arg1;
 - (void)setErrorsByRecipient:(id)arg1;
+- (void)setFontAttributes:(id)arg1;
 - (void)setHeadersForDraft;
 - (void)setHosted:(bool)arg1;
 - (void)setInitialTitle:(id)arg1;
@@ -556,15 +575,19 @@
 - (void)setSavedHeaders:(id)arg1;
 - (void)setSendingEmailAddress:(id)arg1;
 - (void)setSourceAccountManagement:(int)arg1;
+- (void)setStyleSelector:(id)arg1;
 - (void)setSubject:(id)arg1;
 - (void)setToRecipients:(id)arg1;
 - (void)setUseMailDrop:(bool)arg1;
 - (id)shouldCreateRichTextRepresentation;
 - (bool)shouldShowSMIMEButton;
 - (void)showContentVariationPicker:(id)arg1;
+- (void)showMissingAttachmentDataAlert;
 - (void)showPhotoPickerWithSourceType:(long long)arg1 fromSource:(id)arg2;
+- (void)showStyleSelector:(id)arg1;
 - (unsigned long long)signpostID;
 - (int)sourceAccountManagement;
+- (id)styleSelector;
 - (id)subject;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

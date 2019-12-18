@@ -42,13 +42,9 @@
 - (bool)deleteSMTs:(id)arg1 mutationTimeLessThan:(unsigned long long)arg2 error:(id*)arg3;
 - (bool)deleteSTHs:(id)arg1 logBeginMsLessThan:(unsigned long long)arg2 error:(id*)arg3;
 - (id)fetchCompletedRequests:(id)arg1 olderThan:(id)arg2 error:(id*)arg3;
-- (id)fetchPendingSMTsForUri:(id)arg1 uri:(id)arg2 accountId:(id)arg3 error:(id*)arg4;
 - (id)fetchRequestForUUID:(id)arg1 error:(id*)arg2;
 - (id)fetchRequestWithUri:(id)arg1 application:(id)arg2 accountID:(id)arg3 loggableDatas:(id)arg4 youngerThan:(id)arg5 error:(id*)arg6;
 - (id)fetchRequestsForURI:(id)arg1 error:(id*)arg2;
-- (id)fetchRequestsWithPendingResponses:(id)arg1 error:(id*)arg2;
-- (id)fetchRequestsWithPendingSMTs:(id)arg1 error:(id*)arg2;
-- (id)fetchSMTsWithUnverifiedSignature:(id)arg1 error:(id*)arg2;
 - (void)garbageCollectRequests:(id)arg1 olderThan:(id)arg2 error:(id*)arg3;
 - (id)init;
 - (bool)logMetricsForApplication:(id)arg1 error:(id*)arg2;
@@ -58,9 +54,14 @@
 - (bool)performAndWaitForRequestId:(id)arg1 error:(id*)arg2 block:(id /* block */)arg3;
 - (void)performBlock:(id /* block */)arg1;
 - (void)performBlockAndWait:(id /* block */)arg1;
+- (void)performForPendingSMTs:(id)arg1 uri:(id)arg2 accountId:(id)arg3 error:(id*)arg4 block:(id /* block */)arg5;
+- (void)performForRequestsWithPendingResponses:(id)arg1 error:(id*)arg2 block:(id /* block */)arg3;
+- (void)performForRequestsWithPendingSMTs:(id)arg1 error:(id*)arg2 block:(id /* block */)arg3;
+- (void)performForSMTsWithUnverifiedSignature:(id)arg1 error:(id*)arg2 block:(id /* block */)arg3;
 - (void)performOnBatchesOfEntity:(id)arg1 predicate:(id)arg2 error:(id*)arg3 block:(id /* block */)arg4;
 - (void)performOnRequestsForPredicate:(id)arg1 error:(id*)arg2 block:(id /* block */)arg3;
 - (bool)persistAndRefaultObject:(id)arg1 error:(id*)arg2;
+- (bool)persistAndRefaultObjects:(id)arg1 error:(id*)arg2;
 - (bool)persistWithError:(id*)arg1;
 - (id)persistentContainer;
 - (void)refaultObject:(id)arg1;

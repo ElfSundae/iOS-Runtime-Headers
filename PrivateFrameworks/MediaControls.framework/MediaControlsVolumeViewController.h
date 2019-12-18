@@ -31,10 +31,12 @@
 @property (nonatomic, readonly) UIWindowScene *windowSceneForVolumeDisplay;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_dismissMediaControlsVolumeViewController;
 - (void)_performWithoutAnimationWhileHidden:(id /* block */)arg1;
 - (void)_primarySliderValueDidChange:(id)arg1;
 - (void)_secondarySliderValueDidChange:(id)arg1;
+- (void)_updateGlyphPackageDescription;
 - (void)_updateVisibility;
 - (void)dealloc;
 - (id)delegate;

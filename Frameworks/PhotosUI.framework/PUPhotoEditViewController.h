@@ -49,6 +49,7 @@
     UIAlertController * __revertConfirmationAlert;
     bool  __revertingToOriginal;
     long long  __saveCompetionDismissalState;
+    UIAlertController * __saveTrimOptionsAlert;
     bool  __shouldBePreviewingOriginal;
     NUComposition * __uneditedComposition;
     PUPhotoEditValuesCalculator * __valuesCalculator;
@@ -57,9 +58,11 @@
     PUPhotoEditToolbar * _alternateToolbar;
     NSArray * _alternateToolbarConstraints;
     NSTimer * _assetChangeTimeoutTimer;
+    NSMutableSet * _assetsWaitingForLibraryNotification;
     PUTimeInterval * _autoCalcInterval;
     UIButton * _autoEnhanceButton;
     PUAutoAdjustmentController * _autoEnhanceController;
+    bool  _burningInTrim;
     UIButton * _cancelButton;
     NSArray * _coreToolButtons;
     PUCropToolController * _cropController;
@@ -202,12 +205,14 @@
 @property (setter=_setRevertConfirmationAlert:, nonatomic) UIAlertController *_revertConfirmationAlert;
 @property (getter=_isRevertingToOriginal, setter=_setRevertingToOriginal:, nonatomic) bool _revertingToOriginal;
 @property (setter=_setSaveCompletionDismissalState:, nonatomic) long long _saveCompetionDismissalState;
+@property (setter=_setSaveTrimOptionsAlert:, nonatomic) UIAlertController *_saveTrimOptionsAlert;
 @property (setter=_setShouldBePreviewingOriginal:, nonatomic) bool _shouldBePreviewingOriginal;
 @property (setter=_setUneditedComposition:, nonatomic, copy) NUComposition *_uneditedComposition;
 @property (setter=_setValuesCalculator:, nonatomic, retain) PUPhotoEditValuesCalculator *_valuesCalculator;
 @property (setter=_setWorkImageVersion:, nonatomic) long long _workImageVersion;
 @property (nonatomic, retain) NSTimer *assetChangeTimeoutTimer;
 @property (nonatomic, retain) PUTimeInterval *autoCalcInterval;
+@property (nonatomic) bool burningInTrim;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) long long editSourceSelection;
@@ -257,9 +262,9 @@
 - (void).cxx_destruct;
 - (id)_aggregateSession;
 - (id)_allTools;
+- (void)_askToSaveCopyIfNecessary:(id /* block */)arg1;
 - (long long)_assetChangeDismissalState;
 - (bool)_canCompositionControllerBeReverted:(id)arg1;
-- (bool)_canShowWhileLocked;
 - (id)_cancelConfirmationAlert;
 - (void)_cancelInProgressSaveRequest;
 - (void)_captureSnapshotOfBasePhotoWithCompletionHandler:(id /* block */)arg1;
@@ -361,6 +366,8 @@
 - (void)_runFinalizerWithDebugMessages:(bool)arg1;
 - (long long)_saveCompetionDismissalState;
 - (int)_saveRevertedComposition:(id)arg1 withCompletionHandler:(id /* block */)arg2;
+- (void)_saveTrimAsCopyForCompositionController:(id)arg1 withCallback:(id /* block */)arg2;
+- (id)_saveTrimOptionsAlert;
 - (void)_setAggregateSession:(id)arg1;
 - (void)_setAssetChangeDismissalState:(long long)arg1;
 - (void)_setCancelConfirmationAlert:(id)arg1;
@@ -397,6 +404,7 @@
 - (void)_setRevertConfirmationAlert:(id)arg1;
 - (void)_setRevertingToOriginal:(bool)arg1;
 - (void)_setSaveCompletionDismissalState:(long long)arg1;
+- (void)_setSaveTrimOptionsAlert:(id)arg1;
 - (void)_setShouldBePreviewingOriginal:(bool)arg1;
 - (void)_setUneditedComposition:(id)arg1;
 - (void)_setValuesCalculator:(id)arg1;
@@ -414,7 +422,7 @@
 - (void)_startMarkupSession;
 - (void)_startMonitoringSaveProgressIfNeeded;
 - (void)_startTimeoutTimerForAssetChange;
-- (void)_startWaitingForAssetChange;
+- (void)_startWaitingForAssetChange:(id)arg1;
 - (void)_startWaitingForSaveRequestID:(int)arg1;
 - (void)_stopMonitoringSaveProgress;
 - (void)_stopWaitingForAssetChangeWithAsset:(id)arg1 success:(bool)arg2;
@@ -461,6 +469,7 @@
 - (id)adjustmentConstants;
 - (id)assetChangeTimeoutTimer;
 - (id)autoCalcInterval;
+- (bool)burningInTrim;
 - (id)childViewControllerForScreenEdgesDeferringSystemGestures;
 - (void)compositionController:(id)arg1 didAddAdjustment:(id)arg2;
 - (void)compositionController:(id)arg1 didRemoveAdjustment:(id)arg2;
@@ -595,6 +604,7 @@
 - (id)sessionDelegate;
 - (void)setAssetChangeTimeoutTimer:(id)arg1;
 - (void)setAutoCalcInterval:(id)arg1;
+- (void)setBurningInTrim:(bool)arg1;
 - (void)setEnterEditEventBuilder:(id)arg1;
 - (void)setEnterEditTimeInterval:(id)arg1;
 - (void)setExitEditEventBuilder:(id)arg1;

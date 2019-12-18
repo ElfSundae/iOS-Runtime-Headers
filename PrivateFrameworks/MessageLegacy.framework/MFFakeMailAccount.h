@@ -19,7 +19,7 @@
 - (id)_nameForMailboxUid:(id)arg1;
 - (bool)_shouldConfigureMailboxCache;
 - (int)cachePolicy;
-- (id)connectionForStore:(id)arg1 delegate:(id)arg2 options:(int)arg3;
+- (id)connectionForStore:(id)arg1 delegate:(id)arg2 options:(int)arg3 failedToSelectMailbox:(bool*)arg4;
 - (id)debugDescription;
 - (id)deliveryAccount;
 - (id)description;

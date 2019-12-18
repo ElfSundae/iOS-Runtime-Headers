@@ -8,10 +8,11 @@
     bool  __tracking;
     bool  _debugOverlayEnabled;
     <AXSSMotionTrackerDelegate> * _delegate;
-    NSString * _desiredCaptureDeviceUniqueID;
+    AXSSMotionTrackingInputConfiguration * _inputConfiguration;
     double  _joystickModeMovementThreshold;
     unsigned long long  _motionTrackingMode;
     double  _sensitivity;
+    AXSSMotionTrackingState * _state;
 }
 
 @property (nonatomic) bool _hasBeenStarted;
@@ -20,47 +21,46 @@
 @property (nonatomic) bool _tracking;
 @property (nonatomic) bool debugOverlayEnabled;
 @property (nonatomic) <AXSSMotionTrackerDelegate> *delegate;
-@property (nonatomic, copy) NSString *desiredCaptureDeviceUniqueID;
+@property (nonatomic, copy) AXSSMotionTrackingInputConfiguration *inputConfiguration;
 @property (nonatomic) double joystickModeMovementThreshold;
 @property (nonatomic) unsigned long long motionTrackingMode;
 @property (nonatomic) double sensitivity;
+@property (nonatomic, copy) AXSSMotionTrackingState *state;
 @property (getter=isTracking, nonatomic, readonly) bool tracking;
 
 + (id)supportedExpressions;
 
 - (void).cxx_destruct;
+- (void)_changeState:(id)arg1;
 - (bool)_hasBeenStarted;
 - (id)_motionTrackingDaemon;
 - (id)_motionTrackingDaemonConnection;
-- (void)_motionTrackingDaemonWasInterrupted;
+- (void)_motionTrackingDaemonWasInterruptedFromXPC;
 - (bool)_tracking;
+- (void)_updateState:(id)arg1;
 - (void)dealloc;
 - (bool)debugOverlayEnabled;
 - (id)delegate;
-- (id)desiredCaptureDeviceUniqueID;
 - (id)init;
+- (id)inputConfiguration;
 - (void)invalidate;
 - (bool)isTracking;
 - (double)joystickModeMovementThreshold;
-- (void)motionTrackingDaemonExpressionEnded:(id)arg1;
-- (void)motionTrackingDaemonExpressionStarted:(id)arg1;
-- (void)motionTrackingDaemonFailedToTrackFaceWithError:(id)arg1;
-- (void)motionTrackingDaemonFoundFace;
-- (void)motionTrackingDaemonLostFace;
-- (void)motionTrackingDaemonTrackedPoint:(id)arg1;
-- (void)motionTrackingDaemonWasInterrupted;
+- (void)motionTrackingDaemonUpdatedState:(id)arg1;
 - (unsigned long long)motionTrackingMode;
 - (double)sensitivity;
 - (void)setDebugOverlayEnabled:(bool)arg1;
 - (void)setDelegate:(id)arg1;
-- (void)setDesiredCaptureDeviceUniqueID:(id)arg1;
+- (void)setInputConfiguration:(id)arg1;
 - (void)setJoystickModeMovementThreshold:(double)arg1;
 - (void)setMotionTrackingMode:(unsigned long long)arg1;
 - (void)setSensitivity:(double)arg1;
+- (void)setState:(id)arg1;
 - (void)set_hasBeenStarted:(bool)arg1;
 - (void)set_motionTrackingDaemonConnection:(id)arg1;
 - (void)set_tracking:(bool)arg1;
 - (void)start;
+- (id)state;
 - (void)stop;
 
 @end

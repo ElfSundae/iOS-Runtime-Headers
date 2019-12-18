@@ -25,6 +25,7 @@
 @property (nonatomic, retain) WFTextFieldCell *userCell;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_changeProxyAuthentication:(id)arg1;
 - (void)_setFirstResponderAfterCell:(id)arg1;
 - (void)_updateSaveEnabled;

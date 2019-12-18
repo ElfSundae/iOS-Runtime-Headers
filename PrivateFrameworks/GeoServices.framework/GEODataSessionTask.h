@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEODataSessionTask : NSObject <GEODataSessionTask, GEODataSessionTaskDelegate, GEOStateCapturing> {
+@interface GEODataSessionTask : NSObject <GEODataSessionTask, GEODataSessionTaskDelegate> {
     NSObject<OS_os_activity> * _activity;
     <GEODataSessionTask> * _completedSubtask;
     <GEODataSessionTaskDelegate> * _delegate;
@@ -20,8 +20,6 @@
     GEODataSession * _session;
     NSObject<OS_dispatch_queue> * _sessionIsolation;
     double  _startTime;
-    unsigned long long  _stateCaptureHandle;
-    unsigned int  _taskIdentifier;
     GEODataURLSessionTask * _urlTask;
     bool  _willSendRequestDelegateCalled;
 }
@@ -57,19 +55,16 @@
 @property (nonatomic) GEODataSession *session;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *sessionIsolation;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) unsigned int taskIdentifier;
 @property (nonatomic, retain) GEODataURLSessionTask *urlTask;
 
 - (void).cxx_destruct;
 - (void)_didCompleteSubtask:(id)arg1;
 - (id)activity;
 - (void)cancel;
-- (id)captureStateWithHints:(struct os_state_hints_s { unsigned int x1; char *x2; unsigned int x3; unsigned int x4; }*)arg1;
 - (id)clientMetrics;
 - (id)completedSubtask;
 - (void)dataSession:(id)arg1 didCompleteTask:(id)arg2;
 - (void)dataSession:(id)arg1 willSendRequest:(id)arg2 forTask:(id)arg3 completionHandler:(id /* block */)arg4;
-- (void)dealloc;
 - (id)debugDescription;
 - (id)delegate;
 - (id)delegateQueue;
@@ -106,7 +101,6 @@
 - (void)setSession:(id)arg1;
 - (void)setUrlTask:(id)arg1;
 - (void)start;
-- (unsigned int)taskIdentifier;
 - (id)urlTask;
 - (bool)validateTileResponse:(bool)arg1 error:(id*)arg2;
 - (bool)validateTransportWithError:(id*)arg1;

@@ -16,6 +16,7 @@
 + (id)serviceViewControllerInterface;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)configureWithCompletion:(id /* block */)arg1;
 - (void)invalidateWithCompletion:(id /* block */)arg1;
 - (void)setUserNotification:(id)arg1;

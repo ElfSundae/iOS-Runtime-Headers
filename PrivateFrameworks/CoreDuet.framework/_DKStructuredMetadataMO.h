@@ -95,6 +95,7 @@
 @property (nonatomic, copy) NSString *_DKLocationApplicationActivityMetadataKey__stateOrProvince;
 @property (nonatomic, copy) NSString *_DKLocationApplicationActivityMetadataKey__subThoroughfare;
 @property (nonatomic, copy) NSString *_DKLocationApplicationActivityMetadataKey__thoroughfare;
+@property (nonatomic, copy) NSNumber *_DKLocationMetadataKey__altitude;
 @property (nonatomic, copy) NSString *_DKLocationMetadataKey__identifier;
 @property (nonatomic, copy) NSNumber *_DKLocationMetadataKey__latitude;
 @property (nonatomic, copy) NSNumber *_DKLocationMetadataKey__longitude;

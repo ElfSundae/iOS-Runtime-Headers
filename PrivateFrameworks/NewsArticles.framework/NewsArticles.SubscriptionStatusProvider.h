@@ -3,6 +3,7 @@
  */
 
 @interface NewsArticles.SubscriptionStatusProvider : NSObject <FCBundleSubscriptionChangeObserver, SXSubscriptionStatusProviding> {
+    void bundlePurchasePrewarmer;
     void bundleSubscriptionManager;
     void bundleSubscriptionStatus;
     void channelSubscriptionStatus;

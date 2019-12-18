@@ -4,7 +4,6 @@
 
 @interface DMFCommunicationPolicyMonitor : NSObject {
     DMFApplicationPolicyMonitor * _applicationPolicyMonitor;
-    DMFCategoryPolicyMonitor * _categoryPolicyMonitor;
     bool  _didFetchInitialPolicies;
     NSUUID * _identifier;
     NSDictionary * _policiesByBundleIdentifier;
@@ -12,22 +11,22 @@
 }
 
 @property (nonatomic, readonly) DMFApplicationPolicyMonitor *applicationPolicyMonitor;
-@property (nonatomic, readonly) DMFCategoryPolicyMonitor *categoryPolicyMonitor;
 @property (nonatomic) bool didFetchInitialPolicies;
 @property (nonatomic, readonly) NSUUID *identifier;
 @property (nonatomic, copy) NSDictionary *policiesByBundleIdentifier;
 @property (nonatomic, readonly, copy) NSArray *policyTypes;
 
-+ (id)_calculateCommunicationPoliciesWithApplicationPoliciesByBundleIdentifier:(id)arg1 socialNetworkingCategoryPolicy:(long long)arg2;
-+ (id)_communicationBundleIdentifiers;
++ (id)_calculateCommunicationPoliciesWithApplicationPoliciesByBundleIdentifier:(id)arg1 categoryEffectivePolicy:(id)arg2;
++ (id)_categoryForCommunicationBundleIdentifier:(id)arg1;
 + (id)_equivalentCommunicationBundleIdentifiersForCommunicationBundleIdentifier:(id)arg1;
 + (id)_transformEffectivePoliciesIntoCommunicationPolicies:(id)arg1;
++ (id)communicationBundleIdentifiers;
++ (unsigned long long)communicationPolicyForApplicationPolicy:(id)arg1 downtimeEnforced:(bool)arg2 communicationLimitsEnabled:(bool)arg3;
 
 - (void).cxx_destruct;
 - (void)_updatePoliciesByBundleIdentifier;
-- (void)_updateWithPoliciesByBundleIdentifier:(id)arg1 policiesByCategoryIdentifier:(id)arg2;
+- (void)_updateWithPoliciesByBundleIdentifier:(id)arg1 categoryEffectivePolicy:(id)arg2;
 - (id)applicationPolicyMonitor;
-- (id)categoryPolicyMonitor;
 - (void)dealloc;
 - (bool)didFetchInitialPolicies;
 - (id)identifier;

@@ -12,6 +12,7 @@
 @property (readonly) UITextView *textView;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)iconView;
 - (id)initWithBundleIdentifiers:(id)arg1;
 - (id)initWithPrivacyBundle:(id)arg1;

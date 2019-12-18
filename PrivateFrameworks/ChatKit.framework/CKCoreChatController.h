@@ -3,6 +3,7 @@
  */
 
 @interface CKCoreChatController : CKScrollViewController <IMChatSendProgressDelegate, IMSystemMonitorListener> {
+    long long  _acknowledgmentToSend;
     CKTranscriptCollectionViewController * _collectionViewController;
     CKConversation * _conversation;
     <CKCoreChatControllerDelegate> * _delegate;
@@ -24,6 +25,7 @@
     bool  _viewIsVisible;
 }
 
+@property (nonatomic) long long acknowledgmentToSend;
 @property (nonatomic, readonly) double balloonMaxWidth;
 @property (nonatomic, readonly) IMChat *chat;
 @property (nonatomic, readonly) CKTranscriptCollectionView *collectionView;
@@ -82,6 +84,7 @@
 - (void)_updateNavigationButtons;
 - (void)_updateTitleAnimated:(bool)arg1;
 - (void)_willSendComposition:(id)arg1 inConversation:(id)arg2;
+- (long long)acknowledgmentToSend;
 - (double)balloonMaxWidth;
 - (id)chat;
 - (void)chat:(id)arg1 progressDidChange:(float)arg2 sendingMessages:(id)arg3 sendCount:(unsigned long long)arg4 totalCount:(unsigned long long)arg5 finished:(bool)arg6;
@@ -90,6 +93,7 @@
 - (void)contentInsetDidChange;
 - (void)contentInsetWillChange:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1 animated:(bool)arg2 duration:(double)arg3;
 - (id)conversation;
+- (bool)conversationAllowedByScreenTime;
 - (void)dealloc;
 - (id)delegate;
 - (bool)disableAnimationsUnderTest;
@@ -128,6 +132,7 @@
 - (double)sendProgress;
 - (unsigned long long)sendProgressSendCount;
 - (unsigned long long)sendProgressTotalCount;
+- (void)setAcknowledgmentToSend:(long long)arg1;
 - (void)setCollectionViewController:(id)arg1;
 - (void)setConversation:(id)arg1;
 - (void)setDelegate:(id)arg1;

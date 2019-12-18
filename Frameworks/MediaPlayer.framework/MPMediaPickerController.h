@@ -26,6 +26,7 @@
 
 - (void).cxx_destruct;
 - (void)_addRemoteView;
+- (bool)_canShowWhileLocked;
 - (void)_checkLibraryAuthorization;
 - (void)_forceDismissal;
 - (bool)_hasAddedRemoteView;
@@ -71,12 +72,14 @@
 - (void)setShowsCloudItems:(bool)arg1;
 - (void)setShowsItemsWithProtectedAssets:(bool)arg1;
 - (void)setShowsLibraryContent:(bool)arg1;
+- (void)setSupportsUnavailableContent:(bool)arg1;
 - (void)setWatchCompatibilityVersion:(unsigned int)arg1;
 - (bool)showsCatalogContent;
 - (bool)showsCloudItems;
 - (bool)showsItemsWithProtectedAssets;
 - (bool)showsLibraryContent;
 - (unsigned long long)supportedInterfaceOrientations;
+- (bool)supportsUnavailableContent;
 - (id)typeIdentifiers;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidLoad;

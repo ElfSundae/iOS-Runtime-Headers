@@ -28,6 +28,7 @@
 - (id)cachedDesignatedAppBundleIdentifier;
 - (id)cachedIdentityProvider;
 - (void)dealloc;
+- (void)enqueueIdentityProviderAppsQueryWithCompletion:(id /* block */)arg1;
 - (void)enqueueInfoQueryWithCompletion:(id /* block */)arg1;
 - (void)enqueueSetTopBoxProfileProviderQueryWithCompletion:(id /* block */)arg1;
 - (id)init;

@@ -50,6 +50,7 @@
 - (bool)isEquivalent:(id)arg1;
 - (id)sampleType;
 - (id)startDate;
+- (id)valueForKey:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/Fitness.framework/Fitness
 

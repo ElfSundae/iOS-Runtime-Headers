@@ -43,7 +43,6 @@
 - (id)providerWithIdentifier:(id)arg1;
 - (id)providerWithTopLevelBundleIdentifier:(id)arg1;
 - (id)pushConnection;
-- (void)reconnectProviderForURLIfNeeded:(id)arg1 completion:(id /* block */)arg2;
 - (id)server;
 - (void)setAlternateContentsURL:(id)arg1 forItemID:(id)arg2;
 - (void)setServer:(id)arg1;

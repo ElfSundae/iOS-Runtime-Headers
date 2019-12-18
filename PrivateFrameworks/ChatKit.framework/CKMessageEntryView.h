@@ -202,6 +202,7 @@
 - (void)_addMessageToInputContextHistory:(id)arg1;
 - (void)_animateExpandForManualToggle:(bool)arg1 completion:(id /* block */)arg2;
 - (void)_animateToCompactLayoutCollapsing:(bool)arg1 completion:(id /* block */)arg2;
+- (void)_contactLimitsChanged:(id)arg1;
 - (id)_currentInputDelegate;
 - (unsigned long long)_durationBucketForAudioComposition:(id)arg1;
 - (void)_dynamicUserInterfaceTraitDidChange;
@@ -279,6 +280,7 @@
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })coverInsets;
 - (double)coverViewWidth;
 - (void)dealloc;
+- (void)deferredSetup;
 - (id)delegate;
 - (void)dismissAudioActionMenuAnimated:(bool)arg1;
 - (unsigned long long)displayMode;

@@ -33,6 +33,7 @@
     NSString * _rapportIdentifier;
     NSString * _requestSSID;
     unsigned int  _systemPairState;
+    bool  _testMode;
     bool  _wakeDevice;
     bool  _watchLocked;
     bool  _wifiP2P;
@@ -73,6 +74,7 @@
 @property (nonatomic, copy) NSString *requestSSID;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned int systemPairState;
+@property (nonatomic) bool testMode;
 @property (nonatomic, readonly, copy) NSUUID *uniqueIdentifier;
 @property (nonatomic) bool wakeDevice;
 @property (nonatomic) bool watchLocked;
@@ -138,9 +140,11 @@
 - (void)setPaired:(bool)arg1;
 - (void)setRequestSSID:(id)arg1;
 - (void)setSystemPairState:(unsigned int)arg1;
+- (void)setTestMode:(bool)arg1;
 - (void)setWakeDevice:(bool)arg1;
 - (void)setWatchLocked:(bool)arg1;
 - (unsigned int)systemPairState;
+- (bool)testMode;
 - (void)updateWithBLEDevice:(id)arg1;
 - (void)updateWithPairedPeer:(id)arg1;
 - (void)updateWithRPIdentity:(id)arg1;

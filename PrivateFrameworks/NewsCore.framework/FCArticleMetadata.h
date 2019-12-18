@@ -14,6 +14,7 @@
 @property (nonatomic, retain) NSDate *displayDate;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool isTreatedAsNew;
+@property (nonatomic, readonly) NSString *shortExcerpt;
 @property (nonatomic, readonly) NSString *storyType;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *title;
@@ -27,6 +28,7 @@
 - (bool)isTreatedAsNew;
 - (void)setDictionary:(id)arg1;
 - (void)setDisplayDate:(id)arg1;
+- (id)shortExcerpt;
 - (id)storyType;
 - (id)title;
 

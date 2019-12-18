@@ -78,6 +78,8 @@
 - (void)__hostDidUpdateDisplay:(id)arg1;
 - (void)__hostDisablesAutomaticKeyboardBehavior:(bool)arg1;
 - (void)__hostReadyToReceiveMessagesFromServiceViewController;
+- (void)__hostSceneDidEnterBackground;
+- (void)__hostSceneWillEnterForeground;
 - (void)__hostViewDidAppear:(bool)arg1;
 - (void)__hostViewDidDisappear:(bool)arg1;
 - (void)__hostViewDidMoveToScreenWithFBSDisplayIdentity:(id)arg1 newHostingHandleReplyHandler:(id /* block */)arg2;
@@ -108,6 +110,7 @@
 - (void)__undoActionWithToken:(long long)arg1;
 - (id)_appearanceSource;
 - (bool)_canShowTextServices;
+- (bool)_canShowWhileLocked;
 - (double)_canvasSystemMinimumMargin;
 - (void)_completeInteractiveSheetTransitionInHost:(bool)arg1 offset:(double)arg2 duration:(double)arg3 timingCurve:(id)arg4;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_customBasePresentationInsetsForView:(id)arg1;

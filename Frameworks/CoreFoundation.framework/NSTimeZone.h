@@ -127,6 +127,10 @@
 
 - (bool)rem_isEquivalentTo:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
+
++ (id)_ui_canonicalTimeZoneNameForTimeZoneName:(id)arg1;
+
 // Image: /System/Library/PrivateFrameworks/iCalendar.framework/iCalendar
 
 - (id)ICSComputeTimeZoneChangeListFromDate:(id)arg1 toDate:(id)arg2;

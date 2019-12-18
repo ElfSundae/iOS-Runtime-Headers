@@ -82,6 +82,7 @@
 - (void)initializeSecureElementIfNecessaryWithCompletion:(id /* block */)arg1;
 - (void)insertOrUpdatePaymentTransaction:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentApplication:(id)arg3 completion:(id /* block */)arg4;
 - (void)insertOrUpdateValueAddedServiceTransaction:(id)arg1 forPassUniqueIdentifier:(id)arg2 paymentTransaction:(id)arg3 completion:(id /* block */)arg4;
+- (void)installmentPlanTransactionsForPassUniqueIdentifier:(id)arg1 accountIdentifier:(id)arg2 withRedemptionType:(long long)arg3 startDate:(id)arg4 endDate:(id)arg5 completion:(id /* block */)arg6;
 - (void)installmentPlansWithTransactionReferennceIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (void)installmentTransactionsForInstallmentPlanIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (void)mapsMerchantsWithCompletion:(id /* block */)arg1;

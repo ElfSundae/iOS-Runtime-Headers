@@ -609,10 +609,6 @@
 - (unsigned long long)SCN_safeHash;
 - (id)scn_stringByReplacingCharactersInRanges:(id)arg1 withStrings:(id)arg2;
 
-// Image: /System/Library/Frameworks/SensorKit.framework/SensorKit
-
-- (id)sr_sensorForDeletionRecordsFromSensor;
-
 // Image: /System/Library/Frameworks/Social.framework/Social
 
 - (unsigned long long)SLTencentWeiboCharacterCountWithShortenedURLLength:(unsigned long long)arg1;
@@ -2816,6 +2812,10 @@
 // Image: /System/Library/PrivateFrameworks/ScreenshotServices.framework/ScreenshotServices
 
 - (id)shorterLoggableString;
+
+// Image: /System/Library/PrivateFrameworks/SensorKit.framework/SensorKit
+
+- (id)sr_sensorForDeletionRecordsFromSensor;
 
 // Image: /System/Library/PrivateFrameworks/Settings/GeneralSettingsUI.framework/GeneralSettingsUI
 

@@ -52,6 +52,7 @@
 - (void)didTapCancel;
 - (void)didTapManageSharing;
 - (void)didTapShare;
+- (int)eventSourceForShortcut;
 - (id)galleryWorkflow;
 - (id)icon;
 - (id)importQuestionViewController;
@@ -89,6 +90,7 @@
 - (void)showNextImportQuestionAnimated:(bool)arg1 backButtonHidden:(bool)arg2;
 - (bool)showSharingManagement;
 - (bool)skipServicesConfirmation;
+- (void)trackAddEvent;
 - (void)unshareSharedShortcut;
 - (void)updateBarButtonItems;
 - (void)updateView;

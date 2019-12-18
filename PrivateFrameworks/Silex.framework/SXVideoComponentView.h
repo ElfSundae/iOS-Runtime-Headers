@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXVideoComponentView : SXMediaComponentView <SXFullscreenVideoPlaybackCandidate, SXMediaPlaybackDelegate, SXReachabilityObserver, SXVideoAdProviderDataSource, SXVideoPlayerViewControllerDataSource, SXVideoPlayerViewControllerDelegate, SXViewportChangeListener> {
+@interface SXVideoComponentView : SXMediaComponentView <SWReachabilityObserver, SXFullscreenVideoPlaybackCandidate, SXMediaPlaybackDelegate, SXVideoAdProviderDataSource, SXVideoPlayerViewControllerDataSource, SXVideoPlayerViewControllerDelegate, SXViewportChangeListener> {
     SXAdController * _adController;
     SXVideoAnalyticsRouter * _analyticsRouter;
     <SXAppStateMonitor> * _appStateMonitor;
@@ -11,7 +11,7 @@
     bool  _isReceivingViewportDynamicBoundsChanges;
     SXPosterFrameView * _posterFrame;
     id /* block */  _presentationBlock;
-    <SXReachabilityProvider> * _reachabilityProvider;
+    <SWReachabilityProvider> * _reachabilityProvider;
     <SXResourceDataSource> * _resourceDataSource;
     <SXScrollObserverManager> * _scrollObserverManager;
     id /* block */  _thumbnailRequestCancelHandler;
@@ -32,7 +32,7 @@
 @property (nonatomic) bool isReceivingViewportDynamicBoundsChanges;
 @property (nonatomic, retain) SXPosterFrameView *posterFrame;
 @property (nonatomic, copy) id /* block */ presentationBlock;
-@property (nonatomic, readonly) <SXReachabilityProvider> *reachabilityProvider;
+@property (nonatomic, readonly) <SWReachabilityProvider> *reachabilityProvider;
 @property (nonatomic, readonly) <SXResourceDataSource> *resourceDataSource;
 @property (nonatomic, readonly) <SXScrollObserverManager> *scrollObserverManager;
 @property (readonly) Class superclass;

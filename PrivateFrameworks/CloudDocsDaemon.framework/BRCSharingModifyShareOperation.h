@@ -22,9 +22,10 @@
 - (void)_performAfterFetchingiWorkSharingIdentityOnItem:(id)arg1 wantRoutingKey:(bool)arg2 completion:(id /* block */)arg3;
 - (void)_performAfterGettingPublicSharingKeyForRecord:(id)arg1 completion:(id /* block */)arg2;
 - (void)_performAfterPreparingSharingIdentityIfNecessaryWhenWantRoutingKey:(bool)arg1 completion:(id /* block */)arg2;
-- (void)_updateDBAndSyncDownIfNeededWithShare:(id)arg1;
+- (void)_updateDBAndSyncDownIfNeededWithShare:(id)arg1 recordsToLearnCKInfo:(id)arg2;
 - (id)createActivity;
 - (id)initWithName:(id)arg1 zone:(id)arg2 share:(id)arg3;
+- (oneway void)invalidate;
 - (void)main;
 - (void)performAfterPreparingSharingIdentityIfNecessary:(id /* block */)arg1;
 - (bool)shouldRetryForError:(id)arg1;

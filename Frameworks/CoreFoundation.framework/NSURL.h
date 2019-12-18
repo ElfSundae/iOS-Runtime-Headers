@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/CoreFoundation.framework/CoreFoundation
  */
 
-@interface NSURL : NSObject <AFSecurityDigestibleChunksProviding, CKXPCSuitableString, IMJSONSerializableValueProviding, INFileURLEnumerable, INJSONSerializable, NSCopying, NSItemProviderReading, NSItemProviderWriting, NSSecureCoding, NSURLJSExports, PQLValuable, QLPreviewItem, REDonatedActionIdentifierProviding, SBFFileCacheFileIdentifier, SFJSONSerializable, TSUDownloadItem, TSUURLWrapper, UIItemProviderReading, UIItemProviderWriting, WFNaming, _MSComposeBundlePageControllerNSURL> {
+@interface NSURL : NSObject <AFSecurityDigestibleChunksProviding, CKXPCSuitableString, IMJSONSerializableValueProviding, INJSONSerializable, NSCopying, NSItemProviderReading, NSItemProviderWriting, NSSecureCoding, NSURLJSExports, PQLValuable, QLPreviewItem, REDonatedActionIdentifierProviding, SBFFileCacheFileIdentifier, SFJSONSerializable, TSUDownloadItem, TSUURLWrapper, UIItemProviderReading, UIItemProviderWriting, WFNaming, _MSComposeBundlePageControllerNSURL> {
     NSURL * _baseURL;
     void * _clients;
     void * _reserved;
@@ -417,7 +417,6 @@
 + (id)_intents_decodeWithJSONDecoder:(id)arg1 codableDescription:(id)arg2 from:(id)arg3;
 
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
-- (void)_intents_enumerateFileURLsWithBlock:(id /* block */)arg1 mutate:(bool)arg2;
 
 // Image: /System/Library/Frameworks/LinkPresentation.framework/LinkPresentation
 
@@ -832,8 +831,6 @@
 - (id)br_typeIdentifierWithError:(id*)arg1;
 - (bool)br_wouldBeExcludedFromSync;
 - (id)brc_issueSandboxExtensionOfClass:(const char *)arg1 error:(id*)arg2;
-- (id)icd_documentRecordIDWithError:(id*)arg1;
-- (id)icd_itemID;
 
 // Image: /System/Library/PrivateFrameworks/CloudDocsDaemon.framework/CloudDocsDaemon
 
@@ -1097,7 +1094,6 @@
 + (id)hu_applePrivacyURL;
 + (id)hu_cameraRecordingURL;
 + (id)hu_learnAboutNetworkProtectionURL;
-+ (id)hu_learnAboutNetworkRoutersURL;
 + (id)hu_learnAboutNetworksRequiringProfilesURL;
 + (id)hu_learnAboutUnshareableNetworksURL;
 + (id)hu_learnToAddAccessoriesURL;
@@ -1458,6 +1454,10 @@
 
 - (id)dictionaryRepresentation;
 - (id)jsonData;
+
+// Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
+
+- (id)initWithJSONObject:(id)arg1 andVersion:(id)arg2;
 
 // Image: /System/Library/PrivateFrameworks/SlideshowKit.framework/Frameworks/OpusFoundation.framework/OpusFoundation
 

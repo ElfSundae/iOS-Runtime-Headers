@@ -5,6 +5,7 @@
 @interface _UIRapidClickPresentationAssistant : NSObject <UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate, _UIClickPresentationAssisting> {
     int  _animationCount;
     bool  _isInteractionInitiatedDismiss;
+    NSValue * _preservedInputViewId;
     UITargetedPreview * _sourcePreview;
     UIViewController * _stashedParentViewController;
     UIView * _stashedSuperView;
@@ -17,6 +18,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) id /* block */ lifecycleCompletion;
 @property (nonatomic, retain) _UIClickPresentation *presentation;
+@property (nonatomic, retain) NSValue *preservedInputViewId;
 @property (nonatomic, retain) UITargetedPreview *sourcePreview;
 @property (nonatomic, retain) UIViewController *stashedParentViewController;
 @property (nonatomic, retain) UIView *stashedSuperView;
@@ -38,8 +40,10 @@
 - (void)presentFromSourcePreview:(id)arg1 lifecycleCompletion:(id /* block */)arg2;
 - (id)presentation;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
+- (id)preservedInputViewId;
 - (void)setLifecycleCompletion:(id /* block */)arg1;
 - (void)setPresentation:(id)arg1;
+- (void)setPreservedInputViewId:(id)arg1;
 - (void)setSourcePreview:(id)arg1;
 - (void)setStashedParentViewController:(id)arg1;
 - (void)setStashedSuperView:(id)arg1;

@@ -13,10 +13,13 @@
 @property (nonatomic, readonly, copy) NSDictionary *currentPoliciesByIdentifier;
 @property (nonatomic, readonly) long long defaultPolicy;
 @property (nonatomic, readonly) unsigned long long defaultPriority;
+@property (nonatomic, readonly) bool downtimeEnforced;
 @property (nonatomic, readonly, copy) NSDictionary *prioritiesByIdentifier;
 @property (nonatomic, readonly, copy) NSString *type;
 
++ (id)downtimeCategoryIdentifiers;
 + (bool)supportsSecureCoding;
++ (id)systemCategoryIdentifiers;
 + (id)unblockableBundleIdentifiers;
 + (id)unblockableCategoryIdentifiers;
 
@@ -26,6 +29,7 @@
 - (id)currentPoliciesByIdentifier;
 - (long long)defaultPolicy;
 - (unsigned long long)defaultPriority;
+- (bool)downtimeEnforced;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;

@@ -44,6 +44,5 @@
 - (id)startProvidingItemAtURL:(id)arg1 readingOptions:(unsigned long long)arg2 request:(id)arg3 completionHandler:(id /* block */)arg4;
 - (bool)updateRootAfterDomainChangeWithError:(id*)arg1;
 - (void)valuesForAttributes:(id)arg1 forURL:(id)arg2 request:(id)arg3 completionHandler:(id /* block */)arg4;
-- (void)writeCheckReportTo:(id)arg1 limitNumberOfItems:(bool)arg2 completionHandler:(id /* block */)arg3;
 
 @end

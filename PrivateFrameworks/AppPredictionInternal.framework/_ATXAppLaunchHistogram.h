@@ -32,7 +32,7 @@
 - (bool)bundleHasBeenLaunched:(id)arg1;
 - (void)dealloc;
 - (void)decayByFactor:(double)arg1;
-- (void)decayWithHalfLife:(double)arg1;
+- (void)decayWithHalfLifeInDays:(double)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (double)entropy;

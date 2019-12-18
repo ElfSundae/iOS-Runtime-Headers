@@ -39,7 +39,7 @@
 - (id)init;
 - (bool)isCollapsible;
 - (id)layoutRules;
-- (void)setupStyleIdentifiersForRole:(id)arg1;
+- (void)setupStyleIdentifiers;
 - (id)textRules;
 
 @end

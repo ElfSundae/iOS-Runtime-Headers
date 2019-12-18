@@ -61,7 +61,7 @@
     NSData * _nameImageMetadata;
     double  _nameImageScaleFactor;
     NSString * _nameImageURL;
-    NSString * _paidBundleSubscriptionButtonConfigurationJson;
+    NSString * _paidBundlePaywallConfigurationJson;
     NSString * _parentID;
     NSString * _primaryAudience;
     NSString * _publisherPaidAuthorizationURL;
@@ -77,7 +77,10 @@
     NSMutableArray * _purchaseOfferableConfigurations;
     NSString * _replacementID;
     long long  _score;
+    NSString * _stocksFeedConfigurationJson;
     NSString * _subtitle;
+    NSString * _supergroupConfigJson;
+    NSString * _supergroupKnobsJson;
     NSString * _templateJson;
     int  _type;
 }
@@ -130,7 +133,7 @@
 @property (nonatomic, readonly) bool hasNameImageMetadata;
 @property (nonatomic) bool hasNameImageScaleFactor;
 @property (nonatomic, readonly) bool hasNameImageURL;
-@property (nonatomic, readonly) bool hasPaidBundleSubscriptionButtonConfigurationJson;
+@property (nonatomic, readonly) bool hasPaidBundlePaywallConfigurationJson;
 @property (nonatomic, readonly) bool hasParentID;
 @property (nonatomic, readonly) bool hasPrimaryAudience;
 @property (nonatomic, readonly) bool hasPublisherPaidAuthorizationURL;
@@ -142,7 +145,10 @@
 @property (nonatomic, readonly) bool hasPublisherSpecifiedArticleIdsModifiedDate;
 @property (nonatomic, readonly) bool hasReplacementID;
 @property (nonatomic) bool hasScore;
+@property (nonatomic, readonly) bool hasStocksFeedConfigurationJson;
 @property (nonatomic, readonly) bool hasSubtitle;
+@property (nonatomic, readonly) bool hasSupergroupConfigJson;
+@property (nonatomic, readonly) bool hasSupergroupKnobsJson;
 @property (nonatomic, readonly) bool hasTemplateJson;
 @property (nonatomic) bool hasType;
 @property (nonatomic) bool hideAccessoryText;
@@ -170,7 +176,7 @@
 @property (nonatomic, retain) NSData *nameImageMetadata;
 @property (nonatomic) double nameImageScaleFactor;
 @property (nonatomic, retain) NSString *nameImageURL;
-@property (nonatomic, retain) NSString *paidBundleSubscriptionButtonConfigurationJson;
+@property (nonatomic, retain) NSString *paidBundlePaywallConfigurationJson;
 @property (nonatomic, retain) NSString *parentID;
 @property (nonatomic, retain) NSString *primaryAudience;
 @property (nonatomic, retain) NSString *publisherPaidAuthorizationURL;
@@ -186,7 +192,10 @@
 @property (nonatomic, retain) NSMutableArray *purchaseOfferableConfigurations;
 @property (nonatomic, retain) NSString *replacementID;
 @property (nonatomic) long long score;
+@property (nonatomic, retain) NSString *stocksFeedConfigurationJson;
 @property (nonatomic, retain) NSString *subtitle;
+@property (nonatomic, retain) NSString *supergroupConfigJson;
+@property (nonatomic, retain) NSString *supergroupKnobsJson;
 @property (nonatomic, retain) NSString *templateJson;
 @property (nonatomic) int type;
 
@@ -286,7 +295,7 @@
 - (bool)hasNameImageMetadata;
 - (bool)hasNameImageScaleFactor;
 - (bool)hasNameImageURL;
-- (bool)hasPaidBundleSubscriptionButtonConfigurationJson;
+- (bool)hasPaidBundlePaywallConfigurationJson;
 - (bool)hasParentID;
 - (bool)hasPrimaryAudience;
 - (bool)hasPublisherPaidAuthorizationURL;
@@ -298,7 +307,10 @@
 - (bool)hasPublisherSpecifiedArticleIdsModifiedDate;
 - (bool)hasReplacementID;
 - (bool)hasScore;
+- (bool)hasStocksFeedConfigurationJson;
 - (bool)hasSubtitle;
+- (bool)hasSupergroupConfigJson;
+- (bool)hasSupergroupKnobsJson;
 - (bool)hasTemplateJson;
 - (bool)hasType;
 - (unsigned long long)hash;
@@ -335,7 +347,7 @@
 - (id)nameImageMetadata;
 - (double)nameImageScaleFactor;
 - (id)nameImageURL;
-- (id)paidBundleSubscriptionButtonConfigurationJson;
+- (id)paidBundlePaywallConfigurationJson;
 - (id)parentID;
 - (id)primaryAudience;
 - (id)publisherPaidAuthorizationURL;
@@ -416,7 +428,7 @@
 - (void)setNameImageMetadata:(id)arg1;
 - (void)setNameImageScaleFactor:(double)arg1;
 - (void)setNameImageURL:(id)arg1;
-- (void)setPaidBundleSubscriptionButtonConfigurationJson:(id)arg1;
+- (void)setPaidBundlePaywallConfigurationJson:(id)arg1;
 - (void)setParentID:(id)arg1;
 - (void)setPrimaryAudience:(id)arg1;
 - (void)setPublisherPaidAuthorizationURL:(id)arg1;
@@ -432,10 +444,16 @@
 - (void)setPurchaseOfferableConfigurations:(id)arg1;
 - (void)setReplacementID:(id)arg1;
 - (void)setScore:(long long)arg1;
+- (void)setStocksFeedConfigurationJson:(id)arg1;
 - (void)setSubtitle:(id)arg1;
+- (void)setSupergroupConfigJson:(id)arg1;
+- (void)setSupergroupKnobsJson:(id)arg1;
 - (void)setTemplateJson:(id)arg1;
 - (void)setType:(int)arg1;
+- (id)stocksFeedConfigurationJson;
 - (id)subtitle;
+- (id)supergroupConfigJson;
+- (id)supergroupKnobsJson;
 - (id)templateJson;
 - (int)type;
 - (void)writeTo:(id)arg1;

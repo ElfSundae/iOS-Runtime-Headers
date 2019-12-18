@@ -10,6 +10,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) long long eventCode;
+@property (nonatomic, readonly) NSString *eventName;
 @property (nonatomic, readonly) NSMutableDictionary *eventPayload;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned int sessionID;
@@ -18,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (long long)eventCode;
+- (id)eventName;
 - (id)eventPayload;
 - (unsigned int)sessionID;
 - (void)setSessionID:(unsigned int)arg1;

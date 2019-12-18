@@ -51,7 +51,7 @@
 - (int)jobStateFor:(id)arg1;
 - (id)name;
 - (void)performFirstSchedulingAfterStartupInDB:(id)arg1;
-- (void)postponeJobID:(id)arg1 withThrottle:(id)arg2;
+- (unsigned long long)postponeJobID:(id)arg1 withThrottle:(id)arg2;
 - (void)rescheduleSuspendedJobsMatching:(id)arg1 inState:(int)arg2;
 - (void)resetBackoffForJobWithID:(id)arg1;
 - (void)resume;

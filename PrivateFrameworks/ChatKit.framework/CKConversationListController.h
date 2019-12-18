@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
  */
 
-@interface CKConversationListController : UITableViewController <CKCloudKitSyncProgressViewControllerDelegate, CKContainerSearchControllerDelegate, CKConversationListCellDelegate, CKConversationResultsControllerDelegate, CKOnboardingControllerDelegate, CNContactViewControllerDelegate, CNMeCardSharingSettingsViewControllerDelegate, IMCloudKitEventHandler, INKContentControllerObserver, UIActionSheetDelegate, UISearchBarDelegate, UISearchControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITableViewDelegatePrivate, UITableViewDragDelegate, UITableViewDropDelegate, _UIContextMenuInteractionDelegate> {
+@interface CKConversationListController : UITableViewController <CKCloudKitSyncProgressViewControllerDelegate, CKContainerSearchControllerDelegate, CKConversationListCellDelegate, CKConversationResultsControllerDelegate, CKOnboardingControllerDelegate, CNContactViewControllerDelegate, CNMeCardSharingSettingsViewControllerDelegate, IMCloudKitEventHandler, INKContentControllerObserver, UIActionSheetDelegate, UIGestureRecognizerDelegate, UISearchBarDelegate, UISearchControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITableViewDelegatePrivate, UITableViewDragDelegate, UITableViewDropDelegate, _UIContextMenuInteractionDelegate> {
     CKConversationListFilterCell * _cachedFilterControlCell;
     NSMapTable * _chatToConversationListCellInfo;
     UIBarButtonItem * _composeButton;
@@ -12,16 +12,12 @@
     _UIContextMenuInteraction * _contextMenuInteraction;
     double  _conversationCellHeight;
     CKConversation * _conversationChangingPinState;
-    CKConversationList * _conversationList;
     NSMapTable * _conversationListCellToChatInfo;
+    UIBarButtonItem * _customBackButton;
     UIBarButtonItem * _doneButton;
     bool  _draggingConversation;
-    long long  _filterMode;
-    unsigned long long  _filteredConversationCount;
-    NSArray * _filteredJunkConversations;
-    NSArray * _filteredWhitelistedConversations;
+    unsigned long long  _filterMode;
     NSArray * _frozenConversations;
-    bool  _hasJunkiMessageChats;
     INKContentController * _infoKitContentController;
     INKContentView * _infoKitContentView;
     bool  _isInitialAppearance;
@@ -34,7 +30,6 @@
     CKSearchViewController * _modernSearchResultsController;
     CKNavigationBarTitleView * _navigationBarTitleView;
     UIView * _noMessagesDialogView;
-    NSArray * _nonPlaceholderConversations;
     CKOnboardingController * _onboardingController;
     UIBarButtonItem * _optionsButtonItem;
     UIButton * _optionsButtonView;
@@ -58,18 +53,14 @@
 @property (nonatomic, retain) _UIContextMenuInteraction *contextMenuInteraction;
 @property (nonatomic) double conversationCellHeight;
 @property (nonatomic, retain) CKConversation *conversationChangingPinState;
-@property (nonatomic) CKConversationList *conversationList;
 @property (nonatomic, retain) NSMapTable *conversationListCellToChatInfo;
+@property (nonatomic, retain) UIBarButtonItem *customBackButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) UIBarButtonItem *doneButton;
 @property (getter=isDraggingConversation, nonatomic) bool draggingConversation;
-@property (nonatomic) long long filterMode;
-@property (nonatomic) unsigned long long filteredConversationCount;
-@property (nonatomic, retain) NSArray *filteredJunkConversations;
-@property (nonatomic, retain) NSArray *filteredWhitelistedConversations;
+@property (nonatomic) unsigned long long filterMode;
 @property (nonatomic, copy) NSArray *frozenConversations;
-@property (nonatomic) bool hasJunkiMessageChats;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) INKContentController *infoKitContentController;
 @property (nonatomic, retain) INKContentView *infoKitContentView;
@@ -81,7 +72,6 @@
 @property (nonatomic, retain) CKSearchViewController *modernSearchResultsController;
 @property (nonatomic, retain) CKNavigationBarTitleView *navigationBarTitleView;
 @property (nonatomic, retain) UIView *noMessagesDialogView;
-@property (nonatomic, retain) NSArray *nonPlaceholderConversations;
 @property (nonatomic, retain) CKOnboardingController *onboardingController;
 @property (nonatomic, retain) UIBarButtonItem *optionsButtonItem;
 @property (nonatomic, retain) UIButton *optionsButtonView;
@@ -97,6 +87,7 @@
 @property (nonatomic, retain) CKScheduledUpdater *updater;
 
 - (void).cxx_destruct;
+- (id)_avatarProviderFromNickname:(id)arg1;
 - (void)_beginAccountRepairIfNeeded;
 - (void)_cancelDeletion:(id /* block */)arg1;
 - (void)_chatAllowedByScreenTimeChanged:(id)arg1;
@@ -123,9 +114,10 @@
 - (void)_endHoldingUpdatesForBatchEditing:(bool)arg1;
 - (void)_endHoldingUpdatesOnViewWillAppear;
 - (void)_filterCellSelectionChanged:(id)arg1;
-- (bool)_getHasJunkiMessageUserDefault;
 - (void)_getRotationContentSettings:(struct { bool x1; bool x2; bool x3; bool x4; bool x5; double x6; int x7; }*)arg1;
+- (id)_getTitleForCurrentFilterMode;
 - (void)_groupsChanged:(id)arg1;
+- (void)_handleAccountRegistrationChange:(id)arg1;
 - (bool)_imageForkedFromMeCard;
 - (void)_increaseContrastDidChange:(id)arg1;
 - (unsigned long long)_indexOfConverationClosestToDeletedIndex:(unsigned long long)arg1;
@@ -140,21 +132,21 @@
 - (id)_meContact;
 - (id)_mergeUnsentComposition:(id)arg1 withDroppedComposition:(id)arg2;
 - (bool)_messageFilteringEnabled;
-- (bool)_messageIsFromFilteredSenderServiceIsSMS:(bool)arg1 lastMessageIsSMS:(bool)arg2 isContact:(bool)arg3 isFiltered:(bool)arg4 isSpam:(bool)arg5 unknownFilteringEnabled:(bool)arg6 smsSpamFilteringEnabled:(bool)arg7;
 - (bool)_messageSpamFilteringEnabled;
 - (bool)_messageUnknownFilteringEnabled;
 - (void)_multiWayCallStateChanged:(id)arg1;
+- (void)_refreshConversationList;
 - (void)_reloadVisibleConversationList:(id)arg1;
 - (void)_selectConversationAtIndex:(unsigned long long)arg1 animated:(bool)arg2;
 - (bool)_shouldKeepSelection;
 - (bool)_shouldResizeNavigationBar;
+- (bool)_shouldShowInboxView;
 - (void)_showConversationWithComposition:(id)arg1 atIndexPath:(id)arg2;
 - (void)_updateConversationFilteredFlagsAndReportSpam;
 - (void)_updateConversationListNeedsResort:(bool)arg1;
-- (void)_updateFilteredConversationLists;
+- (void)_updateConversationListsAndSortIfEnabled;
 - (void)_updateInsets;
 - (void)_updateNavbarLayoutIfNeeded;
-- (void)_updateNonPlaceholderConverationLists;
 - (void)_updateSyncProgressIfNeeded;
 - (void)_updateSyncProgressIfNeededWithProgressController:(id)arg1;
 - (void)_updateToolbarItems;
@@ -163,6 +155,7 @@
 - (id)alertTitleForDelete;
 - (void)applicationWillSuspend;
 - (void)avatarHeaderWasTappedForConversation:(id)arg1 inCell:(id)arg2;
+- (void)backButtonPressed;
 - (void)batchDeleteButtonTapped:(id)arg1;
 - (void)beginHoldingConversationListUpdatesForKey:(id)arg1;
 - (id)cachedFilterControlCell;
@@ -187,6 +180,7 @@
 - (Class)conversationListCellClass;
 - (id)conversationListCellToChatInfo;
 - (void)conversationWillBeMarkedRead:(id)arg1;
+- (id)customBackButton;
 - (void)dealloc;
 - (void)deleteButtonTappedForIndexPath:(id)arg1 completionHandler:(id /* block */)arg2 cellToUpdate:(id)arg3;
 - (void)deleteSelectedConversation;
@@ -195,13 +189,10 @@
 - (void)doneButtonTapped:(id)arg1;
 - (void)endHoldingAllConversationListUpdatesForKey:(id)arg1;
 - (void)endHoldingConversationListUpdatesForKey:(id)arg1;
-- (long long)filterMode;
-- (unsigned long long)filteredConversationCount;
-- (id)filteredJunkConversations;
-- (id)filteredWhitelistedConversations;
+- (unsigned long long)filterMode;
 - (long long)firstVisibleRowInTable;
 - (id)frozenConversations;
-- (bool)hasJunkiMessageChats;
+- (bool)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (id)infoKitContentController;
 - (id)infoKitContentView;
 - (id)init;
@@ -222,7 +213,6 @@
 - (id)navigationBarTitleView;
 - (id)nicknameController;
 - (id)noMessagesDialogView;
-- (id)nonPlaceholderConversations;
 - (void)noteUnreadCountsChanged;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)onboardingController;
@@ -268,17 +258,13 @@
 - (void)setContextMenuInteraction:(id)arg1;
 - (void)setConversationCellHeight:(double)arg1;
 - (void)setConversationChangingPinState:(id)arg1;
-- (void)setConversationList:(id)arg1;
 - (void)setConversationListCellToChatInfo:(id)arg1;
+- (void)setCustomBackButton:(id)arg1;
 - (void)setDoneButton:(id)arg1;
 - (void)setDraggingConversation:(bool)arg1;
 - (void)setEditing:(bool)arg1 animated:(bool)arg2;
-- (void)setFilterMode:(long long)arg1;
-- (void)setFilteredConversationCount:(unsigned long long)arg1;
-- (void)setFilteredJunkConversations:(id)arg1;
-- (void)setFilteredWhitelistedConversations:(id)arg1;
+- (void)setFilterMode:(unsigned long long)arg1;
 - (void)setFrozenConversations:(id)arg1;
-- (void)setHasJunkiMessageChats:(bool)arg1;
 - (void)setInfoKitContentController:(id)arg1;
 - (void)setInfoKitContentView:(id)arg1;
 - (void)setIsShowingSwipeDeleteConfirmation:(bool)arg1;
@@ -288,7 +274,6 @@
 - (void)setModernSearchResultsController:(id)arg1;
 - (void)setNavigationBarTitleView:(id)arg1;
 - (void)setNoMessagesDialogView:(id)arg1;
-- (void)setNonPlaceholderConversations:(id)arg1;
 - (void)setOnboardingController:(id)arg1;
 - (void)setOptionsButtonItem:(id)arg1;
 - (void)setOptionsButtonView:(id)arg1;
@@ -299,12 +284,12 @@
 - (void)setShouldUseFastPreviewText:(bool)arg1;
 - (void)setSpacingItem:(id)arg1;
 - (void)setSyncProgressViewController:(id)arg1;
+- (void)setTitleForCurrentFilterMode;
 - (void)setUpdater:(id)arg1;
 - (void)sharingSettingsViewController:(id)arg1 didSelectSharingAudience:(unsigned long long)arg2;
 - (void)sharingSettingsViewController:(id)arg1 didUpdateSharingState:(bool)arg2;
 - (void)sharingSettingsViewController:(id)arg1 didUpdateWithSharingResult:(id)arg2;
 - (void)sharingSettingsViewControllerDidUpdateContact:(id)arg1;
-- (bool)shouldCleanupFilter;
 - (bool)shouldScrollTableAtCellSelection:(id)arg1;
 - (bool)shouldShowPendingCell;
 - (bool)shouldUseFastPreviewText;
@@ -342,6 +327,7 @@
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (double)tableViewSpacingForExtraSeparators:(id)arg1;
 - (void)unregisterForCloudKitEvents;
+- (void)updateBackButton;
 - (void)updateConversationList;
 - (void)updateConversationNamesForNicknames:(id)arg1;
 - (void)updateConversationSelection;

@@ -32,7 +32,7 @@
 - (void)showPINSheet:(id)arg1 completion:(id /* block */)arg2;
 - (id)showingPinTarget;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (bool)validatePIN:(id)arg1;
+- (bool)validatePIN:(id)arg1 forPINController:(id)arg2;
 - (void)viewDidAppear:(bool)arg1;
 
 @end

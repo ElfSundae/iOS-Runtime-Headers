@@ -47,6 +47,8 @@
 - (void)addExternalDocumentReferenceTo:(id)arg1 inContainer:(id)arg2 underParent:(id)arg3 reply:(id /* block */)arg4;
 - (void)boostFilePresenterAtURL:(id)arg1 reply:(id /* block */)arg2;
 - (void)capabilityWhenTryingToReparentItemAtURL:(id)arg1 toNewParent:(id)arg2 reply:(id /* block */)arg3;
+- (void)checkIfFolderSharingEnabledWithReply:(id /* block */)arg1;
+- (void)checkIfItemIsShareableWithInode:(unsigned long long)arg1 reply:(id /* block */)arg2;
 - (oneway void)checkinAskClientIfUsingUbiquity:(bool)arg1;
 - (void)computePurgeableSpaceForAllUrgenciesWithReply:(id /* block */)arg1;
 - (void)copyBulkShareIDsAtURLs:(id)arg1 reply:(id /* block */)arg2;
@@ -98,6 +100,7 @@
 - (void)getNonLocalVersionSenderWithReceiver:(id)arg1 documentURL:(id)arg2 includeCachedVersions:(bool)arg3 reply:(id /* block */)arg4;
 - (void)getPublishedURLForItemAtURL:(id)arg1 forStreaming:(bool)arg2 requestedTTL:(unsigned long long)arg3 reply:(id /* block */)arg4;
 - (void)getQueryItemForURL:(id)arg1 reply:(id /* block */)arg2;
+- (void)getShareOptionsOfItemIdentifier:(id)arg1 reply:(id /* block */)arg2;
 - (void)getTotalApplicationDocumentUsageWithReply:(id /* block */)arg1;
 - (void)getiWorkNeedsShareMigrateAtURL:(id)arg1 reply:(id /* block */)arg2;
 - (void)getiWorkPublishingBadgingStatusAtURL:(id)arg1 reply:(id /* block */)arg2;
@@ -135,7 +138,6 @@
 - (void)setupInstanceWithDict:(id)arg1 reply:(id /* block */)arg2;
 - (void)simulateHealthIssueWithContainer:(id)arg1 status:(id)arg2 brokenStructure:(bool)arg3 reply:(id /* block */)arg4;
 - (void)startDownloadItemsAtURLs:(id)arg1 options:(unsigned long long)arg2 reply:(id /* block */)arg3;
-- (void)startOperation:(id)arg1 toCleanShareSubitemsAtURL:(id)arg2 reply:(id /* block */)arg3;
 - (void)startOperation:(id)arg1 toCopyAvailableQuotaWithReply:(id /* block */)arg2;
 - (void)startOperation:(id)arg1 toCopyDocumentURLForRecordID:(id)arg2 syncIfNeeded:(bool)arg3 reply:(id /* block */)arg4;
 - (void)startOperation:(id)arg1 toCopyEtagAtURL:(id)arg2 reply:(id /* block */)arg3;
@@ -151,6 +153,7 @@
 - (void)startOperation:(id)arg1 toLookupShareParticipants:(id)arg2 reply:(id /* block */)arg3;
 - (void)startOperation:(id)arg1 toModifyRecordAccessAtURL:(id)arg2 allowAccess:(bool)arg3 reply:(id /* block */)arg4;
 - (void)startOperation:(id)arg1 toPrepFolderForSharingAt:(id)arg2 reply:(id /* block */)arg3;
+- (void)startOperation:(id)arg1 toProcessSubitemsAtURL:(id)arg2 maxSubsharesFailures:(unsigned long long)arg3 processType:(unsigned long long)arg4 reply:(id /* block */)arg5;
 - (void)startOperation:(id)arg1 toSaveSharingInfo:(id)arg2 reply:(id /* block */)arg3;
 - (void)startOperation:(id)arg1 toUnshareShare:(id)arg2 forceDelete:(bool)arg3 reply:(id /* block */)arg4;
 - (void)startOperation:(id)arg1 toUploadAllFilesInContainer:(id)arg2 reply:(id /* block */)arg3;

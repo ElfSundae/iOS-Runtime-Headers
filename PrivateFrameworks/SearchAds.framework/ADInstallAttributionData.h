@@ -22,7 +22,9 @@
 - (id)adNetworkID;
 - (id)adamID;
 - (id)campaignID;
+- (id)dictionaryRepresentation;
 - (id)initWithDict:(id)arg1;
+- (void)recordStoreKitAdTap:(id /* block */)arg1;
 - (id)signature;
 - (id)timestamp;
 - (id)uuid;

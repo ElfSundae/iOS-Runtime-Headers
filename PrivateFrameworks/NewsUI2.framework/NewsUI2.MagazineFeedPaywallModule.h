@@ -3,6 +3,7 @@
  */
 
 @interface NewsUI2.MagazineFeedPaywallModule : Swift._SwiftObject {
+    void configurationManager;
     void resolver;
     void tracker;
 }

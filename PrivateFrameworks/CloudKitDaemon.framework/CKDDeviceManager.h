@@ -13,12 +13,15 @@
 + (id)sharedManager;
 
 - (void).cxx_destruct;
+- (void)_deleteDeviceIdentifierForContext:(id)arg1;
 - (id)_lookupKeyForContext:(id)arg1;
 - (void)_saveDeviceIdentifier:(id)arg1 forContext:(id)arg2;
 - (id)_savedDeviceIdentifierForContext:(id)arg1;
 - (id)_serviceForContext:(id)arg1;
+- (struct __CFDictionary { }*)createQueryForDeviceIdentifierInContext:(id)arg1;
 - (id)deviceIDs;
 - (id)deviceIdentifierForContext:(id)arg1;
+- (id)deviceIdentifierForContext:(id)arg1 skipInMemoryCache:(bool)arg2 createIfNecessary:(bool)arg3;
 - (id)init;
 - (id)queue;
 - (void)setDeviceIDs:(id)arg1;

@@ -9,7 +9,7 @@
     NSArray * _calendarURIs;
     NSString * _cardDAVUID;
     NSString * _department;
-    NSString * _downtimeWhitelist;
+    int  _downtimeWhitelistAuthorization;
     NSArray * _emailAddresses;
     NSString * _firstName;
     NSDictionary * _imageCropRects;
@@ -59,7 +59,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (retain) NSString *department;
 @property (readonly, copy) NSString *description;
-@property (retain) NSString *downtimeWhitelist;
+@property int downtimeWhitelistAuthorization;
 @property (retain) NSArray *emailAddresses;
 @property (retain) NSString *firstName;
 @property (readonly) unsigned long long hash;
@@ -109,7 +109,7 @@
 - (id)cardDAVUID;
 - (id)companyName;
 - (id)department;
-- (id)downtimeWhitelist;
+- (int)downtimeWhitelistAuthorization;
 - (id)emailAddresses;
 - (id)firstName;
 - (id)imageCropRects;
@@ -149,7 +149,7 @@
 - (void)setCalendarURIs:(id)arg1;
 - (void)setCardDAVUID:(id)arg1;
 - (void)setDepartment:(id)arg1;
-- (void)setDowntimeWhitelist:(id)arg1;
+- (void)setDowntimeWhitelistAuthorization:(int)arg1;
 - (void)setEmailAddresses:(id)arg1;
 - (void)setFirstName:(id)arg1;
 - (void)setImageCropRects:(id)arg1;

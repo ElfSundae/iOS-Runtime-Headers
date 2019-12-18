@@ -4,6 +4,7 @@
 
 @interface SBSceneOrientationFollowingWindowRootViewController : UIViewController
 
+- (bool)_canShowWhileLocked;
 - (bool)shouldAutomaticallyForwardAppearanceMethods;
 - (void)viewWillLayoutSubviews;
 

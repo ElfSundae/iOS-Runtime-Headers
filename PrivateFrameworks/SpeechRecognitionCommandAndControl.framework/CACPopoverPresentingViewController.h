@@ -26,6 +26,7 @@
 @property (nonatomic, retain) UIViewController *viewControllerInPopover;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)loadView;
 - (id)popoverPresentationDelegate;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })portraitUpSourceRect;

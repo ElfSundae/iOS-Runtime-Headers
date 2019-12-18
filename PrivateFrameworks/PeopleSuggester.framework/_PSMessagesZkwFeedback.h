@@ -17,6 +17,7 @@
 - (bool)dryRun;
 - (long long)feedbackActionTypeForSuggestionIndex:(unsigned long long)arg1;
 - (id)feedbackPayload;
+- (id)getTrialID;
 - (unsigned long long)indexOfEngagedSuggestionForChatGuidEngaged;
 - (id)initWithChatGuidEngagaged:(id)arg1 suggestions:(id)arg2;
 - (id)reasonForSuggestionIndex:(unsigned long long)arg1;

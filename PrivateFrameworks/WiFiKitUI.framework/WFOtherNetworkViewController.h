@@ -106,6 +106,7 @@
 - (id)_availableSecurityModes;
 - (id)_availableSecurityTitles;
 - (bool)_canShowModes;
+- (bool)_canShowWhileLocked;
 - (void)_dismiss:(id)arg1;
 - (id)_getTLSIdentity:(id)arg1;
 - (id)_getWAPIIdentity:(id)arg1;

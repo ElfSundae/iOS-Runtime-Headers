@@ -36,6 +36,7 @@
     NSMutableIndexSet * _enumeratedObjectIndexes;
     long long  _enumerationOrder;
     unsigned long long  _estMediaObjectCount;
+    unsigned long long  _estimatedCountOfMediafiles;
     bool  _iCloudPhotosEnabled;
     NSMutableOrderedSet * _indexedCameraFiles;
     NSMutableOrderedSet * _indexedCameraFolders;
@@ -47,10 +48,12 @@
     unsigned long long  _mediaObjectCount;
     NSString * _mountPoint;
     NSMutableArray * _originalMediaFiles;
+    long long  _preflightCountOfObjects;
     bool  _preheatMetadata;
     NSString * _productVersion;
     NSProgress * _progress;
     id /* block */  _ptpEventHandler;
+    bool  _ready;
     NSArray * _supportedSidecarFiles;
     bool  _tetheredCaptureEnabled;
     double  _timeOffset;
@@ -88,6 +91,7 @@
 @property (nonatomic, retain) NSMutableIndexSet *enumeratedObjectIndexes;
 @property (nonatomic) long long enumerationOrder;
 @property (nonatomic) unsigned long long estMediaObjectCount;
+@property unsigned long long estimatedCountOfMediafiles;
 @property (nonatomic) bool iCloudPhotosEnabled;
 @property (nonatomic, retain) NSMutableOrderedSet *indexedCameraFiles;
 @property (nonatomic, retain) NSMutableOrderedSet *indexedCameraFolders;
@@ -99,11 +103,13 @@
 @property (nonatomic, readonly) NSString *mountPoint;
 @property (nonatomic, readonly) unsigned long long numberOfDownloadableItems;
 @property (nonatomic, retain) NSMutableArray *originalMediaFiles;
+@property long long preflightCountOfObjects;
 @property (nonatomic) bool preheatMetadata;
 @property (readonly) NSString *productType;
 @property (readonly) NSString *productVersion;
 @property (nonatomic, retain) NSProgress *progress;
 @property (nonatomic, copy) id /* block */ ptpEventHandler;
+@property (nonatomic) bool ready;
 @property (readonly) NSArray *supportedSidecarFiles;
 @property (nonatomic, readonly) bool tetheredCaptureEnabled;
 @property (readonly) double timeOffset;
@@ -134,6 +140,7 @@
 - (bool)contentReceived;
 - (id)contents;
 - (id)convertedMediaFiles;
+- (unsigned long long)countOfObjects;
 - (void)dealloc;
 - (id)description;
 - (id)devCapabilities;
@@ -156,6 +163,7 @@
 - (id)enumeratedObjectIndexes;
 - (long long)enumerationOrder;
 - (unsigned long long)estMediaObjectCount;
+- (unsigned long long)estimatedCountOfMediafiles;
 - (unsigned long long)estimatedNumberOfDownloadableItems;
 - (id)filesOfType:(id)arg1;
 - (void)grindMedia:(id)arg1 index:(int*)arg2 file:(id)arg3;
@@ -184,12 +192,14 @@
 - (id)originalMediaFiles;
 - (id)ownerMedia:(id)arg1 withMedia:(id)arg2;
 - (void)popMediaFiles:(id)arg1;
+- (long long)preflightCountOfObjects;
 - (bool)preheatMetadata;
 - (id)productType;
 - (id)productVersion;
 - (id)progress;
 - (id /* block */)ptpEventHandler;
 - (void)pushMediaFiles:(id)arg1;
+- (bool)ready;
 - (id)relateGroupedMedia:(id)arg1;
 - (id)relateLegacyMedia:(id)arg1;
 - (id)relateMedia:(id)arg1;
@@ -232,6 +242,7 @@
 - (void)setEnumeratedObjectIndexes:(id)arg1;
 - (void)setEnumerationOrder:(long long)arg1;
 - (void)setEstMediaObjectCount:(unsigned long long)arg1;
+- (void)setEstimatedCountOfMediafiles:(unsigned long long)arg1;
 - (void)setICloudPhotosEnabled:(bool)arg1;
 - (void)setIndexedCameraFiles:(id)arg1;
 - (void)setIndexedCameraFolders:(id)arg1;
@@ -239,11 +250,13 @@
 - (void)setMediaObjectCount:(unsigned long long)arg1;
 - (void)setMediaPresentation:(unsigned long long)arg1;
 - (void)setOriginalMediaFiles:(id)arg1;
+- (void)setPreflightCountOfObjects:(long long)arg1;
 - (void)setPreheatMetadata:(bool)arg1;
 - (void)setProductType:(id)arg1;
 - (void)setProgress:(id)arg1;
 - (void)setPtpEventForwarding:(bool)arg1;
 - (void)setPtpEventHandler:(id /* block */)arg1;
+- (void)setReady:(bool)arg1;
 - (void)setUniversalMediaFiles:(id)arg1;
 - (long long)stitchMedia:(id)arg1 withMedia:(id)arg2;
 - (id)supportedSidecarFiles;
@@ -253,6 +266,8 @@
 - (id)universalMediaFiles;
 - (void)unlockContents;
 - (void)unlockMediaFiles;
+- (void)updateContentCatalogPercentCompleted;
+- (void)updateMediaFilesCount:(id)arg1;
 - (bool)updateMediaPresentation;
 
 @end

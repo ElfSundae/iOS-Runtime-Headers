@@ -31,6 +31,7 @@
 @property (nonatomic, readonly) bool isSharingUsageData;
 @property (nonatomic, copy) STUIUser *me;
 @property (getter=isScreenTimeEnabled, nonatomic, readonly) bool screenTimeEnabled;
+@property (nonatomic, readonly) bool shouldShowCompatibilityAlerts;
 @property (getter=isWebUsageEnabled, nonatomic, readonly) bool webUsageEnabled;
 
 + (id)keyPathsForValuesAffectingCanSetUpFamily;
@@ -76,5 +77,6 @@
 - (void)setInstalledBundleIDsByCategoryIdentifier:(id)arg1;
 - (void)setIsCloudSyncEnabled:(bool)arg1;
 - (void)setMe:(id)arg1;
+- (bool)shouldShowCompatibilityAlerts;
 
 @end

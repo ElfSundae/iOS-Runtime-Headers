@@ -2,14 +2,12 @@
    Image: /System/Library/PrivateFrameworks/NewsArticles.framework/NewsArticles
  */
 
-@interface NewsArticles.URLHandler : NSObject <SXURLHandling, SXURLPreviewing> {
+@interface NewsArticles.URLHandler : NSObject <SXURLHandling> {
     void closures;
 }
 
 - (void).cxx_destruct;
-- (void)commitViewController:(id)arg1 URL:(id)arg2;
 - (id)init;
 - (void)openURL:(id)arg1;
-- (id)viewControllerForURL:(id)arg1;
 
 @end

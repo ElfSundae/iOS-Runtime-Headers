@@ -14,9 +14,12 @@
 @property (nonatomic, retain) UIImage *uiImage;
 @property (nonatomic) bool useFastPathShadow;
 
++ (bool)image:(id)arg1 isEqualToImage:(id)arg2;
 + (id)imageForSuggestionCardSectionType:(int)arg1;
 + (id)imageWithSFImage:(id)arg1;
 + (id)imageWithSFImage:(id)arg1 variantForAppIcon:(unsigned long long)arg2;
++ (bool)isEqualHasSubclassOverrideForImage1:(id)arg1 image2:(id)arg2;
++ (bool)isEqualHasSubclassOverrideForImage:(id)arg1;
 
 - (void).cxx_destruct;
 - (double)cornerRadius;

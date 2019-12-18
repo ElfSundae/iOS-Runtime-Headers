@@ -15,6 +15,7 @@
 @property (nonatomic, copy) id /* block */ dissmissWithoutActionBlock;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)dealloc;
 - (bool)didDismissWithDissmissWithoutActionBlock;
 - (bool)didPerformAction;

@@ -6,7 +6,7 @@
 
 + (id)sharedAgent;
 
-- (void)handleLogInOut;
+- (void)handleLogOut;
 - (id)init;
 
 @end

@@ -8,11 +8,12 @@
     _UIContextMenuActionsListView * _actionsView;
     UIVisualEffectView * _backgroundEffectView;
     _UIPreviewPlatterView * _contentPlatterView;
+    _UIContextMenuLayoutArbiterOutput * _currentLayout;
     _UIContextMenuStyle * _currentStyle;
     UITapGestureRecognizer * _dismissalTapGestureRecognizer;
     _UIFulfilledContextMenuConfiguration * _displayedConfiguration;
     bool  _isAnimatingPresentation;
-    _UIPreviewPlatterLayoutArbiter * _layoutArbiter;
+    _UIContextMenuLayoutArbiter * _layoutArbiter;
     UITapGestureRecognizer * _platterActionTapGestureRecognizer;
     UIView * _platterContainerView;
     struct CGSize { 
@@ -30,6 +31,7 @@
 @property (nonatomic, readonly) _UIContextMenuActionsListView *actionsView;
 @property (nonatomic, readonly) UIVisualEffectView *backgroundEffectView;
 @property (nonatomic, readonly) _UIPreviewPlatterView *contentPlatterView;
+@property (nonatomic, readonly) _UIContextMenuLayoutArbiterOutput *currentLayout;
 @property (nonatomic, copy) _UIContextMenuStyle *currentStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <_UIPreviewPlatterPresentationControllerDelegate> *delegate;
@@ -38,7 +40,7 @@
 @property (nonatomic, retain) _UIFulfilledContextMenuConfiguration *displayedConfiguration;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool isAnimatingPresentation;
-@property (nonatomic, retain) _UIPreviewPlatterLayoutArbiter *layoutArbiter;
+@property (nonatomic, retain) _UIContextMenuLayoutArbiter *layoutArbiter;
 @property (nonatomic, retain) UITapGestureRecognizer *platterActionTapGestureRecognizer;
 @property (nonatomic, readonly) UIView *platterContainerView;
 @property (nonatomic) struct CGSize { double x1; double x2; } platterContentSize;
@@ -52,7 +54,6 @@
 - (id)_actionsOnlyViewControllerForSourcePreview:(id)arg1;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_baseContentInsetsWithLeftMargin:(double*)arg1 rightMargin:(double*)arg2;
 - (void)_createActionsViewIfNecessary;
-- (void)_didCompleteLayout;
 - (void)_handleActionHandoffGesture:(id)arg1;
 - (void)_handleDismissalTapGesture:(id)arg1;
 - (void)_handlePlatterActionTapGesture:(id)arg1;
@@ -60,10 +61,13 @@
 - (bool)_shouldDisableInteractionDuringTransitions;
 - (bool)_shouldKeepCurrentFirstResponder;
 - (bool)_shouldOccludeDuringPresentation;
+- (bool)_shouldPreserveFirstResponder;
 - (bool)_shouldRestoreFirstResponder;
 - (void)_testing_dismissByTappingOutside;
 - (void)_testing_tapAnAction;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;
+- (void)_updateActionsViewReversesOrderForAttachment:(unsigned long long)arg1;
+- (void)_updateLayoutAndAttachment:(bool)arg1;
 - (void)_updatePlatterAndActionViewLayoutForce:(bool)arg1 updateAttachment:(bool)arg2;
 - (void)_updatePlatterContainerViewTraitCollection;
 - (void)_updatePlatterContentSizeWithPreferredContentSize:(struct CGSize { double x1; double x2; })arg1;
@@ -73,6 +77,7 @@
 - (id)actionsView;
 - (id)backgroundEffectView;
 - (id)contentPlatterView;
+- (id)currentLayout;
 - (id)currentStyle;
 - (id)dismissalTapGestureRecognizer;
 - (void)dismissalTransitionWillBegin;
@@ -81,9 +86,7 @@
 - (bool)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (bool)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithPresentingViewController:(id)arg1 configuration:(id)arg2 sourcePreview:(id)arg3 style:(id)arg4;
-- (void)initialPlatterFrame:(inout struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg1 actionViewFrame:(inout struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; }*)arg2 updateAttachment:(bool)arg3;
 - (bool)isAnimatingPresentation;
-- (struct { unsigned long long x1; unsigned long long x2; })layoutAnchor;
 - (id)layoutArbiter;
 - (id)platterActionTapGestureRecognizer;
 - (id)platterContainerView;

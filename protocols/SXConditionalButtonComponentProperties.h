@@ -5,6 +5,7 @@
 
 @required
 
+- (<SXAction> *)action;
 - (NSString *)textStyle;
 
 @end

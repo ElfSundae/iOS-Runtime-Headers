@@ -5,6 +5,7 @@
 @interface NewsArticles.ArticleViewerRouter : Swift._SwiftObject {
     void controller;
     void resolver;
+    void router;
     void tracker;
 }
 

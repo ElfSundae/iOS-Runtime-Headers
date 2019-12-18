@@ -10,10 +10,9 @@
     MPPlaybackArchiveConfiguration * _playbackArchiveConfiguration;
     NSString * _prompt;
     long long  _selectionMode;
-    bool  _showsCatalogContent;
     bool  _showsCloudItems;
     bool  _showsItemsWithProtectedAssets;
-    bool  _showsLibraryContent;
+    long long  _supportedContentOptions;
     NSArray * _typeIdentifiers;
     unsigned int  _watchCompatibilityVersion;
 }
@@ -29,6 +28,8 @@
 @property (nonatomic) bool showsCloudItems;
 @property (nonatomic) bool showsItemsWithProtectedAssets;
 @property (nonatomic) bool showsLibraryContent;
+@property (nonatomic) long long supportedContentOptions;
+@property (nonatomic) bool supportsUnavailableContent;
 @property (nonatomic, copy) NSArray *typeIdentifiers;
 @property (nonatomic) unsigned int watchCompatibilityVersion;
 
@@ -56,12 +57,16 @@
 - (void)setShowsCloudItems:(bool)arg1;
 - (void)setShowsItemsWithProtectedAssets:(bool)arg1;
 - (void)setShowsLibraryContent:(bool)arg1;
+- (void)setSupportedContentOptions:(long long)arg1;
+- (void)setSupportsUnavailableContent:(bool)arg1;
 - (void)setTypeIdentifiers:(id)arg1;
 - (void)setWatchCompatibilityVersion:(unsigned int)arg1;
 - (bool)showsCatalogContent;
 - (bool)showsCloudItems;
 - (bool)showsItemsWithProtectedAssets;
 - (bool)showsLibraryContent;
+- (long long)supportedContentOptions;
+- (bool)supportsUnavailableContent;
 - (id)typeIdentifiers;
 - (unsigned int)watchCompatibilityVersion;
 

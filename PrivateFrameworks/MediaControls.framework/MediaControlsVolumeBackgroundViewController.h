@@ -19,6 +19,7 @@
 @property (nonatomic, retain) MediaControlsVolumeController *volumeController;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_configureOptionsButton:(id)arg1 forRouteType:(unsigned long long)arg2;
 - (void)_configurePrimaryOptionsButtonIfNeeded;
 - (void)_configureRouteView:(id)arg1 forRouteType:(unsigned long long)arg2;

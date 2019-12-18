@@ -50,6 +50,7 @@
 - (void)_finishWithError:(id)arg1;
 - (bool)_isTypeEnabledAtIndexPath:(id)arg1;
 - (id)_localizedNameForSection:(long long)arg1 type:(id)arg2;
+- (id)_localizedSourceExplanationWithDescription:(id)arg1;
 - (id)_openAppCell;
 - (id)_researchStudyExplanationCell;
 - (bool)_shouldDisplayHealthRecordsRequests;

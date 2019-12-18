@@ -132,10 +132,10 @@
 - (id)_userEnteredMenstrualCycleLengthCharacteristicQuantityWithError:(id*)arg1;
 - (id)_userEnteredMenstrualPeriodLengthCharacteristicQuantityWithError:(id*)arg1;
 - (void)_utilityServerProxyWithCompletion:(id /* block */)arg1 errorHandler:(id /* block */)arg2;
-- (void)_validateAuthorizationInfoPlist;
 - (void)_validateAuthorizationRequestWithShareTypes:(id)arg1 readTypes:(id)arg2;
+- (void)_validateAuthorizationRequiredTypes;
 - (void)_validateClinicalHealthRecordsPurposeStringsForSharingTypes:(id)arg1 readingTypes:(id)arg2;
-- (void)_validateHealthDataPurposeStringsForSharingTypes:(id)arg1 readingTypes:(id)arg2;
+- (void)_validateHealthDataPurposeStringsForSharingTypes:(id)arg1 readingTypes:(id)arg2 isResearchStudy:(bool)arg3;
 - (void)_validatePurposeStringsForSharingTypes:(id)arg1 readingTypes:(id)arg2;
 - (void)_workoutServerProxyWithCompletion:(id /* block */)arg1 errorHandler:(id /* block */)arg2;
 - (void)accountConfigurationDidChangeWithCompletion:(id /* block */)arg1;

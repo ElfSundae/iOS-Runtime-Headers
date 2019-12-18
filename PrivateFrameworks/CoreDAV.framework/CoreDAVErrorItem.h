@@ -4,6 +4,7 @@
 
 @interface CoreDAVErrorItem : CoreDAVItem {
     CoreDAVItemWithNoChildren * _ctagOkay;
+    CoreDAVItemWithNoChildren * _guardianRestricted;
     CoreDAVItemWithNoChildren * _imageError;
     CoreDAVItemWithNoChildren * _invalidImageType;
     CoreDAVItemWithNoChildren * _maxAttendees;
@@ -22,6 +23,7 @@
 }
 
 @property (nonatomic, retain) CoreDAVItemWithNoChildren *ctagOkay;
+@property (nonatomic, retain) CoreDAVItemWithNoChildren *guardianRestricted;
 @property (nonatomic, retain) CoreDAVItemWithNoChildren *imageError;
 @property (nonatomic, retain) CoreDAVItemWithNoChildren *invalidImageType;
 @property (nonatomic, retain) CoreDAVItemWithNoChildren *maxAttendees;
@@ -43,6 +45,7 @@
 - (void).cxx_destruct;
 - (id)ctagOkay;
 - (id)description;
+- (id)guardianRestricted;
 - (id)imageError;
 - (id)init;
 - (id)invalidImageType;
@@ -54,6 +57,7 @@
 - (id)numberOfMatchesWithinLimits;
 - (id)quotaExceeded;
 - (void)setCtagOkay:(id)arg1;
+- (void)setGuardianRestricted:(id)arg1;
 - (void)setImageError:(id)arg1;
 - (void)setInvalidImageType:(id)arg1;
 - (void)setMaxAttendees:(id)arg1;

@@ -20,6 +20,7 @@
 - (id)context;
 - (bool)dryRun;
 - (id)feedbackPayload;
+- (id)getTrialID;
 - (unsigned long long)indexOfEngagedSuggestion;
 - (id)initWithFeedbackAction:(id)arg1 predictionContext:(id)arg2 suggestions:(id)arg3;
 - (id)knowledgeEvent;

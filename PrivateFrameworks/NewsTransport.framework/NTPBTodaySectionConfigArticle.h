@@ -19,8 +19,9 @@
 @property (nonatomic, readonly) bool hasStoryType;
 @property (nonatomic, readonly) bool hasTitle;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) NSString *storyType;
+@property (nonatomic, readonly) NSString *shortExcerpt;
 @property (nonatomic, readonly) NSString *storyType;
+@property (nonatomic, retain) NSString *storyType;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *title;
 @property (nonatomic, retain) NSString *title;

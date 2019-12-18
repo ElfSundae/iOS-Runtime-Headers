@@ -7,14 +7,14 @@
     SXComponentView * _componentView;
     <SXComponentInteractionHandler> * _currentInteractionHandler;
     <SXComponentInteractionHandlerManager> * _interactionHandlerManager;
-    <SXWebContentInteractionProvider> * _interactionProvider;
+    <SWInteractionProvider> * _interactionProvider;
 }
 
 @property (nonatomic, readonly) <SXWebContentComponentInteractionHandlerFactory> *componentInteractionHandlerFactory;
 @property (nonatomic, readonly) SXComponentView *componentView;
 @property (nonatomic, retain) <SXComponentInteractionHandler> *currentInteractionHandler;
 @property (nonatomic, readonly) <SXComponentInteractionHandlerManager> *interactionHandlerManager;
-@property (nonatomic, readonly) <SXWebContentInteractionProvider> *interactionProvider;
+@property (nonatomic, readonly) <SWInteractionProvider> *interactionProvider;
 
 - (void).cxx_destruct;
 - (id)componentInteractionHandlerFactory;

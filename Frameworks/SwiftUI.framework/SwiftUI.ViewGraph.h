@@ -5,6 +5,7 @@
 @interface SwiftUI.ViewGraph : Swift._SwiftObject {
     void cachedIdealSize;
     void cachedSizeThatFits;
+    void centersRootView;
     void continuations;
     void defaultIdealSize;
     void defaultLayoutComputer;

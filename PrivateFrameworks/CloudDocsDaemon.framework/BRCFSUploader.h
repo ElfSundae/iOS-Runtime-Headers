@@ -39,6 +39,7 @@
 - (void)_globalQuotaStateUpdateForDefaultOwner;
 - (void)_handleFileModifiedError:(id)arg1 forItem:(id)arg2;
 - (unsigned long long)_minBatchSize;
+- (void)_reportUploadErrorForDocument:(id)arg1 error:(id)arg2;
 - (void)_rescheduleJobsOutOfQuotaForDefaultOwnerWithAvailableSize:(long long)arg1;
 - (void)_scheduleQuotaFetchForDefaultOwner;
 - (void)_scheduleRetries;

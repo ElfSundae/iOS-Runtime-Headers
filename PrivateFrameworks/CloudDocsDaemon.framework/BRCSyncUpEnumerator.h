@@ -10,10 +10,11 @@
     NSMutableSet * _itemIDsLostOrThrottled;
     NSMutableSet * _itemIDsNeedingOSUpgrade;
     BRCLocalItem * _itemNeedingPCSChaining;
+    NSMutableArray * _itemsNeedingUnshare;
     unsigned int  _maxDepth;
     unsigned long long  _retryAfter;
     NSMutableIndexSet * _returned;
-    NSMutableSet * _shareRecordIDsNeedingDelete;
+    unsigned int  _should2PhasePCSChain;
     NSMutableArray * _stack;
     int  _stage;
     NSMutableDictionary * _tombstonesEmbargo;
@@ -23,14 +24,15 @@
 @property (nonatomic, readonly) unsigned int batchSize;
 @property (nonatomic, readonly) NSMutableSet *chainedParentIDWhitelist;
 @property (nonatomic, readonly) BRCLocalItem *itemNeedingPCSChaining;
+@property (nonatomic, readonly) NSMutableArray *itemsNeedingUnshare;
 @property (nonatomic, readonly) unsigned long long retryAfter;
-@property (nonatomic, readonly) NSMutableSet *shareRecordIDsNeedingDelete;
 
 - (void).cxx_destruct;
 - (void)_blackListDescendantStack:(id)arg1 parentItem:(id)arg2 andAddToSet:(id)arg3;
 - (void)_blackListDescendantStack:(id)arg1 parentItem:(id)arg2 andAddToSet:(id)arg3 descendantBlock:(id /* block */)arg4;
 - (bool)_blackListDescendantStackAndItemIfThrottledOrNeedsOSUpgrade:(id)arg1 now:(unsigned long long)arg2;
 - (struct PQLResultSet { Class x1; }*)_documentsOrAliasesNeedingSyncUpEnumerator;
+- (bool)_handleSharedItemWhichMovedToNewShare:(id)arg1 rootItem:(id)arg2;
 - (struct PQLResultSet { Class x1; }*)_liveOrNewDirectoriesNeedingSyncUpEnumerator;
 - (id)_nextLiveItem;
 - (id)_nextTombstone;
@@ -42,8 +44,8 @@
 - (void)invalidate;
 - (bool)isBlackListed:(id)arg1;
 - (id)itemNeedingPCSChaining;
+- (id)itemsNeedingUnshare;
 - (id)nextObject;
 - (unsigned long long)retryAfter;
-- (id)shareRecordIDsNeedingDelete;
 
 @end

@@ -4,7 +4,7 @@
 
 @interface NSManagedObject : NSObject <NSFetchRequestResult, _KSTIUserDictionaryEntry> {
     unsigned int  _cd_extraFlags;
-    struct { id x1; id x2; id x3; id x4; id x5; } * _cd_extras;
+    struct { void *x1; id x2; id x3; id x4; id x5; } * _cd_extras;
     unsigned int  _cd_lockingInfo;
     NSManagedObjectContext * _cd_managedObjectContext;
     NSManagedObjectID * _cd_objectID;

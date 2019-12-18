@@ -5,7 +5,7 @@
 @interface SXWebContentComponentInteractionManagerFactory : NSObject <SXWebContentComponentInteractionManagerFactory> {
     <SXWebContentComponentInteractionHandlerFactory> * _componentInteractionHandlerFactory;
     <SXComponentInteractionHandlerManager> * _interactionHandlerManager;
-    <SXWebContentInteractionProvider> * _interactionProvider;
+    <SWInteractionProvider> * _interactionProvider;
 }
 
 @property (nonatomic, readonly) <SXWebContentComponentInteractionHandlerFactory> *componentInteractionHandlerFactory;
@@ -13,7 +13,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) <SXComponentInteractionHandlerManager> *interactionHandlerManager;
-@property (nonatomic, readonly) <SXWebContentInteractionProvider> *interactionProvider;
+@property (nonatomic, readonly) <SWInteractionProvider> *interactionProvider;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

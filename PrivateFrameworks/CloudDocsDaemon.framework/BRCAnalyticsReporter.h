@@ -7,6 +7,7 @@
     BRCMetricEndpoint * _metricEndpoint;
     NSObject<OS_dispatch_queue> * _queue;
     BRCAccountSession * _session;
+    BRCSyncHealthReport * _syncHealthReport;
 }
 
 - (void).cxx_destruct;

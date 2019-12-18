@@ -10,31 +10,8 @@
     UIViewPropertyAnimator * _backgroundEffectAnimator;
     <_UIPreviewPlatterPresentationAnimatorDelegate> * _delegate;
     unsigned long long  _dismissalStyle;
-    struct CGRect { 
-        struct CGPoint { 
-            double x; 
-            double y; 
-        } origin; 
-        struct CGSize { 
-            double width; 
-            double height; 
-        } size; 
-    }  _expandedActionsFrame;
-    struct CGRect { 
-        struct CGPoint { 
-            double x; 
-            double y; 
-        } origin; 
-        struct CGSize { 
-            double width; 
-            double height; 
-        } size; 
-    }  _expandedPlatterFrame;
+    _UIContextMenuLayoutArbiterOutput * _expandedLayout;
     bool  _isDismissTransition;
-    struct { 
-        unsigned long long attachment; 
-        unsigned long long alignment; 
-    }  _layoutAnchor;
     NSArray * _preferredBackgroundEffects;
     struct UIEdgeInsets { 
         double top; 
@@ -60,6 +37,7 @@
 @property (nonatomic) <_UIPreviewPlatterPresentationAnimatorDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long dismissalStyle;
+@property (nonatomic, retain) _UIContextMenuLayoutArbiterOutput *expandedLayout;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool isDismissTransition;
 @property (nonatomic, retain) NSArray *preferredBackgroundEffects;
@@ -98,6 +76,7 @@
 - (void)dealloc;
 - (id)delegate;
 - (unsigned long long)dismissalStyle;
+- (id)expandedLayout;
 - (id)initWithPresentationController:(id)arg1 asDismissal:(bool)arg2;
 - (bool)isDismissTransition;
 - (void)performTransitionFromView:(id)arg1 toView:(id)arg2 containerView:(id)arg3;
@@ -115,6 +94,7 @@
 - (void)setBackgroundEffectAnimator:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDismissalStyle:(unsigned long long)arg1;
+- (void)setExpandedLayout:(id)arg1;
 - (void)setIsDismissTransition:(bool)arg1;
 - (void)setPreferredBackgroundEffects:(id)arg1;
 - (void)setPreferredBackgroundInsets:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg1;

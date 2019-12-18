@@ -5,19 +5,17 @@
 @interface BRCMigrationQueryOperation : BRCSyncDownOperation {
     CKQueryCursor * _continuationCursor;
     NSString * _migrationKey;
-    NSMutableArray * _recordsWithShareID;
-    NSMutableArray * _sharedIDsToFetch;
-    NSMutableArray * _shares;
+    NSMutableArray * _shareIDsToFetch;
 }
 
 + (id)allMigrationKeysOrdered;
-+ (id)sharesMigrationKey;
++ (id)documentSharesMigrationKey;
++ (id)folderSharesMigrationKey;
 
 - (void).cxx_destruct;
-- (void)_performAfterFetchShares:(id /* block */)arg1;
-- (void)_performAfterQueryingForShareIDs:(id /* block */)arg1;
-- (void)_performQuery:(id)arg1 recordFetchedBlock:(id /* block */)arg2 completion:(id /* block */)arg3;
-- (void)_saveQueryRecords:(id)arg1;
+- (void)_performAfterQueryingForShareIDsOfFolders:(bool)arg1 completion:(id /* block */)arg2;
+- (void)_performQuery:(id)arg1 recordFetchedBlock:(id /* block */)arg2 cursorUpdatedBlock:(id /* block */)arg3 completion:(id /* block */)arg4;
+- (bool)_updatedContinuationCursor:(id)arg1 error:(id*)arg2;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithServerZone:(id)arg1 migrationKey:(id)arg2 continuationCursor:(id)arg3;
 - (void)main;

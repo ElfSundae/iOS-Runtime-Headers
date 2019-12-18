@@ -2,19 +2,15 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaDialogOutput : PBCodable <NSSecureCoding, SISchemaDialogOutput> {
+@interface SISchemaDialogOutput : PBCodable {
     SISchemaRedactableString * _displayedDialogOutput;
     SISchemaRedactableString * _spokenDialogOutput;
     NSString * _viewID;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic, retain) SISchemaRedactableString *displayedDialogOutput;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, retain) SISchemaRedactableString *spokenDialogOutput;
-@property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *viewID;
 
 - (void).cxx_destruct;

@@ -8,7 +8,6 @@
             struct ApplicationStateTracker {} *__value_; 
         } __ptr_; 
     }  _applicationStateTracker;
-    bool  _lastObservedStateWasBackground;
     struct WeakObjCPtr<WKWebView> { 
         id m_weakReference; 
     }  _webViewToTrack;

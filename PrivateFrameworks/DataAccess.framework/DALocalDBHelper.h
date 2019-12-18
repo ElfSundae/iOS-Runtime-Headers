@@ -12,6 +12,7 @@
     id /* block */  _calUnitTestCallbackBlock;
     NSString * _clientIdentifier;
     CNContactStore * _contactStore;
+    NSString * _familyDelegateACAccountID;
     NSString * _familyDelegateAltDSID;
     int  _noteConnectionCount;
     NoteContext * _noteDB;
@@ -26,6 +27,7 @@
 @property (nonatomic, copy) id /* block */ calUnitTestCallbackBlock;
 @property (nonatomic, retain) NSString *clientIdentifier;
 @property (nonatomic, retain) CNContactStore *contactStore;
+@property (nonatomic, retain) NSString *familyDelegateACAccountID;
 @property (nonatomic, retain) NSString *familyDelegateAltDSID;
 @property (nonatomic) int noteConnectionCount;
 @property (nonatomic, retain) NoteContext *noteDB;
@@ -71,14 +73,16 @@
 - (id)contactStore;
 - (void)dealloc;
 - (void)executeAllSaveRequests;
+- (id)familyDelegateACAccountID;
 - (id)familyDelegateAltDSID;
 - (id)init;
-- (id)initWithContactsFamilyDelegateAltDSID:(id)arg1;
+- (id)initWithContactsFamilyDelegateAltDSID:(id)arg1 familyDelegateACAccountID:(id)arg2;
 - (bool)noteCloseDBAndSave:(bool)arg1;
 - (int)noteConnectionCount;
 - (id)noteDB;
 - (void)noteOpenDB;
 - (bool)noteSaveDB;
+- (void)removeDelegateDatabasesNotMatchingAltDSIDs:(id)arg1;
 - (id)saveRequests;
 - (void)setAbConnectionCount:(int)arg1;
 - (void)setAbDB:(void*)arg1;
@@ -87,6 +91,7 @@
 - (void)setCalUnitTestCallbackBlock:(id /* block */)arg1;
 - (void)setClientIdentifier:(id)arg1;
 - (void)setContactStore:(id)arg1;
+- (void)setFamilyDelegateACAccountID:(id)arg1;
 - (void)setFamilyDelegateAltDSID:(id)arg1;
 - (void)setNoteConnectionCount:(int)arg1;
 - (void)setNoteDB:(id)arg1;

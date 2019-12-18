@@ -2,9 +2,9 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXAutoSizedCanvasController : NSObject <STTextTangierInteractiveCanvasControllerDelegate, TSWPEditingControllerDelegate> {
+@interface SXAutoSizedCanvasController : NSObject <SXTextTangierInteractiveCanvasControllerDelegate, TSWPEditingControllerDelegate> {
     <SXComponentActionHandler> * _actionHandler;
-    STTextTangierCanvasViewController * _cvc;
+    SXTextTangierCanvasViewController * _cvc;
     <SXAutoSizedCanvasControllerDelegate> * _delegate;
     TSKDocumentRoot * _documentRoot;
     <SXTangierDragItemProvider> * _dragItemProvider;
@@ -18,7 +18,7 @@
             double height; 
         } size; 
     }  _frame;
-    STTextTangierInteractiveCanvasController * _icc;
+    SXTextTangierInteractiveCanvasController * _icc;
     double  _lineHeight;
 }
 
@@ -26,7 +26,7 @@
 @property (nonatomic, readonly) bool allowEditMenuToAppear;
 @property (nonatomic, readonly) bool allowTextEditingToBegin;
 @property (nonatomic, readonly) TSDCanvasView *canvasView;
-@property (nonatomic, readonly) STTextTangierCanvasViewController *cvc;
+@property (nonatomic, readonly) SXTextTangierCanvasViewController *cvc;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <SXAutoSizedCanvasControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
@@ -42,7 +42,7 @@
 @property (nonatomic, readonly) bool editorAllowsRubyInteraction;
 @property (nonatomic, readonly) bool editorShouldAlwaysBeInParagraphMode;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) STTextTangierInteractiveCanvasController *icc;
+@property (nonatomic, readonly) SXTextTangierInteractiveCanvasController *icc;
 @property (nonatomic, readonly) bool interactiveCanvasControllerAllowsHyperlinkInteraction;
 @property (nonatomic, readonly) bool isCanvasInteractive;
 @property (nonatomic, readonly) bool isPrintingCanvas;

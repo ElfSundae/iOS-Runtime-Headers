@@ -16,6 +16,8 @@
 
 - (void).cxx_destruct;
 - (id)accountIdentifier;
+- (id)cookieForUrlWithName:(id)arg1 :(id)arg2;
+- (id)cookiesForUrl:(id)arg1;
 - (id)dsid;
 - (id)firstName;
 - (id)init;

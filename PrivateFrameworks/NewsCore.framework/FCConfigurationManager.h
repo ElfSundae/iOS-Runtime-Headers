@@ -20,7 +20,6 @@
     NSArray * _segmentSetIDs;
     bool  _shouldIgnoreCache;
     NSArray * _treatmentIDs;
-    NSArray * _widgetChangeTags;
 }
 
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *accessQueue;
@@ -51,7 +50,6 @@
 @property (nonatomic) bool shouldIgnoreCache;
 @property (readonly) Class superclass;
 @property (nonatomic, copy) NSArray *treatmentIDs;
-@property (nonatomic, copy) NSArray *widgetChangeTags;
 
 + (id)internalOverrideAdditionalSegmentSetIDs;
 + (id)internalOverrideSegmentSetIDs;
@@ -64,7 +62,6 @@
 - (void)_configurationDidChangeSignificantConfigChange:(bool)arg1;
 - (id)_configurationSettingsWithRequestInfos:(id)arg1 feldsparID:(id)arg2 storefrontID:(id)arg3 contextConfiguration:(id)arg4 useBackgroundRefreshRate:(bool)arg5;
 - (unsigned long long)_configurationSourceForSourceName:(id)arg1;
-- (id)_deserializeChangeTags:(id)arg1;
 - (void)_fetchAppConfigurationIfNeededWithCompletionQueue:(id)arg1 forceRefresh:(bool)arg2 completion:(id /* block */)arg3;
 - (void)_fetchRemoteAppWidgetConfigurationIfNeededUseBackgroundRefreshRate:(bool)arg1 completionQueue:(id)arg2 completion:(id /* block */)arg3;
 - (void)_fetchRemoteMagazinesConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(id /* block */)arg2;
@@ -77,7 +74,6 @@
 - (unsigned long long)_remoteConfigurationEnvironmentForContextIdentifier:(long long)arg1;
 - (id)_requestInfoForRequestKey:(id)arg1 storefrontID:(id)arg2 additionalChangeTags:(id)arg3;
 - (id)_responseKeyForRequestKey:(id)arg1;
-- (id)_serializeChangeTags:(id)arg1;
 - (id)_storefrontID;
 - (id)accessQueue;
 - (void)addAppConfigObserver:(id)arg1;
@@ -128,9 +124,7 @@
 - (void)setSegmentSetIDs:(id)arg1;
 - (void)setShouldIgnoreCache:(bool)arg1;
 - (void)setTreatmentIDs:(id)arg1;
-- (void)setWidgetChangeTags:(id)arg1;
 - (bool)shouldIgnoreCache;
 - (id)treatmentIDs;
-- (id)widgetChangeTags;
 
 @end

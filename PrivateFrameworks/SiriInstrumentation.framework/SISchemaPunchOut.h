@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaPunchOut : PBCodable <NSSecureCoding, SISchemaPunchOut> {
+@interface SISchemaPunchOut : PBCodable {
     NSString * _appID;
     NSString * _urlScheme;
     SISchemaViewContainer * _viewContainer;
@@ -10,11 +10,7 @@
 }
 
 @property (nonatomic, copy) NSString *appID;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
-@property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *urlScheme;
 @property (nonatomic, retain) SISchemaViewContainer *viewContainer;
 @property (nonatomic, copy) NSData *viewElementID;

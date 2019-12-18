@@ -4,7 +4,9 @@
 
 @interface NTPBGroupViewExposure : PBCodable <NSCopying> {
     NSData * _articleViewingSessionId;
+    NSString * _curatedBatchId;
     int  _curatedContentType;
+    NSString * _curatedSubtype;
     int  _feedAutoSubscribeType;
     NSData * _feedViewExposureId;
     int  _groupArticleCountInForYou;
@@ -41,14 +43,18 @@
     }  _has;
     bool  _isIssueContext;
     bool  _isSubscribedToGroupFeed;
+    NSMutableArray * _layoutIds;
     bool  _reachedEndOfGroup;
     int  _screenfulsFromTop;
+    NSMutableArray * _sectionIds;
     int  _topStoryMandatoryArticleCount;
     int  _topStoryOptionalArticleCount;
 }
 
 @property (nonatomic, retain) NSData *articleViewingSessionId;
+@property (nonatomic, retain) NSString *curatedBatchId;
 @property (nonatomic) int curatedContentType;
+@property (nonatomic, retain) NSString *curatedSubtype;
 @property (nonatomic) int feedAutoSubscribeType;
 @property (nonatomic, retain) NSData *feedViewExposureId;
 @property (nonatomic) int groupArticleCountInForYou;
@@ -66,7 +72,9 @@
 @property (nonatomic, retain) NSMutableArray *groupedArticleIds;
 @property (nonatomic, retain) NSMutableArray *groupedIssueIds;
 @property (nonatomic, readonly) bool hasArticleViewingSessionId;
+@property (nonatomic, readonly) bool hasCuratedBatchId;
 @property (nonatomic) bool hasCuratedContentType;
+@property (nonatomic, readonly) bool hasCuratedSubtype;
 @property (nonatomic) bool hasFeedAutoSubscribeType;
 @property (nonatomic, readonly) bool hasFeedViewExposureId;
 @property (nonatomic) bool hasGroupArticleCountInForYou;
@@ -89,13 +97,17 @@
 @property (nonatomic) bool hasTopStoryOptionalArticleCount;
 @property (nonatomic) bool isIssueContext;
 @property (nonatomic) bool isSubscribedToGroupFeed;
+@property (nonatomic, retain) NSMutableArray *layoutIds;
 @property (nonatomic) bool reachedEndOfGroup;
 @property (nonatomic) int screenfulsFromTop;
+@property (nonatomic, retain) NSMutableArray *sectionIds;
 @property (nonatomic) int topStoryMandatoryArticleCount;
 @property (nonatomic) int topStoryOptionalArticleCount;
 
 + (Class)groupedArticleIdsType;
 + (Class)groupedIssueIdsType;
++ (Class)layoutIdsType;
++ (Class)sectionIdsType;
 
 - (void).cxx_destruct;
 - (int)StringAsCuratedContentType:(id)arg1;
@@ -107,12 +119,18 @@
 - (int)StringAsGroupType:(id)arg1;
 - (void)addGroupedArticleIds:(id)arg1;
 - (void)addGroupedIssueIds:(id)arg1;
+- (void)addLayoutIds:(id)arg1;
+- (void)addSectionIds:(id)arg1;
 - (id)articleViewingSessionId;
 - (void)clearGroupedArticleIds;
 - (void)clearGroupedIssueIds;
+- (void)clearLayoutIds;
+- (void)clearSectionIds;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)curatedBatchId;
 - (int)curatedContentType;
 - (id)curatedContentTypeAsString:(int)arg1;
+- (id)curatedSubtype;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (int)feedAutoSubscribeType;
@@ -142,7 +160,9 @@
 - (id)groupedIssueIdsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)groupedIssueIdsCount;
 - (bool)hasArticleViewingSessionId;
+- (bool)hasCuratedBatchId;
 - (bool)hasCuratedContentType;
+- (bool)hasCuratedSubtype;
 - (bool)hasFeedAutoSubscribeType;
 - (bool)hasFeedViewExposureId;
 - (bool)hasGroupArticleCountInForYou;
@@ -167,12 +187,20 @@
 - (bool)isEqual:(id)arg1;
 - (bool)isIssueContext;
 - (bool)isSubscribedToGroupFeed;
+- (id)layoutIds;
+- (id)layoutIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)layoutIdsCount;
 - (void)mergeFrom:(id)arg1;
 - (bool)reachedEndOfGroup;
 - (bool)readFrom:(id)arg1;
 - (int)screenfulsFromTop;
+- (id)sectionIds;
+- (id)sectionIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)sectionIdsCount;
 - (void)setArticleViewingSessionId:(id)arg1;
+- (void)setCuratedBatchId:(id)arg1;
 - (void)setCuratedContentType:(int)arg1;
+- (void)setCuratedSubtype:(id)arg1;
 - (void)setFeedAutoSubscribeType:(int)arg1;
 - (void)setFeedViewExposureId:(id)arg1;
 - (void)setGroupArticleCountInForYou:(int)arg1;
@@ -207,8 +235,10 @@
 - (void)setHasTopStoryOptionalArticleCount:(bool)arg1;
 - (void)setIsIssueContext:(bool)arg1;
 - (void)setIsSubscribedToGroupFeed:(bool)arg1;
+- (void)setLayoutIds:(id)arg1;
 - (void)setReachedEndOfGroup:(bool)arg1;
 - (void)setScreenfulsFromTop:(int)arg1;
+- (void)setSectionIds:(id)arg1;
 - (void)setTopStoryMandatoryArticleCount:(int)arg1;
 - (void)setTopStoryOptionalArticleCount:(int)arg1;
 - (int)topStoryMandatoryArticleCount;

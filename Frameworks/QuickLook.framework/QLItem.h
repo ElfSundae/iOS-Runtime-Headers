@@ -15,6 +15,7 @@
     long long  _editingMode;
     QLItemFetcher * _fetcher;
     FPItem * _fpItem;
+    bool  _hasDeterminedPredictedPreferredContentSizeForOrbPlatter;
     bool  _hasDeterminedShouldUseExtensionPreview;
     bool  _hasDeterminedShouldUseExtensionThumbnail;
     bool  _isPromisedItem;
@@ -24,6 +25,10 @@
     bool  _originalContentWasUpdated;
     <QLPreviewItemPrivateProtocol> * _originalPreviewItem;
     NSString * _password;
+    struct CGSize { 
+        double width; 
+        double height; 
+    }  _preferredContentSizeForOrbPlatter;
     NSString * _previewItemContentType;
     NSData * _previewItemData;
     <QLPreviewItemDataProvider> * _previewItemDataProvider;
@@ -65,6 +70,7 @@
 @property (nonatomic) long long editingMode;
 @property (nonatomic, retain) QLItemFetcher *fetcher;
 @property (retain) FPItem *fpItem;
+@property (nonatomic) bool hasDeterminedPredictedPreferredContentSizeForOrbPlatter;
 @property (nonatomic) bool hasDeterminedShouldUseExtensionPreview;
 @property (nonatomic) bool hasDeterminedShouldUseExtensionThumbnail;
 @property (readonly) unsigned long long hash;
@@ -75,6 +81,7 @@
 @property (nonatomic) bool originalContentWasUpdated;
 @property (nonatomic, retain) <QLPreviewItemPrivateProtocol> *originalPreviewItem;
 @property (retain) NSString *password;
+@property (nonatomic) struct CGSize { double x1; double x2; } preferredContentSizeForOrbPlatter;
 @property (nonatomic, retain) NSString *previewItemContentType;
 @property (retain) NSData *previewItemData;
 @property (retain) <QLPreviewItemDataProvider> *previewItemDataProvider;
@@ -140,8 +147,10 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)fetcher;
 - (id)fpItem;
+- (bool)hasDeterminedPredictedPreferredContentSizeForOrbPlatter;
 - (bool)hasDeterminedShouldUseExtensionPreview;
 - (bool)hasDeterminedShouldUseExtensionThumbnail;
+- (struct CGSize { double x1; double x2; })imageRawSizeOfContents:(id)arg1 withPreviewItemType:(unsigned long long)arg2 imageIsAnimated:(bool*)arg3;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1 contentType:(id)arg2 previewTitle:(id)arg3;
@@ -165,6 +174,9 @@
 - (bool)originalContentWasUpdated;
 - (id)originalPreviewItem;
 - (id)password;
+- (struct CGSize { double x1; double x2; })predictedPreferredContentSizeForOrbPlatter;
+- (struct CGSize { double x1; double x2; })preferredContentSizeForOrbPlatter;
+- (struct CGSize { double x1; double x2; })preferredContentSizeForOrbPlatterWithURL:(id)arg1;
 - (void)prepareSaveURL:(id /* block */)arg1;
 - (void)prepareShareableURL:(id /* block */)arg1;
 - (id)previewItemContentType;
@@ -196,6 +208,7 @@
 - (void)setEditingMode:(long long)arg1;
 - (void)setFetcher:(id)arg1;
 - (void)setFpItem:(id)arg1;
+- (void)setHasDeterminedPredictedPreferredContentSizeForOrbPlatter:(bool)arg1;
 - (void)setHasDeterminedShouldUseExtensionPreview:(bool)arg1;
 - (void)setHasDeterminedShouldUseExtensionThumbnail:(bool)arg1;
 - (void)setIsPromisedItem:(bool)arg1;
@@ -205,6 +218,7 @@
 - (void)setOriginalContentWasUpdated:(bool)arg1;
 - (void)setOriginalPreviewItem:(id)arg1;
 - (void)setPassword:(id)arg1;
+- (void)setPreferredContentSizeForOrbPlatter:(struct CGSize { double x1; double x2; })arg1;
 - (void)setPreviewItemContentType:(id)arg1;
 - (void)setPreviewItemData:(id)arg1;
 - (void)setPreviewItemDataProvider:(id)arg1;

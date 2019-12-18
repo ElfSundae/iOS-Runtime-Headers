@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INIntent : NSObject <ACSCardRequesting, CRContent, INFileEnumerable, INGenericIntent, INImageProxyInjecting, INIntentExport, INIntentSlotComposing, INKeyImageProducing, INRuntimeObject, NSCopying, NSSecureCoding, REIntentProperties> {
+@interface INIntent : NSObject <ACSCardRequesting, CRContent, INEnumerable, INGenericIntent, INImageProxyInjecting, INIntentExport, INIntentSlotComposing, INKeyImageProducing, INRuntimeObject, NSCopying, NSSecureCoding, REIntentProperties> {
     long long  __preferredInteractionDirection;
     NSArray * _airPlayRouteIds;
     PBCodable * _backingStore;
@@ -126,7 +126,7 @@
 - (id)_displayOrderedNonNilParameters;
 - (id)_emptyCopy;
 - (bool)_encodeLegacyGloryData;
-- (void)_enumerateWithValueProcessingBlock:(id /* block */)arg1 mutate:(bool)arg2;
+- (bool)_enumerateWithValueProcessingBlock:(id /* block */)arg1;
 - (long long)_executionContext;
 - (bool)_hasTitle;
 - (long long)_idiom;
@@ -146,8 +146,7 @@
 - (id)_intents_bestBundleIdentifier;
 - (id)_intents_bundleIdForDisplay;
 - (id)_intents_bundleIdForLaunching;
-- (void)_intents_enumerateFileURLsWithBlock:(id /* block */)arg1 mutate:(bool)arg2;
-- (void)_intents_enumerateFilesWithBlock:(id /* block */)arg1 mutate:(bool)arg2;
+- (bool)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(id /* block */)arg2;
 - (id)_intents_launchIdForCurrentPlatform;
 - (long long)_intents_toggleState;
 - (bool)_isConfigurable;

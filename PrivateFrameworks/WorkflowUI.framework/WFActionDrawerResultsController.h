@@ -21,14 +21,13 @@
 - (id)cachedSiriSuggestionsResults;
 - (bool)filteringForResidentCompatibleActions;
 - (void)getDeveloperSuggestedResultsForAppIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)getHomeSectionsIncludingRelatedActions:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)getResultsForAppWithBundleIdentifier:(id)arg1 legacyIdentifier:(id)arg2 shouldFilterForAppsViewController:(bool)arg3 completionHandler:(id /* block */)arg4;
+- (void)getResultsForCategory:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)getSiriSuggestedGroupedResultsRefreshingCache:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)getSiriSuggestedResultsForBundleIdentifier:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)home;
-- (id)homeSectionsIncludingRelatedActions:(bool)arg1;
 - (id)initWithActionRegistry:(id)arg1;
-- (id)resultsForAppWithBundleIdentifier:(id)arg1 legacyIdentifier:(id)arg2 shouldFilterForAppsViewController:(bool)arg3;
-- (id)resultsForCategory:(id)arg1;
 - (id)resultsForFavorites;
 - (void)resultsForSearchQuery:(id)arg1 includingSiriSuggestedResults:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)resultsForSuggestionsWithWorkflow:(id)arg1;

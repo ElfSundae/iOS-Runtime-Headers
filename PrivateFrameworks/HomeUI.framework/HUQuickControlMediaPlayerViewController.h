@@ -23,6 +23,7 @@
 
 - (void).cxx_destruct;
 - (void)_addMediaControlView;
+- (bool)_canShowWhileLocked;
 - (void)_updateConstraints;
 - (void)_updateMediaControlAppearanceForTraitCollection:(id)arg1;
 - (bool)hasSingleControlView;

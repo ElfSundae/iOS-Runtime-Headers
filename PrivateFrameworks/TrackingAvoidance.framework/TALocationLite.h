@@ -44,6 +44,9 @@
 @property (nonatomic, readonly, copy) NSDate *timestamp;
 @property (nonatomic, readonly) double verticalAccuracy;
 
++ (bool)distanceFromLocation:(id)arg1 toLocation:(id)arg2 satisfyNSigma:(unsigned long long)arg3 satisfyMinDistance:(double)arg4;
++ (double)estimateSpeedFrom:(id)arg1 to:(id)arg2;
++ (double)residualDistanceFromLocation:(id)arg1 toLocation:(id)arg2 nSigma:(unsigned long long)arg3;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -56,6 +59,7 @@
 - (id)description;
 - (id)descriptionDictionary;
 - (double)distanceFromLocation:(id)arg1;
+- (bool)distanceToLocation:(id)arg1 satisfyNSigma:(unsigned long long)arg2 satisfyMinDistance:(double)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithOSLogCoder:(id)arg1 options:(unsigned long long)arg2 maxLength:(unsigned long long)arg3;
 - (id)getDate;

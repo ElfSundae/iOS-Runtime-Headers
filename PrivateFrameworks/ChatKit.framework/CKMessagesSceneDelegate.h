@@ -30,11 +30,13 @@
 - (void)_handleAccountsChanged:(id)arg1;
 - (void)_handleDaemonConnected:(id)arg1;
 - (void)_handleDaemonDisconnected:(id)arg1;
+- (bool)_messageFilteringEnabled;
 - (id)_oldInputContextIdentifiers;
 - (void)_prepareForResume:(bool)arg1;
 - (void)_prepareForSuspend;
 - (bool)_restoreState:(id)arg1;
 - (void)_scheduleDeferredSetup;
+- (bool)_shouldShowInboxView;
 - (bool)_shouldShowMadridRegistrationView;
 - (void)_showMadridRegistrationViewIfNecessary;
 - (void)_showPeerPaymentUIForPerson:(id)arg1 amount:(id)arg2;

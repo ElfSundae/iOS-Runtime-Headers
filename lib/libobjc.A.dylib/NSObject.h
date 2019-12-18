@@ -2,7 +2,7 @@
    Image: /usr/lib/libobjc.A.dylib
  */
 
-@interface NSObject <ATXScoreLogSerializable, CAAnimatableValue, CARenderValue, CKLParsedObject, INCodableAttributeRelationComparing, MAPropertyTypeProtocol, NSObject, NSObjectInitJSExports, PQLResultSetInitializer, REDonatedActionIdentifierProviding, WFNaming, WFTyping, _DKProtobufConverting> {
+@interface NSObject <ATXScoreLogSerializable, CAAnimatableValue, CARenderValue, CKLParsedObject, INCodableAttributeRelationComparing, INEnumerable, MAPropertyTypeProtocol, NSObject, NSObjectInitJSExports, PQLResultSetInitializer, REDonatedActionIdentifierProviding, WFNaming, WFTyping, _DKProtobufConverting> {
     Class  isa;
 }
 
@@ -343,6 +343,7 @@
 // Image: /System/Library/Frameworks/Intents.framework/Intents
 
 - (bool)_intents_compareValue:(id)arg1 relation:(unsigned long long)arg2;
+- (bool)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(id /* block */)arg2;
 - (id)_intents_indexingRepresentation;
 - (bool)_intents_isValidKey:(id)arg1;
 - (id)_intents_localizedCopyForLanguage:(id)arg1;
@@ -853,6 +854,7 @@
 - (void)_mf_checkToAllowStrictProgressionWithLock:(id)arg1;
 - (void)_mf_dumpLockCallStacks:(unsigned long long)arg1 ordering:(id)arg2;
 - (id)_mf_lockOrderingForType:(int)arg1;
+- (void)_mf_ntsCheckToAllowLock:(id)arg1;
 - (bool)_mf_ntsIsLocked;
 - (id)mf_exclusiveLocks;
 - (void)mf_lock;
@@ -1043,10 +1045,6 @@
 // Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
 
 - (bool)sxax_shouldBeOccluded;
-
-// Image: /System/Library/PrivateFrameworks/SilexText.framework/SilexText
-
-- (bool)stax_shouldBeOccluded;
 
 // Image: /System/Library/PrivateFrameworks/SilexVideo.framework/SilexVideo
 
@@ -1882,6 +1880,7 @@
 - (bool)_accessibilityShouldBeExplorerElementWithoutSystemFocus;
 - (bool)_accessibilityShouldBeProcessed:(id)arg1;
 - (bool)_accessibilityShouldBeScannedIfAncestorCanScroll;
+- (bool)_accessibilityShouldHitTestStatusBarWindow;
 - (bool)_accessibilityShouldIgnoreOpaqueElementProviders;
 - (bool)_accessibilityShouldIgnoreSoundForFailedMoveAttempt;
 - (bool)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
@@ -1950,6 +1949,7 @@
 - (bool)_accessibilitySupportsMultipleCustomRotorTitles;
 - (bool)_accessibilitySupportsPressedState;
 - (bool)_accessibilitySupportsRangeForLineNumber;
+- (bool)_accessibilitySupportsSecondaryActivateAction;
 - (bool)_accessibilitySupportsSemanticContext;
 - (bool)_accessibilitySupportsTextInsertionAndDeletion;
 - (id)_accessibilitySwipeIsland;
@@ -2151,6 +2151,7 @@
 - (id)accessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
 - (unsigned long long)accessibilityBlockquoteLevel;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })accessibilityBoundsForTextMarkers:(id)arg1;
+- (bool)accessibilityChildrenContainerGroupingBehaviorHasOverridingParentDelegate;
 - (unsigned long long)accessibilityColumnCount;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })accessibilityColumnRange;
 - (long long)accessibilityCompareGeometry:(id)arg1;
@@ -2194,6 +2195,7 @@
 - (id)accessibilityMenuActions;
 - (id)accessibilityNextTextNavigationElement;
 - (id)accessibilityPageContent;
+- (bool)accessibilityParentDiscardsChildrenContainerGroupingBehavior;
 - (bool)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (bool)accessibilityPerformCustomAction:(long long)arg1;
 - (id)accessibilityPlaceholderValue;

@@ -3,9 +3,17 @@
  */
 
 @interface NTPBInAppWebEmbedExposure : PBCodable <NSCopying> {
+    int  _articleDisplayRankInGroup;
     NSString * _articleId;
+    int  _displayRank;
+    int  _feedType;
     NSData * _feedViewExposureId;
+    int  _groupType;
     struct { 
+        unsigned int articleDisplayRankInGroup : 1; 
+        unsigned int displayRank : 1; 
+        unsigned int feedType : 1; 
+        unsigned int groupType : 1; 
         unsigned int moduleEventType : 1; 
         unsigned int moduleItemCount : 1; 
         unsigned int moduleItemPosition : 1; 
@@ -21,10 +29,18 @@
     int  _webEmbedLocation;
 }
 
+@property (nonatomic) int articleDisplayRankInGroup;
 @property (nonatomic, retain) NSString *articleId;
+@property (nonatomic) int displayRank;
+@property (nonatomic) int feedType;
 @property (nonatomic, retain) NSData *feedViewExposureId;
+@property (nonatomic) int groupType;
+@property (nonatomic) bool hasArticleDisplayRankInGroup;
 @property (nonatomic, readonly) bool hasArticleId;
+@property (nonatomic) bool hasDisplayRank;
+@property (nonatomic) bool hasFeedType;
 @property (nonatomic, readonly) bool hasFeedViewExposureId;
+@property (nonatomic) bool hasGroupType;
 @property (nonatomic) bool hasModuleEventType;
 @property (nonatomic, readonly) bool hasModuleExposureId;
 @property (nonatomic) bool hasModuleItemCount;
@@ -41,16 +57,28 @@
 @property (nonatomic) int webEmbedLocation;
 
 - (void).cxx_destruct;
+- (int)StringAsFeedType:(id)arg1;
+- (int)StringAsGroupType:(id)arg1;
 - (int)StringAsModuleEventType:(id)arg1;
 - (int)StringAsModuleLocation:(id)arg1;
 - (int)StringAsWebEmbedLocation:(id)arg1;
+- (int)articleDisplayRankInGroup;
 - (id)articleId;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (int)displayRank;
+- (int)feedType;
+- (id)feedTypeAsString:(int)arg1;
 - (id)feedViewExposureId;
+- (int)groupType;
+- (id)groupTypeAsString:(int)arg1;
+- (bool)hasArticleDisplayRankInGroup;
 - (bool)hasArticleId;
+- (bool)hasDisplayRank;
+- (bool)hasFeedType;
 - (bool)hasFeedViewExposureId;
+- (bool)hasGroupType;
 - (bool)hasModuleEventType;
 - (bool)hasModuleExposureId;
 - (bool)hasModuleItemCount;
@@ -69,8 +97,16 @@
 - (int)moduleLocation;
 - (id)moduleLocationAsString:(int)arg1;
 - (bool)readFrom:(id)arg1;
+- (void)setArticleDisplayRankInGroup:(int)arg1;
 - (void)setArticleId:(id)arg1;
+- (void)setDisplayRank:(int)arg1;
+- (void)setFeedType:(int)arg1;
 - (void)setFeedViewExposureId:(id)arg1;
+- (void)setGroupType:(int)arg1;
+- (void)setHasArticleDisplayRankInGroup:(bool)arg1;
+- (void)setHasDisplayRank:(bool)arg1;
+- (void)setHasFeedType:(bool)arg1;
+- (void)setHasGroupType:(bool)arg1;
 - (void)setHasModuleEventType:(bool)arg1;
 - (void)setHasModuleItemCount:(bool)arg1;
 - (void)setHasModuleItemPosition:(bool)arg1;

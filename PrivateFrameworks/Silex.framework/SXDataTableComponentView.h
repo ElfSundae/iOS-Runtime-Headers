@@ -11,7 +11,7 @@
     SXDataTableDictionary * _imageViews;
     CALayer * _leftShadow;
     CALayer * _rightShadow;
-    STScrollView * _scrollView;
+    SXScrollView * _scrollView;
     SXDataTableView * _tableView;
     SXTangierController * _tangierController;
     <SXTextComponentLayoutHosting> * _textComponentLayoutHosting;
@@ -29,7 +29,7 @@
 @property (nonatomic, retain) SXDataTableDictionary *imageViews;
 @property (nonatomic, retain) CALayer *leftShadow;
 @property (nonatomic, retain) CALayer *rightShadow;
-@property (nonatomic, retain) STScrollView *scrollView;
+@property (nonatomic, retain) SXScrollView *scrollView;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) SXDataTableView *tableView;
 @property (nonatomic, retain) SXTangierController *tangierController;

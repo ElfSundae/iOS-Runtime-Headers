@@ -39,6 +39,7 @@
 @property (nonatomic) double timestampOfLastEvent;
 
 - (void).cxx_destruct;
+- (bool)_analyticsIsGestureHandled;
 - (bool)_shouldTryToBeginWithEvent:(id)arg1;
 - (double)allowableMovement;
 - (unsigned long long)allowedFlickDirections;

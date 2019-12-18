@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
  */
 
-@interface CKTranscriptCollectionViewController : CKViewController <CKAssociatedMessageTranscriptCellDelegate, CKAudioControllerDelegate, CKBalloonViewDelegate, CKFullScreenEffectManagerDelegate, CKLocationShareBalloonViewDelegate, CKLocationSharingDelegate, CKMovieBalloonViewDelegate, CKPluginPlaybackManagerDelegate, CKSendAnimationManagerDelegate, CKTitledImageBalloonViewDelegate, CKTranscriptCollectionViewDelegate, CNAvatarViewDelegate, UIAlertViewDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate_Private> {
+@interface CKTranscriptCollectionViewController : CKViewController <CKAssociatedMessageTranscriptCellDelegate, CKAudioControllerDelegate, CKBalloonViewDelegate, CKFullScreenEffectManagerDelegate, CKLocationShareBalloonViewDelegate, CKLocationSharingDelegate, CKMovieBalloonViewDelegate, CKPluginPlaybackManagerDelegate, CKSendAnimationManagerDelegate, CKTitledImageBalloonViewDelegate, CKTranscriptCollectionViewDelegate, CNAvatarViewDelegate, UIAlertViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate_Private> {
     NSString * ___CurrentTestName;
     id /* block */  _alertHandler;
     bool  _allowsPluginPlayback;
@@ -44,6 +44,7 @@
     bool  _playedLastImpactEffectForTransitionFromComposing;
     double  _pluginPlaybackDelay;
     CKPluginPlaybackManager * _pluginPlaybackManager;
+    NSDictionary * _pluginSnapshots;
     bool  _shouldLoadDefaultConversationViewingMessageCountOnAppear;
     bool  _shouldUseOpaqueMask;
     bool  _sizedFullTranscript;
@@ -53,6 +54,7 @@
     bool  _transcriptUpdateAnimated;
     id /* block */  _transcriptUpdateCompletion;
     bool  _transitionedFromComposing;
+    bool  _transitioningFromComposing;
     NSObject<OS_dispatch_group> * _updateAnimationGroup;
 }
 
@@ -92,6 +94,7 @@
 @property (nonatomic) bool playedLastImpactEffectForTransitionFromComposing;
 @property (nonatomic) double pluginPlaybackDelay;
 @property (nonatomic, retain) CKPluginPlaybackManager *pluginPlaybackManager;
+@property (nonatomic, retain) NSDictionary *pluginSnapshots;
 @property (nonatomic) bool shouldLoadDefaultConversationViewingMessageCountOnAppear;
 @property (nonatomic) bool shouldUseOpaqueMask;
 @property (nonatomic) bool sizedFullTranscript;
@@ -102,16 +105,20 @@
 @property (getter=isTranscriptUpdateAnimated, nonatomic) bool transcriptUpdateAnimated;
 @property (nonatomic, copy) id /* block */ transcriptUpdateCompletion;
 @property (nonatomic) bool transitionedFromComposing;
+@property (nonatomic) bool transitioningFromComposing;
 @property (nonatomic, retain) NSObject<OS_dispatch_group> *updateAnimationGroup;
 
 - (void).cxx_destruct;
 - (id)__CurrentTestName;
 - (void)__handleLoggingTapped:(id)arg1;
+- (void)__raiseGestureRecognized:(id)arg1;
 - (void)__setCurrentTestName:(id)arg1;
 - (bool)_allowsEffectAutoPlayback;
 - (double)_balloonHorizontalOffsetForParentChatItem:(id)arg1 contentAlignmentRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 responsibleChatItems:(id*)arg3 individualOffsets:(id*)arg4;
 - (bool)_canShowWhileLocked;
 - (bool)_canUseOpaqueMask;
+- (id)_collectionView:(id)arg1 accessoriesForContextMenuWithConfiguration:(id)arg2 layoutAnchor:(struct { unsigned long long x1; unsigned long long x2; })arg3;
+- (id)_collectionView:(id)arg1 styleForContextMenuWithConfiguration:(id)arg2;
 - (void)_collectionViewDidRestAsync:(bool)arg1;
 - (void)_deferredStartPlayback;
 - (void)_diffAssociatedItemsWithOldAssociatedItems:(id)arg1 removedAssociatedIndexes:(id*)arg2 insertedAssociatedIndexes:(id*)arg3;
@@ -186,6 +193,7 @@
 - (void)clearRecentPluginTouch;
 - (id)collectionView;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
+- (id)collectionView:(id)arg1 contextMenuConfigurationForItemAtIndexPath:(id)arg2 point:(struct CGPoint { double x1; double x2; })arg3;
 - (void)collectionView:(id)arg1 didBeginMultipleSelectionInteractionAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
@@ -195,10 +203,14 @@
 - (id)collectionView:(id)arg1 layout:(id)arg2 chatItemForItemAtIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 layout:(id)arg2 chatItemForSupplementaryViewAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
+- (id)collectionView:(id)arg1 previewForDismissingContextMenuWithConfiguration:(id)arg2;
+- (id)collectionView:(id)arg1 previewForHighlightingContextMenuWithConfiguration:(id)arg2;
 - (bool)collectionView:(id)arg1 shouldBeginMultipleSelectionInteractionAtIndexPath:(id)arg2;
 - (bool)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplaySupplementaryView:(id)arg2 forElementKind:(id)arg3 atIndexPath:(id)arg4;
+- (void)collectionView:(id)arg1 willEndContextMenuInteractionWithConfiguration:(id)arg2 animator:(id)arg3;
+- (void)collectionView:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (id)collectionViewControllerForImpactEffectManager:(id)arg1;
 - (void)collectionViewDidInset:(id)arg1;
 - (id)collectionViewLayout;
@@ -276,6 +288,7 @@
 - (double)pluginPlaybackDelay;
 - (id)pluginPlaybackManager;
 - (void)pluginPlaybackManagerDidStopPlayback:(id)arg1;
+- (id)pluginSnapshots;
 - (void)prepareForSuspend;
 - (void)presentHawkingPromptForMessage:(id)arg1;
 - (id)presentingViewControllerForAvatarView:(id)arg1;
@@ -331,6 +344,7 @@
 - (void)setPlayedLastImpactEffectForTransitionFromComposing:(bool)arg1;
 - (void)setPluginPlaybackDelay:(double)arg1;
 - (void)setPluginPlaybackManager:(id)arg1;
+- (void)setPluginSnapshots:(id)arg1;
 - (void)setScrollAnchor:(double)arg1;
 - (void)setSelectedItems:(id)arg1;
 - (void)setShouldLoadDefaultConversationViewingMessageCountOnAppear:(bool)arg1;
@@ -342,6 +356,7 @@
 - (void)setTranscriptUpdateAnimated:(bool)arg1;
 - (void)setTranscriptUpdateCompletion:(id /* block */)arg1;
 - (void)setTransitionedFromComposing:(bool)arg1;
+- (void)setTransitioningFromComposing:(bool)arg1;
 - (void)setUpdateAnimationGroup:(id)arg1;
 - (bool)shouldLoadDefaultConversationViewingMessageCountOnAppear;
 - (bool)shouldPresentHawkingPromptForMessage:(id)arg1;
@@ -366,6 +381,7 @@
 - (void)transferRestored:(id)arg1;
 - (void)transferUpdated:(id)arg1;
 - (bool)transitionedFromComposing;
+- (bool)transitioningFromComposing;
 - (void)tuConversationBalloonJoinButtonTapped:(id)arg1;
 - (id)updateAnimationGroup;
 - (void)updateAnimationPaused;

@@ -60,7 +60,7 @@
 - (id)callNotificationManager;
 - (id)callServicesClientCapabilities;
 - (int)connectionRequestNotificationToken;
-- (bool)containsRestrictedHandle:(id)arg1 forBundleIdentifier:(id)arg2;
+- (bool)containsRestrictedHandle:(id)arg1 forBundleIdentifier:(id)arg2 performSynchronously:(bool)arg3;
 - (id)currentCalls;
 - (void)dealloc;
 - (id)debugDescription;
@@ -71,6 +71,7 @@
 - (oneway void)enteredBackgroundForAllCalls;
 - (oneway void)enteredForegroundForCallWithUniqueProxyIdentifier:(id)arg1;
 - (void)fetchCurrentCalls;
+- (unsigned long long)filterStatusForAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
 - (oneway void)groupCallWithUniqueProxyIdentifier:(id)arg1 withOtherCallWithUniqueProxyIdentifier:(id)arg2;
 - (oneway void)handleCurrentCallsChanged:(id)arg1 callDisconnected:(id)arg2;
 - (oneway void)handleFrequencyChangedTo:(id)arg1 inDirection:(int)arg2 forCallsWithUniqueProxyIdentifiers:(id)arg3;
@@ -129,7 +130,7 @@
 - (oneway void)setTTYType:(int)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
 - (oneway void)setUplinkMuted:(bool)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
 - (void)setXpcConnection:(id)arg1;
-- (bool)shouldRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
+- (bool)shouldRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2 performSynchronously:(bool)arg3;
 - (oneway void)shouldSuppressInCallStatusBar:(bool)arg1;
 - (oneway void)swapCalls;
 - (id)synchronousServerWithErrorHandler:(id /* block */)arg1;

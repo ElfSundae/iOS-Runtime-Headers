@@ -106,6 +106,10 @@
 - (void)strokeWithBlendMode:(int)arg1 alpha:(double)arg2;
 - (bool)usesEvenOddFillRule;
 
+// Image: /System/Library/PrivateFrameworks/AccessibilityPhysicalInteraction.framework/AccessibilityPhysicalInteraction
+
++ (id)bezierPathForFingerShape:(unsigned long long)arg1 inRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 curveOnly:(bool)arg3;
+
 // Image: /System/Library/PrivateFrameworks/AnnotationKit.framework/AnnotationKit
 
 - (void)akAppendPath:(id)arg1;
@@ -129,8 +133,6 @@
 
 + (id)sx_bezierPathWithNonContinuousRoundedRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 byRoundingCorners:(unsigned long long)arg2 cornerRadius:(double)arg3;
 + (id)sx_bezierPathWithRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 byRoundingCorners:(unsigned long long)arg2 cornerRadius:(double)arg3 continuousCorners:(bool)arg4;
-
-// Image: /System/Library/PrivateFrameworks/SilexText.framework/SilexText
 
 - (id)TSDBezierPath;
 

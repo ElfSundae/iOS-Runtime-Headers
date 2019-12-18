@@ -4,6 +4,7 @@
 
 @interface NUVideoExportRequest : NUExportRequest {
     double  _bitRateMultiplicationFactor;
+    bool  _bypassOutputSettingsIfNoComposition;
     NUColorSpace * _cachedColorSpace;
     NSArray * _metadata;
     NSDictionary * _outputSettings;
@@ -12,6 +13,7 @@
 }
 
 @property (nonatomic) double bitRateMultiplicationFactor;
+@property (nonatomic) bool bypassOutputSettingsIfNoComposition;
 @property (retain) NUColorSpace *cachedColorSpace;
 @property (readonly) NUColorSpace *colorSpace;
 @property (copy) NSArray *metadata;
@@ -21,6 +23,7 @@
 
 - (void).cxx_destruct;
 - (double)bitRateMultiplicationFactor;
+- (bool)bypassOutputSettingsIfNoComposition;
 - (id)cachedColorSpace;
 - (id)colorSpace;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
@@ -32,6 +35,7 @@
 - (id)progress;
 - (bool)requiresVideoComposition;
 - (void)setBitRateMultiplicationFactor:(double)arg1;
+- (void)setBypassOutputSettingsIfNoComposition:(bool)arg1;
 - (void)setCachedColorSpace:(id)arg1;
 - (void)setMetadata:(id)arg1;
 - (void)setOutputSettings:(id)arg1;

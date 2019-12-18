@@ -15,6 +15,7 @@
 @property (nonatomic, copy) NSString *text;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_didTapCancel:(id)arg1;
 - (id)_itemsInSection:(long long)arg1;
 - (id)alternatives;

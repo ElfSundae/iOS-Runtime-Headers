@@ -28,6 +28,7 @@
 @property (nonatomic, copy) NSSet *loadedAllDataSources;
 @property (nonatomic, copy) NSDictionary *loadedAuthorizationRecordsBySource;
 @property (nonatomic, copy) NSArray *loadedOrderedDataSources;
+@property (nonatomic, retain) NSMutableArray *orderedDataSources;
 @property (nonatomic) bool shouldInsetSectionContentForDataSourceDataList;
 @property (nonatomic, retain) HKSourceListDataSource *sourceListDataSource;
 
@@ -40,6 +41,7 @@
 - (void)_fetchDataSourcesForSampleType:(id)arg1 completion:(id /* block */)arg2;
 - (void)_fetchOrderedSourcesForType:(id)arg1 completion:(id /* block */)arg2;
 - (void)_gatherDataFromDataSource:(id)arg1;
+- (void)_handleReturnedImage:(id)arg1 forSource:(id)arg2 cell:(id)arg3 tableView:(id)arg4 fetchError:(id)arg5;
 - (void)_loadDataSource;
 - (id)_noneTableViewCell;
 - (id)_readerSourceCellForTableView:(id)arg1 sourceArray:(id)arg2 row:(unsigned long long)arg3;
@@ -58,10 +60,12 @@
 - (id)loadedAuthorizationRecordsBySource;
 - (id)loadedOrderedDataSources;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (id)orderedDataSources;
 - (void)setEditing:(bool)arg1 animated:(bool)arg2;
 - (void)setLoadedAllDataSources:(id)arg1;
 - (void)setLoadedAuthorizationRecordsBySource:(id)arg1;
 - (void)setLoadedOrderedDataSources:(id)arg1;
+- (void)setOrderedDataSources:(id)arg1;
 - (void)setShouldInsetSectionContentForDataSourceDataList:(bool)arg1;
 - (void)setSourceListDataSource:(id)arg1;
 - (bool)shouldInsetSectionContentForDataSourceDataList;

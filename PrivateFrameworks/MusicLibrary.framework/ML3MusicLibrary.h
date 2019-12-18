@@ -195,6 +195,7 @@
 - (id)_newGeniusDBConnectionAtPath:(id)arg1;
 - (id)_nonPurgeableAlbumsQuerySQLWithUrgency:(unsigned long long)arg1;
 - (id)_notInKeepLocalCollectionPredicate;
+- (void)_onQueue_updateDatabaseConnectionsProfilingLevel;
 - (void)_postClientNotificationWithDistributedName:(id)arg1 localName:(id)arg2;
 - (bool)_prepareForAccountChange:(id*)arg1;
 - (id)_purgeableAlbumsQuerySQLWithUrgency:(unsigned long long)arg1;
@@ -214,7 +215,6 @@
 - (void)_teardownMediaLibraryDatabaseConnection:(id)arg1;
 - (unsigned long long)_totalSizeForAllNonCacheTracks;
 - (bool)_updateBestArtworkTokensForArtworkToken:(id)arg1 artworkType:(long long)arg2 sourceType:(long long)arg3 preserveExistingAvailableToken:(bool)arg4 usingConnection:(id)arg5;
-- (void)_updateDatabaseConnectionsProfilingLevel;
 - (bool)_validateDatabaseUsingConnection:(id)arg1 error:(id*)arg2;
 - (void)accessSortKeyBuilder:(id /* block */)arg1;
 - (id)accountCacheDatabase;
@@ -482,6 +482,7 @@
 + (void)buildDatabaseFromHomeSharingLibrary:(id)arg1 atPath:(id)arg2 completionHandler:(id /* block */)arg3;
 + (void)buildDatabaseFromHomeSharingLibrary:(id)arg1 atPath:(id)arg2 completionHandler:(id /* block */)arg3 progressHandler:(id /* block */)arg4;
 
+- (void)_performImport:(id)arg1 progressHandler:(id /* block */)arg2 completion:(id /* block */)arg3;
 - (void)checkForChangesInHomeSharingLibrary:(id)arg1 completionHandler:(id /* block */)arg2;
 - (bool)executeUpdateSQL:(id)arg1;
 - (void)fillContainerForHomeSharingLibrary:(id)arg1 containerID:(long long)arg2 completionHandler:(id /* block */)arg3;

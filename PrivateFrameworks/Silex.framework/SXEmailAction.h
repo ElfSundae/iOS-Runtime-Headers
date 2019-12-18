@@ -2,17 +2,23 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXEmailAction : SXAction {
+@interface SXEmailAction : NSObject <SXAction> {
     NSString * _recipient;
     NSString * _subject;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSString *recipient;
 @property (nonatomic, readonly) NSString *subject;
+@property (readonly) Class superclass;
+@property (nonatomic, readonly) NSString *type;
 
 - (void).cxx_destruct;
 - (id)initWithRecipient:(id)arg1 subject:(id)arg2;
 - (id)recipient;
 - (id)subject;
+- (id)type;
 
 @end

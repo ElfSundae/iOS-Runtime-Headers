@@ -26,6 +26,7 @@
     FCWidgetConfig * _widgetConfig;
 }
 
+@property (nonatomic, readonly) NSArray *aLaCartePaidSubscriptionGroupWhitelistedChannelIDs;
 @property (nonatomic, readonly) NSDictionary *analyticsContentTypeConfigsByContentTypeByEnvironment;
 @property (nonatomic, readonly) long long analyticsEndpointMaxPayloadSize;
 @property (nonatomic, readonly) NSString *anfRenderingConfiguration;
@@ -51,8 +52,9 @@
 @property (nonatomic, readonly) long long corryBarMaxArticleCountForSingleArticle;
 @property (nonatomic, readonly) long long criticalStorageThreshold;
 @property (nonatomic, readonly) NSNumber *currentTreatment;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) double delayBeforeRetryingDroppedFeeds;
-@property (nonatomic, readonly) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool disableThumbnailsForArticleRecirculation;
 @property (nonatomic, readonly) bool diversifyOptionalTopStories;
 @property (nonatomic, readonly) NSString *editorialChannelID;
@@ -60,6 +62,7 @@
 @property (nonatomic, readonly) long long emailSignupRequiredAppLaunchCount;
 @property (nonatomic, readonly) NSString *embedConfigurationAssetID;
 @property (nonatomic, readonly) bool enableBadgeInSpotlightTabBar;
+@property (nonatomic, readonly) bool enableLocationBasedAutofavorites;
 @property (nonatomic, readonly) long long endOfArticleMaxInaccessiblePaidArticleCount;
 @property (nonatomic, readonly) double endOfArticleMinPaidHeadlineRatio;
 @property (nonatomic, readonly) NSDictionary *endpointConfigsByEnvironment;
@@ -76,6 +79,7 @@
 @property (nonatomic, readonly) FCForYouGroupsConfiguration *forYouGroupsConfiguration;
 @property (nonatomic, readonly) NSString *forYouRecordConfigID;
 @property (nonatomic, readonly, copy) FCVideoGroupsConfig *forYouVideoGroupsConfig;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSArray *hiddenFeedIDs;
 @property (nonatomic, readonly) FCIAdConfiguration *iAdConfig;
 @property (nonatomic, readonly) double interstitialAdLoadDelay;
@@ -86,6 +90,7 @@
 @property (nonatomic, readonly) NSDictionary *languageConfigDictionary;
 @property (nonatomic, readonly) NSDate *lastModificationDate;
 @property (nonatomic, readonly) unsigned long long likeDislikeBehavior;
+@property (nonatomic, readonly) NSString *localAreasMappingResourceId;
 @property (nonatomic, readonly) long long lowStorageThreshold;
 @property (nonatomic, readonly) NSString *magazinesConfigRecordID;
 @property (nonatomic, readonly) long long maxRetriesForDroppedFeeds;
@@ -141,8 +146,10 @@
 @property (nonatomic, readonly) long long subscriptionsGracePeriodForTokenVerificationSeconds;
 @property (nonatomic, readonly) long long subscriptionsPlacardGlobalMaximumPerDay;
 @property (nonatomic, readonly) long long subscriptionsPlacardPublisherFrequencyInSeconds;
+@property (readonly) Class superclass;
 @property (nonatomic, readonly) bool terminateAppOnBackgroundAfterJoiningOrLeavingExperiment;
 @property (nonatomic, readonly) double tileProminenceScoreBalanceValue;
+@property (nonatomic, readonly) NSString *todayFeedKnobs;
 @property (nonatomic, readonly) FCTopStoriesConfiguration *topStoriesConfig;
 @property (nonatomic, readonly, copy) NSArray *topStoriesPublishDates;
 @property (nonatomic, readonly) NSString *topVideosChannelID;
@@ -152,6 +159,7 @@
 @property (nonatomic, readonly) long long trendingTopicsRefreshRate;
 @property (nonatomic, readonly) bool universalLinksEnabled;
 @property (nonatomic, readonly) bool useSecureConnectionForAssets;
+@property (nonatomic, readonly) NSString *webEmbedContentBlockerOverrides;
 @property (nonatomic, readonly) NSString *webEmbedContentBlockers;
 @property (nonatomic, readonly) FCWidgetConfig *widgetConfig;
 @property (nonatomic, readonly) NSString *widgetConfigID;
@@ -178,6 +186,7 @@
 - (void)_loadTopStoriesConfiguration;
 - (void)_loadWidgetConfiguration;
 - (void)_loadiAdConfiguration;
+- (id)aLaCartePaidSubscriptionGroupWhitelistedChannelIDs;
 - (id)analyticsContentTypeConfigsByContentTypeByEnvironment;
 - (long long)analyticsEndpointMaxPayloadSize;
 - (id)analyticsEnvelopeContentTypeConfigsForEnvironment:(unsigned long long)arg1;
@@ -213,6 +222,7 @@
 - (long long)emailSignupRequiredAppLaunchCount;
 - (id)embedConfigurationAssetID;
 - (bool)enableBadgeInSpotlightTabBar;
+- (bool)enableLocationBasedAutofavorites;
 - (long long)endOfArticleMaxInaccessiblePaidArticleCount;
 - (double)endOfArticleMinPaidHeadlineRatio;
 - (id)endpointConfigsByEnvironment;
@@ -248,6 +258,7 @@
 - (id)languageConfigDictionary;
 - (id)lastModificationDate;
 - (unsigned long long)likeDislikeBehavior;
+- (id)localAreasMappingResourceId;
 - (id)localizedStorefrontID;
 - (long long)lowStorageThreshold;
 - (id)magazinesConfigRecordID;
@@ -306,6 +317,7 @@
 - (bool)terminateAppOnBackgroundAfterJoiningOrLeavingExperiment;
 - (double)tileProminenceScoreBalanceValue;
 - (id)todayConfigWithQueueConfigs:(id)arg1 maxSlotCount:(unsigned long long)arg2;
+- (id)todayFeedKnobs;
 - (id)topStoriesConfig;
 - (id)topStoriesPublishDates;
 - (id)topVideosChannelID;
@@ -315,6 +327,7 @@
 - (long long)trendingTopicsRefreshRate;
 - (bool)universalLinksEnabled;
 - (bool)useSecureConnectionForAssets;
+- (id)webEmbedContentBlockerOverrides;
 - (id)webEmbedContentBlockers;
 - (id)widgetConfig;
 - (id)widgetConfigID;

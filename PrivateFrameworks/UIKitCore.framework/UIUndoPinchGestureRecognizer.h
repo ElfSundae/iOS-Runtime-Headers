@@ -43,6 +43,7 @@
 @property (nonatomic) bool tooMuchSingleMovement;
 
 - (void).cxx_destruct;
+- (bool)_analyticsIsGestureHandled;
 - (void)_updateTransformAnalyzerWeights;
 - (id)activeTouches;
 - (double)allowableElapsedTimeForAllRequiredTouches;

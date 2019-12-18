@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSString *shortcutsToken;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)cachedShortcuts;
 - (void)cancelButtonAction;
 - (id)initWithPreviouslySelectedShortcut:(id)arg1;

@@ -93,6 +93,7 @@
     PXCuratedLibraryStyleGuide * _styleGuide;
     PXUpdater * _updater;
     bool  _viewBasedDecorationsEnabled;
+    long long  _viewTimeSignpostID;
     NSHashTable * _views;
     NSMutableSet * _visibleAssetCollections;
     bool  _wantsDarkStatusBar;
@@ -155,6 +156,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) PXUpdater *updater;
 @property (nonatomic, readonly) bool viewBasedDecorationsEnabled;
+@property (nonatomic) long long viewTimeSignpostID;
 @property (nonatomic, readonly) NSArray *views;
 @property (nonatomic, readonly) NSSet *visibleAssetCollections;
 @property (nonatomic, readonly) bool wantsDarkStatusBar;
@@ -173,6 +175,7 @@
 - (long long)_closestColumnIndexForColumnWidth:(double)arg1;
 - (double)_columnIndexForItemWidth:(double)arg1;
 - (double)_columnWidthForDesiredColumnIndex:(double)arg1;
+- (id)_cpAnalyticsClassNameWithZoomLevel:(long long)arg1;
 - (void)_handleIsSelectingChange;
 - (void)_handleSelectionManagerChange:(unsigned long long)arg1;
 - (void)_handleSpecChange;
@@ -241,6 +244,7 @@
 - (void)didPerformChanges;
 - (id)draggedAssetReferences;
 - (void)endAnimationToToggleChromeVisibility;
+- (void)endCPAnalyticsViewWithZoomLevel:(long long)arg1;
 - (void)infoUpdaterDidUpdate:(id)arg1;
 - (id)init;
 - (id)initWithAssetsDataSourceManagerConfiguration:(id)arg1 zoomLevel:(long long)arg2 specManager:(id)arg3 styleGuide:(id)arg4;
@@ -303,6 +307,7 @@
 - (void)setSelectedAssetsTypedCount:(struct { unsigned long long x1; long long x2; })arg1;
 - (void)setSkimmingInfo:(id)arg1;
 - (void)setViewBasedDecorationsEnabled:(bool)arg1;
+- (void)setViewTimeSignpostID:(long long)arg1;
 - (void)setWantsDarkStatusBar:(bool)arg1;
 - (void)setWantsSecondaryToolbarVisible:(bool)arg1;
 - (void)setWantsTabBarVisible:(bool)arg1;
@@ -312,12 +317,14 @@
 - (id)skimmingInfo;
 - (id)specManager;
 - (void)startAnimationToToggleChromeVisibility;
+- (void)startCPAnalyticsViewWithZoomLevel:(long long)arg1;
 - (id)styleGuide;
 - (void)toggleSelectionForAssetCollectionReference:(id)arg1;
 - (void)toggleSelectionForAssetReference:(id)arg1;
 - (void)toggleSelectionForIndexPath:(struct PXSimpleIndexPath { unsigned long long x1; long long x2; long long x3; long long x4; })arg1;
 - (id)updater;
 - (bool)viewBasedDecorationsEnabled;
+- (long long)viewTimeSignpostID;
 - (id)views;
 - (id)visibleAssetCollections;
 - (id)visibleAssetCollectionsFromCuratedLibraryAssetsDataSourceManager:(id)arg1;

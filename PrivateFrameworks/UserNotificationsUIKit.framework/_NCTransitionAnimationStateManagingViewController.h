@@ -6,6 +6,7 @@
     long long  _ncTransitionAnimationState;
 }
 
+- (bool)_canShowWhileLocked;
 - (void)dismissViewControllerWithTransition:(int)arg1 completion:(id /* block */)arg2;
 - (long long)ncTransitionAnimationState;
 - (void)presentViewController:(id)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;

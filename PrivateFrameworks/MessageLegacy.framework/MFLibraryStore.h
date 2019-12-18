@@ -7,7 +7,6 @@
     NSDate * _earliestReceivedDate;
     unsigned long long  _fetchWindow;
     MFMailMessageLibrary * _library;
-    unsigned long long  _serverMessageCount;
 }
 
 @property (nonatomic, retain) NSDate *earliestReceivedDate;

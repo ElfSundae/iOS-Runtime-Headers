@@ -43,11 +43,13 @@
 + (id)displayIsBacklit;
 + (id)displayOrientationStream;
 + (id)doNotDisturbStream;
++ (id)focusModeStream;
 + (id)homeKitAccessoryControlStream;
 + (id)homeKitAppViewStream;
 + (id)homeKitSceneStream;
 + (id)internalQueryDataCollectionStream;
 + (id)keybagIsLockedStream;
++ (id)locationCoordinatesStream;
 + (id)locationVisitStream;
 + (id)mapsShareEtaFeedbackStream;
 + (id)microLocationVisitStream;

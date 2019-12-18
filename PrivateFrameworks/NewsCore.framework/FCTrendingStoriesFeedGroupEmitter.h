@@ -16,6 +16,7 @@
 @property (nonatomic) unsigned long long minPrecedingTopicGroups;
 @property (nonatomic, readonly) long long requiredForYouContentTypes;
 @property (nonatomic, readonly) bool requiresHeavyweightContent;
+@property (nonatomic, readonly) bool shouldEmitContentInFavoritesOnlyMode;
 @property (readonly) Class superclass;
 
 + (id)groupEmitterIdentifier;
@@ -28,6 +29,7 @@
 - (id)operationToEmitGroupWithContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;
 - (long long)requiredForYouContentTypes;
 - (void)setMinPrecedingTopicGroups:(unsigned long long)arg1;
+- (bool)shouldEmitContentInFavoritesOnlyMode;
 - (bool)wantsToEmitGroupInContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;
 - (bool)wantsToInsertGroupInContext:(id)arg1;
 

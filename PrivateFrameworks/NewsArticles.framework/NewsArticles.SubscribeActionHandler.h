@@ -16,7 +16,7 @@
 }
 
 - (void).cxx_destruct;
-- (void)handleSubscribeActionOnPresenter:(id)arg1;
+- (void)handleSubscribeActionOnPresenter:(id)arg1 completionBlock:(id /* block */)arg2;
 - (id)init;
 
 @end

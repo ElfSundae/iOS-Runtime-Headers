@@ -21,6 +21,7 @@
     NSMutableArray * _dataSets;
     NSString * _directionsURL;
     NSString * _dispatcherURL;
+    NSMutableArray * _displayStrings;
     NSString * _etaURL;
     struct { 
         unsigned int has_locationShiftVersion : 1; 
@@ -43,6 +44,7 @@
         unsigned int read_dataSets : 1; 
         unsigned int read_directionsURL : 1; 
         unsigned int read_dispatcherURL : 1; 
+        unsigned int read_displayStrings : 1; 
         unsigned int read_etaURL : 1; 
         unsigned int read_fontChecksums : 1; 
         unsigned int read_fonts : 1; 
@@ -99,6 +101,7 @@
         unsigned int wrote_dataSets : 1; 
         unsigned int wrote_directionsURL : 1; 
         unsigned int wrote_dispatcherURL : 1; 
+        unsigned int wrote_displayStrings : 1; 
         unsigned int wrote_etaURL : 1; 
         unsigned int wrote_fontChecksums : 1; 
         unsigned int wrote_fonts : 1; 
@@ -202,6 +205,7 @@
 @property (nonatomic, retain) NSMutableArray *dataSets;
 @property (nonatomic, retain) NSString *directionsURL;
 @property (nonatomic, retain) NSString *dispatcherURL;
+@property (nonatomic, retain) NSMutableArray *displayStrings;
 @property (nonatomic, retain) NSString *etaURL;
 @property (nonatomic, retain) NSMutableArray *fontChecksums;
 @property (nonatomic, retain) NSMutableArray *fonts;
@@ -280,6 +284,7 @@
 + (Class)attributionType;
 + (Class)dataSetType;
 + (Class)dataSetURLOverrideType;
++ (Class)displayStringsType;
 + (Class)fontChecksumType;
 + (Class)fontType;
 + (Class)iconChecksumType;
@@ -305,6 +310,7 @@
 - (void)_addNoFlagsAttribution:(id)arg1;
 - (void)_addNoFlagsDataSet:(id)arg1;
 - (void)_addNoFlagsDataSetURLOverride:(id)arg1;
+- (void)_addNoFlagsDisplayStrings:(id)arg1;
 - (void)_addNoFlagsFont:(id)arg1;
 - (void)_addNoFlagsFontChecksum:(id)arg1;
 - (void)_addNoFlagsIcon:(id)arg1;
@@ -341,6 +347,7 @@
 - (void)_readDataSets;
 - (void)_readDirectionsURL;
 - (void)_readDispatcherURL;
+- (void)_readDisplayStrings;
 - (void)_readEtaURL;
 - (void)_readFontChecksums;
 - (void)_readFonts;
@@ -383,6 +390,7 @@
 - (void)addAttribution:(id)arg1;
 - (void)addDataSet:(id)arg1;
 - (void)addDataSetURLOverride:(id)arg1;
+- (void)addDisplayStrings:(id)arg1;
 - (void)addFont:(id)arg1;
 - (void)addFontChecksum:(id)arg1;
 - (void)addIcon:(id)arg1;
@@ -422,6 +430,7 @@
 - (void)clearAttributions;
 - (void)clearDataSetURLOverrides;
 - (void)clearDataSets;
+- (void)clearDisplayStrings;
 - (void)clearFontChecksums;
 - (void)clearFonts;
 - (void)clearIconChecksums;
@@ -454,6 +463,9 @@
 - (id)dictionaryRepresentation;
 - (id)directionsURL;
 - (id)dispatcherURL;
+- (id)displayStrings;
+- (id)displayStringsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)displayStringsCount;
 - (id)etaURL;
 - (id)fontAtIndex:(unsigned long long)arg1;
 - (id)fontChecksumAtIndex:(unsigned long long)arg1;
@@ -560,6 +572,7 @@
 - (void)setDataSets:(id)arg1;
 - (void)setDirectionsURL:(id)arg1;
 - (void)setDispatcherURL:(id)arg1;
+- (void)setDisplayStrings:(id)arg1;
 - (void)setEtaURL:(id)arg1;
 - (void)setFontChecksums:(id)arg1;
 - (void)setFonts:(id)arg1;

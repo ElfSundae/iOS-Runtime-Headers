@@ -2,18 +2,14 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaSpeechTranscription : PBCodable <NSSecureCoding, SISchemaSpeechTranscription> {
+@interface SISchemaSpeechTranscription : PBCodable {
     NSString * _aceID;
     int  _speechTranscriptionType;
 }
 
 @property (nonatomic, copy) NSString *aceID;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) int speechTranscriptionType;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)aceID;

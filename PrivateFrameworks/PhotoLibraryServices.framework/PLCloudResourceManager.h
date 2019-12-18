@@ -15,6 +15,7 @@
 - (void)handleOptimizeModeChange;
 - (id)init;
 - (id)initWithCPLManager:(id)arg1 library:(id)arg2;
+- (void)invalidate;
 - (void)startAutomaticPrefetchAndPruneWithTimeout:(bool)arg1;
 - (id)statusForDebug:(bool)arg1;
 - (void)stop;

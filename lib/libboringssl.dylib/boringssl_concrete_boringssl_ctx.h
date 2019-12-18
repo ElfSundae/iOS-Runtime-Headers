@@ -26,15 +26,18 @@
     NSObject<OS_dispatch_queue> * client_queue;
     int  config;
     id /* block */  connected_callback;
+    unsigned char  connection_id;
     unsigned long long  current_flight_time;
     int  current_handshake_state;
     unsigned int  dtls;
     unsigned int  early_data_enabled;
     unsigned int  enforce_ev;
+    char * experiment_identifier;
     unsigned int  fallback_mode;
     unsigned int  false_start_enabled;
     unsigned int  false_start_used;
     unsigned int  flight_direction;
+    unsigned int  grease_enabled;
     unsigned long long  handshake_end;
     unsigned long long  handshake_start;
     id /* block */  handshake_state_callback;

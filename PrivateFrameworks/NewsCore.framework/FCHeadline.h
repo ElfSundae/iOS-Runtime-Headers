@@ -307,6 +307,7 @@
 - (bool)needsRapidUpdates;
 - (unsigned long long)order;
 - (void)overrideDisplayDate:(id)arg1;
+- (void)overrideShortExcerpt:(id)arg1;
 - (void)overrideTitle:(id)arg1;
 - (id)primaryAudience;
 - (id)publishDate;

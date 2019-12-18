@@ -9,6 +9,7 @@
 @property (nonatomic, retain) UITargetedPreview *sourcePreview;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)initWithTargetedPreview:(id)arg1;
 - (struct CGSize { double x1; double x2; })preferredContentSize;
 - (void)setSourcePreview:(id)arg1;

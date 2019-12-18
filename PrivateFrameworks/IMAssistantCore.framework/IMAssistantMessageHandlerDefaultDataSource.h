@@ -17,6 +17,7 @@
 @property (nonatomic) bool didRegisterForContactStoreChangeNotifications;
 @property (nonatomic, readonly) NSCache *handleToContactIdentifierCache;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isInternationalSpamFilteringEnabled;
 @property (nonatomic, readonly) <IMLocationManager> *locationManagerDataSource;
 @property (nonatomic, readonly) NSCache *spiHandleToPersonCache;
 @property (readonly) Class superclass;
@@ -30,8 +31,11 @@
 - (id)contactsDataSource;
 - (bool)didRegisterForContactStoreChangeNotifications;
 - (id)handleToContactIdentifierCache;
+- (bool)isInternationalSpamFilteringEnabled;
 - (id)locationManagerDataSource;
 - (void)registerForContactStoreChangeNotificationsIfNecessary;
+- (bool)screentimeAllowedToShowChat:(id)arg1;
+- (bool)screentimeAllowedToShowConversationWithHandleIDs:(id)arg1;
 - (void)setContactStore:(id)arg1;
 - (void)setDidRegisterForContactStoreChangeNotifications:(bool)arg1;
 - (id)spiHandleToPersonCache;

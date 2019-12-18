@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CarPlaySupport.framework/CarPlaySupport
  */
 
-@interface CPSNavigator : NSObject <CARNavigationOwnershipManagerDelegate, CPNavigationSessionProviding> {
+@interface CPSNavigator : NSObject <CARNavigationOwnershipManagerDelegate, CPNavigationSessionManaging> {
     bool  _completed;
     NSHashTable * _displayDelegates;
     <CARNavigationOwnershipManagerDelegate> * _navigationOwnershipDelegate;

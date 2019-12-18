@@ -29,6 +29,7 @@
 + (id)instantiateViewController;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)cancelButton;
 - (id)containerView;
 - (id /* block */)eventHandler;

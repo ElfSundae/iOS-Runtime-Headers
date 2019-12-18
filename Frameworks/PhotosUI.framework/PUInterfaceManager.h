@@ -8,6 +8,7 @@
 + (void)_handleInteractionDisablingTimeout;
 + (void)_handleInteractionDisablingTimeoutForAlbumStackTransition;
 + (void)_handleInteractionDisablingTimeoutForBannerViewImagesJump;
++ (void)_handleInteractionDisablingTimeoutForBurningInTrim;
 + (void)_handleInteractionDisablingTimeoutForOneUpToPhotoEditorTransition;
 + (void)_handleInteractionDisablingTimeoutForOverOneUpTransition;
 + (void)_handleInteractionDisablingTimeoutForPhotoBrowserToPhotoEditorTransition;

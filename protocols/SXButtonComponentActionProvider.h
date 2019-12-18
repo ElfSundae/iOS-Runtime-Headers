@@ -5,6 +5,6 @@
 
 @required
 
-- (SXAction *)buttonAction;
+- (<SXAction> *)action;
 
 @end

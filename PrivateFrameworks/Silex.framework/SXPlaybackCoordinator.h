@@ -82,13 +82,13 @@
 - (bool)muted;
 - (id)observers;
 - (void)pause;
-- (void)play;
+- (void)playWithButtonTapped:(bool)arg1;
 - (bool)playbackBufferFull;
 - (id)playbackBufferFullObserver;
 - (void)playbackBufferFullStateChanged;
 - (void)playbackFailedWithError:(id)arg1;
 - (void)playbackFinished;
-- (void)playbackInitiated;
+- (void)playbackInitiatedWithButtonTapped:(bool)arg1;
 - (bool)playbackLikelyToKeepUp;
 - (id)playbackLikelyToKeepUpObserver;
 - (void)playbackLikelyToKeepUpStateChanged;

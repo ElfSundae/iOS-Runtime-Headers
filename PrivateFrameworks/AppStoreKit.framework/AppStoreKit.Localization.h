@@ -6,7 +6,7 @@
     void $__lazy_storage_$_relativeDateFormatter;
     void dateFormatters;
     void dynamicDateFormatters;
-    void identifier;
+    union { in /* Warning: Unrecognized filer type: 'u' using 'void*' */ void*x1; long x2; long x3; }  extendedLocale;
     union { in /* Warning: Unrecognized filer type: 'u' using 'void*' */ void*x1; long x2; long x3; }  locale;
     void localizedStringTables;
 }

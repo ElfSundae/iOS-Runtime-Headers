@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 - (id)_activationInfoCell;
 - (id)_backgroundViewForHeaderView:(id)arg1;
+- (bool)_canShowWhileLocked;
 - (id)_formattedCSN:(id)arg1;
 - (id)_formattedICCID:(id)arg1;
 - (id)_formattedIMEI:(id)arg1;

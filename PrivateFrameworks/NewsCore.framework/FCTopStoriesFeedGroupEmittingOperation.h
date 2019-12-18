@@ -5,6 +5,7 @@
 @interface FCTopStoriesFeedGroupEmittingOperation : FCFeedGroupEmittingOperation
 
 - (void)_buildGroupWithCatchUpOperation:(id)arg1;
+- (void)_buildSupergroup;
 - (id)_feedTransformationWithOtherArticleIDs:(id)arg1;
 - (void)_fetchHeadlinesForArticleIDs:(id)arg1 withCompletion:(id /* block */)arg2;
 - (id)_filterHeadlines:(id)arg1 withArticleMetadata:(id)arg2;
@@ -12,7 +13,10 @@
 - (void)_performOperation;
 - (id)_personalizedFeedTransformationWithLimit:(unsigned long long)arg1 otherArticleIDs:(id)arg2 preselectedArticles:(id)arg3;
 - (void)_selectHeadlinesFromMandatory:(id)arg1 optional:(id)arg2 publishDate:(id)arg3 articleMetadataByArticleID:(id)arg4 cursor:(id)arg5 isAllowedToCollapse:(bool)arg6 completion:(id /* block */)arg7;
+- (id)_selectPremiumHeadlinesFromHeadlinePairs:(id)arg1;
 - (bool)hasSeenAllPreviousArticleIDs:(id)arg1;
+- (id)headlineLogFromHeadline:(id)arg1 includeScore:(bool)arg2;
+- (id)headlinesLogFromHeadlinePairs:(id)arg1 includeScore:(bool)arg2;
 - (id)headlinesLogFromHeadlines:(id)arg1 includeScore:(bool)arg2;
 - (void)performOperation;
 

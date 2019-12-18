@@ -37,7 +37,6 @@
 - (void)getReturnValue:(void*)arg1;
 - (id)init;
 - (void)invoke;
-- (void)invokeSuper;
 - (void)invokeUsingIMP:(int (*)arg1;
 - (void)invokeWithTarget:(id)arg1;
 - (id)methodSignature;

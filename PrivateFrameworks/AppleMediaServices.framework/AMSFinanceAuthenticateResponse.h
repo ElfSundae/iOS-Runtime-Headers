@@ -2,13 +2,17 @@
    Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
  */
 
-@interface AMSFinanceAuthenticateResponse : NSObject {
+@interface AMSFinanceAuthenticateResponse : NSObject <AMSFinancePerformable> {
     AMSAuthenticateRequest * _authenticateRequest;
     AMSFinanceDialogResponse * _dialogResponse;
 }
 
 @property (nonatomic, readonly) AMSAuthenticateRequest *authenticateRequest;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) AMSFinanceDialogResponse *dialogResponse;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)_createRequestFromDictionary:(id)arg1 dialogRequest:(id)arg2 taskInfo:(id)arg3;
 

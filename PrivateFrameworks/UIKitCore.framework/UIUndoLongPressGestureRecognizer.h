@@ -4,4 +4,6 @@
 
 @interface UIUndoLongPressGestureRecognizer : UILongPressGestureRecognizer
 
+- (bool)_analyticsIsGestureHandled;
+
 @end

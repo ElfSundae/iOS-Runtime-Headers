@@ -3,6 +3,7 @@
  */
 
 @interface NewsArticles.PDFReplicaViewerViewController : UIViewController <TSTabBarSplitViewAutoObserver> {
+    void backButton;
     void barVisibilityAnimator;
     void eventHandler;
     void eventManager;

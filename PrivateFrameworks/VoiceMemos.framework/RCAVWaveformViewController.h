@@ -61,6 +61,7 @@
 
 - (void).cxx_destruct;
 - (void)_beginShowingSelectionOverlayAndEnableInsertMode:(bool)arg1;
+- (bool)_canShowWhileLocked;
 - (unsigned long long)_currentTimeDisplayOptions;
 - (unsigned long long)_currentTimeDisplayOptionsIgnoringSelectionOverlayState:(bool)arg1;
 - (void)_didUpdateDisplayableTime;

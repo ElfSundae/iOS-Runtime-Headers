@@ -213,6 +213,7 @@
 
 // Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
 
++ (double)mf_defaultComposeFontPixelSize;
 + (id)mf_messageHeaderSenderLabelFont;
 + (id)mf_messageHeaderSenderLabelFontForMailActionHeader;
 + (id)mf_messageHeaderSummaryLabelFont;

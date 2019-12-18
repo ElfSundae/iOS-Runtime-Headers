@@ -14,6 +14,7 @@
 + (id)foreignPropertyForProperty:(id)arg1 entityClass:(Class)arg2;
 + (void)initialize;
 + (id)joinClausesForProperty:(id)arg1;
++ (bool)libraryContentsChangeForProperty:(id)arg1;
 + (id)predisambiguatedProperties;
 + (id)propertiesForGroupingKey;
 + (id)propertiesForGroupingUniqueCollections;

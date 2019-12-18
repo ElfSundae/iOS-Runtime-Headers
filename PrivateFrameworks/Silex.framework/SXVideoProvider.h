@@ -8,6 +8,7 @@
     NSString * _mediaIdentifier;
     <SVVideoMetadata> * _metadata;
     double  _pausedAtTime;
+    unsigned long long  _playMethod;
     SVTimeline * _timeline;
 }
 
@@ -19,6 +20,7 @@
 @property (nonatomic, readonly) NSString *mediaIdentifier;
 @property (nonatomic) <SVVideoMetadata> *metadata;
 @property (nonatomic) double pausedAtTime;
+@property (nonatomic) unsigned long long playMethod;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) SVTimeline *timeline;
 
@@ -32,9 +34,10 @@
 - (id)metadata;
 - (void)muteStateChanged:(bool)arg1;
 - (double)pausedAtTime;
+- (unsigned long long)playMethod;
 - (void)playbackFailedWithError:(id)arg1;
 - (void)playbackFinished;
-- (void)playbackInitiated;
+- (void)playbackInitiatedWithButtonTapped:(bool)arg1;
 - (void)playbackPaused;
 - (void)playbackPausedAtTime:(double)arg1;
 - (void)playbackResumed;
@@ -43,6 +46,7 @@
 - (void)setAnalyticsReporter:(id)arg1;
 - (void)setMetadata:(id)arg1;
 - (void)setPausedAtTime:(double)arg1;
+- (void)setPlayMethod:(unsigned long long)arg1;
 - (bool)supportsQuartileReporting;
 - (void)timeElapsed:(double)arg1 duration:(double)arg2;
 - (id)timeline;

@@ -7,7 +7,6 @@
     NSMutableArray * _emailAddressesImpl;
     bool  _hasBeenInterpreted;
     NSMutableArray * _phoneNumbersImpl;
-    NSMutableArray * _postalAddressesImpl;
     NSMutableArray * _unconvertableHandles;
 }
 
@@ -17,8 +16,6 @@
 @property (nonatomic) bool hasBeenInterpreted;
 @property (readonly) NSArray *phoneNumbers;
 @property (nonatomic, readonly) NSMutableArray *phoneNumbersImpl;
-@property (readonly) NSArray *postalAddresses;
-@property (nonatomic, readonly) NSMutableArray *postalAddressesImpl;
 @property (nonatomic, readonly) NSMutableArray *unconvertableHandles;
 
 - (void).cxx_destruct;
@@ -31,13 +28,10 @@
 - (id)initWithHandleStringClassification:(id)arg1;
 - (void)interpretEmailAddresses;
 - (void)interpretPhoneNumbers;
-- (void)interpretPostalAddresses;
 - (void)interpretUnknownsAsEmailAddresses;
 - (void)interpretValues;
 - (id)phoneNumbers;
 - (id)phoneNumbersImpl;
-- (id)postalAddresses;
-- (id)postalAddressesImpl;
 - (void)setHasBeenInterpreted:(bool)arg1;
 - (id)unconvertableHandles;
 

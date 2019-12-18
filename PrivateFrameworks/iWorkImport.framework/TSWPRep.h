@@ -312,7 +312,7 @@
 - (struct { struct CGRect { struct CGPoint { double x_1_2_1; double x_1_2_2; } x_1_1_1; struct CGSize { double x_2_2_1; double x_2_2_2; } x_1_1_2; } x1; double x2; double x3; double x4; double x5; bool x6; })wordMetricsAtCharIndex:(unsigned long long)arg1;
 - (Class)wpEditorClass;
 
-// Image: /System/Library/PrivateFrameworks/SilexText.framework/SilexText
+// Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
 
 - (id)_STAXColumnForLineIndex:(long long)arg1;
 - (id)_STAXColumnForStorageRelativeCharIndex:(unsigned long long)arg1;
@@ -322,6 +322,7 @@
 - (long long)_accessibilityLineEndPosition;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })_accessibilityLineRangeForPosition:(unsigned long long)arg1;
 - (long long)_accessibilityLineStartPosition;
+- (id)_accessibilityNextElementsForSpeakThis;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })_accessibilityRangeForLineNumber:(long long)arg1;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })_accessibilityRawRangeForUITextRange:(id)arg1;
 - (struct _NSRange { unsigned long long x1; unsigned long long x2; })_accessibilitySelectedTextRange;
@@ -335,6 +336,7 @@
 - (id)accessibilityContentForLineNumber:(long long)arg1;
 - (bool)accessibilityEditOperationAction:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })accessibilityFrameForLineNumber:(long long)arg1;
+- (id)accessibilityLanguage;
 - (long long)accessibilityLineNumberForPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (id)accessibilityPageContent;
 - (id)accessibilityValue;

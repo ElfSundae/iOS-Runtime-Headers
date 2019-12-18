@@ -9,6 +9,7 @@
     bool  _daSupportsSharedCalendars;
     bool  _daWasMigrated;
     bool  _didChooseToMigrate;
+    bool  _didChooseToMigrateLocally;
     bool  _didFinishMigration;
     bool  _inactive;
     REMCRMergeableOrderedSet * _listIDsMergeableOrdering;
@@ -36,6 +37,7 @@
 @property (nonatomic, copy) NSString *daSyncToken;
 @property (nonatomic) bool daWasMigrated;
 @property (nonatomic) bool didChooseToMigrate;
+@property (nonatomic) bool didChooseToMigrateLocally;
 @property (nonatomic) bool didFinishMigration;
 @property (nonatomic, readonly) NSString *displayName;
 @property (nonatomic, copy) NSString *externalIdentifier;
@@ -68,6 +70,7 @@
 - (id)debugDescription;
 - (id)description;
 - (bool)didChooseToMigrate;
+- (bool)didChooseToMigrateLocally;
 - (bool)didFinishMigration;
 - (id)displayName;
 - (void)encodeWithCoder:(id)arg1;
@@ -95,6 +98,7 @@
 - (void)setDaSyncToken:(id)arg1;
 - (void)setDaWasMigrated:(bool)arg1;
 - (void)setDidChooseToMigrate:(bool)arg1;
+- (void)setDidChooseToMigrateLocally:(bool)arg1;
 - (void)setDidFinishMigration:(bool)arg1;
 - (void)setExternalIdentifier:(id)arg1;
 - (void)setExternalModificationTag:(id)arg1;

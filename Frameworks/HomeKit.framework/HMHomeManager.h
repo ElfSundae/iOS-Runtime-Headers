@@ -109,7 +109,6 @@
 - (void)_deleteDuetEvents:(id)arg1 completion:(id /* block */)arg2;
 - (void)_determineCacheFiles;
 - (void)_dumpCaches:(id)arg1 metadata:(id)arg2;
-- (void)_dumpState:(id)arg1 payload:(id)arg2 completion:(id /* block */)arg3;
 - (void)_eraseHomeDataAndDeleteMetadata:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)_fetchHomeConfigurationWithRefreshRequested:(bool)arg1;
 - (void)_handleAccessAllowedWhenLockedUpdatedNotification:(id)arg1;
@@ -131,7 +130,6 @@
 - (id)_homeWithUUID:(id)arg1;
 - (bool)_isValidCachedHomeConfiguration:(id)arg1;
 - (void)_logAppViewEvent:(id)arg1 name:(id)arg2 uuid:(id)arg3 information:(id)arg4 completion:(id /* block */)arg5;
-- (void)_logControl:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_mergeCurrentAppDataWithNewAppData:(id)arg1 operations:(id)arg2;
 - (void)_mergeCurrentHomeInvitationsWithNewHomeInvitations:(id)arg1 operations:(id)arg2;
 - (void)_mergeCurrentHomesWithNewHomes:(id)arg1 newPrimaryHome:(id)arg2 newCurrentHome:(id)arg3 newInvitations:(id)arg4 newAppData:(id)arg5 refreshRequested:(bool)arg6;
@@ -147,8 +145,6 @@
 - (id)_privateDelegate;
 - (void)_processHomeConfigurationRequest:(id)arg1 refreshRequested:(bool)arg2;
 - (void)_queryHomeKitUsageStateWithCompletionHandler:(id /* block */)arg1;
-- (void)_queryMetadata:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)_queryVersionWithCompletionHandler:(id /* block */)arg1;
 - (void)_queryiCloudSwitchStateWithCompletionHandler:(id /* block */)arg1;
 - (void)_registerForMediaAccessoryControl:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)_registerNotificationHandlers;
@@ -156,7 +152,6 @@
 - (void)_removeHome:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_requestRefresh;
 - (void)_requestRuntimeUpdate:(id)arg1;
-- (void)_setMetadata:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)_setResidentProvisioningStatus:(unsigned long long)arg1;
 - (void)_shouldDisplayiCloudSwitchWithCompletionHandler:(id /* block */)arg1;
 - (void)_updateAccessAllowedWhenLocked:(bool)arg1 completionHandler:(id /* block */)arg2;
@@ -212,7 +207,6 @@
 - (bool)isThisDeviceResidentCapable;
 - (bool)isViewServiceActive;
 - (void)logAppViewEvent:(id)arg1 name:(id)arg2 uuid:(id)arg3 information:(id)arg4 completion:(id /* block */)arg5;
-- (void)logControl:(id)arg1 completionHandler:(id /* block */)arg2;
 - (bool)mediaAccessoryControlRequested;
 - (id)mergeOperationQueue;
 - (id)messageReceiveQueue;

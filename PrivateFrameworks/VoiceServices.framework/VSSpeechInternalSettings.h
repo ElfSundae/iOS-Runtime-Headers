@@ -22,6 +22,7 @@
 @property (nonatomic, readonly) bool internalBuild;
 @property (nonatomic, retain) NSUserDefaults *internalDefaults;
 @property (nonatomic) bool isInternalBuild;
+@property (nonatomic) bool logSensitiveText;
 @property (nonatomic, retain) NSString *ospreyEndpointURL;
 @property (nonatomic) float serverTTSTimeout;
 @property (nonatomic) float streamBufferDuration;
@@ -46,6 +47,7 @@
 - (bool)internalBuild;
 - (id)internalDefaults;
 - (bool)isInternalBuild;
+- (bool)logSensitiveText;
 - (id)ospreyEndpointURL;
 - (float)serverTTSTimeout;
 - (void)setDefaultVolume:(float)arg1;
@@ -61,6 +63,7 @@
 - (void)setForceServerTTS:(bool)arg1;
 - (void)setInternalDefaults:(id)arg1;
 - (void)setIsInternalBuild:(bool)arg1;
+- (void)setLogSensitiveText:(bool)arg1;
 - (void)setOspreyEndpointURL:(id)arg1;
 - (void)setServerTTSTimeout:(float)arg1;
 - (void)setStreamBufferDuration:(float)arg1;

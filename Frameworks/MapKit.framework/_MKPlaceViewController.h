@@ -201,6 +201,7 @@
 - (id)initWithMapItem:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithPlaceItem:(id)arg1 options:(unsigned long long)arg2;
 - (id)inlineMapVC;
+- (bool)isLayoutDynamic;
 - (bool)isLoading;
 - (bool)isWebContentLoading;
 - (bool)isWebContentViewControllerParentPlacecardLoading:(id)arg1;

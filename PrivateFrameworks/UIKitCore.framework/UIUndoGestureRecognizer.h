@@ -24,6 +24,7 @@
 @property (nonatomic, retain) _UIGestureRecognizerTransformAnalyzer *transformAnalyzer;
 
 - (void).cxx_destruct;
+- (bool)_analyticsIsGestureHandled;
 - (id)activeTouches;
 - (struct CGPoint { double x1; double x2; })beginPanCentroid;
 - (double)beginPanTimestamp;

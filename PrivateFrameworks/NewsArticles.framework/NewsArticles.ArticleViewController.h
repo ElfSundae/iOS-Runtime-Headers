@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NewsArticles.framework/NewsArticles
  */
 
-@interface NewsArticles.ArticleViewController : UIViewController <FCBundleSubscriptionChangeObserver, NAZoomable, NUArticleHardPaywallPresentationReporting, NUArticleViewControllerLoadingListener, NULoadingDelegate, TSTabBarSplitViewAutoObserver, UIScrollViewDelegate> {
+@interface NewsArticles.ArticleViewController : UIViewController <FCBundleSubscriptionChangeObserver, NAArticleFooterDelegate, NAZoomable, NUArticleHardPaywallPresentationReporting, NUArticleViewControllerLoadingListener, NULoadingDelegate, TSTabBarSplitViewAutoObserver, UIScrollViewDelegate> {
     void articleViewController;
     void contentBackgroundColor;
     void deferredHardPaywallHeightProvider;
@@ -12,17 +12,22 @@
     void documentSectionBlueprintProvider;
     void eventHandler;
     void footerProvider;
+    void footers;
     void hardPaywallViewController;
+    void headerProvider;
     void headline;
-    void identifier;
     void isImpressionable;
     void keyCommandManager;
     void modalHostStyle;
+    void model;
     void observableScrollView;
     void pageDelegate;
     void paywallPreparationEventManager;
+    void presentationContext;
+    void scrollDebounce;
     void styler;
     void urlHandler;
+    void viewingSessionID;
 }
 
 @property (nonatomic, readonly) bool canBecomeFirstResponder;
@@ -41,6 +46,8 @@
 - (bool)canZoomOut;
 - (void)decreaseTextSize;
 - (void)didLoadArticle:(id)arg1 withContext:(id)arg2;
+- (void)footerNeedsLayout:(id)arg1;
+- (void)footerResignsAsFirstResponder:(id)arg1;
 - (void)handleKeyCommandWithKeyCommand:(id)arg1;
 - (void)increaseTextSize;
 - (id)initWithCoder:(id)arg1;

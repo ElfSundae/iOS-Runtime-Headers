@@ -11,6 +11,7 @@
 @property (copy) id /* block */ dismissButtonPressedHandler;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_doneButtonPressed;
 - (void)addDismissButtonWithPressedHandler:(id /* block */)arg1;
 - (id /* block */)dismissButtonPressedHandler;

@@ -18,7 +18,7 @@
     NSNumber * _minimumSupportedOSRowID;
     unsigned long long  _notifsRank;
     BRCLocalItem * _orig;
-    NSNumber * _ownerKey;
+    BRCUserRowID * _ownerKey;
     NSNumber * _parentFileID;
     BRCZoneRowID * _parentZoneRowID;
     NSString * _path;
@@ -27,6 +27,7 @@
     BRCServerZone * _serverZone;
     BRCAccountSession * _session;
     unsigned long long  _sharingOptions;
+    BRFieldCKInfo * _sideCarCKInfo;
     BRCLocalStatInfo * _st;
     unsigned int  _syncUpState;
 }
@@ -81,6 +82,7 @@
 @property (nonatomic, readonly) bool isRejected;
 @property (nonatomic, readonly) bool isReserved;
 @property (nonatomic, readonly) bool isShareAcceptationFault;
+@property (nonatomic, readonly) bool isShareableItem;
 @property (nonatomic, readonly) bool isSharedByMe;
 @property (nonatomic, readonly) bool isSharedToMe;
 @property (nonatomic, readonly) bool isSharedToMeChildItem;
@@ -88,6 +90,7 @@
 @property (nonatomic, readonly) bool isSymLink;
 @property (nonatomic, readonly) bool isZoneRoot;
 @property (nonatomic, readonly) BRCItemID *itemID;
+@property (nonatomic, readonly) unsigned char itemScope;
 @property (nonatomic, readonly) unsigned long long localDiffs;
 @property (nonatomic, readonly) NSString *logicalName;
 @property (nonatomic, readonly) bool needsInsert;
@@ -97,7 +100,7 @@
 @property (nonatomic, readonly) bool needsUpload;
 @property (nonatomic, readonly) unsigned long long notifsRank;
 @property (nonatomic, readonly) BRCLocalItem *orig;
-@property (nonatomic, readonly) NSNumber *ownerKey;
+@property (nonatomic, readonly) BRCUserRowID *ownerKey;
 @property (nonatomic, readonly) BRCClientZone *parentClientZone;
 @property (nonatomic, readonly) NSNumber *parentFileID;
 @property (nonatomic, readonly) BRFileObjectID *parentFileObjectID;
@@ -120,6 +123,7 @@
 + (id)itemResolutionStringWithRelativePath:(id)arg1;
 + (id)newItemWithPath:(id)arg1 parentGlobalID:(id)arg2;
 + (bool)parseBookmarkData:(id)arg1 inAccountSession:(id)arg2 docID:(id*)arg3 itemID:(id*)arg4 mangledID:(id*)arg5 unsaltedBookmarkData:(id*)arg6 error:(id*)arg7;
++ (bool)parseUnsaltedBookmarkData:(id)arg1 itemID:(id*)arg2 mangledID:(id*)arg3 error:(id*)arg4;
 + (bool)supportsSecureCoding;
 + (id)unsaltedBookmarkDataWithItemResolutionString:(id)arg1 serverZone:(id)arg2;
 + (id)unsaltedBookmarkDataWithRelativePath:(id)arg1 serverZone:(id)arg2;
@@ -140,13 +144,13 @@
 - (bool)_isIndexable;
 - (bool)_isInterestingUpdateForNotifs;
 - (bool)_isInterestingUpdateForNotifsWithDiffs:(unsigned long long)arg1;
+- (bool)_isReadonlyShareChild;
 - (void)_markLostWhenReplacedByItem:(id)arg1 backoffMode:(unsigned char)arg2;
 - (void)_markNeedsSyncingUp;
-- (void)_queueParentIDUpdate:(id)arg1;
 - (void)_refreshAppLibraryFromParent;
 - (void)_sendNotificationIfNeededWithDiffs:(unsigned long long)arg1 regather:(bool)arg2;
 - (id)_setOfParentIDs;
-- (id)_syncZones;
+- (id)_syncZoneRowIDs;
 - (void)_updateAppLibraryPristineStatesAfterCreationOrUpdate;
 - (void)_updateAppLibraryPristineStatesAfterMarkingDead;
 - (bool)_updateInDB:(id)arg1 diffs:(unsigned long long)arg2;
@@ -159,12 +163,13 @@
 - (id)asBRAlias;
 - (id)asDirectory;
 - (id)asDocument;
-- (struct BRCDirectoryItem { Class x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; id x9; id x10; unsigned int x11; id x12; unsigned long long x13; id x14; bool x15; unsigned long long x16; unsigned long long x17; unsigned long long x18; }*)asFSRoot;
+- (struct BRCDirectoryItem { Class x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; id x9; id x10; unsigned int x11; id x12; unsigned long long x13; id x14; bool x15; unsigned long long x16; unsigned long long x17; unsigned long long x18; id x19; }*)asFSRoot;
 - (id)asFinderBookmark;
 - (id)asShareAcceptationFault;
 - (id)asShareableItem;
 - (id)asSharedToMeTopLevelItem;
 - (id)asSymlink;
+- (id)baseSideCarRecord;
 - (id)baseStructureRecord;
 - (void)beginBounceAndSaveToDBWithBounceNumber:(unsigned long long)arg1;
 - (id)bookmarkData;
@@ -227,6 +232,7 @@
 - (bool)isRejected;
 - (bool)isReserved;
 - (bool)isShareAcceptationFault;
+- (bool)isShareableItem;
 - (bool)isSharedByMe;
 - (bool)isSharedToMe;
 - (bool)isSharedToMeChildItem;
@@ -237,8 +243,9 @@
 - (id)itemID;
 - (id)itemParentGlobalID;
 - (id)itemResolutionString;
+- (unsigned char)itemScope;
 - (id)jobsDescription;
-- (void)learnItemID:(id)arg1 ownerKey:(id)arg2 path:(id)arg3 markLost:(bool)arg4;
+- (void)learnItemID:(id)arg1 ownerKey:(id)arg2 sharingOptions:(unsigned long long)arg3 path:(id)arg4 markLost:(bool)arg5;
 - (bool)learnStagedInfoFromDownloadStageID:(id)arg1 error:(id*)arg2;
 - (unsigned long long)localDiffs;
 - (id)logicalName;
@@ -250,7 +257,7 @@
 - (void)markForceRejected;
 - (void)markFound;
 - (void)markItemForgottenByServer;
-- (bool)markLatestRequestAcknowledgedInZone:(id)arg1;
+- (bool)markLatestSyncRequestAcknowledgedInZone:(id)arg1;
 - (void)markLatestSyncRequestFailedInZone:(id)arg1;
 - (void)markLatestSyncRequestRejectedInZone:(id)arg1;
 - (void)markLiveFromStageWithPath:(id)arg1;
@@ -263,11 +270,11 @@
 - (void)markNeedsOSUpgradeToSyncUpWithName:(id)arg1;
 - (void)markNeedsUploadOrSyncingUp;
 - (void)markRemovedFromFilesystemForServerEdit:(bool)arg1;
-- (void)markRenamedUsingServerItem:(id)arg1 toRelpath:(id)arg2 logicalName:(id)arg3 filename:(id)arg4;
+- (void)markRenamedUsingServerItem:(id)arg1 toRelpath:(id)arg2 logicalName:(id)arg3 filename:(id)arg4 forContentApplyOnly:(bool)arg5;
 - (void)markReserved;
 - (void)markStagedWithFileID:(unsigned long long)arg1 generationID:(unsigned int)arg2;
 - (void)markStagedWithFileID:(unsigned long long)arg1 generationID:(unsigned int)arg2 documentID:(unsigned int)arg3;
-- (unsigned long long)maskForDiffsToSyncUpForZone:(id)arg1;
+- (unsigned long long)maskForDiffsToSyncUpForZone:(id)arg1 sideCarZone:(bool)arg2 whenClearing:(bool)arg3;
 - (id)matchingJobsWhereSQLClause;
 - (unsigned long long)metadataSyncUpMask;
 - (void)moveAsideLocally;
@@ -288,6 +295,7 @@
 - (id)path;
 - (bool)physicalNameNeedsRename;
 - (void)prepareForSyncUpInZone:(id)arg1;
+- (void)prepareForSyncUpSideCarZone;
 - (void)resetAfterSyncJobsDeletion;
 - (bool)saveToDB;
 - (bool)saveToDBForServerEdit:(bool)arg1 keepAliases:(bool)arg2;
@@ -301,10 +309,12 @@
 - (void)setSharingOptions:(unsigned long long)arg1;
 - (id)sharedAliasItemID;
 - (unsigned long long)sharingOptions;
+- (id)sideCarInfo;
+- (id)sideCarRecordID;
 - (id)st;
 - (bool)startDownloadInTask:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3;
-- (id)structureRecordBeingDeadInServerTruth:(bool)arg1 pcsChained:(bool)arg2 inZone:(id)arg3;
-- (id)structureRecordBeingDeadInServerTruth:(bool)arg1 stageID:(id)arg2 pcsChained:(bool)arg3;
+- (id)structureRecordBeingDeadInServerTruth:(bool)arg1 shouldPCSChainStatus:(unsigned char)arg2 inZone:(id)arg3;
+- (id)structureRecordBeingDeadInServerTruth:(bool)arg1 stageID:(id)arg2 shouldPCSChainStatus:(unsigned char)arg3;
 - (id)structureRecordID;
 - (id)structureRecordIDInZone:(id)arg1;
 - (id)syncUpError;

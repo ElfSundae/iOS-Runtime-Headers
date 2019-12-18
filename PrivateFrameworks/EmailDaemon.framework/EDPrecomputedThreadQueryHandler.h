@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/EmailDaemon.framework/EmailDaemon
  */
 
-@interface EDPrecomputedThreadQueryHandler : EDMessageRepositoryQueryHandler <EDMessageChangeHookResponder, EDThreadChangeHookResponder, EFLoggable> {
+@interface EDPrecomputedThreadQueryHandler : EDMessageRepositoryQueryHandler <EDMessageChangeHookResponder, EDThreadChangeHookResponder, EFLoggable, EMCollectionItemIDStateCapturerDelegate> {
     <EFScheduler> * _backgroundWorkScheduler;
     EFCancelationToken * _cancelationToken;
     <EFScheduler> * _changeScheduler;
@@ -12,6 +12,7 @@
     NSMutableArray * _pendingPositionChanges;
     EDThreadReloadSummaryHelper * _reloadSummaryHelper;
     NSMutableDictionary * _reportedJournaledObjectIDs;
+    EMCollectionItemIDStateCapturer * _stateCapturer;
     EDThreadPersistence * _threadPersistence;
     EMThreadScope * _threadScope;
     NSMutableSet * _unreportedJournaledObjectIDs;
@@ -31,6 +32,7 @@
 @property (nonatomic, retain) NSMutableArray *pendingPositionChanges;
 @property (nonatomic, readonly) EDThreadReloadSummaryHelper *reloadSummaryHelper;
 @property (nonatomic, retain) NSMutableDictionary *reportedJournaledObjectIDs;
+@property (nonatomic, readonly) EMCollectionItemIDStateCapturer *stateCapturer;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) EDThreadPersistence *threadPersistence;
 @property (nonatomic, readonly) EMThreadScope *threadScope;
@@ -55,6 +57,8 @@
 - (id)cancelationToken;
 - (id)changeScheduler;
 - (id)initWithQuery:(id)arg1 threadScope:(id)arg2 messagePersistence:(id)arg3 threadPersistence:(id)arg4 hookRegistry:(id)arg5 observer:(id)arg6 observationIdentifier:(id)arg7;
+- (id)itemIDsForStateCaptureWithErrorString:(id*)arg1;
+- (id)labelForStateCapture;
 - (id)mailboxScope;
 - (id)oldestThreadObjectIDsByMailbox;
 - (id)pendingChanges;
@@ -79,6 +83,7 @@
 - (void)setUnreportedJournaledObjectIDs:(id)arg1;
 - (void)setUpdateOldestThreadsCancelationToken:(id)arg1;
 - (void)start;
+- (id)stateCapturer;
 - (id)threadForObjectID:(id)arg1 error:(id*)arg2;
 - (id)threadPersistence;
 - (id)threadScope;

@@ -36,7 +36,7 @@
 - (bool)bundleHasBeenLaunched:(id)arg1;
 - (unsigned short)categoryCount;
 - (void)decayByFactor:(double)arg1;
-- (void)decayWithHalfLife:(double)arg1;
+- (void)decayWithHalfLifeInDays:(double)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (double)entropy;

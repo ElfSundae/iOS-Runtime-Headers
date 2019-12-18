@@ -15,7 +15,7 @@
 - (id)bundleIdResolver;
 - (id)clientProcessName;
 - (id)preResponseItemArrayFromQuickResponses:(id)arg1;
-- (void)preResponseItemsForMessage:(id)arg1 maximumResponses:(unsigned long long)arg2 conversationHistory:(id)arg3 language:(id)arg4 modelFilePath:(id)arg5 modelConfigPath:(id)arg6 registerDisplayed:(bool)arg7 completion:(id /* block */)arg8;
+- (void)preResponseItemsForMessage:(id)arg1 maximumResponses:(unsigned long long)arg2 conversationHistory:(id)arg3 forContext:(id)arg4 time:(id)arg5 language:(id)arg6 modelFilePath:(id)arg7 modelConfigPath:(id)arg8 registerDisplayed:(bool)arg9 completion:(id /* block */)arg10;
 - (void)registerResponse:(id)arg1 position:(id)arg2 isCanned:(bool)arg3 isUsingQuickResponses:(bool)arg4 locale:(id)arg5 modelConfigPath:(id)arg6;
 - (void)setBundleIdResolver:(id)arg1;
 - (void)setClientProcessName:(id)arg1;

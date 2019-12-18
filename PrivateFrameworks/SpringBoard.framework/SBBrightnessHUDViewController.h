@@ -4,6 +4,7 @@
 
 @interface SBBrightnessHUDViewController : SBHUDViewController
 
+- (bool)_canShowWhileLocked;
 - (bool)displaysLabel;
 - (id)init;
 

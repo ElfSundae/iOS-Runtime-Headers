@@ -5,6 +5,7 @@
 @interface EMDaemonInterface : NSObject <EFLoggable> {
     EMAccountRepository * _accountRepository;
     EMActivityRegistry * _activityRegistry;
+    bool  _allowsBackgroundResume;
     EMBlockedSenderManager * _blockedSenderManager;
     EMClientState * _clientState;
     long long  _connectionState;
@@ -27,6 +28,7 @@
 
 @property (readonly) EMAccountRepository *accountRepository;
 @property (readonly) EMActivityRegistry *activityRegistry;
+@property bool allowsBackgroundResume;
 @property (readonly) EMBlockedSenderManager *blockedSenderManager;
 @property (readonly) EMClientState *clientState;
 @property (readonly, copy) NSString *debugDescription;
@@ -54,6 +56,7 @@
 - (id)_connectionForProtocol:(id)arg1 error:(id*)arg2;
 - (id)accountRepository;
 - (id)activityRegistry;
+- (bool)allowsBackgroundResume;
 - (id)blockedSenderManager;
 - (id)clientState;
 - (id)connectionForProtocol:(id)arg1;
@@ -71,6 +74,7 @@
 - (id)proxyCreator;
 - (void)resetProtocolConnections;
 - (id)searchableIndex;
+- (void)setAllowsBackgroundResume:(bool)arg1;
 - (void)test_tearDown;
 - (id)vipManager;
 

@@ -10,6 +10,7 @@
     bool  _didComputeMailDropProperties;
     NSMutableDictionary * _elementIDToContentID;
     NSMutableDictionary * _elementIDToWKAttachmentID;
+    NSMutableSet * _inlinedImageContentIDs;
     EMMailDropMetadata * _mailDropBannerMetadata;
     id /* block */  _maildropProgressHandler;
     <ContentRepresentationHandlingDelegate> * _representationHandler;
@@ -35,6 +36,8 @@
 
 - (void).cxx_destruct;
 - (void)_computeMailDropProperties;
+- (id)_futureForContentItem:(id)arg1;
+- (id)_futureForContentItem:(id)arg1 networkUsage:(long long)arg2 progress:(id*)arg3;
 - (void)_injectAttachmentViewForElementWithSourceAttributeValue:(id)arg1 forContentItem:(id)arg2;
 - (void)_updateProgressFraction:(id)arg1 forContentItem:(id)arg2;
 - (bool)allMailDropsDownloaded;
@@ -48,7 +51,7 @@
 - (long long)displayStateForContentItem:(id)arg1;
 - (void)displayViewerForContentItem:(id)arg1 rect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 view:(id)arg3;
 - (void)downloadAllMailDropAttachments;
-- (id)futureForContentItem:(id)arg1;
+- (id)futureForContentItem:(id)arg1 download:(bool)arg2;
 - (id)initWithWebView:(id)arg1 contentItemHandler:(id)arg2;
 - (void)inlineImageFinishedDownloading:(id)arg1;
 - (id)mailDropBannerMetadata;

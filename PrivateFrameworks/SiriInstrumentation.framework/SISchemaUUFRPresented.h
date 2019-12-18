@@ -2,19 +2,15 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaUUFRPresented : PBCodable <NSSecureCoding, SISchemaUUFRPresented> {
+@interface SISchemaUUFRPresented : PBCodable {
     int  _errorCode;
     NSString * _errorDomain;
     SISchemaViewContainer * _viewContainer;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) int errorCode;
 @property (nonatomic, copy) NSString *errorDomain;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
-@property (readonly) Class superclass;
 @property (nonatomic, retain) SISchemaViewContainer *viewContainer;
 
 - (void).cxx_destruct;

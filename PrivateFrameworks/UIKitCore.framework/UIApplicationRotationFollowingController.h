@@ -9,6 +9,7 @@
 @property (nonatomic) bool sizesWindowToScene;
 
 - (id)__autorotationSanityCheckObjectFromSource:(id)arg1 selector:(SEL)arg2;
+- (bool)_canShowWhileLocked;
 - (long long)_preferredInterfaceOrientationGivenCurrentOrientation:(long long)arg1;
 - (id)_topMostWindow;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

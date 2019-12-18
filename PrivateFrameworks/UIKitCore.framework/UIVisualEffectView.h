@@ -142,8 +142,6 @@
 - (void)setContentView:(id)arg1;
 - (void)setEffect:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)willMoveToSuperview:(id)arg1;
-- (void)willMoveToWindow:(id)arg1;
 
 // Image: /System/Library/PrivateFrameworks/TeaUI.framework/TeaUI
 

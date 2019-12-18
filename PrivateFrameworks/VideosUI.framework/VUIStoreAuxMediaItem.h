@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/VideosUI.framework/VideosUI
  */
 
-@interface VUIStoreAuxMediaItem : TVPBaseMediaItem <TVPContentKeyLoading, VUIStoreFPSKeyLoaderDelegate> {
+@interface VUIStoreAuxMediaItem : TVPBaseMediaItem <TVPContentKeyLoading, TVPMediaItemReporting, TVPMediaItemReportingDelegate, VUIStoreFPSKeyLoaderDelegate> {
     VUIMutableBookmark * _bookmark;
     NSString * _bookmarkID;
     NSNumber * _bookmarkOverrideTime;
@@ -12,6 +12,7 @@
     NSURL * _fpsCertificateURL;
     NSError * _fpsKeyError;
     NSURL * _fpsKeyServerURL;
+    bool  _ignoreExistingOfflineKeyData;
     bool  _isAudioOnly;
     bool  _isForStartingDownload;
     bool  _isHLS;
@@ -36,6 +37,7 @@
 @property (nonatomic, retain) NSError *fpsKeyError;
 @property (nonatomic, copy) NSURL *fpsKeyServerURL;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool ignoreExistingOfflineKeyData;
 @property (nonatomic) bool isAudioOnly;
 @property (nonatomic) bool isForStartingDownload;
 @property (nonatomic) bool isHLS;
@@ -70,6 +72,7 @@
 - (id)fpsKeyError;
 - (id)fpsKeyServerURL;
 - (bool)hasTrait:(id)arg1;
+- (bool)ignoreExistingOfflineKeyData;
 - (id)initWithURL:(id)arg1;
 - (id)initWithVideoManagedObject:(id)arg1 isForStartingDownload:(bool)arg2 externalBookmarkTime:(id)arg3 externalBookmarkTimeStamp:(id)arg4;
 - (bool)isAudioOnly;
@@ -78,12 +81,14 @@
 - (bool)isHLS;
 - (void)loadFairPlayStreamingKeyRequests:(id)arg1;
 - (void)loadFairPlayStreamingKeyRequests:(id)arg1 completion:(id /* block */)arg2;
+- (void)mediaItem:(id)arg1 errorDidOccur:(id)arg2 player:(id)arg3;
 - (id)mediaItemMetadataForProperty:(id)arg1;
 - (id)mediaItemURL;
 - (id)parentReportingToken;
 - (long long)playbackType;
 - (void)prepareForLoadingWithCompletion:(id /* block */)arg1;
 - (id)replacementErrorForPlaybackError:(id)arg1;
+- (id)reportingDelegate;
 - (id)scrubPlayer;
 - (void)setBookmark:(id)arg1;
 - (void)setBookmarkID:(id)arg1;
@@ -94,6 +99,7 @@
 - (void)setFpsCertificateURL:(id)arg1;
 - (void)setFpsKeyError:(id)arg1;
 - (void)setFpsKeyServerURL:(id)arg1;
+- (void)setIgnoreExistingOfflineKeyData:(bool)arg1;
 - (void)setIsAudioOnly:(bool)arg1;
 - (void)setIsForStartingDownload:(bool)arg1;
 - (void)setIsHLS:(bool)arg1;

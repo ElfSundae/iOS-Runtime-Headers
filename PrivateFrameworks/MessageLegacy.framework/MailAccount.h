@@ -17,6 +17,9 @@
         unsigned int disableCacheWrite : 1; 
         unsigned int _UNUSED_ : 13; 
     }  _flags;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _flagsLock;
     MFMailboxUid * _inboxMailboxUid;
     MFMailboxUid * _junkMailboxUid;
     MFError * _lastConnectionError;
@@ -33,6 +36,7 @@
     MFMailboxUid * _trashMailboxUid;
 }
 
+@property bool cacheHasBeenRead;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, readonly) NSString *defaultPath;
 @property (readonly, copy) NSString *description;
@@ -60,8 +64,6 @@
 @property (nonatomic, readonly) bool supportsFastRemoteBodySearch;
 @property (nonatomic, readonly) bool supportsRemoteAppend;
 @property (nonatomic, readonly, copy) ACAccount *systemAccount;
-
-// Image: /System/Library/PrivateFrameworks/Message.framework/Message
 
 + (id)URLForInfo:(id)arg1;
 + (id)_accountContainingEmailAddress:(id)arg1 matchingAddress:(id*)arg2 fullUserName:(id*)arg3 includingInactive:(bool)arg4;
@@ -162,6 +164,7 @@
 - (id)_deliveryAccountCreateIfNeeded:(bool)arg1;
 - (void)_didBecomeActive:(bool)arg1;
 - (int)_emptyFrequencyForKey:(id)arg1 defaultValue:(id)arg2;
+- (void)_incrementCacheDirtyCount;
 - (id)_infoForMatchingURL:(id)arg1;
 - (void)_invalidateAndDeleteAccountData:(bool)arg1;
 - (void)_invalidateCachedMailboxen;
@@ -201,6 +204,7 @@
 - (id)allMailboxUids;
 - (int)archiveDestinationForMailbox:(id)arg1;
 - (bool)archiveSentMessages;
+- (bool)cacheHasBeenRead;
 - (int)cachePolicy;
 - (bool)canAppendMessages;
 - (bool)canArchiveForMailbox:(id)arg1;
@@ -218,7 +222,9 @@
 - (bool)containsMailboxWithURL:(id)arg1;
 - (id)copyDataForRemoteEncryptionCertificatesForAddress:(id)arg1 error:(id*)arg2;
 - (id)copyDataForRemoteEncryptionCertificatesForAddresses:(id)arg1 errors:(id*)arg2;
+- (id)copyReceivingEmailAddresses;
 - (id)customSignature;
+- (void)dealloc;
 - (id)defaultEmailAddress;
 - (id)defaultPath;
 - (void)deleteDeliveryAccountIfNeeded;
@@ -326,6 +332,7 @@
 - (int)secureCompositionEncryptionPolicyForAddress:(id)arg1;
 - (int)secureCompositionSigningPolicyForAddress:(id)arg1;
 - (void)setActive:(bool)arg1;
+- (void)setCacheHasBeenRead:(bool)arg1;
 - (void)setCachePolicy:(int)arg1;
 - (void)setCanUseCarrierDeliveryFallback:(bool)arg1;
 - (void)setConnectionError:(id)arg1;
@@ -392,11 +399,5 @@
 - (bool)updateEmailAliases;
 - (id)valueInAccountLookAsidePropertiesForKey:(id)arg1;
 - (bool)willPerformActionForChokePoint:(id)arg1 coalescePoint:(id)arg2 result:(id*)arg3;
-
-// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
-
-+ (id)mf_receivingEmailAddressesCache;
-
-- (id)mf_copyReceivingEmailAddresses;
 
 @end

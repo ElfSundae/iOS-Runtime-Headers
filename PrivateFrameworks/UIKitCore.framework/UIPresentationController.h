@@ -241,6 +241,7 @@
 - (bool)_shouldMakePresentedViewControllerFirstResponder;
 - (bool)_shouldOccludeDuringPresentation;
 - (bool)_shouldPresentedViewControllerControlStatusBarAppearance;
+- (bool)_shouldPreserveFirstResponder;
 - (bool)_shouldRespectDefinesPresentationContext;
 - (bool)_shouldRestoreFirstResponder;
 - (bool)_shouldSavePresentedViewControllerForStateRestoration;

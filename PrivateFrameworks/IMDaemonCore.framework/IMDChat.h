@@ -160,6 +160,7 @@
 - (id)lastSentMessageDate;
 - (void)meCardHasUpdated;
 - (bool)meCardUpdated;
+- (int)messageHandshakeState;
 - (id)nicknamesForParticipants;
 - (unsigned long long)numMessagesSent;
 - (id)originalGroupID;
@@ -168,6 +169,7 @@
 - (id)personCentricID;
 - (id)pronunciationHint;
 - (id)properties;
+- (bool)receivedBlackholeError;
 - (id)recordName;
 - (void)removeParticipant:(id)arg1;
 - (void)removeParticipants:(id)arg1;
@@ -211,6 +213,7 @@
 - (void)setState:(long long)arg1;
 - (void)setStyle:(unsigned char)arg1;
 - (void)setWasReportedAsJunk:(bool)arg1;
+- (int)smsHandshakeState;
 - (id)spokenPhrase;
 - (id)srCloudKitRecordID;
 - (long long)srCloudKitSyncState;
@@ -236,10 +239,13 @@
 - (void)updateLastAddressedSIMID:(id)arg1;
 - (void)updateLastReadMessageTimeStampIfNeeded:(long long)arg1;
 - (void)updateLastSeenMessageGuidIfNeeded:(id)arg1;
+- (void)updateMessageHandshakeState:(int)arg1;
 - (void)updateNicknamesForParticipants:(id)arg1;
 - (void)updateNumberOfTimesRespondedToThread;
 - (void)updateOriginalGroupID:(id)arg1;
 - (void)updateProperties:(id)arg1;
+- (void)updateReceivedBlackholeError:(bool)arg1;
+- (void)updateSMSHandshakeState:(int)arg1;
 - (void)updateSMSSpamExtensionNameChatProperty:(id)arg1;
 - (void)updateSRCloudKitSyncState:(long long)arg1;
 - (void)updateSRServerChangeToken:(id)arg1;

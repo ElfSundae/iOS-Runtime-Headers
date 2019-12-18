@@ -39,6 +39,7 @@
 - (id)_annotationView;
 - (void)_callCompletionHandler;
 - (struct { double x1; double x2; })_clampCoordinateSpan:(struct { double x1; double x2; })arg1;
+- (id)_customAnnotation;
 - (id)_deriveSnapshotOptions:(bool)arg1;
 - (void)_fetchMuninViewforMapItem:(id)arg1;
 - (void)_getParentItem;
@@ -64,6 +65,7 @@
 - (id)mapItem;
 - (void)setShouldResolveMapItem:(bool)arg1;
 - (void)setShouldShowBorders:(bool)arg1;
+- (bool)shouldHideMuninForParsec;
 - (bool)shouldResolveMapItem;
 - (bool)shouldShowBorders;
 - (void)traitCollectionDidChange:(id)arg1;

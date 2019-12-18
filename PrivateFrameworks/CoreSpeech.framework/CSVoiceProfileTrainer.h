@@ -19,7 +19,7 @@
     float  _satTDSRThreshold;
     float  _satThreshold;
     float  _satVTImplicitThreshold;
-    NSObject<OS_dispatch_group> * _spIdDispatchGroup;
+    CSDispatchGroup * _spIdDispatchGroup;
     unsigned long long  _spIdType;
     NSData * _speakerVector;
     CSSpIdSpeakerVectorGenerator * _speakerVectorGenerator;
@@ -46,7 +46,7 @@
 @property (nonatomic, retain) CSSpIdSATAnalyzer *satAnalyzer;
 @property (nonatomic) unsigned long long satRunMode;
 @property (nonatomic, readonly) float satVTImplicitThreshold;
-@property (nonatomic, retain) NSObject<OS_dispatch_group> *spIdDispatchGroup;
+@property (nonatomic, retain) CSDispatchGroup *spIdDispatchGroup;
 @property (nonatomic) unsigned long long spIdType;
 @property (nonatomic, retain) NSData *speakerVector;
 @property (nonatomic, retain) CSSpIdSpeakerVectorGenerator *speakerVectorGenerator;

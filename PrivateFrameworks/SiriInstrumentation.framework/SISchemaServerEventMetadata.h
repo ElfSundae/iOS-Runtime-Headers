@@ -2,18 +2,16 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaServerEventMetadata : PBCodable <NSSecureCoding, SISchemaServerEventMetadata> {
+@interface SISchemaServerEventMetadata : PBCodable {
+    NSString * _serverPod;
     NSData * _siriDeviceID;
     long long  _timestampNs;
     NSData * _turnID;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
+@property (nonatomic, copy) NSString *serverPod;
 @property (nonatomic, copy) NSData *siriDeviceID;
-@property (readonly) Class superclass;
 @property (nonatomic) long long timestampNs;
 @property (nonatomic, copy) NSData *turnID;
 
@@ -25,6 +23,8 @@
 - (bool)isEqual:(id)arg1;
 - (id)jsonData;
 - (bool)readFrom:(id)arg1;
+- (id)serverPod;
+- (void)setServerPod:(id)arg1;
 - (void)setSiriDeviceID:(id)arg1;
 - (void)setTimestampNs:(long long)arg1;
 - (void)setTurnID:(id)arg1;

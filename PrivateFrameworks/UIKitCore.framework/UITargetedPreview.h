@@ -16,6 +16,7 @@
 }
 
 @property (nonatomic, readonly) <_UIPreviewProvider> *_PreviewProvider;
+@property (getter=_prefersUnmaskedPlatterStyle, setter=_setPrefersUnmaskedPlatterStyle:, nonatomic) bool _prefersUnmaskedPlatterStyle;
 @property (nonatomic) bool _springboardPlatterStyle;
 @property (getter=_isDefaultPreview, setter=_setDefaultPreview:, nonatomic) bool defaultPreview;
 @property (nonatomic, readonly) bool hasCustomTarget;
@@ -34,9 +35,11 @@
 - (void).cxx_destruct;
 - (id)_PreviewProvider;
 - (bool)_isDefaultPreview;
+- (bool)_prefersUnmaskedPlatterStyle;
 - (long long)_previewMode;
 - (void)_setDefaultPreview:(bool)arg1;
 - (void)_setOverridePositionTrackingView:(id)arg1;
+- (void)_setPrefersUnmaskedPlatterStyle:(bool)arg1;
 - (void)_setPreviewMode:(long long)arg1;
 - (void)_setViewToSnapshot:(id)arg1;
 - (bool)_springboardPlatterStyle;

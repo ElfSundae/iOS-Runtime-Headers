@@ -15,6 +15,7 @@
 + (id)defaultReuseIdentifier;
 
 - (void).cxx_destruct;
+- (void)_handleReturnedImage:(id)arg1 forSource:(id)arg2 fetchError:(id)arg3;
 - (id)iconImage;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;

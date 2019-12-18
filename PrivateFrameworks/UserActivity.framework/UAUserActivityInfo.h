@@ -3,6 +3,7 @@
  */
 
 @interface UAUserActivityInfo : NSObject <NSCopying, NSSecureCoding> {
+    bool  _active;
     NSString * _activityType;
     NSString * _bundleIdentifier;
     NSString * _contentUserAction;
@@ -19,7 +20,6 @@
     NSDictionary * _encodingOptions;
     NSError * _error;
     NSDate * _expirationDate;
-    bool  _isActive;
     NSSet * _keywords;
     NSDate * _lastInterestingTime;
     NSDictionary * _options;
@@ -41,6 +41,7 @@
     NSDate * _when;
 }
 
+@property bool active;
 @property (copy) NSString *activityType;
 @property (copy) NSString *bundleIdentifier;
 @property (copy) NSString *contentUserAction;
@@ -57,7 +58,6 @@
 @property (copy) NSDictionary *encodingOptions;
 @property (copy) NSError *error;
 @property (copy) NSDate *expirationDate;
-@property bool isActive;
 @property (copy) NSSet *keywords;
 @property (copy) NSDate *lastInterestingTime;
 @property (copy) NSDictionary *options;
@@ -83,6 +83,7 @@
 
 - (void).cxx_destruct;
 - (void)_createUserActivityStrings:(id)arg1 secondaryString:(id)arg2 optionalData:(id)arg3;
+- (bool)active;
 - (id)activityType;
 - (id)archiveUserActivityInfo;
 - (id)bundleIdentifier;
@@ -108,7 +109,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1 type:(unsigned long long)arg2 options:(id)arg3;
 - (id)initWithUserActivityInfo:(id)arg1;
-- (bool)isActive;
 - (bool)isDirty;
 - (bool)isPayloadAvailable;
 - (bool)isPayloadRequested;
@@ -128,6 +128,7 @@
 - (bool)requestPayloadWithCompletionHandlerEvenIfClean:(bool)arg1 withCompletionHandler:(id /* block */)arg2;
 - (id)requiredUserInfoKeys;
 - (id)secondaryUserActivityString;
+- (void)setActive:(bool)arg1;
 - (void)setActivityType:(id)arg1;
 - (void)setBundleIdentifier:(id)arg1;
 - (void)setContentUserAction:(id)arg1;
@@ -141,7 +142,6 @@
 - (void)setEncodingOptions:(id)arg1;
 - (void)setError:(id)arg1;
 - (void)setExpirationDate:(id)arg1;
-- (void)setIsActive:(bool)arg1;
 - (void)setKeywords:(id)arg1;
 - (void)setLastInterestingTime:(id)arg1;
 - (void)setOptions:(id)arg1;

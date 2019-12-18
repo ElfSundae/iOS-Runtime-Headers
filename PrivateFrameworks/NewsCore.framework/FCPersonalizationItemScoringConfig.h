@@ -7,6 +7,9 @@
     double  _articleReadPenalty;
     double  _autofavoritedVoteCoefficient;
     double  _baselineRatePrior;
+    double  _bundleFreeMultiplierForFreeUsers;
+    double  _bundleFreeMultiplierForPaidUsers;
+    double  _bundleFreeMultiplierForTrialUsers;
     double  _bundlePaidMultiplierForFreeUsers;
     double  _bundlePaidMultiplierForPaidUsers;
     double  _bundlePaidMultiplierForTrialUsers;
@@ -59,6 +62,9 @@
 @property (nonatomic, readonly) double articleReadPenalty;
 @property (nonatomic, readonly) double autofavoritedVoteCoefficient;
 @property (nonatomic, readonly) double baselineRatePrior;
+@property (nonatomic, readonly) double bundleFreeMultiplierForFreeUsers;
+@property (nonatomic, readonly) double bundleFreeMultiplierForPaidUsers;
+@property (nonatomic, readonly) double bundleFreeMultiplierForTrialUsers;
 @property (nonatomic, readonly) double bundlePaidMultiplierForFreeUsers;
 @property (nonatomic, readonly) double bundlePaidMultiplierForPaidUsers;
 @property (nonatomic, readonly) double bundlePaidMultiplierForTrialUsers;
@@ -111,6 +117,9 @@
 - (double)articleReadPenalty;
 - (double)autofavoritedVoteCoefficient;
 - (double)baselineRatePrior;
+- (double)bundleFreeMultiplierForFreeUsers;
+- (double)bundleFreeMultiplierForPaidUsers;
+- (double)bundleFreeMultiplierForTrialUsers;
 - (double)bundlePaidMultiplierForFreeUsers;
 - (double)bundlePaidMultiplierForPaidUsers;
 - (double)bundlePaidMultiplierForTrialUsers;
@@ -150,7 +159,7 @@
 - (double)globalScoreToCtrSlope;
 - (double)halfLifeCoefficient;
 - (double)headlineSeenPenalty;
-- (id)initWithBaselineRatePrior:(double)arg1 decayFactor:(double)arg2 democratizationFactor:(double)arg3 halfLifeCoefficient:(double)arg4 subscribedChannelScoreCoefficient:(double)arg5 ctrWithSubscribedChannel:(double)arg6 mutedVoteCoefficient:(double)arg7 personalizationCoefficient:(double)arg8 publisherAggregateWeight:(double)arg9 articleLengthAggregateWeight:(double)arg10 globalScoreCoefficient:(double)arg11 globalScoreCoefficientHalfLife:(double)arg12 globalScoreCoefficientInitialMultiplier:(double)arg13 globalScoreToCtrIntercept:(double)arg14 globalScoreToCtrSlope:(double)arg15 realTimeUserFeedbackCoefficient:(double)arg16 realTimeUserFeedbackPublishDateHalfLifeCoefficient:(double)arg17 realTimeUserFeedbackTagCoefficients:(id)arg18 cohortMembershipCtrCeiling:(double)arg19 cohortMembershipCurvature:(double)arg20 cohortMembershipFavoritedBoost:(double)arg21 cohortMembershipMinWeightedImpressions:(double)arg22 subscribedTopicsScoreCoefficient:(double)arg23 ctrWithZeroSubscribed:(double)arg24 ctrWithOneSubscribed:(double)arg25 ctrWithTwoSubscribed:(double)arg26 ctrWithThreeSubscribed:(double)arg27 autofavoritedVoteCoefficient:(double)arg28 ctrWithZeroAutofavorited:(double)arg29 ctrWithOneAutofavorited:(double)arg30 ctrWithTwoAutofavorited:(double)arg31 ctrWithThreeAutofavorited:(double)arg32 diversificationInitialPenalty:(double)arg33 diversificationPenalty:(double)arg34 diversificationPenaltyHalfLife:(double)arg35 channelTopicDiversificationInitialPenalty:(double)arg36 channelTopicDiversificationPenalty:(double)arg37 channelTopicDiversificationPenaltyHalfLife:(double)arg38 firstPassHalfLifeCoefficient:(double)arg39 firstPassRealTimeUserFeedbackPublishDateHalfLifeCoefficient:(double)arg40 firstPassDiversificationPenalty:(double)arg41 firstPassArticleFilter:(double)arg42 bundlePaidMultiplierForFreeUsers:(double)arg43 bundlePaidMultiplierForTrialUsers:(double)arg44 bundlePaidMultiplierForPaidUsers:(double)arg45 featuredMultiplierForFreeUsers:(double)arg46 featuredMultiplierForTrialUsers:(double)arg47 featuredMultiplierForPaidUsers:(double)arg48 headlineSeenPenalty:(double)arg49 articleReadPenalty:(double)arg50;
+- (id)initWithBaselineRatePrior:(double)arg1 decayFactor:(double)arg2 democratizationFactor:(double)arg3 halfLifeCoefficient:(double)arg4 subscribedChannelScoreCoefficient:(double)arg5 ctrWithSubscribedChannel:(double)arg6 mutedVoteCoefficient:(double)arg7 personalizationCoefficient:(double)arg8 publisherAggregateWeight:(double)arg9 articleLengthAggregateWeight:(double)arg10 globalScoreCoefficient:(double)arg11 globalScoreCoefficientHalfLife:(double)arg12 globalScoreCoefficientInitialMultiplier:(double)arg13 globalScoreToCtrIntercept:(double)arg14 globalScoreToCtrSlope:(double)arg15 realTimeUserFeedbackCoefficient:(double)arg16 realTimeUserFeedbackPublishDateHalfLifeCoefficient:(double)arg17 realTimeUserFeedbackTagCoefficients:(id)arg18 cohortMembershipCtrCeiling:(double)arg19 cohortMembershipCurvature:(double)arg20 cohortMembershipFavoritedBoost:(double)arg21 cohortMembershipMinWeightedImpressions:(double)arg22 subscribedTopicsScoreCoefficient:(double)arg23 ctrWithZeroSubscribed:(double)arg24 ctrWithOneSubscribed:(double)arg25 ctrWithTwoSubscribed:(double)arg26 ctrWithThreeSubscribed:(double)arg27 autofavoritedVoteCoefficient:(double)arg28 ctrWithZeroAutofavorited:(double)arg29 ctrWithOneAutofavorited:(double)arg30 ctrWithTwoAutofavorited:(double)arg31 ctrWithThreeAutofavorited:(double)arg32 diversificationInitialPenalty:(double)arg33 diversificationPenalty:(double)arg34 diversificationPenaltyHalfLife:(double)arg35 channelTopicDiversificationInitialPenalty:(double)arg36 channelTopicDiversificationPenalty:(double)arg37 channelTopicDiversificationPenaltyHalfLife:(double)arg38 firstPassHalfLifeCoefficient:(double)arg39 firstPassRealTimeUserFeedbackPublishDateHalfLifeCoefficient:(double)arg40 firstPassDiversificationPenalty:(double)arg41 firstPassArticleFilter:(double)arg42 bundlePaidMultiplierForFreeUsers:(double)arg43 bundlePaidMultiplierForTrialUsers:(double)arg44 bundlePaidMultiplierForPaidUsers:(double)arg45 bundleFreeMultiplierForFreeUsers:(double)arg46 bundleFreeMultiplierForTrialUsers:(double)arg47 bundleFreeMultiplierForPaidUsers:(double)arg48 featuredMultiplierForFreeUsers:(double)arg49 featuredMultiplierForTrialUsers:(double)arg50 featuredMultiplierForPaidUsers:(double)arg51 headlineSeenPenalty:(double)arg52 articleReadPenalty:(double)arg53;
 - (id)initWithConfigurationSet:(long long)arg1 configurableValues:(id)arg2;
 - (double)mutedVoteCoefficient;
 - (double)personalizationCoefficient;

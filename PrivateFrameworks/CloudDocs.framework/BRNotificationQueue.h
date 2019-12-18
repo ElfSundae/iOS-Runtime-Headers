@@ -6,6 +6,7 @@
     NSMutableArray * _array;
     NSMutableArray * _callbacks;
     unsigned long long  _dequeued;
+    unsigned long long  _dequeuedNotificationCount;
     NSMutableDictionary * _index;
 }
 

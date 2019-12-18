@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaClientEvent : PBCodable <NSSecureCoding, SISchemaClientEvent> {
+@interface SISchemaClientEvent : PBCodable {
     SISchemaAudioFirstBufferRecorded * _audioFirstBufferRecorded;
     SISchemaAudioStopRecording * _audioStopRecording;
     SISchemaConversationTrace * _clientConversationTrace;
@@ -29,21 +29,17 @@
 @property (nonatomic, retain) SISchemaAudioStopRecording *audioStopRecording;
 @property (nonatomic, retain) SISchemaConversationTrace *clientConversationTrace;
 @property (nonatomic, retain) SISchemaClientFlow *clientFlow;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic, retain) SISchemaDeviceDynamicContext *deviceDynamicContext;
 @property (nonatomic, retain) SISchemaDeviceFixedContext *deviceFixedContext;
 @property (nonatomic, retain) SISchemaDialogOutput *dialogOutput;
 @property (nonatomic, retain) SISchemaDictationContext *dictationContext;
 @property (nonatomic, retain) SISchemaClientEventMetadata *eventMetadata;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, retain) SISchemaInvocation *invocation;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, retain) SISchemaLocation *location;
 @property (nonatomic, retain) SISchemaPunchOut *punchOut;
 @property (nonatomic, retain) SISchemaSiriCue *siriCue;
 @property (nonatomic, retain) SISchemaSpeechTranscription *speechTranscription;
-@property (readonly) Class superclass;
 @property (nonatomic, retain) SISchemaTextToSpeechBegin *textToSpeechBegin;
 @property (nonatomic, retain) SISchemaTextToSpeechEnd *textToSpeechEnd;
 @property (nonatomic, retain) SISchemaClientTransportEventMetadata *transportMetadata;
@@ -65,6 +61,7 @@
 - (id)dictationContext;
 - (id)dictionaryRepresentation;
 - (id)eventMetadata;
+- (int)getAnyEventType;
 - (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;

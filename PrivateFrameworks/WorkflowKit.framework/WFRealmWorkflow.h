@@ -45,6 +45,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property bool deleted;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) unsigned long long estimatedSize;
 @property (copy) NSString *galleryIdentifier;
 @property (readonly) unsigned long long hash;
 @property bool hiddenFromLibraryAndSync;
@@ -94,6 +95,7 @@
 - (id)createdAt;
 - (bool)deleted;
 - (id)descriptor;
+- (unsigned long long)estimatedSize;
 - (id)galleryIdentifier;
 - (bool)hiddenFromLibraryAndSync;
 - (id)icon;

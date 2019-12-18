@@ -3,15 +3,17 @@
  */
 
 @interface NewsFeed.PlayerLayer : CALayer {
-    void loopBehavior;
     void looper;
     void nonAnimatingDelegate;
     void playerLayer;
     void readyToDisplayObservation;
+    void statusObservation;
     void stillImageLayer;
 }
 
 @property (nonatomic, readonly) AVPlayerLayer *playerLayer;
+
++ (id)defaultActionForKey:(id)arg1;
 
 - (void).cxx_destruct;
 - (void)applicationDidEnterBackground;

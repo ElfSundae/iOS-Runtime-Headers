@@ -501,6 +501,7 @@
 + (void)_traverseViewControllerHierarchy:(id /* block */)arg1;
 + (void)_traverseViewControllerHierarchyWithDelayedRelease:(id /* block */)arg1;
 + (id)_viewControllerForFullScreenPresentationFromView:(id)arg1;
++ (id)_whitelistOfSubclassableViewControllersMarkedSafe;
 + (void)_withDisabledAppearanceTransitions:(bool)arg1 forDescendantsOf:(id)arg2 visibleOnly:(bool)arg3 perform:(id /* block */)arg4;
 + (void)_withDisabledAppearanceTransitionsForVisibleDescendantsOf:(id)arg1 perform:(id /* block */)arg2;
 + (void)attemptRotationToDeviceOrientation;
@@ -1390,6 +1391,7 @@
 - (bool)ab_shouldShowNavBarButtons;
 - (bool)ab_shouldUseTransparentBackgroundInPopovers;
 - (void)cnui_addChildViewController:(id)arg1;
+- (id)cnui_appropriatePresentationController;
 - (void)set_cardViewControllerTransitioning:(id)arg1;
 
 // Image: /System/Library/Frameworks/EventKitUI.framework/EventKitUI

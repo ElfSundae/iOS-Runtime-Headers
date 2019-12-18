@@ -5,12 +5,14 @@
 @interface MPMusicPlayerPlayParameters : NSObject <NSSecureCoding> {
     NSDictionary * _dictionary;
     MPIdentifierSet * _identifiers;
+    NSString * _itemID;
     NSString * _itemKind;
     bool  _libraryContent;
 }
 
 @property (nonatomic, readonly, copy) NSDictionary *dictionary;
 @property (nonatomic, readonly, copy) MPIdentifierSet *identifiers;
+@property (nonatomic, readonly, copy) NSString *itemID;
 @property (nonatomic, readonly, copy) NSString *itemKind;
 @property (getter=isLibraryContent, nonatomic, readonly) bool libraryContent;
 
@@ -26,6 +28,7 @@
 - (id)initWithDictionary:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isLibraryContent;
+- (id)itemID;
 - (id)itemKind;
 
 @end

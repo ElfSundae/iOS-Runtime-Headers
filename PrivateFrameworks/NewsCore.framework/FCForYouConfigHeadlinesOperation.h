@@ -6,6 +6,7 @@
     NSArray * _additionalArticleListIDs;
     NSArray * _additionalTagIDs;
     FCCachePolicy * _articleListCachePolicy;
+    <FCForYouBridgedConfigurationParser> * _bridgedConfigurationParser;
     <FCCoreConfiguration> * _configuration;
     <FCContentContext> * _context;
     FCCachePolicy * _editorialSectionTagCachePolicy;
@@ -25,6 +26,7 @@
 @property (nonatomic, copy) NSArray *additionalArticleListIDs;
 @property (nonatomic, copy) NSArray *additionalTagIDs;
 @property (nonatomic, retain) FCCachePolicy *articleListCachePolicy;
+@property (nonatomic, retain) <FCForYouBridgedConfigurationParser> *bridgedConfigurationParser;
 @property (nonatomic, copy) <FCCoreConfiguration> *configuration;
 @property (nonatomic, retain) <FCContentContext> *context;
 @property (nonatomic, retain) FCCachePolicy *editorialSectionTagCachePolicy;
@@ -45,6 +47,7 @@
 - (id)additionalArticleListIDs;
 - (id)additionalTagIDs;
 - (id)articleListCachePolicy;
+- (id)bridgedConfigurationParser;
 - (id)configuration;
 - (id)context;
 - (id)editorialSectionTagCachePolicy;
@@ -63,6 +66,7 @@
 - (void)setAdditionalArticleListIDs:(id)arg1;
 - (void)setAdditionalTagIDs:(id)arg1;
 - (void)setArticleListCachePolicy:(id)arg1;
+- (void)setBridgedConfigurationParser:(id)arg1;
 - (void)setConfiguration:(id)arg1;
 - (void)setContext:(id)arg1;
 - (void)setEditorialSectionTagCachePolicy:(id)arg1;

@@ -10,6 +10,7 @@
     bool  _meContactNeedsUpdate;
     NSArray * _requiredKeys;
     NSArray * _sections;
+    NSMutableArray * _selectedContactItems;
     CNContactStore * _store;
 }
 
@@ -20,6 +21,7 @@
 @property (nonatomic) bool meContactNeedsUpdate;
 @property (nonatomic, readonly) NSArray *requiredKeys;
 @property (nonatomic, retain) NSArray *sections;
+@property (nonatomic, retain) NSMutableArray *selectedContactItems;
 @property (nonatomic, retain) CNContactStore *store;
 
 + (bool)isErrorPossiblyRelatedToExtraStores:(id)arg1;
@@ -44,12 +46,16 @@
 - (id)preferredForNameMeContactWithKeysToFetch:(id)arg1;
 - (id)requiredKeys;
 - (id)sections;
+- (id)selectedContactItems;
+- (id)selectedContacts;
+- (void)setContactItemSelected:(bool)arg1 forIndexPath:(id)arg2;
 - (void)setFamilyMembers:(id)arg1;
 - (void)setFilterString:(id)arg1;
 - (void)setFilteredSections:(id)arg1;
 - (void)setMeContact:(id)arg1;
 - (void)setMeContactNeedsUpdate:(bool)arg1;
 - (void)setSections:(id)arg1;
+- (void)setSelectedContactItems:(id)arg1;
 - (void)setStore:(id)arg1;
 - (long long)sortOrder;
 - (id)store;

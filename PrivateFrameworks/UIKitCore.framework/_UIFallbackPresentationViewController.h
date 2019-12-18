@@ -16,6 +16,7 @@
 @property (nonatomic, retain) UIWindow *rotationDecider;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_dismissViewControllerWithTransition:(int)arg1 from:(id)arg2 completion:(id /* block */)arg3;
 - (void)_preparePresentationControllerForPresenting:(id)arg1;
 - (void)_presentViewController:(id)arg1 sendingView:(id)arg2 animated:(bool)arg3;

@@ -101,7 +101,7 @@
 - (void)insertRecurrenceRule:(id)arg1 beforeRecurrenceRule:(id)arg2;
 - (bool)isSubtask;
 - (id)listChangeItem;
-- (double)nextRecurrentAdvanceAmountAfter:(id)arg1;
+- (double)nextRecurrentAdvanceAmountForDateComponents:(id)arg1 afterDate:(id)arg2;
 - (id)nextRecurrentDueDateComponentsAfter:(id)arg1;
 - (id)notes;
 - (id)notesAsString;

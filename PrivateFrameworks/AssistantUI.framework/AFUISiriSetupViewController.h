@@ -28,6 +28,7 @@
 
 - (void).cxx_destruct;
 - (void)_addStatusBar;
+- (bool)_canShowWhileLocked;
 - (void)_continueTapped:(id)arg1;
 - (void)_laterTapped:(id)arg1;
 - (void)_presentDataSharingOptInViewController;

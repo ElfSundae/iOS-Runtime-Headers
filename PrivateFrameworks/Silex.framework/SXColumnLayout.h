@@ -15,14 +15,14 @@
     long long  _layoutWidth;
     long long  _leftColumnOffset;
     double  _leftInset;
-    long long  _leftMargin;
+    double  _leftMargin;
     double  _leftScreenMargin;
     double  _minimumHeight;
     double  _minimumViewportWidthForLooseLayout;
     unsigned long long  _numberOfColumns;
     long long  _rightColumnOffset;
     double  _rightInset;
-    long long  _rightMargin;
+    double  _rightMargin;
     double  _rightScreenMargin;
     struct CGSize { 
         double width; 
@@ -39,14 +39,14 @@
 @property (nonatomic, readonly) long long layoutWidth;
 @property (nonatomic, readonly) long long leftColumnOffset;
 @property (nonatomic) double leftInset;
-@property (nonatomic, readonly) long long leftMargin;
+@property (nonatomic, readonly) double leftMargin;
 @property (nonatomic, readonly) double leftScreenMargin;
 @property (nonatomic) double minimumHeight;
 @property (nonatomic) double minimumViewportWidthForLooseLayout;
 @property (nonatomic, readonly) unsigned long long numberOfColumns;
 @property (nonatomic) long long rightColumnOffset;
 @property (nonatomic) double rightInset;
-@property (nonatomic, readonly) long long rightMargin;
+@property (nonatomic, readonly) double rightMargin;
 @property (nonatomic, readonly) double rightScreenMargin;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } viewportSize;
 
@@ -66,14 +66,14 @@
 - (long long)layoutWidth;
 - (long long)leftColumnOffset;
 - (double)leftInset;
-- (long long)leftMargin;
+- (double)leftMargin;
 - (double)leftScreenMargin;
 - (double)minimumHeight;
 - (double)minimumViewportWidthForLooseLayout;
 - (unsigned long long)numberOfColumns;
 - (long long)rightColumnOffset;
 - (double)rightInset;
-- (long long)rightMargin;
+- (double)rightMargin;
 - (double)rightScreenMargin;
 - (void)setLeftInset:(double)arg1;
 - (void)setMinimumHeight:(double)arg1;

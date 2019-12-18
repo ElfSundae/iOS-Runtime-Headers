@@ -29,8 +29,10 @@
 @property (copy) NSArray *contactsHandles;
 @property (retain) STConversation *conversation;
 @property (retain) STConversationContext *conversationContext;
+@property (readonly) CNContainer *iCloudContainer;
 @property (readonly) bool needsToSetRestrictionsPasscode;
 @property (readonly) bool shouldAllowOneMoreMinute;
+@property (readonly) unsigned long long state;
 @property (nonatomic, copy) NSURL *websiteURL;
 
 - (void).cxx_destruct;
@@ -67,6 +69,7 @@
 - (id)conversationContext;
 - (void)dealloc;
 - (bool)handleAction:(long long)arg1 withCompletionHandler:(id /* block */)arg2;
+- (id)iCloudContainer;
 - (id)init;
 - (id)initWithBundleIdentifier:(id)arg1 contactsHandles:(id)arg2 delegate:(id)arg3;
 - (id)initWithBundleIdentifier:(id)arg1 conversationContext:(id)arg2 contactStore:(id)arg3 delegate:(id)arg4;
@@ -81,6 +84,7 @@
 - (void)setConversationContext:(id)arg1;
 - (void)setWebsiteURL:(id)arg1;
 - (bool)shouldAllowOneMoreMinute;
+- (unsigned long long)state;
 - (id)websiteURL;
 
 @end

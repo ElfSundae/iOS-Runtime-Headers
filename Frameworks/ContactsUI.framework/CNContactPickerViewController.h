@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
  */
 
-@interface CNContactPickerViewController : UIViewController <CNContactPickerContentDelegate, _UIRemoteViewControllerContaining> {
+@interface CNContactPickerViewController : UIViewController <CNContactPickerContentDelegate, UIAdaptivePresentationControllerDelegate, _UIRemoteViewControllerContaining> {
     bool  _allowsCancel;
     bool  _allowsDeletion;
     bool  _allowsEditing;
@@ -31,6 +31,7 @@
 }
 
 @property (nonatomic, readonly) _UIRemoteViewController *_containedRemoteViewController;
+@property (nonatomic, readonly) UIBarButtonItem *addContactBarButtonItem;
 @property (nonatomic) bool allowsCancel;
 @property (nonatomic) bool allowsDeletion;
 @property (nonatomic) bool allowsEditing;
@@ -72,6 +73,7 @@
 - (void)_setupViewController;
 - (bool)_shouldBeOutOfProcess;
 - (void)_viewWillBePresented;
+- (id)addContactBarButtonItem;
 - (bool)allowsCancel;
 - (bool)allowsDeletion;
 - (bool)allowsEditing;
@@ -93,6 +95,7 @@
 - (bool)isDefaultViewControllerVisible;
 - (long long)mode;
 - (id)navigationController;
+- (void)notifyDelegateForCancellation;
 - (bool)onlyRealContacts;
 - (void)pickerDidCancel;
 - (void)pickerDidSelectAddNewContact;
@@ -102,6 +105,7 @@
 - (id)predicateForEnablingContact;
 - (id)predicateForSelectionOfContact;
 - (id)predicateForSelectionOfProperty;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (id)prohibitedPropertyKeys;
 - (id)prompt;
 - (id)scrollContact;

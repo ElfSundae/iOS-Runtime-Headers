@@ -2,16 +2,12 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaAudioFirstBufferRecorded : PBCodable <NSSecureCoding, SISchemaAudioFirstBufferRecorded> {
+@interface SISchemaAudioFirstBufferRecorded : PBCodable {
     int  _audioInputRoute;
 }
 
 @property (nonatomic) int audioInputRoute;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
-@property (readonly) Class superclass;
 
 - (int)audioInputRoute;
 - (id)dictionaryRepresentation;

@@ -19,6 +19,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) bool didChooseToMigrate;
+@property (nonatomic) bool didChooseToMigrateLocally;
 @property (nonatomic) bool didFinishMigration;
 @property (nonatomic, copy) NSString *externalIdentifier;
 @property (nonatomic, copy) NSString *externalModificationTag;

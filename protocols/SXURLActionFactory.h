@@ -5,6 +5,6 @@
 
 @required
 
-- (SXAction *)actionForURL:(NSURL *)arg1;
+- (<SXAction> *)actionForURL:(NSURL *)arg1;
 
 @end

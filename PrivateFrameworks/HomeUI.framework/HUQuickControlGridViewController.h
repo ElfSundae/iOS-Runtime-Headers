@@ -11,6 +11,7 @@
 + (id)controlItemPredicate;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_subclass_configureQuickControlViewController:(id)arg1;
 - (id)childQuickControlContentViewControllers;
 - (id)collectionViewController;

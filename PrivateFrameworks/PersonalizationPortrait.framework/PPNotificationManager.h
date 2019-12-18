@@ -17,6 +17,7 @@
 + (void)unsetSharedManager;
 
 - (void).cxx_destruct;
+- (void)_registerForEventKitChangeTrackingWithGuardedData:(id)arg1;
 - (void)addContactsChangeBlock:(id /* block */)arg1 forLifetimeOfObject:(id)arg2;
 - (void)addEventKitChangeBlock:(id /* block */)arg1 forLifetimeOfObject:(id)arg2;
 - (void)addMeCardChangeBlock:(id /* block */)arg1 forLifetimeOfObject:(id)arg2;

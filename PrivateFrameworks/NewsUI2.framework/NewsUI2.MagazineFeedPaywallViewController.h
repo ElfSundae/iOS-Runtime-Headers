@@ -2,22 +2,25 @@
    Image: /System/Library/PrivateFrameworks/NewsUI2.framework/NewsUI2
  */
 
-@interface NewsUI2.MagazineFeedPaywallViewController : UIViewController <TUPluggable> {
+@interface NewsUI2.MagazineFeedPaywallViewController : UIViewController <TUPluggable, UIScrollViewDelegate> {
     void $__lazy_storage_$_spinnerViewController;
     void assetManager;
+    void blueprintLayoutOptionsProvider;
     union { in /* Warning: Unrecognized filer type: 'u' using 'void*' */ void*x1; long x2; long x3; }  config;
+    void configurationManager;
     void eventHandler;
     void imageCache;
+    void imageResult;
     void isBeingUsedAsPlugin;
-    void layoutAttributesFactory;
-    void layoutOptionsProvider;
+    void lastRenderedVerticalContentOffset;
+    void paywallLayoutAttributesFactory;
+    void paywallRenderer;
     void paywallView;
     void pluggableDelegate;
     void purchasePresenter;
     void purchasingSpinnerViewControllerFactory;
-    void renderToken;
-    void renderer;
     void styler;
+    union { in /* Warning: Unrecognized filer type: 'u' using 'void*' */ void*x1; long x2; long x3; }  videoFilePath;
 }
 
 @property (nonatomic) bool isBeingUsedAsPlugin;
@@ -30,11 +33,13 @@
 - (bool)isBeingUsedAsPlugin;
 - (id)pluggableDelegate;
 - (void)relayoutWithCompletion:(id /* block */)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)setIsBeingUsedAsPlugin:(bool)arg1;
 - (void)setPluggableDelegate:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(bool)arg1;
 
 @end

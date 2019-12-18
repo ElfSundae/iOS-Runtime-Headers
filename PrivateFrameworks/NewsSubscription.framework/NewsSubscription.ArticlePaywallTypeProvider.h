@@ -3,6 +3,7 @@
  */
 
 @interface NewsSubscription.ArticlePaywallTypeProvider : Swift._SwiftObject {
+    void articleSoftPaywallMeter;
     void bundleSubscriptionManager;
     void configurationManager;
     void paidAccessChecker;

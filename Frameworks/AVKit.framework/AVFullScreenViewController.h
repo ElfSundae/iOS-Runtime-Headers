@@ -5,16 +5,17 @@
 @interface AVFullScreenViewController : UIViewController {
     AVFullScreenViewController * _associatedFullScreenViewController;
     UIView * _contentView;
-    <AVFullScreenViewControllerDelegate> * _delegate;
+    UIViewController<AVFullScreenViewControllerDelegate> * _delegate;
     AVFullScreenViewController * _sourceFullScreenViewController;
 }
 
 @property (nonatomic) AVFullScreenViewController *associatedFullScreenViewController;
 @property (nonatomic) UIView *contentView;
-@property (nonatomic) <AVFullScreenViewControllerDelegate> *delegate;
+@property (nonatomic) UIViewController<AVFullScreenViewControllerDelegate> *delegate;
 @property (nonatomic) AVFullScreenViewController *sourceFullScreenViewController;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)_presentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (bool)_requiresCustomPresentationController;
 - (id)associatedFullScreenViewController;

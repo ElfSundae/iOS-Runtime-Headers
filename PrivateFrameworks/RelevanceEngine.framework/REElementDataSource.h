@@ -56,6 +56,7 @@
 - (bool)hasUnlockedSinceBoot;
 - (id)init;
 - (bool)isRunning;
+- (bool)isWhitelisted;
 - (void)loadLoggingHeader;
 - (id)logHeader;
 - (id)name;

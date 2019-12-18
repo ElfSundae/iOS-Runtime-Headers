@@ -6,11 +6,7 @@
 
 @property (copy) NSString *cssText;
 @property (readonly) unsigned int length;
-@property (readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } mf_margin;
-@property (readonly) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } mf_padding;
 @property (readonly) DOMCSSRule *parentRule;
-
-// Image: /System/Library/PrivateFrameworks/WebKitLegacy.framework/WebKitLegacy
 
 - (id)_fontSizeDelta;
 - (void)_setFontSizeDelta:(id)arg1;
@@ -272,10 +268,5 @@
 - (id)width;
 - (id)wordSpacing;
 - (id)zIndex;
-
-// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
-
-- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })mf_margin;
-- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })mf_padding;
 
 @end

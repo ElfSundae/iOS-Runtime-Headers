@@ -3,15 +3,14 @@
  */
 
 @interface MessageQuicklookImageAttachmentsActivity : UIActivity {
-    <MFAttachmentHandlingDelegate> * _delegate;
+    <ContentRepresentationHandlingDelegate> * _delegate;
     NSURL * _url;
 }
 
-@property (nonatomic) <MFAttachmentHandlingDelegate> *delegate;
+@property (nonatomic) <ContentRepresentationHandlingDelegate> *delegate;
 @property (nonatomic, retain) NSURL *url;
 
 - (void).cxx_destruct;
-- (id)_beforeActivity;
 - (void)_cleanup;
 - (id)activityImage;
 - (id)activityTitle;

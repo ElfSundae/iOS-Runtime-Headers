@@ -34,7 +34,7 @@
 
 - (void).cxx_destruct;
 - (const char *)UTF8String;
-- (id)_directoryRecordName;
+- (id)_directoryRecordNameWithSession:(id)arg1;
 - (id)_initAsLibraryRootWithAppLibraryRowID:(id)arg1;
 - (id)_initAsZoneRootWithZoneRowID:(id)arg1;
 - (id)appLibraryRowID;
@@ -43,8 +43,8 @@
 - (id)debugItemIDString;
 - (id)derivedAliasItemIDWithOwnerName:(id)arg1;
 - (id)description;
-- (id)directoryReferenceInZoneID:(id)arg1 action:(unsigned long long)arg2;
-- (id)directoryStructureRecordIDInZoneID:(id)arg1;
+- (id)directoryReferenceInZone:(id)arg1 action:(unsigned long long)arg2;
+- (id)directoryStructureRecordIDInZone:(id)arg1;
 - (id)documentStructureRecordIDInZoneID:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
@@ -65,11 +65,13 @@
 - (id)itemIDString;
 - (id)itemUUIDString;
 - (id)pcsChainDocumentStructureReferenceInZoneID:(id)arg1;
-- (id)pcsChainParentReferenceInZoneID:(id)arg1;
+- (id)pcsChainParentReferenceInZone:(id)arg1;
 - (id)sharedZoneRowID;
+- (id)sideCarRecordIDWithZone:(id)arg1;
+- (id)sideCarRecordNameWithZone:(id)arg1;
 - (void)sqliteBind:(struct sqlite3_stmt { }*)arg1 index:(int)arg2;
-- (id)structureRecordIDForItemType:(BOOL)arg1 appLibrary:(id)arg2 zone:(id)arg3 aliasTargetZone:(id)arg4;
-- (id)validatingDirectoryReferenceInZoneID:(id)arg1;
+- (id)structureRecordIDForItemType:(BOOL)arg1 zone:(id)arg2;
+- (id)validatingDirectoryReferenceInZone:(id)arg1;
 - (id)zoneUniqueItemIDStringWithSession:(id)arg1;
 
 @end

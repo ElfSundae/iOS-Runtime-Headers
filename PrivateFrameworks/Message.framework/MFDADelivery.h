@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Message.framework/Message
  */
 
-@interface MFDADelivery : MFMailDelivery {
+@interface MFDADelivery : MFMailDelivery <EFLoggable> {
     DAMailAccount * _DAMailAccount;
     NSString * _accountID;
     NSString * _folderID;
@@ -10,6 +10,13 @@
     NSString * _originalLongID;
     NSString * _originalMessageID;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)log;
 
 - (void).cxx_destruct;
 - (void)_updateBasedOnOriginalMessage:(id)arg1;

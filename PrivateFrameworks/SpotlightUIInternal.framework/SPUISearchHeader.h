@@ -82,13 +82,11 @@
 - (id)legibilitySettings;
 - (bool)offersCompletions;
 - (void)performActionAfterCommit:(id /* block */)arg1;
-- (void)performTestSearchWithQuery:(id)arg1 event:(unsigned long long)arg2 sourcePreference:(long long)arg3;
+- (void)performTestSearchWithQuery:(id)arg1 event:(unsigned long long)arg2 sourcePreference:(unsigned long long)arg3;
 - (void)returnKeyPressed;
 - (id)searchEntity;
 - (id)searchField;
-- (bool)searchFieldIsFocused;
 - (id)searchFieldTrailingConstraint;
-- (void)searchForQuery:(id)arg1 forSuggestions:(bool)arg2;
 - (void)searchForSuggestion:(id)arg1;
 - (bool)searchTextScheduledForProcessing;
 - (void)setActiveInterfaceOrientation:(long long)arg1;

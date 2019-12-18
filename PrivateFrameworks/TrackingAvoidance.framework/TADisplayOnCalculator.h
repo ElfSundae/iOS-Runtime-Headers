@@ -13,6 +13,7 @@
 
 - (void).cxx_destruct;
 - (double)calculateDisplayOnWithEvents:(id)arg1 advertisements:(id)arg2 endDate:(id)arg3;
+- (void)completeDisplayOnWithEndDate:(id)arg1;
 - (id)evaluatedUntil;
 - (id)initWithStartTime:(id)arg1;
 - (id)initWithStartTime:(id)arg1 budget:(double)arg2;

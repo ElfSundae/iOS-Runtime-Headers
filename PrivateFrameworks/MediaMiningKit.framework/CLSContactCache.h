@@ -13,6 +13,7 @@
 @property (nonatomic, retain) NSPredicate *entryPredicateWithUpdateTimestamp;
 
 - (void).cxx_destruct;
+- (bool)_updateHasPicture:(bool)arg1 forEntry:(id)arg2;
 - (id)cachedContactForContactIdentifier:(id)arg1;
 - (id)dataModelName;
 - (id)entryPredicateWithContactIdentifier;

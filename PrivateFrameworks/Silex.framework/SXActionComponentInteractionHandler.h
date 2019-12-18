@@ -3,13 +3,13 @@
  */
 
 @interface SXActionComponentInteractionHandler : NSObject <SXComponentInteractionHandler, SXPostActionHandler, SXPreviewComponentInteractionHandler> {
-    SXAction * _action;
+    <SXAction> * _action;
     <SXActionManager> * _actionManager;
     <SXActionSerializer> * _actionSerializer;
     <SXAnalyticsReportingProvider> * _analyticsReportingProvider;
 }
 
-@property (nonatomic, readonly) SXAction *action;
+@property (nonatomic, readonly) <SXAction> *action;
 @property (nonatomic, readonly) <SXActionManager> *actionManager;
 @property (nonatomic, readonly) <SXActionSerializer> *actionSerializer;
 @property (nonatomic, readonly) <SXAnalyticsReportingProvider> *analyticsReportingProvider;

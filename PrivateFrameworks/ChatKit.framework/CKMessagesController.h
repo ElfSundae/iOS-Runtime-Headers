@@ -16,6 +16,7 @@
     CKNavigationController * _conversationListNavigationController;
     CKConversation * _currentConversation;
     id /* block */  _deferredHandleURLBlock;
+    CKInboxViewController * _inboxViewController;
     bool  _isInitialLoad;
     <CKMessagesControllerDelegate> * _messagesControllerDelegate;
     CKOnboardingController * _onboardingController;
@@ -38,6 +39,7 @@
 @property (nonatomic, copy) id /* block */ deferredHandleURLBlock;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) CKInboxViewController *inboxViewController;
 @property (nonatomic) bool isInitialLoad;
 @property (nonatomic, readonly) bool isShowingConversationListController;
 @property (nonatomic) <CKMessagesControllerDelegate> *messagesControllerDelegate;
@@ -52,6 +54,7 @@
 - (void)_chatItemsDidChange:(id)arg1;
 - (void)_chatRegistryDidLoad:(id)arg1;
 - (void)_checkPushToTranscriptTimingWithStartTime:(double)arg1;
+- (void)_conversationFilteringStateChangedNotification:(id)arg1;
 - (void)_conversationLeft:(id)arg1;
 - (bool)_hasCurrentConversations;
 - (void)_hideConversationListForIPadPPTTest;
@@ -114,6 +117,7 @@
 - (void)executeDeferredTasks;
 - (bool)hasBusinessRecipientWithRecipientIDs:(id)arg1;
 - (bool)hasUnreadFilteredConversationsIgnoringMessages:(id)arg1;
+- (id)inboxViewController;
 - (id)init;
 - (bool)isAnimatingMessageSend;
 - (bool)isCollapsed;
@@ -125,6 +129,7 @@
 - (bool)isShowingChatControllerWithUnsentText;
 - (bool)isShowingConversationListController;
 - (bool)isShowingDirtyComposeModalView;
+- (bool)isShowingInboxViewController;
 - (void)keyCommandCompose:(id)arg1;
 - (void)keyCommandDeleteConversation:(id)arg1;
 - (void)keyCommandNextConversation:(id)arg1;
@@ -166,6 +171,7 @@
 - (void)setCurrentConversation:(id)arg1;
 - (void)setCurrentConversation:(id)arg1 keepAllCurrentlyLoadedMessages:(bool)arg2;
 - (void)setDeferredHandleURLBlock:(id /* block */)arg1;
+- (void)setInboxViewController:(id)arg1;
 - (void)setIsInitialLoad:(bool)arg1;
 - (void)setLocalUserIsTyping:(bool)arg1;
 - (void)setMessagesControllerDelegate:(id)arg1;
@@ -182,6 +188,7 @@
 - (void)showConversationAndMessageForChatGUID:(id)arg1 messageGUID:(id)arg2 animate:(bool)arg3;
 - (void)showConversationAndMessageForSearchURL:(id)arg1;
 - (void)showConversationList:(bool)arg1;
+- (void)showInboxViewController:(bool)arg1;
 - (void)showNewMessageCompositionPanelWithRecipients:(id)arg1 composition:(id)arg2 animated:(bool)arg3;
 - (void)showNewMessageCompositionPanelWithRecipients:(id)arg1 composition:(id)arg2 animated:(bool)arg3 bizIntent:(id)arg4 launchPluginWithBundleID:(id)arg5 pluginLaunchPayload:(id)arg6;
 - (void)showStoreForURL:(id)arg1 fromSourceApplication:(id)arg2;
@@ -194,6 +201,7 @@
 - (id)statusBarStyleViewController;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)teardownCamera;
+- (void)updateConversationListNavigationControllerViewStack;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLayoutSubviews;

@@ -10,6 +10,7 @@
     unsigned long long  _cachedSyncHash;
     bool  _conflictOfOtherWorkflow;
     NSDate * _creationDate;
+    unsigned long long  _estimatedSize;
     NSString * _galleryIdentifier;
     bool  _hiddenFromLibraryAndSync;
     bool  _hiddenInComplication;
@@ -41,6 +42,7 @@
 @property (nonatomic, retain) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) unsigned long long estimatedSize;
 @property (nonatomic, copy) NSString *galleryIdentifier;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool hiddenFromLibraryAndSync;
@@ -76,6 +78,7 @@
 - (id)associatedAppBundleIdentifier;
 - (unsigned long long)cachedSyncHash;
 - (id)creationDate;
+- (unsigned long long)estimatedSize;
 - (id)fileRepresentation;
 - (id)galleryIdentifier;
 - (bool)hiddenFromLibraryAndSync;

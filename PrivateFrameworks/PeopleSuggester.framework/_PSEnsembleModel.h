@@ -19,8 +19,12 @@
     }  _lock;
     _CDInteractionCache * _messageInteractionCache;
     NSUserDefaults * _peopleSuggesterDefaults;
+    NSDictionary * _psConfig;
     _PSRuleMiningModel * _ruleMiningModel;
     _CDInteractionCache * _shareInteractionCache;
+    TRIClient * _trialClient;
+    NSString * _trialID;
+    TRITrackingId * _trialTrackingID;
 }
 
 @property (nonatomic, retain) NSSet *cachedSupportedBundleIDs;
@@ -36,8 +40,12 @@
 @property (nonatomic, retain) <_DKKnowledgeQuerying><_DKKnowledgeSaving> *knowledgeStore;
 @property (nonatomic, retain) _CDInteractionCache *messageInteractionCache;
 @property (nonatomic, retain) NSUserDefaults *peopleSuggesterDefaults;
+@property (retain) NSDictionary *psConfig;
 @property (nonatomic, retain) _PSRuleMiningModel *ruleMiningModel;
 @property (nonatomic, retain) _CDInteractionCache *shareInteractionCache;
+@property (retain) TRIClient *trialClient;
+@property (nonatomic, retain) NSString *trialID;
+@property (retain) TRITrackingId *trialTrackingID;
 
 - (void).cxx_destruct;
 - (id)appExtensionSuggestionsFromContext:(id)arg1;
@@ -54,6 +62,8 @@
 - (id)knnNameOrContactRankerModel;
 - (id)knnZkwModel;
 - (id)knowledgeStore;
+- (void)loadDefaultPSConfig;
+- (bool)loadPSConfig:(id)arg1;
 - (id)mapsSuggestionArrayWithArray:(id)arg1 appendingUniqueElementsFromArray:(id)arg2 contactResolver:(id)arg3 meContactId:(id)arg4;
 - (id)messageInteractionCache;
 - (id)peopleSuggesterDefaults;
@@ -62,9 +72,11 @@
 - (id)predictWithMapsPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
 - (id)predictWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
 - (id)predictWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2 contactKeysToFetch:(id)arg3;
+- (id)psConfig;
 - (id)rankedAutocompleteSuggestionsFromContext:(id)arg1 candidates:(id)arg2;
 - (id)rankedContactSuggestionsWithPredictionContext:(id)arg1 contactsOnly:(bool)arg2 maxSuggestions:(unsigned long long)arg3;
 - (id)rankedNameSuggestionsWithPredictionContext:(id)arg1 name:(id)arg2;
+- (void)registerWithTrial;
 - (id)ruleMiningModel;
 - (void)setCachedSupportedBundleIDs:(id)arg1;
 - (void)setContactMonitor:(id)arg1;
@@ -79,10 +91,19 @@
 - (void)setKnowledgeStore:(id)arg1;
 - (void)setMessageInteractionCache:(id)arg1;
 - (void)setPeopleSuggesterDefaults:(id)arg1;
+- (void)setPsConfig:(id)arg1;
 - (void)setRuleMiningModel:(id)arg1;
 - (void)setShareInteractionCache:(id)arg1;
+- (void)setTrialClient:(id)arg1;
+- (void)setTrialID:(id)arg1;
+- (void)setTrialTrackingID:(id)arg1;
 - (id)shareInteractionCache;
 - (id)suggestZKWMessagesSuggestionsWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
 - (id)suggestionsFromSuggestionProxies:(id)arg1 supportedBundleIDs:(id)arg2 contactKeysToFetch:(id)arg3 meContactIdentifier:(id)arg4 maxSuggestions:(unsigned long long)arg5;
+- (id)trialClient;
+- (id)trialID;
+- (id)trialTrackingID;
+- (void)updateFactorLevels;
+- (void)updateTrialID:(id)arg1;
 
 @end

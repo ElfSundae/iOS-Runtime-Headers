@@ -21,6 +21,8 @@
 - (void).cxx_destruct;
 - (void)_buildRecordListWithCompletion:(id /* block */)arg1;
 - (void)_sendRecordBatch:(id)arg1 completion:(id /* block */)arg2;
+- (void)_sendRecordBatch:(id)arg1 recursed:(bool)arg2 completion:(id /* block */)arg3;
+- (id)createActivity;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithRootItem:(id)arg1 appLibrary:(id)arg2;
 - (void)main;

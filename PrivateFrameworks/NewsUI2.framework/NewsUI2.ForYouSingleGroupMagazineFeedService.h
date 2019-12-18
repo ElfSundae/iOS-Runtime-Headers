@@ -6,6 +6,7 @@
     void bundleSubscriptionManager;
     void group;
     void magazineConfigurationService;
+    void personalizationService;
 }
 
 @end

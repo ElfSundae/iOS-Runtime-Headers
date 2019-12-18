@@ -9,6 +9,7 @@
     bool  _managed;
     NSString * _name;
     NSString * _passcode;
+    NSString * _recoveryAltDSID;
     bool  _remoteUser;
     bool  _screenTimeEnabled;
     unsigned long long  _source;
@@ -26,7 +27,9 @@
 @property (nonatomic, readonly) bool isParent;
 @property (getter=isManaged, nonatomic) bool managed;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, readonly) bool needsRecoveryAppleID;
 @property (nonatomic, copy) NSString *passcode;
+@property (nonatomic, copy) NSString *recoveryAltDSID;
 @property (getter=isRemoteUser, nonatomic) bool remoteUser;
 @property (getter=isScreenTimeEnabled, nonatomic) bool screenTimeEnabled;
 @property (nonatomic) unsigned long long source;
@@ -52,13 +55,16 @@
 - (bool)isScreenTimeEnabled;
 - (bool)isWebUsageEnabled;
 - (id)name;
+- (bool)needsRecoveryAppleID;
 - (id)passcode;
+- (id)recoveryAltDSID;
 - (void)setAltDSID:(id)arg1;
 - (void)setDsid:(id)arg1;
 - (void)setHasAllowances:(bool)arg1;
 - (void)setManaged:(bool)arg1;
 - (void)setName:(id)arg1;
 - (void)setPasscode:(id)arg1;
+- (void)setRecoveryAltDSID:(id)arg1;
 - (void)setRemoteUser:(bool)arg1;
 - (void)setScreenTimeEnabled:(bool)arg1;
 - (void)setSource:(unsigned long long)arg1;

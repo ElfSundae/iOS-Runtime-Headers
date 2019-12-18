@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INFile : NSObject <INFileEnumerable, INJSONSerializable, WFCodableAttributeContentConvertible> {
+@interface INFile : NSObject <INEnumerable, INJSONSerializable, WFCodableAttributeContentConvertible> {
     NSData * _data;
     bool  _deletesFileOnDeallocationIfNeeded;
     NSURL * _fileURL;
@@ -39,8 +39,7 @@
 - (bool)_hasAssociatedAuditToken;
 - (id)_initWithData:(id)arg1 filename:(id)arg2 fileURL:(id)arg3 typeIdentifier:(id)arg4;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
-- (void)_intents_enumerateFileURLsWithBlock:(id /* block */)arg1 mutate:(bool)arg2;
-- (void)_intents_enumerateFilesWithBlock:(id /* block */)arg1 mutate:(bool)arg2;
+- (bool)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(id /* block */)arg2;
 - (id)_intents_readableDescriptionForLanguage:(id)arg1 withMetadata:(id)arg2;
 - (bool)_isFileURLBased;
 - (bool)_isMarkedForDeletionOnDeallocation;

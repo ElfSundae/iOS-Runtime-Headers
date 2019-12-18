@@ -50,7 +50,7 @@
 - (id)displayLayer;
 - (bool)followsTerrain;
 - (void)layoutWithContext:(const struct LayoutContext { id x1; struct shared_ptr<md::ViewTransform> { struct ViewTransform {} *x_2_1_1; struct __shared_weak_count {} *x_2_1_2; } x2; id x3; struct shared_ptr<mdc::Camera> { struct Camera {} *x_4_1_1; struct __shared_weak_count {} *x_4_1_2; } x4; unsigned char x5; struct VKEdgeInsets { float x_6_1_1; float x_6_1_2; float x_6_1_3; float x_6_1_4; } x6; struct VKEdgeInsets { float x_7_1_1; float x_7_1_2; float x_7_1_3; float x_7_1_4; } x7; struct shared_ptr<ggl::PolygonBase::MeshMesh> { struct MeshMesh {} *x_8_1_1; struct __shared_weak_count {} *x_8_1_2; } x8; struct shared_ptr<ggl::PolygonBase::MeshMesh> { struct MeshMesh {} *x_9_1_1; struct __shared_weak_count {} *x_9_1_2; } x9; struct shared_ptr<ggl::TextureMesh::MeshMesh> { struct MeshMesh {} *x_10_1_1; struct __shared_weak_count {} *x_10_1_2; } x10; struct StencilManager { unsigned char x_11_1_1; unsigned char x_11_1_2; unsigned char x_11_1_3; struct ClearItem { unsigned char x_4_2_1; struct Matrix<float, 4, 1> { float x_2_3_1[4]; } x_4_2_2; bool x_4_2_3; float x_4_2_4; unsigned char x_4_2_5; unsigned int x_4_2_6; } x_11_1_4; } x11; }*)arg1;
-- (struct CGPoint { double x1; double x2; })pointInLayer:(id)arg1;
+- (struct CGPoint { double x1; double x2; })pointInLayer:(id)arg1 bound:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (double)pointOffsetForDistanceOffset:(double)arg1;
 - (void)setDisplayLayer:(id)arg1;
 - (void)setFollowsTerrain:(bool)arg1;

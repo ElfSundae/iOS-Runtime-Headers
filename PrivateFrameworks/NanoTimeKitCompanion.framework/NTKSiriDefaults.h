@@ -12,6 +12,7 @@
 @property (nonatomic, retain) NSSet *disabledDataSources;
 @property (nonatomic, readonly) bool hasMigratedDisabledDataSources;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isUpNextFaceCurrentlyActive;
 @property (nonatomic, retain) NSSet *phoneThirdPartyDataSources;
 @property (readonly) Class superclass;
 @property (nonatomic) bool watchHasMigratedAvailableDataSources;
@@ -31,6 +32,7 @@
 - (bool)hasMigratedDataSources;
 - (bool)hasMigratedDisabledDataSources;
 - (id)init;
+- (bool)isUpNextFaceCurrentlyActive;
 - (void)migrateIfNecessary;
 - (id)phoneThirdPartyDataSources;
 - (void)setDisabledDataSources:(id)arg1;

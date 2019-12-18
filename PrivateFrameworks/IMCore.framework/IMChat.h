@@ -51,7 +51,6 @@
     NSString * _localUserIsComposing;
     NSMutableArray * _messagesPendingJoin;
     IMOrderingTools * _orderingTools;
-    NSString * _participantIDsHash;
     NSMutableDictionary * _participantProperties;
     NSMutableDictionary * _participantStates;
     NSArray * _participants;
@@ -146,7 +145,6 @@
 @property (nonatomic) unsigned long long numberOfMessagesToKeepLoaded;
 @property (nonatomic, retain) IMOrderingTools *orderingTools;
 @property (nonatomic, readonly) unsigned long long overallChatStatus;
-@property (nonatomic, readonly, copy) NSString *participantIDsHash;
 @property (nonatomic, readonly) NSArray *participants;
 @property (nonatomic, readonly) NSString *persistentID;
 @property (nonatomic, retain) NSString *personCentricID;
@@ -378,6 +376,7 @@
 - (bool)hasUnhandledInvitation;
 - (bool)hasVerifiedBusiness;
 - (id)hashOfParticipantIDs;
+- (id)hashOfParticipantIDs;
 - (id)init;
 - (void)initiateTUConversationWithVideoEnabled:(bool)arg1;
 - (id)invitationForPendingParticipants;
@@ -451,7 +450,7 @@
 - (long long)numberOfTimesRespondedToThread;
 - (id)orderingTools;
 - (unsigned long long)overallChatStatus;
-- (id)participantIDsHash;
+- (id)participantHandleIDs;
 - (id)participants;
 - (id)participantsWithState:(unsigned long long)arg1;
 - (unsigned long long)paymentTypeForMessage:(id)arg1;
@@ -526,12 +525,10 @@
 - (void)updateMessage:(id)arg1 flags:(unsigned long long)arg2;
 - (void)updateShouldForceToSMS:(bool)arg1;
 - (void)updateWasDetectedAsSMSSpam:(bool)arg1;
-- (void)updateWasDetectedAsiMessageSpam:(bool)arg1;
 - (void)updateWatermarks;
 - (void)userToggledReadReceiptSwitch:(bool)arg1;
 - (id)valueForChatProperty:(id)arg1;
 - (id)valueForProperty:(id)arg1 ofParticipant:(id)arg2;
-- (void)verifyChatShouldBeSpamWithService:(id)arg1;
 - (void)verifyFiltering;
 - (id)vocabularyIdentifier;
 - (id)watermarkDate;

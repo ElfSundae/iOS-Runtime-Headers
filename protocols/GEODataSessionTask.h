@@ -21,6 +21,5 @@
 - (<GEORequestCounterTicket> *)requestCounterTicket;
 - (unsigned long long)requestedMultipathServiceType;
 - (void)start;
-- (unsigned int)taskIdentifier;
 
 @end

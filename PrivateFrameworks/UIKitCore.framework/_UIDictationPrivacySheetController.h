@@ -14,6 +14,7 @@
 @property (nonatomic, retain) OBPrivacyPresenter *privacyPresenter;
 @property (nonatomic) long long sheetType;
 
+- (bool)_canShowWhileLocked;
 - (id)dataSharingOptInPresenter;
 - (void)dealloc;
 - (void)dismiss;

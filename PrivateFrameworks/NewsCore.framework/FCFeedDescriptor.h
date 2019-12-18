@@ -36,11 +36,13 @@
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) bool isSubscribable;
 @property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) bool needsForYouConfig;
 @property (nonatomic, retain) NSArray *otherArticleIDs;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) <FCFeedTheming> *theme;
 
 - (void).cxx_destruct;
+- (id)allEmitterClasses;
 - (id)backingChannel;
 - (id)backingChannelID;
 - (id)backingSectionID;
@@ -52,7 +54,7 @@
 - (bool)derivesContentsFromExplicitSubscriptions;
 - (id)description;
 - (long long)feedFilterOptions;
-- (id)feedGroupEmittersWithConfiguration:(id)arg1;
+- (id)feedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (id)feedPaginator;
 - (long long)feedPersonalizationConfigurationSet;
 - (long long)feedSortMethod;
@@ -80,7 +82,8 @@
 - (id)languagesWithSubscriptionController:(id)arg1;
 - (id)latestHeadlineResultsWithContext:(id)arg1;
 - (id)name;
-- (id)offlineFeedGroupEmittersWithConfiguration:(id)arg1;
+- (bool)needsForYouConfig;
+- (id)offlineFeedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (id)otherArticleIDs;
 - (void)prepareToProvideFeedGroupEmittersWithCallbackQueue:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)setContext:(id)arg1;

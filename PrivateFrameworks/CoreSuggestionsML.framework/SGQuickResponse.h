@@ -4,6 +4,7 @@
 
 @interface SGQuickResponse : NSObject {
     unsigned long long  _categoryId;
+    bool  _isCustomResponse;
     NSString * _lang;
     unsigned long long  _modelId;
     unsigned long long  _replyTextId;
@@ -13,6 +14,7 @@
 }
 
 @property (nonatomic, readonly) unsigned long long categoryId;
+@property (nonatomic, readonly) bool isCustomResponse;
 @property (nonatomic, readonly, copy) NSString *lang;
 @property (nonatomic, readonly) unsigned long long modelId;
 @property (nonatomic, readonly) unsigned long long replyTextId;
@@ -22,7 +24,8 @@
 
 - (void).cxx_destruct;
 - (unsigned long long)categoryId;
-- (id)initWithText:(id)arg1 lang:(id)arg2 replyTextId:(unsigned long long)arg3 styleGroupId:(unsigned long long)arg4 semanticClassId:(unsigned long long)arg5 modelId:(unsigned long long)arg6 categoryId:(unsigned long long)arg7;
+- (id)initWithText:(id)arg1 lang:(id)arg2 replyTextId:(unsigned long long)arg3 styleGroupId:(unsigned long long)arg4 semanticClassId:(unsigned long long)arg5 modelId:(unsigned long long)arg6 categoryId:(unsigned long long)arg7 isCustomResponse:(bool)arg8;
+- (bool)isCustomResponse;
 - (id)lang;
 - (unsigned long long)modelId;
 - (unsigned long long)replyTextId;

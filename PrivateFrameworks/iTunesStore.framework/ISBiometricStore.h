@@ -14,6 +14,7 @@
 + (id)applePayClassicNetworks;
 + (id)countryCode;
 + (id)diskBasedPaymentSheet;
++ (bool)isActionSupported:(long long)arg1 withBiometricAuthenticationContext:(id)arg2;
 + (id)keychainLabelForAccountID:(id)arg1 purpose:(long long)arg2;
 + (id)keychainLabelForCertWithAccountID:(id)arg1 purpose:(long long)arg2;
 + (id)keychainLabelForKeyWithAccountID:(id)arg1 purpose:(long long)arg2;

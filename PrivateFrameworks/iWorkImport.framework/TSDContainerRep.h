@@ -45,7 +45,7 @@
 - (id)visibleChildLayouts;
 - (void)willReplaceContentsFromRep:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/SilexText.framework/SilexText
+// Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
 
 - (id)accessibilityElements;
 

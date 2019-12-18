@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Email.framework/Email
  */
 
-@interface EMMessageList : EMCollection <EFContentProtectionObserver, EFLoggable, EMCollectionChangeObserver, EMMessageListQueryResultsObserver> {
+@interface EMMessageList : EMCollection <EFContentProtectionObserver, EFLoggable, EMCollectionChangeObserver, EMCollectionItemIDStateCapturerDelegate, EMMessageListQueryResultsObserver> {
     EFLazyCache * _cache;
     EMMessageListChangeObserverHelper * _changeObserverHelper;
     NSObject<OS_dispatch_queue> * _contentProtectionQueue;
@@ -13,6 +13,8 @@
     EMMailboxScope * _mailboxScope;
     NSMapTable * _messageListItemsForRetry;
     <EFScheduler> * _observerScheduler;
+    NSSet * _recentlyCollapsedItemIDs;
+    EMCollectionItemIDStateCapturer * _stateCapturer;
     EMThreadScope * _threadScope;
     EMMessageList * _unfilteredMessageList;
 }
@@ -28,7 +30,9 @@
 @property (nonatomic, readonly) EMMailboxScope *mailboxScope;
 @property (nonatomic, readonly, copy) EMObjectID *objectID;
 @property (nonatomic, readonly) <EFScheduler> *observerScheduler;
+@property (nonatomic, retain) NSSet *recentlyCollapsedItemIDs;
 @property (nonatomic, readonly) EMMessageRepository *repository;
+@property (nonatomic, readonly) EMCollectionItemIDStateCapturer *stateCapturer;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) EMThreadScope *threadScope;
 @property (nonatomic, retain) EMMessageList *unfilteredMessageList;
@@ -49,6 +53,7 @@
 - (bool)anyExpandedThreadContainsItemID:(id)arg1;
 - (id)cache;
 - (id)changeObserverHelper;
+- (void)clearRecentlyCollapsedThread;
 - (void)collapseThread:(id)arg1;
 - (void)collection:(id)arg1 addedItemIDs:(id)arg2 after:(id)arg3;
 - (void)collection:(id)arg1 addedItemIDs:(id)arg2 before:(id)arg3;
@@ -69,6 +74,7 @@
 - (id)expandedThreadItemIDs;
 - (id)filteredMessageListWithPredicate:(id)arg1;
 - (void)finishRecovery;
+- (id)initWithMailboxes:(id)arg1 repository:(id)arg2 targetClass:(Class)arg3 shouldTrackOldestItems:(bool)arg4 labelPrefix:(id)arg5;
 - (id)initWithObjectID:(id)arg1 query:(id)arg2 repository:(id)arg3;
 - (id)initWithQuery:(id)arg1 repository:(id)arg2;
 - (void)invalidateCacheForItemIDs:(id)arg1;
@@ -76,6 +82,8 @@
 - (id)itemIDForObjectID:(id)arg1;
 - (id)itemIDOfFirstMessageListItemMatchingPredicate:(id)arg1;
 - (id)itemIDOfMessageListItemWithDisplayMessage:(id)arg1;
+- (id)itemIDsForStateCaptureWithErrorString:(id*)arg1;
+- (id)labelForStateCapture;
 - (id)mailboxScope;
 - (id)messageListItemForItemID:(id)arg1;
 - (id)messageListItemForItemID:(id)arg1 ifAvailable:(bool)arg2;
@@ -91,11 +99,15 @@
 - (void)queryMatchedMovedObjectIDs:(id)arg1 after:(id)arg2;
 - (void)queryMatchedMovedObjectIDs:(id)arg1 before:(id)arg2;
 - (void)queryMatchedOldestItemsUpdatedForMailboxesObjectIDs:(id)arg1;
+- (id)recentlyCollapsedItemIDs;
+- (bool)recentlyCollapsedThreadContainsItemID:(id)arg1;
 - (void)removeItemIDs:(id)arg1;
 - (id)repository;
 - (void)setChangeObserverHelper:(id)arg1;
+- (void)setRecentlyCollapsedItemIDs:(id)arg1;
 - (void)setRepository:(id)arg1;
 - (void)setUnfilteredMessageList:(id)arg1;
+- (id)stateCapturer;
 - (void)stopObserving:(id)arg1;
 - (id)threadScope;
 - (id)unfilteredMessageList;

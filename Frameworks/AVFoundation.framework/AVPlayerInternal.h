@@ -89,6 +89,7 @@
     bool  preparesItemsForPlaybackAsynchronously;
     id /* block */  prerollCompletionHandler;
     struct OpaqueFigSimpleMutex { } * prerollIDMutex;
+    bool  preservesAudioSessionSampleRate;
     bool  preventsDisplaySleepDuringVideoPlayback;
     struct OpaqueCMTimebase { } * proxyTimebase;
     NSArray * queueModifications;

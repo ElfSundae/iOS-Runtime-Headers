@@ -64,7 +64,7 @@
 - (void)_closeCurrentSessionsWithReason:(unsigned short)arg1;
 - (unsigned short)_closeEventReasonForRecordingSessionError:(id)arg1;
 - (void)_coordinateRecordingSessionForAccessory:(unsigned long long)arg1;
-- (void)_createRecordingSessionForTrigger:(unsigned long long)arg1 presenceByPairingIdentity:(id)arg2;
+- (void)_createRecordingSessionForTrigger:(unsigned long long)arg1 homePresenceByPairingIdentity:(id)arg2;
 - (void)_forwardRecordingSession:(unsigned long long)arg1 withSortedDevices:(id)arg2 withRetries:(long long)arg3;
 - (void)_handleBulkSendSessionCreated:(id)arg1;
 - (void)_handleDataReceived:(id)arg1;
@@ -74,8 +74,8 @@
 - (void)_shutDown;
 - (void)_start;
 - (void)_startBulkSendDataReadEvent;
-- (void)_startCameraRecordingSessionForTrigger:(unsigned long long)arg1 reason:(id)arg2;
-- (void)_startRecordingSessionForTrigger:(unsigned long long)arg1 presenceByPairingIdentity:(id)arg2 reason:(id)arg3 completionCallback:(id /* block */)arg4;
+- (void)_startRecordingSessionForTrigger:(unsigned long long)arg1 homePresenceByPairingIdentity:(id)arg2 reason:(id)arg3;
+- (void)_startRecordingSessionForTrigger:(unsigned long long)arg1 homePresenceByPairingIdentity:(id)arg2 reason:(id)arg3 completionCallback:(id /* block */)arg4;
 - (void)_startSessionRetryTimer;
 - (void)_submitReadEventWithStatus:(unsigned short)arg1;
 - (id)accessory;

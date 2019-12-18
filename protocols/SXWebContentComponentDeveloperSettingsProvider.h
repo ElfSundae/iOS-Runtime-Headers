@@ -5,6 +5,6 @@
 
 @required
 
-- (SXWebContentDeveloperSettings *)developerSettings;
+- (SWDeveloperSettings *)developerSettings;
 
 @end

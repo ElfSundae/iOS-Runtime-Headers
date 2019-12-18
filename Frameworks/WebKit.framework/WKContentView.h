@@ -1043,7 +1043,7 @@
 - (bool)_handleDOMPasteRequestWithResult:(unsigned char)arg1;
 - (bool)_handleDropByInsertingImagePlaceholders:(id)arg1 session:(id)arg2;
 - (void)_handleKeyUIEvent:(id)arg1;
-- (void)_handleSmartMagnificationInformationForPotentialTap:(unsigned long long)arg1 renderRect:(const struct FloatRect { struct FloatPoint { float x_1_1_1; float x_1_1_2; } x1; struct FloatSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg2 fitEntireRect:(bool)arg3 viewportMinimumScale:(double)arg4 viewportMaximumScale:(double)arg5;
+- (void)_handleSmartMagnificationInformationForPotentialTap:(unsigned long long)arg1 renderRect:(const struct FloatRect { struct FloatPoint { float x_1_1_1; float x_1_1_2; } x1; struct FloatSize { float x_2_1_1; float x_2_1_2; } x2; }*)arg2 fitEntireRect:(bool)arg3 viewportMinimumScale:(double)arg4 viewportMaximumScale:(double)arg5 nodeIsRootLevel:(bool)arg6;
 - (void)_handleTouchActionsForTouchEvent:(const struct NativeWebTouchEvent { unsigned int x1; struct OptionSet<WebKit::WebEvent::Modifier> { unsigned char x_2_1_1; } x2; struct WallTime { double x_3_1_1; } x3; struct Vector<WebKit::WebPlatformTouchPoint, 0, WTF::CrashOnOverflow, 16> { struct WebPlatformTouchPoint {} *x_4_1_1; unsigned int x_4_1_2; unsigned int x_4_1_3; } x4; struct IntPoint { int x_5_1_1; int x_5_1_2; } x5; bool x6; bool x7; bool x8; float x9; float x10; }*)arg1;
 - (void)_hardwareKeyboardAvailabilityChanged;
 - (bool)_hasValidOutstandingPositionInformationRequest:(const struct InteractionInformationRequest { struct IntPoint { int x_1_1_1; int x_1_1_2; } x1; bool x2; bool x3; bool x4; }*)arg1;

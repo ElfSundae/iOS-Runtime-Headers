@@ -42,6 +42,7 @@
 - (bool)currentProcessCanAccessInitialState;
 - (void)dealloc;
 - (id)delegate;
+- (void)donateUserIntentForProviderWithIdentifier:(id)arg1;
 - (id)init;
 - (void)invalidate;
 - (void)launchAppForDialRequest:(id)arg1 completion:(id /* block */)arg2;

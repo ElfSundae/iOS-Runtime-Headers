@@ -41,14 +41,11 @@
 - (void)validateInteractionWithLinkAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (bool)willInteractWithLinkAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 
-// Image: /System/Library/PrivateFrameworks/SilexText.framework/SilexText
+// Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
 
-- (bool)_accessibilityIsSpeakThisElement;
-- (bool)_accessibilitySpeakThisIgnoresAccessibilityElementStatus;
-- (id)_accessibilitySpeakThisString;
-- (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg1;
 - (bool)_isInPreviewPlatter;
-- (id)_speakThisElementStrings;
 - (id)_speakThisElements;
+- (bool)accessibilityElementsHidden;
+- (id)sxaxNextSpeakThisElementFromElement:(id)arg1;
 
 @end

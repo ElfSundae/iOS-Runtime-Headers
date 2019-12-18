@@ -5,12 +5,15 @@
 @interface ATXSlotResolutionParametersStatistics : NSObject {
     double  _appSessionCountAsDocFreq;
     double  _coarseTimeOfDayCount;
+    double  _coarseTimePOWLocationCount;
     double  _confirmsCoarseTimeOfDayCountInLockscreen;
     double  _confirmsCoarseTimeOfDayCountInSpotlight;
+    double  _confirmsCoarseTimePOWLocationCount;
     double  _confirmsDayCountInLockscreen;
     double  _confirmsDayCountInSpotlight;
     double  _confirmsPartOfWeekCountInLockscreen;
     double  _confirmsPartOfWeekCountInSpotlight;
+    double  _confirmsSpecificTimeDOWLocationCount;
     double  _confirmsTimeOfDayCountInLockscreen;
     double  _confirmsTimeOfDayCountInSpotlight;
     double  _dayAndLocationCount;
@@ -35,6 +38,9 @@
     double  _prevLocationAndLocationCount;
     double  _prevLocationAndMotionTypeCount;
     double  _prevLocationCount;
+    double  _rejectsCoarseTimePOWLocationCount;
+    double  _rejectsSpecificTimeDOWLocationCount;
+    double  _specificTimeDOWLocationCount;
     double  _thirtyMinuteWindowCount;
     double  _timeAndDayAndLocationCount;
     double  _timeAndDayCount;
@@ -46,11 +52,14 @@
     double  _timeOfDayBudgetSumOfSquaresOfDifferencesFromMean;
     double  _timeOfDayCount;
     double  _todaysTimeOfDayBudget;
+    double  _totalCoarseTimePOWLocationOccurrences;
     double  _totalConfirms;
+    double  _totalConfirmsCoarseTimePOWLocationOccurrences;
     double  _totalConfirmsInLastHourInSpotlight;
     double  _totalConfirmsInLastTwoHoursInSpotlight;
     double  _totalConfirmsInLockscreen;
     double  _totalConfirmsInSpotlight;
+    double  _totalConfirmsSpecificTimeDOWLocationOccurrences;
     double  _totalConfirmsTodayInLockscreen;
     double  _totalConfirmsTodayInSpotlight;
     double  _totalDayAndLocationOccurrences;
@@ -66,12 +75,15 @@
     double  _totalPrevLocationAndMotionTypeOccurrences;
     double  _totalPreviousLocationOccurrences;
     double  _totalRejects;
+    double  _totalRejectsCoarseTimePOWLocationOccurrences;
     double  _totalRejectsInLastHourInSpotlight;
     double  _totalRejectsInLastTwoHoursInSpotlight;
     double  _totalRejectsInLockscreen;
     double  _totalRejectsInSpotlight;
+    double  _totalRejectsSpecificTimeDOWLocationOccurrences;
     double  _totalRejectsTodayInLockscreen;
     double  _totalRejectsTodayInSpotlight;
+    double  _totalSpecificTimeDOWLocationOccurrences;
     double  _totalTimeAndDayAndLocationOccurrences;
     double  _totalTimeAndDayOccurrences;
     double  _totalTimeAndLocationOccurrences;

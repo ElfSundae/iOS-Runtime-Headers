@@ -37,6 +37,7 @@
 @property (nonatomic, readonly) NSUUID *uuid;
 
 - (void)_accumulateErrorDescription:(id)arg1;
+- (void)_binaryInsertList:(id)arg1;
 - (id)_copyStandardEffectDefinitions;
 - (void)_distill:(id)arg1;
 - (void)_distillChanges:(id)arg1;

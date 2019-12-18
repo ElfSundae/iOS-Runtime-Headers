@@ -13,6 +13,4 @@
 @property (nonatomic, readonly) NSString *identifier;
 @property (readonly) Class superclass;
 
-- (id)baseURLWithValue:(id)arg1 withType:(int)arg2;
-
 @end

@@ -13,6 +13,7 @@
 + (id)passwordServiceViewControllerName;
 + (id)serviceViewControllerInterface;
 
+- (bool)_canShowWhileLocked;
 - (void)selectedCredential:(id)arg1;
 
 @end

@@ -16,6 +16,7 @@
 @property (nonatomic, readonly) bool isRequiredByFollowingEmitters;
 @property (nonatomic, readonly) long long requiredForYouContentTypes;
 @property (nonatomic, readonly) bool requiresHeavyweightContent;
+@property (nonatomic, readonly) bool shouldEmitContentInFavoritesOnlyMode;
 @property (readonly) Class superclass;
 
 + (id)groupEmitterIdentifier;
@@ -27,6 +28,7 @@
 - (id)insertionDescriptor;
 - (id)operationToEmitGroupWithContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;
 - (bool)requiresHeavyweightContent;
+- (bool)shouldEmitContentInFavoritesOnlyMode;
 - (bool)wantsToEmitGroupInContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;
 - (bool)wantsToInsertGroupInContext:(id)arg1;
 

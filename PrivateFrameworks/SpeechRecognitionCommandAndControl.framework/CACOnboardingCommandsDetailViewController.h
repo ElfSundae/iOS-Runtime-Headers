@@ -19,6 +19,7 @@
 @property (nonatomic) bool skipAnalytics;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (bool)_isDataCollectionAvailable;
 - (bool)_shouldShowAnalytics;
 - (id)commandGroups;

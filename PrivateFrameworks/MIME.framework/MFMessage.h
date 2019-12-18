@@ -13,7 +13,7 @@
     unsigned int  _dateSentInterval;
     NSUUID * _documentID;
     NSString * _externalID;
-    unsigned long long  _generationNumber;
+    _Atomic unsigned long long  _generationNumber;
     ECAngleBracketIDHash * _listIDHash;
     long long  _messageIDHeaderHash;
     NSURL * _messageURL;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/EmailDaemon.framework/EmailDaemon
  */
 
-@interface EDMessageQueryHandler : EDMessageRepositoryQueryHandler <EDMessageQueryHelperDelegate, EFContentProtectionObserver, EFLoggable> {
+@interface EDMessageQueryHandler : EDMessageRepositoryQueryHandler <EDMessageQueryHelperDelegate, EFContentProtectionObserver, EFLoggable, EMCollectionItemIDStateCapturerDelegate> {
     NSObject<OS_dispatch_queue> * _contentProtectionQueue;
     EDMessageQueryHelper * _currentQueryHelper;
     bool  _didCancel;
@@ -11,6 +11,7 @@
     <EDRemoteSearchProvider> * _remoteSearchProvider;
     NSObject<OS_dispatch_queue> * _resultQueue;
     <EFScheduler> * _scheduler;
+    EMCollectionItemIDStateCapturer * _stateCapturer;
     EFCancelationToken * _updateOldestMessagesCancelationToken;
 }
 
@@ -25,6 +26,7 @@
 @property (nonatomic, readonly) <EDRemoteSearchProvider> *remoteSearchProvider;
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *resultQueue;
 @property (nonatomic, readonly) <EFScheduler> *scheduler;
+@property (nonatomic, readonly) EMCollectionItemIDStateCapturer *stateCapturer;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) EFCancelationToken *updateOldestMessagesCancelationToken;
 
@@ -52,6 +54,8 @@
 - (id)findMessagesByPreviousObjectIDForAddedMessages:(id)arg1 helper:(id)arg2;
 - (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 remoteSearchProvider:(id)arg4 observer:(id)arg5 observationIdentifier:(id)arg6;
 - (bool)isInitialized;
+- (id)itemIDsForStateCaptureWithErrorString:(id*)arg1;
+- (id)labelForStateCapture;
 - (id)oldestMessageIDsByMailboxObjectIDs;
 - (void)queryHelper:(id)arg1 conversationIDDidChangeForMessages:(id)arg2 fromConversationID:(long long)arg3;
 - (void)queryHelper:(id)arg1 conversationNotificationLevelDidChangeForConversation:(long long)arg2 conversationID:(long long)arg3;
@@ -72,6 +76,7 @@
 - (void)setIsInitialized:(bool)arg1;
 - (void)setUpdateOldestMessagesCancelationToken:(id)arg1;
 - (void)start;
+- (id)stateCapturer;
 - (id)updateOldestMessagesCancelationToken;
 
 @end

@@ -10,6 +10,8 @@
     void pinchGestureRecognizer;
 }
 
++ (bool)isZoomSupported;
+
 - (void).cxx_destruct;
 - (void)handlePinchWithSender:(id)arg1;
 - (id)init;

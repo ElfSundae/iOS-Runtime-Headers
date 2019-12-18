@@ -6,6 +6,7 @@
     void layoutDirection;
     void layoutOptions;
     void options;
+    void supplementarySolver;
 }
 
 @end

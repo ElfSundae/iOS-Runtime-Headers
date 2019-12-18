@@ -64,10 +64,12 @@
 - (void)didTapCancel;
 - (void)didTapPrimaryButton;
 - (void)didTapSecondaryButton;
+- (int)eventSource;
 - (bool)hasAppeared;
 - (id)headerImage;
 - (id)initWithWorkflow:(id)arg1 database:(id)arg2 mode:(unsigned long long)arg3;
 - (id)inlineWorkflowViewController;
+- (bool)isUpdatingExistingShortcut;
 - (void)keyboardWillChange:(id)arg1;
 - (unsigned long long)mode;
 - (id)nameCell;
@@ -112,6 +114,7 @@
 - (void)textFieldDidChange:(id)arg1;
 - (bool)textFieldShouldReturn:(id)arg1;
 - (id)title;
+- (void)trackAddEvent;
 - (void)updateCustomView;
 - (void)updatePrimaryButton;
 - (void)viewDidAppear:(bool)arg1;

@@ -6,6 +6,7 @@
     NUAdStore * _adStore;
     <NUAdManagerConfigurationProvider> * _configurationProvider;
     <NUDevice> * _device;
+    NUAdInterstitial * _interstitialAdPendingLoad;
 }
 
 @property (nonatomic, readonly) NUAdStore *adStore;
@@ -14,6 +15,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) <NUDevice> *device;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) NUAdInterstitial *interstitialAdPendingLoad;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -35,6 +37,7 @@
 - (id)device;
 - (id)inArticleContextConstructor;
 - (id)initWithConfigurationProvider:(id)arg1 device:(id)arg2;
+- (id)interstitialAdPendingLoad;
 - (id)interstitialContextConstructor;
 - (void)interstitialViewForContextProviders:(id)arg1 contextProvidersWithKeys:(id)arg2 layoutOptions:(id)arg3 withCompletionBlock:(id /* block */)arg4;
 - (void)interstitialViewForContextProviders:(id)arg1 layoutOptions:(id)arg2 withCompletionBlock:(id /* block */)arg3;
@@ -43,6 +46,7 @@
 - (void)prerollForContextProviders:(id)arg1 withCompletionBlock:(id /* block */)arg2;
 - (id)prerollHeaderDefinition;
 - (id)prerollRootDefinition;
+- (void)setInterstitialAdPendingLoad:(id)arg1;
 - (void)videoAdForContextProviders:(id)arg1 constructor:(id)arg2 withCompletionBlock:(id /* block */)arg3;
 - (id)videoInTodayHeaderDefinition;
 - (id)videoPlaylistAdBodyDefinition;

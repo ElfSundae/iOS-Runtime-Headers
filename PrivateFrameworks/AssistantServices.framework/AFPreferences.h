@@ -68,6 +68,7 @@
 - (bool)enableDragAndDrop;
 - (bool)enableNonFullScreenAppearance;
 - (bool)fileLoggingIsEnabled;
+- (bool)forceOfflineRecognitionEnabled;
 - (void)getOfflineDictationStatusWithCompletion:(id /* block */)arg1;
 - (void)getSpokenNotificationShouldAlwaysSpeakNotificationsWithCompletion:(id /* block */)arg1;
 - (void)getSpokenNotificationShouldSkipTriggerlessRepliesWithCompletion:(id /* block */)arg1;
@@ -151,6 +152,7 @@
 - (void)setEnableDragAndDrop:(bool)arg1;
 - (void)setEnableNonFullScreenAppearance:(bool)arg1;
 - (void)setFileLoggingIsEnabled:(bool)arg1;
+- (void)setForceOfflineRecognitionEnabled:(bool)arg1;
 - (void)setHandsFreeMode:(long long)arg1;
 - (void)setHandsOffIdleTimeInterval:(double)arg1;
 - (void)setHandsOnIdleTimeInterval:(double)arg1;

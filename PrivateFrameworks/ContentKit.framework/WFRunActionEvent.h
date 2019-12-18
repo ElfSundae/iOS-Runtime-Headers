@@ -3,14 +3,14 @@
  */
 
 @interface WFRunActionEvent : WFEvent {
-    NSString * _actionName;
+    NSString * _actionIdentifier;
     bool  _completed;
     NSString * _key;
     NSString * _runSource;
     int  _source;
 }
 
-@property (nonatomic, copy) NSString *actionName;
+@property (nonatomic, copy) NSString *actionIdentifier;
 @property (nonatomic) bool completed;
 @property (nonatomic, copy) NSString *key;
 @property (nonatomic, copy) NSString *runSource;
@@ -19,11 +19,11 @@
 + (Class)codableEventClass;
 
 - (void).cxx_destruct;
-- (id)actionName;
+- (id)actionIdentifier;
 - (bool)completed;
 - (id)key;
 - (id)runSource;
-- (void)setActionName:(id)arg1;
+- (void)setActionIdentifier:(id)arg1;
 - (void)setCompleted:(bool)arg1;
 - (void)setKey:(id)arg1;
 - (void)setRunSource:(id)arg1;

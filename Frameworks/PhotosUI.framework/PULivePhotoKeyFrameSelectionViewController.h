@@ -13,7 +13,6 @@
 @property (nonatomic, copy) NSString *selectionTitle;
 
 - (void).cxx_destruct;
-- (bool)_canShowWhileLocked;
 - (void)_updateButtonTitle;
 - (id)delegate;
 - (id)initWithCoder:(id)arg1;

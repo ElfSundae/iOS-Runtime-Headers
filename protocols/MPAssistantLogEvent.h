@@ -6,6 +6,7 @@
 @required
 
 - (long long)eventCode;
+- (NSString *)eventName;
 - (NSMutableDictionary *)eventPayload;
 
 @end

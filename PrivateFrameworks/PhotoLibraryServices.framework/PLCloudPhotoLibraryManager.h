@@ -195,6 +195,7 @@
 - (void)getStreamingURLForAsset:(id)arg1 resourceType:(unsigned long long)arg2 intent:(unsigned long long)arg3 hints:(id)arg4 completionHandler:(id /* block */)arg5;
 - (void)getSystemBudgetsWithCompletionHandler:(id /* block */)arg1;
 - (id)initWithLibraryServicesManager:(id)arg1;
+- (void)invalidate;
 - (bool)isCloudPhotoLibraryEnabled;
 - (bool)isConnectedToChangeTracker;
 - (bool)isResourceTransferTaskAliveWithTaskWithIdentifier:(id)arg1;

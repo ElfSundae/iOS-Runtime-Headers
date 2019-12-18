@@ -5,6 +5,6 @@
 
 @required
 
-- (void)handledAction:(SXAction *)arg1 state:(unsigned long long)arg2;
+- (void)handledAction:(id <SXAction>)arg1 state:(unsigned long long)arg2;
 
 @end

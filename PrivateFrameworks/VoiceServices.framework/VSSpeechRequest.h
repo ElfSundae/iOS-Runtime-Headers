@@ -73,6 +73,7 @@
 - (unsigned int)audioQueueFlags;
 - (unsigned int)audioSessionID;
 - (bool)audioSessionIDIsValid;
+- (bool)canLogRequestText;
 - (bool)canUseServerTTS;
 - (id)clientBundleIdentifier;
 - (id)contextInfo;

@@ -4,6 +4,7 @@
 
 @interface NewsUI2.IssueDownloadService : Swift._SwiftObject {
     void cloudContext;
+    void highPriorityDownloadQueue;
     void layeredMediaAssetHandlesProvider;
 }
 

@@ -6,6 +6,7 @@
 @required
 
 - (NSArray *)allExistingChats;
+- (bool)blackholedChatsExist;
 - (IMChat *)chatForIMHandle:(IMHandle *)arg1;
 - (IMChat *)chatForIMHandles:(NSArray *)arg1;
 - (NSArray *)chatGUIDsForChat:(IMChat *)arg1;

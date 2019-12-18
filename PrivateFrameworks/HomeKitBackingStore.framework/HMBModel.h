@@ -42,12 +42,16 @@
 + (id)hmbExternalProperties;
 + (id)hmbExternalRecordType;
 + (Class)hmbGenericRepresentation;
++ (id)hmbModelClassesWithQueries;
++ (id)hmbMutableModelClassesWithQueries;
 + (id)hmbProperties;
 + (id)hmbPropertyNames;
 + (id)hmbQueries;
 + (id)hmbReadOnlyBefore;
++ (void)hmbResetModelsWithQueries;
 + (id)hmbSchemaHashRoot;
 + (bool)hmbShouldLogPrivateInformation;
++ (void)load;
 + (id)logCategory;
 + (id)properties;
 + (bool)propertyDiffersFrom:(id)arg1 to:(id)arg2;

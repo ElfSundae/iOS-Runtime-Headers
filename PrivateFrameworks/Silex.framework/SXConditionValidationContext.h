@@ -7,6 +7,7 @@
 }
 
 @property (getter=isBundleSubscriber, nonatomic, readonly) bool bundleSubscriber;
+@property (getter=isBundleTrialEligible, nonatomic, readonly) bool bundleTrialEligible;
 @property (getter=isChannelSubscriber, nonatomic, readonly) bool channelSubscriber;
 @property (nonatomic, readonly) double contentScaleFactor;
 @property (nonatomic, readonly) NSString *contentSizeCategory;
@@ -29,6 +30,7 @@
 - (long long)horizontalSizeClass;
 - (id)initWithLayoutOptions:(id)arg1;
 - (bool)isBundleSubscriber;
+- (bool)isBundleTrialEligible;
 - (bool)isChannelSubscriber;
 - (id)layoutOptions;
 - (unsigned long long)numberOfColumns;

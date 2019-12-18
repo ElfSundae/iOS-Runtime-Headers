@@ -24,6 +24,8 @@
 @property (nonatomic, copy) NSManagedObjectID *userObjectID;
 @property (readonly) STTimeAllowancesViewModel *viewModel;
 
++ (bool)saveAllowance:(id)arg1 forUser:(id)arg2 error:(id*)arg3;
+
 - (void).cxx_destruct;
 - (id)_iCloudAccountPredicate;
 - (void)_registerForPersistentStoreNotifications;

@@ -16,6 +16,7 @@
     NSMapTable * _mediaSelectionToProgressMap;
     unsigned long long  _numMediaSelectionsCompleted;
     unsigned long long  _numMediaSelectionsThatWillReceiveDownloadProgress;
+    bool  _performKeyFetchOnly;
     TVPReportingSession * _reportingSession;
     long long  _state;
     TVPStateMachine * _stateMachine;
@@ -37,6 +38,7 @@
 @property (nonatomic, retain) NSMapTable *mediaSelectionToProgressMap;
 @property (nonatomic) unsigned long long numMediaSelectionsCompleted;
 @property (nonatomic) unsigned long long numMediaSelectionsThatWillReceiveDownloadProgress;
+@property (nonatomic) bool performKeyFetchOnly;
 @property (nonatomic, readonly) double progress;
 @property (nonatomic, retain) TVPReportingSession *reportingSession;
 @property (nonatomic) long long state;
@@ -72,6 +74,7 @@
 - (unsigned long long)numMediaSelectionsThatWillReceiveDownloadProgress;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)pause;
+- (bool)performKeyFetchOnly;
 - (double)progress;
 - (void)removeDelegate:(id)arg1;
 - (id)reportingSession;
@@ -88,6 +91,7 @@
 - (void)setMediaSelectionToProgressMap:(id)arg1;
 - (void)setNumMediaSelectionsCompleted:(unsigned long long)arg1;
 - (void)setNumMediaSelectionsThatWillReceiveDownloadProgress:(unsigned long long)arg1;
+- (void)setPerformKeyFetchOnly:(bool)arg1;
 - (void)setReportingSession:(id)arg1;
 - (void)setState:(long long)arg1;
 - (void)setStateMachine:(id)arg1;

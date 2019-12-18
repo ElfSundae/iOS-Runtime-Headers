@@ -4,6 +4,7 @@
 
 @interface SiriRoutePickerAlertController : UIAlertController
 
+- (bool)_canShowWhileLocked;
 - (bool)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
 

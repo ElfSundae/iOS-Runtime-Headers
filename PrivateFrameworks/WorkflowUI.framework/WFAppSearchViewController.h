@@ -4,23 +4,26 @@
 
 @interface WFAppSearchViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate> {
     bool  _allowMultipleSelection;
+    long long  _appSearchType;
     NSArray * _apps;
     NSMutableDictionary * _cachedAppIconForBundleId;
     <WFAppSearchViewControllerDelegate> * _delegate;
+    NSArray * _omittedAppBundleIDs;
     UIImage * _placeholderImage;
     UISearchBar * _searchBar;
     NSMutableOrderedSet * _selectedApps;
     UITableView * _tableView;
 }
 
-@property (nonatomic) bool allowMultipleSelection;
-@property (nonatomic, readonly) NSArray *apps;
+@property (nonatomic, readonly) bool allowMultipleSelection;
+@property (nonatomic, readonly) long long appSearchType;
+@property (nonatomic, copy) NSArray *apps;
 @property (nonatomic, retain) NSMutableDictionary *cachedAppIconForBundleId;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <WFAppSearchViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, readonly) NSArray *filteredApps;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) NSArray *omittedAppBundleIDs;
 @property (nonatomic, retain) UIImage *placeholderImage;
 @property (nonatomic) UISearchBar *searchBar;
 @property (nonatomic, retain) NSMutableOrderedSet *selectedApps;
@@ -30,6 +33,7 @@
 - (void).cxx_destruct;
 - (void)adjustInsetsForKeyboard;
 - (bool)allowMultipleSelection;
+- (long long)appSearchType;
 - (id)applicationIconImageForBundleIdentifier:(id)arg1;
 - (id)apps;
 - (id)cachedAppIconForBundleId;
@@ -42,13 +46,15 @@
 - (id)initWithAppSearchType:(long long)arg1;
 - (id)initWithAppSearchType:(long long)arg1 allowMultipleSelection:(bool)arg2 selectedApps:(id)arg3;
 - (id)initWithAppSearchType:(long long)arg1 omittedAppBundleIDs:(id)arg2 allowMultipleSelection:(bool)arg3 selectedApps:(id)arg4;
+- (void)loadApps;
 - (void)loadView;
+- (id)omittedAppBundleIDs;
 - (id)placeholderImage;
 - (id)searchBar;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)searchBarSearchButtonClicked:(id)arg1;
 - (id)selectedApps;
-- (void)setAllowMultipleSelection:(bool)arg1;
+- (void)setApps:(id)arg1;
 - (void)setCachedAppIconForBundleId:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setPlaceholderImage:(id)arg1;

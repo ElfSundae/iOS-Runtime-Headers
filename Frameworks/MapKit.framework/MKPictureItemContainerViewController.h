@@ -26,6 +26,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)analyticsDelegate;
 - (id)attribution;
 - (struct CGPoint { double x1; double x2; })beginAnalyticsScrollingPoint;

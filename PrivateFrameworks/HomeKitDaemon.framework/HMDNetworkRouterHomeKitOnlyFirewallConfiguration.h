@@ -4,7 +4,6 @@
 
 @interface HMDNetworkRouterHomeKitOnlyFirewallConfiguration : HMDNetworkRouterFirewallRuleConfiguration {
     bool  _isFiltered;
-    bool  _useFallbackForAirPlay2;
     bool  _useFallbackForHDS;
     bool  _useFallbackForRTP;
 }

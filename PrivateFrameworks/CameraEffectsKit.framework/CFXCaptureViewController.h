@@ -190,6 +190,7 @@
 - (void)CFX_setupFaceInViewPromptLabel;
 - (void)CFX_toggleCaptureUI;
 - (void)JFX_capturePhoto;
+- (bool)_canShowWhileLocked;
 - (void)addEffect:(id)arg1;
 - (void)addEffect:(id)arg1 allowImmediateTextEditing:(bool)arg2;
 - (void)addOverlayEffect:(id)arg1 atNormalizedPlanePoint:(struct CGPoint { double x1; double x2; })arg2 scale:(double)arg3 rotationAngle:(double)arg4;

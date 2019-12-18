@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
  */
 
-@interface MFMailComposeView : UITransitionView <CNAutocompleteResultsTableViewControllerDelegate, CNComposeDragSourceDelegate, CNComposeDropTargetDelegate, CNComposeHeaderViewDelegate, MFComposeBodyFieldDelegate, MFMailComposeContactsSearchControllerDelegate, UIPopoverControllerDelegate, UIScrollViewDelegate, UITextContentViewDelegate> {
+@interface MFMailComposeView : UITransitionView <CNAutocompleteResultsTableViewControllerDelegate, CNComposeDragSourceDelegate, CNComposeDropTargetDelegate, CNComposeHeaderViewDelegate, MFComposeWebViewDelegate, MFMailComposeContactsSearchControllerDelegate, UIPopoverControllerDelegate, UIScrollViewDelegate> {
     MFMailComposeRecipientTextView * _activeRecipientView;
     MFMailComposeRecipientTextView * _bccField;
     UIScrollView * _bodyScroller;
@@ -38,6 +38,7 @@
     unsigned int  _isShowingPeoplePicker;
     double  _keyboardIntersection;
     MFMailComposeRecipientTextView * _lastChangedRecipientView;
+    MFMessageContentLoadingView * _loadingView;
     <MFMailComposeViewDelegate> * _mailComposeViewDelegate;
     MFComposeMultiView * _multiField;
     unsigned long long  _notifyingBodyField;
@@ -53,17 +54,17 @@
     MFComposeSubjectView * _subjectField;
     MFMailComposeToField * _toField;
     <MFMailComposeToFieldDelegate> * _toFieldDelegate;
+    MFComposeWebView * _webView;
 }
 
 @property (getter=isAnimationDisabled, nonatomic) bool animationDisabled;
 @property (nonatomic, readonly) MFMailComposeRecipientTextView *bccField;
-@property (nonatomic, readonly) UIView<MFComposeBodyField> *bodyField;
 @property (nonatomic, readonly) UIScrollView *bodyScroller;
-@property (nonatomic, readonly) UIView *bodyTextView;
 @property (nonatomic, readonly) MFMailComposeRecipientTextView *ccField;
 @property (getter=isChangingRecipients, nonatomic) bool changingRecipients;
 @property (nonatomic) <MFMailComposeRecipientTextViewDelegate> *composeRecipientDelegate;
 @property (nonatomic) <MFMailComposeViewDelegate> *composeViewDelegate;
+@property (nonatomic, readonly) MFComposeWebView *composeWebView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) MFComposeDisplayMetrics *displayMetrics;
@@ -93,7 +94,6 @@
 - (id)_allHeaderViews;
 - (void)_beginBlockingBodyScroll;
 - (void)_beginPreventingScrollingToRevealSelection;
-- (id)_bodyField;
 - (void)_cancelAnimations;
 - (void)_cancelDelayedPopover;
 - (void)_collectKeyViews:(id)arg1;
@@ -129,7 +129,6 @@
 - (void)_setupBodyFieldWithHeaderFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 enclosingFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 changingView:(id)arg3 frameToPin:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg4 wasSearching:(bool)arg5;
 - (void)_setupField:(id)arg1 withLabel:(id)arg2 navTitle:(id)arg3;
 - (bool)_shouldShowCorecipientsTableView;
-- (id)_textView;
 - (void)_updateFromField;
 - (void)_updateKeyboardIntersection:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_updateMultiField;
@@ -146,9 +145,7 @@
 - (void)automaticKeyboardFinishedDisappearing:(id)arg1;
 - (id)bccField;
 - (void)beginSearchForText:(id)arg1 recipientView:(id)arg2;
-- (id)bodyField;
 - (id)bodyScroller;
-- (id)bodyTextView;
 - (id)bottomView;
 - (void)cancelDelayedPopover;
 - (void)cancelSearch;
@@ -156,15 +153,14 @@
 - (bool)chooseSelectedSearchResult;
 - (void)clearSearchForActiveRecipientView;
 - (void)clearSearchForRecipientView:(id)arg1 reflow:(bool)arg2 clear:(bool)arg3;
-- (void)composeBodyFieldDidDraw:(id)arg1;
-- (void)composeBodyFieldDidFirstVisuallyNonEmptyLayout:(id)arg1;
-- (void)composeBodyFieldFrameChanged:(id)arg1;
 - (void)composeContactsSearchController:(id)arg1 didFindCorecipients:(id)arg2;
 - (void)composeContactsSearchController:(id)arg1 didSortResults:(id)arg2;
 - (void)composeContactsSearchController:(id)arg1 finishedWithResults:(bool)arg2;
 - (void)composeHeaderViewClicked:(id)arg1;
 - (id)composeRecipientDelegate;
 - (id)composeViewDelegate;
+- (id)composeWebView;
+- (void)composeWebViewTextChanged:(id)arg1;
 - (void)dealloc;
 - (void)didAppear;
 - (void)didIgnoreSearchResults;
@@ -220,7 +216,10 @@
 - (void)saveFirstResponder;
 - (void)saveFirstResponderWithKeyboardPinning:(bool)arg1;
 - (void)scrollToTopAnimated:(bool)arg1;
+- (void)scrollViewDidEndDecelerating:(id)arg1;
+- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(bool)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)scrollViewWillBeginDragging:(id)arg1;
 - (id)searchController;
 - (void)searchResultsPopoverWasDismissed;
 - (id)searchViewController;
@@ -238,16 +237,12 @@
 - (void)setIsForEditing:(bool)arg1;
 - (void)setKeyboardVisible:(bool)arg1 animate:(bool)arg2;
 - (void)setLoading:(bool)arg1;
-- (void)setNeedsLayout;
 - (void)setPopoverOwner:(id)arg1;
 - (void)setRecipientFieldsEditable:(bool)arg1 animated:(bool)arg2;
 - (void)setScrollsToTop:(bool)arg1;
 - (void)setShowingPeoplePicker:(bool)arg1;
 - (void)setToFieldDelegate:(id)arg1;
 - (id)subjectField;
-- (void)textContentView:(id)arg1 didChangeSize:(struct CGSize { double x1; double x2; })arg2;
-- (bool)textContentView:(id)arg1 shouldChangeSizeForContentSize:(struct CGSize { double x1; double x2; })arg2;
-- (bool)textContentView:(id)arg1 shouldScrollForPendingContentSize:(struct CGSize { double x1; double x2; })arg2;
 - (id)toField;
 - (id)toFieldDelegate;
 - (void)toggleImageSizeFieldIfNecessary;

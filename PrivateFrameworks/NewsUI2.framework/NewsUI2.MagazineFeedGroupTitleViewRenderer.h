@@ -6,9 +6,11 @@
     void blueprintProvider;
     void debugEnabled;
     void dislikeButtonRenderer;
+    void feedPersonalizer;
     void likeButtonRenderer;
     void shineImageFactory;
     void styler;
+    void tagController;
 }
 
 @end

@@ -17,11 +17,13 @@
         unsigned int responseClassId : 1; 
         unsigned int hasQuestionMark : 1; 
         unsigned int isApricotDevice : 1; 
+        unsigned int isCustomResponse : 1; 
     }  _has;
     bool  _hasQuestionMark;
     NSString * _hostProcess;
     int  _inputMethod;
     bool  _isApricotDevice;
+    bool  _isCustomResponse;
     NSString * _lang;
     NSString * _locale;
     unsigned int  _modelId;
@@ -43,6 +45,7 @@
 @property (nonatomic, readonly) bool hasHostProcess;
 @property (nonatomic) bool hasInputMethod;
 @property (nonatomic) bool hasIsApricotDevice;
+@property (nonatomic) bool hasIsCustomResponse;
 @property (nonatomic, readonly) bool hasLang;
 @property (nonatomic, readonly) bool hasLocale;
 @property (nonatomic) bool hasModelId;
@@ -56,6 +59,7 @@
 @property (nonatomic, retain) NSString *hostProcess;
 @property (nonatomic) int inputMethod;
 @property (nonatomic) bool isApricotDevice;
+@property (nonatomic) bool isCustomResponse;
 @property (nonatomic, retain) NSString *lang;
 @property (nonatomic, retain) NSString *locale;
 @property (nonatomic) unsigned int modelId;
@@ -86,6 +90,7 @@
 - (bool)hasHostProcess;
 - (bool)hasInputMethod;
 - (bool)hasIsApricotDevice;
+- (bool)hasIsCustomResponse;
 - (bool)hasLang;
 - (bool)hasLocale;
 - (bool)hasModelId;
@@ -101,6 +106,7 @@
 - (int)inputMethod;
 - (id)inputMethodAsString:(int)arg1;
 - (bool)isApricotDevice;
+- (bool)isCustomResponse;
 - (bool)isEqual:(id)arg1;
 - (id)lang;
 - (id)locale;
@@ -119,6 +125,7 @@
 - (void)setHasHasQuestionMark:(bool)arg1;
 - (void)setHasInputMethod:(bool)arg1;
 - (void)setHasIsApricotDevice:(bool)arg1;
+- (void)setHasIsCustomResponse:(bool)arg1;
 - (void)setHasModelId:(bool)arg1;
 - (void)setHasNumberOfResponsesGenerated:(bool)arg1;
 - (void)setHasPosition:(bool)arg1;
@@ -128,6 +135,7 @@
 - (void)setHostProcess:(id)arg1;
 - (void)setInputMethod:(int)arg1;
 - (void)setIsApricotDevice:(bool)arg1;
+- (void)setIsCustomResponse:(bool)arg1;
 - (void)setLang:(id)arg1;
 - (void)setLocale:(id)arg1;
 - (void)setModelId:(unsigned int)arg1;

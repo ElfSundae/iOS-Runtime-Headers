@@ -40,6 +40,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)_findRouteWithUUID:(id)arg1;
 - (bool)copyTraceToCrashReporter;
 - (id)description;
 - (id)directionsRequest;

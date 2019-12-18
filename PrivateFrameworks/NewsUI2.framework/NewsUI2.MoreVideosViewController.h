@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NewsUI2.framework/NewsUI2
  */
 
-@interface NewsUI2.MoreVideosViewController : UIViewController <TSBlueprintInspectable, TSVideoGroupViewControllerType, TUPluggable> {
+@interface NewsUI2.MoreVideosViewController : UIViewController <TSBlueprintInspectable, TSTabBarSplitViewAutoObserver, TSVideoGroupViewControllerType, TUDeselectable, TUKeyCommandTraversable, TUPluggable> {
     void blueprintViewController;
     void config;
     void eventHandler;
@@ -25,6 +25,7 @@
 
 - (void).cxx_destruct;
 - (id)cellForHeadline:(id)arg1;
+- (void)deselect;
 - (id)feedViewExposureID;
 - (id)groupRankProvider;
 - (id)initWithCoder:(id)arg1;
@@ -39,6 +40,8 @@
 - (void)setIsBeingUsedAsPlugin:(bool)arg1;
 - (void)setPluggableDelegate:(id)arg1;
 - (void)setRoutableDelegate:(id)arg1;
+- (void)startTraversingWithDirection:(long long)arg1;
+- (void)tabBarSplitViewDidChangeFocusToFocus:(long long)arg1 action:(long long)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillLayoutSubviews;

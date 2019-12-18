@@ -69,7 +69,7 @@
 - (id)_createShareModel;
 - (id)_fetchInvitationWithContext:(id)arg1 usingShare:(id)arg2;
 - (id)_handleLeaveCloudShareErrorUsingCloudZoneRecordPushResult:(id)arg1;
-- (id)_leaveCloudShareRequestingNewInvitationToken:(bool)arg1;
+- (id)_leaveCloudShareRequestingNewInvitationToken:(bool)arg1 allowCloudPull:(bool)arg2;
 - (id)_pushDeletedParticipantRecordID:(id)arg1;
 - (id)_pushUpdatedShare:(id)arg1;
 - (id)_pushUpdatedShare:(id)arg1 participantRecord:(id)arg2;

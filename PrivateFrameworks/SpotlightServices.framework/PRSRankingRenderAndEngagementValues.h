@@ -3,23 +3,18 @@
  */
 
 @interface PRSRankingRenderAndEngagementValues : NSObject <NSCopying, NSSecureCoding> {
-    NSMutableArray * _engagementValues;
-    NSMutableArray * _renderValues;
+    short  _engagementValues;
+    short  _renderValues;
 }
-
-@property (retain) NSMutableArray *engagementValues;
-@property (retain) NSMutableArray *renderValues;
 
 + (bool)supportsSecureCoding;
 
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)engagementValues;
+- (bool)getRankingValues:(short*)arg1 withRankingValueSize:(unsigned long long)arg2 forType:(int)arg3;
+- (void)incrementRankingValuesForType:(int)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)renderValues;
-- (void)setEngagementValues:(id)arg1;
-- (void)setRenderValues:(id)arg1;
+- (void)setRankingValues:(short)arg1 forType:(int)arg2;
 
 @end

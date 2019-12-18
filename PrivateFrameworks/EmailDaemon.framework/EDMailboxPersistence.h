@@ -28,7 +28,7 @@
 - (id)initWithMailboxProvider:(id)arg1;
 - (id)legacyMailboxForMailboxURL:(id)arg1;
 - (id)legacyMailboxForObjectID:(id)arg1;
-- (id)mailboxDatabaseIDsForMailboxObjectIDs:(id)arg1;
+- (id)mailboxDatabaseIDsForMailboxObjectIDs:(id)arg1 createIfNecessary:(bool)arg2;
 - (void)mailboxListInvalidated;
 - (id)mailboxObjectIDsForMailboxType:(long long)arg1;
 - (id)mailboxProvider;

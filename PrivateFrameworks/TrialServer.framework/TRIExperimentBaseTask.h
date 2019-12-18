@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/TrialServer.framework/TrialServer
  */
 
-@interface TRIExperimentBaseTask : TRIBaseTask {
+@interface TRIExperimentBaseTask : TRIBaseTask <TRIMetricsProviding> {
     struct NSString { Class x1; } * _experimentId;
 }
 
@@ -15,6 +15,8 @@
 - (struct NSString { Class x1; }*)experimentId;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithExperimentId:(struct NSString { Class x1; }*)arg1;
+- (bool)isEqual:(id)arg1;
+- (id)metrics;
 - (id)nextTasksForRunStatus:(int)arg1;
 - (int)projectIdForExperiment;
 - (id)tags;

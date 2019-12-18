@@ -22,8 +22,8 @@
 - (id)accountProxyGenerator;
 - (id)attachments;
 - (id)bccRecipients;
-- (id)bodyField;
 - (id)ccRecipients;
+- (id)composeWebView;
 - (id)init;
 - (id)initWithOriginalMessageContent:(id)arg1 resolver:(id)arg2;
 - (id)originalMessageContent;

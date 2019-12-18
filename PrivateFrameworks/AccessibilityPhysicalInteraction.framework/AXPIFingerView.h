@@ -9,6 +9,7 @@
     id /* block */  _lastProgressCompletionBlock;
     bool  _pressed;
     CAShapeLayer * _progressLayer;
+    unsigned long long  _shape;
 }
 
 @property (nonatomic) <AXPIFingerAppearanceDelegate> *appearanceDelegate;
@@ -21,11 +22,11 @@
 @property (getter=isPressed, nonatomic) bool pressed;
 @property (nonatomic, retain) CAShapeLayer *progressLayer;
 @property (getter=isSelected, nonatomic) bool selected;
+@property (nonatomic) unsigned long long shape;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_createProgressLayerWithDuration:(double)arg1 center:(struct CGPoint { double x1; double x2; })arg2 radius:(double)arg3;
-- (struct CGPath { }*)_drawFullCircleWithCenter:(struct CGPoint { double x1; double x2; })arg1 radius:(double)arg2 clockwise:(bool)arg3;
+- (id)_createProgressLayerWithDuration:(double)arg1 inRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (double)_iconScaleForForce:(double)arg1;
 - (bool)accessibilityIgnoresInvertColors;
 - (void)animateCircularProgressWithDuration:(double)arg1 completion:(id /* block */)arg2;
@@ -50,6 +51,8 @@
 - (void)setPressed:(bool)arg1 animated:(bool)arg2;
 - (void)setProgressLayer:(id)arg1;
 - (void)setSelected:(bool)arg1;
+- (void)setShape:(unsigned long long)arg1;
+- (unsigned long long)shape;
 - (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 
 @end

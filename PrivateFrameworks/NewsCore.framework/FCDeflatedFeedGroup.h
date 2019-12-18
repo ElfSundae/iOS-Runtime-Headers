@@ -11,12 +11,12 @@
 
 @property (nonatomic, readonly, copy) FCColorGradient *backgroundGradient;
 @property (nonatomic, readonly, copy) NSString *backingTagID;
-@property (nonatomic, readonly, copy) FCColor *cardBackgroundColor;
+@property (nonatomic, readonly) <FCForYouBridgedFeedGroup> *bridgedGroup;
+@property (nonatomic, readonly, copy) <FCCardStyleProviding> *cardStyle;
 @property (nonatomic, readonly) NSDate *creationDate;
 @property (nonatomic, readonly, copy) NSString *ctaText;
+@property (nonatomic, readonly, copy) <FCCardStyleProviding> *darkCardStyle;
 @property (nonatomic, readonly, copy) FCColorGradient *darkStyleBackgroundGradient;
-@property (nonatomic, readonly, copy) FCColor *darkStyleCardBackgroundColor;
-@property (nonatomic, readonly, copy) FCColorGradient *darkStyleSauceGradient;
 @property (nonatomic, readonly, copy) FCColor *darkStyleTitleColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -29,29 +29,28 @@
 @property (nonatomic, readonly, copy) NSArray *headlines;
 @property (nonatomic, readonly, copy) NSString *identifier;
 @property (nonatomic, readonly, copy) NSArray *issueIDs;
-@property (nonatomic, readonly) <FCForYouMagazineFeedGroup> *magazineGroup;
 @property (nonatomic, readonly) unsigned long long mergeID;
 @property (nonatomic, readonly) unsigned long long options;
 @property (nonatomic, readonly) NTPBFeedViewportGroup *pbGroup;
-@property (nonatomic, readonly, copy) FCColorGradient *sauceGradient;
 @property (nonatomic, readonly) FCSharedStringIndex *sharedStrings;
 @property (nonatomic, readonly, copy) NSString *sourceIdentifier;
 @property (nonatomic, readonly, copy) NSString *subtitle;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly, copy) FCColor *titleColor;
+@property (nonatomic, readonly) bool usesPlaceholderHeadlines;
 @property (nonatomic, readonly, copy) NSArray *videoPlaylistHeadlines;
 
 - (void).cxx_destruct;
 - (id)backgroundGradient;
 - (id)backingTagID;
-- (id)cardBackgroundColor;
+- (id)bridgedGroup;
+- (id)cardStyle;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)creationDate;
 - (id)ctaText;
+- (id)darkCardStyle;
 - (id)darkStyleBackgroundGradient;
-- (id)darkStyleCardBackgroundColor;
-- (id)darkStyleSauceGradient;
 - (id)darkStyleTitleColor;
 - (id)discoverMoreVideosInfo;
 - (id)edition;
@@ -63,16 +62,15 @@
 - (id)initWithPBGroup:(id)arg1 sharedStrings:(id)arg2;
 - (bool)isGap;
 - (id)issueIDs;
-- (id)magazineGroup;
 - (unsigned long long)mergeID;
 - (unsigned long long)options;
 - (id)pbGroup;
-- (id)sauceGradient;
 - (id)sharedStrings;
 - (id)sourceIdentifier;
 - (id)subtitle;
 - (id)title;
 - (id)titleColor;
+- (bool)usesPlaceholderHeadlines;
 - (id)videoPlaylistHeadlines;
 
 @end

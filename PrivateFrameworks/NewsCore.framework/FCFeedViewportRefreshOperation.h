@@ -4,6 +4,7 @@
 
 @interface FCFeedViewportRefreshOperation : FCOperation {
     <FCCoreConfiguration> * _configuration;
+    FCCloudContext * _context;
     FCFeedDescriptor * _feedDescriptor;
     id /* block */  _refreshCompletionHandler;
     FCFeedViewportDiff * _resultDiff;
@@ -12,6 +13,7 @@
 }
 
 @property (nonatomic, copy) <FCCoreConfiguration> *configuration;
+@property (nonatomic, retain) FCCloudContext *context;
 @property (nonatomic, retain) FCFeedDescriptor *feedDescriptor;
 @property (nonatomic, copy) id /* block */ refreshCompletionHandler;
 @property (nonatomic, retain) FCFeedViewportDiff *resultDiff;
@@ -19,7 +21,9 @@
 @property (nonatomic, retain) FCFeedViewport *viewport;
 
 - (void).cxx_destruct;
+- (void)_continueWithRefreshDate:(id)arg1 forYouConfig:(id)arg2;
 - (id)configuration;
+- (id)context;
 - (id)feedDescriptor;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
@@ -27,6 +31,7 @@
 - (id)resultDiff;
 - (id)resultViewport;
 - (void)setConfiguration:(id)arg1;
+- (void)setContext:(id)arg1;
 - (void)setFeedDescriptor:(id)arg1;
 - (void)setRefreshCompletionHandler:(id /* block */)arg1;
 - (void)setResultDiff:(id)arg1;

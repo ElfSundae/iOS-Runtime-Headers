@@ -14,6 +14,9 @@
 @property long long downtimeCommunicationLimit;
 @property long long screenTimeCommunicationLimit;
 
++ (bool)hasShownCompatibilityAlertForDSID:(id)arg1;
++ (void)setHasShownCompatibilityAlert:(bool)arg1 forDSID:(id)arg2;
+
 - (long long)contactManagementState;
 - (bool)contactsEditable;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;

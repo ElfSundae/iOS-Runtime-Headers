@@ -3,10 +3,10 @@
  */
 
 @interface SXWebContentComponentSizer : SXComponentSizer {
-    <SXWebContentLoadingPolicyProvider> * _loadingPolicyProvider;
+    <SWLoadingPolicyProvider> * _loadingPolicyProvider;
 }
 
-@property (nonatomic, readonly) <SXWebContentLoadingPolicyProvider> *loadingPolicyProvider;
+@property (nonatomic, readonly) <SWLoadingPolicyProvider> *loadingPolicyProvider;
 
 - (void).cxx_destruct;
 - (double)calculateHeightForWidth:(double)arg1 layoutContext:(id)arg2;

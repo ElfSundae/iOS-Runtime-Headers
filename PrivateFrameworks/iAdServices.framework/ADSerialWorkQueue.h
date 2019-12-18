@@ -4,10 +4,12 @@
 
 @interface ADSerialWorkQueue : NSObject
 
-+ (id /* block */)addDelayedOperation:(double)arg1 block:(id /* block */)arg2;
++ (unsigned long long)addCancellableDelayedOperation:(double)arg1 block:(id /* block */)arg2;
++ (void)addDelayedOperation:(double)arg1 block:(id /* block */)arg2;
 + (void)addOperation:(id /* block */)arg1;
-+ (void)cancelDelayedOperation:(id /* block */)arg1;
++ (void)cancelDelayedOperation:(unsigned long long)arg1;
 + (void)initialize;
 + (id)primaryQueue;
++ (void)releaseCancellableOperation:(unsigned long long)arg1;
 
 @end

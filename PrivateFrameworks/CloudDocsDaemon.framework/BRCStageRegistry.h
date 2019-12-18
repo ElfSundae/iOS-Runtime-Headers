@@ -27,7 +27,8 @@
 @property (nonatomic, readonly) bool isCancelled;
 @property (readonly) Class superclass;
 
-+ (unsigned short)computeItemModeFromStatInfo:(id)arg1 sharingOptions:(unsigned long long)arg2 isDirectory:(bool)arg3;
++ (bool)applySharingReadonlyACLsToFD:(int)arg1 statInfo:(id)arg2 version:(id)arg3 clientZone:(id)arg4 sharingOptions:(unsigned long long)arg5;
++ (unsigned short)computeItemModeFromStatInfo:(id)arg1 isPackage:(bool)arg2;
 + (void)migrateStageToVersion2_0WithSession:(id)arg1;
 
 - (void).cxx_destruct;
@@ -41,7 +42,7 @@
 - (long long)_purgeSpaceUnderQueue:(long long)arg1 withUrgency:(int)arg2;
 - (void)_updatePersistedStateWithLatestGCStartTime:(long long)arg1;
 - (void)_watchLockedRelpath:(id)arg1;
-- (void)applyMetadataOnFileDescriptor:(int)arg1 liveFileDescriptor:(int)arg2 clientZone:(id)arg3 statInfo:(id)arg4 version:(id)arg5 sharingOptions:(unsigned long long)arg6;
+- (void)applyMetadataOnFileDescriptor:(int)arg1 liveFileDescriptor:(int)arg2 itemID:(id)arg3 clientZone:(id)arg4 statInfo:(id)arg5 version:(id)arg6 sharingOptions:(unsigned long long)arg7;
 - (void)associateDownloadStageID:(id)arg1 withOperation:(id)arg2;
 - (void)associateSyncUpStageID:(id)arg1 withOperation:(id)arg2;
 - (void)cancel;

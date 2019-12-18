@@ -14,7 +14,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithData:(id)arg1 contentType:(id)arg2;
+- (id)initWithData:(id)arg1 contentType:(id)arg2 previewTitle:(id)arg3;
 - (id)item;
 - (id)provideDataForItem:(id)arg1;
 

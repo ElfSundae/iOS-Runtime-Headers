@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/TextToSpeech.framework/TextToSpeech
  */
 
-@interface TTSSpeechChannel : NSObject {
+@interface TTSSpeechChannel : NSObject <NSSecureCoding> {
     TTSSpeechVoice * _voice;
 }
 

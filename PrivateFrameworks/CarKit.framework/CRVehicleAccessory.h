@@ -13,6 +13,8 @@
     bool  _supportsUSBCarPlay;
     bool  _supportsWiredBluetoothPairing;
     bool  _supportsWirelessCarPlay;
+    NSDictionary * _vehicleAccessoryInfoKeysCache;
+    NSDictionary * _vehicleInfoDataCache;
     NSString * _vehicleModelName;
     NSString * _vehicleName;
 }
@@ -27,6 +29,8 @@
 @property (nonatomic) bool supportsUSBCarPlay;
 @property (nonatomic) bool supportsWiredBluetoothPairing;
 @property (nonatomic) bool supportsWirelessCarPlay;
+@property (nonatomic, copy) NSDictionary *vehicleAccessoryInfoKeysCache;
+@property (nonatomic, copy) NSDictionary *vehicleInfoDataCache;
 @property (nonatomic, retain) NSString *vehicleModelName;
 @property (nonatomic, retain) NSString *vehicleName;
 
@@ -56,6 +60,8 @@
 - (void)setSupportsUSBCarPlay:(bool)arg1;
 - (void)setSupportsWiredBluetoothPairing:(bool)arg1;
 - (void)setSupportsWirelessCarPlay:(bool)arg1;
+- (void)setVehicleAccessoryInfoKeysCache:(id)arg1;
+- (void)setVehicleInfoDataCache:(id)arg1;
 - (void)setVehicleModelName:(id)arg1;
 - (void)setVehicleName:(id)arg1;
 - (bool)supportsEnhancedIntegration;
@@ -63,6 +69,8 @@
 - (bool)supportsWiredBluetoothPairing;
 - (bool)supportsWirelessCarPlay;
 - (id)vehicleAccessoryInfoKeys;
+- (id)vehicleAccessoryInfoKeysCache;
+- (id)vehicleInfoDataCache;
 - (id)vehicleModelName;
 - (id)vehicleName;
 

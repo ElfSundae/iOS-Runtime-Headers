@@ -34,6 +34,7 @@
 @property (nonatomic, retain) UITapGestureRecognizer *tapRecognizer;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_handleTapGestureRecognizer:(id)arg1;
 - (void)_updateMenuItemsForViewController:(id)arg1;
 - (void)_updatePresentedMenuViewControllerIfNecessary;

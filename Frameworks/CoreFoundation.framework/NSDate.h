@@ -139,13 +139,6 @@
 - (double)bucketToRoundingFactor:(unsigned int)arg1;
 - (double)timeIntervalSince1970WithBucket:(unsigned int)arg1;
 
-// Image: /System/Library/Frameworks/SensorKit.framework/SensorKit
-
-+ (id)dateWithSRAbsoluteTime:(double)arg1;
-
-- (id)initWithSRAbsoluteTime:(double)arg1;
-- (double)srAbsoluteTime;
-
 // Image: /System/Library/Frameworks/VideoSubscriberAccount.framework/VideoSubscriberAccount
 
 + (id)vs_currentDate;
@@ -744,6 +737,7 @@
 
 - (long long)fc_GregorianCalendarDaysSinceDate:(id)arg1;
 - (id)fc_adjustToRecentDate;
+- (id)fc_dateByRoundingDownToNearestQuarterHour;
 - (id)fc_dateBySubtractingTimeInterval:(double)arg1;
 - (id)fc_dateOfEarliestGregorianCalendarDay;
 - (bool)fc_isEarlierThan:(id)arg1;
@@ -934,6 +928,13 @@
 - (id)safari_startOfDay;
 - (id)safari_stringsFromDateForLocaleIdentifiers:(id)arg1;
 - (double)safari_timeIntervalUntilNow;
+
+// Image: /System/Library/PrivateFrameworks/SensorKit.framework/SensorKit
+
++ (id)dateWithSRAbsoluteTime:(double)arg1;
+
+- (id)initWithSRAbsoluteTime:(double)arg1;
+- (double)srAbsoluteTime;
 
 // Image: /System/Library/PrivateFrameworks/SlideshowKit.framework/Frameworks/OpusFoundation.framework/OpusFoundation
 

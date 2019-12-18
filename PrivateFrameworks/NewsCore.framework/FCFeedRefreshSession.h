@@ -5,6 +5,7 @@
 @interface FCFeedRefreshSession : NSObject {
     NSSet * _activeGroupEmitterIDs;
     NSDictionary * _cursorsByGroupEmitterID;
+    <FCFeedRefreshSessionForYouConfig> * _forYouConfig;
     NSString * _identifier;
     bool  _isNewEdition;
     bool  _isOffline;
@@ -17,6 +18,7 @@
 
 @property (nonatomic, readonly, copy) NSSet *activeGroupEmitterIDs;
 @property (nonatomic, readonly, copy) NSDictionary *cursorsByGroupEmitterID;
+@property (nonatomic, readonly, copy) <FCFeedRefreshSessionForYouConfig> *forYouConfig;
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, readonly) bool isNewEdition;
 @property (nonatomic, readonly) bool isOffline;
@@ -25,6 +27,8 @@
 @property (nonatomic, readonly, copy) NSArray *pendingGroups;
 @property (nonatomic, readonly) bool reachedEnd;
 @property (nonatomic, readonly) NSDate *refreshDate;
+
++ (id)currentEditionWithRefreshDate:(id)arg1 lastCompletedEdition:(id)arg2 fromPaginator:(id)arg3;
 
 - (void).cxx_destruct;
 - (id)activeGroupEmitterIDs;
@@ -37,10 +41,11 @@
 - (id)currentEditionFromPaginator:(id)arg1;
 - (id)cursorsByGroupEmitterID;
 - (id)description;
+- (id)forYouConfig;
 - (unsigned long long)hash;
 - (id)identifier;
-- (id)initWithIdentifier:(id)arg1 refreshDate:(id)arg2 modificationDate:(id)arg3 lastCompletedEdition:(id)arg4 cursorsByGroupEmitterID:(id)arg5 pendingGroups:(id)arg6 activeGroupEmitterIDs:(id)arg7 reachedEnd:(bool)arg8 isOffline:(bool)arg9;
-- (id)initWithRefreshDate:(id)arg1 activeGroupEmitterIDs:(id)arg2 isOffline:(bool)arg3;
+- (id)initWithIdentifier:(id)arg1 refreshDate:(id)arg2 modificationDate:(id)arg3 lastCompletedEdition:(id)arg4 cursorsByGroupEmitterID:(id)arg5 pendingGroups:(id)arg6 activeGroupEmitterIDs:(id)arg7 reachedEnd:(bool)arg8 isOffline:(bool)arg9 forYouConfig:(id)arg10;
+- (id)initWithRefreshDate:(id)arg1 activeGroupEmitterIDs:(id)arg2 isOffline:(bool)arg3 forYouConfig:(id)arg4;
 - (bool)isEqual:(id)arg1;
 - (bool)isNewEdition;
 - (bool)isOffline;

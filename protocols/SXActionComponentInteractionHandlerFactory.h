@@ -5,6 +5,6 @@
 
 @required
 
-- (<SXComponentInteractionHandler> *)interactionHandlerForAction:(SXAction *)arg1;
+- (<SXComponentInteractionHandler> *)interactionHandlerForAction:(id <SXAction>)arg1;
 
 @end

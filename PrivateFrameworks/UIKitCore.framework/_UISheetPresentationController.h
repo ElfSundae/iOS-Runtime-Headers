@@ -168,6 +168,7 @@
 - (bool)_shouldDismissWhenTappedOutside;
 - (bool)_shouldOccludeDuringPresentation;
 - (bool)_shouldPresentedViewControllerControlStatusBarAppearance;
+- (bool)_shouldPreserveFirstResponder;
 - (bool)_shouldScaleDownBehindDescendantSheets;
 - (id)_sourceView;
 - (void)_startInteractiveTransitionFromRemoteWithProgress:(double)arg1 offset:(double)arg2;

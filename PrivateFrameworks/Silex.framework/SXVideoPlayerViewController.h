@@ -13,6 +13,7 @@
     SXAutomaticFullscreenVideoPlaybackBehaviorManager * _fullscreenBehaviorManager;
     SVLearnMoreButton * _learnMoreButton;
     unsigned long long  _mode;
+    bool  _playButtonTapped;
     AVPlayerViewController * _playerViewController;
     SXVideoPlaybackQueue * _queue;
     SXVideoAdSkipButton * _skipButton;
@@ -36,6 +37,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) SVLearnMoreButton *learnMoreButton;
 @property (nonatomic) unsigned long long mode;
+@property (nonatomic) bool playButtonTapped;
 @property (nonatomic, retain) AVPlayerViewController *playerViewController;
 @property (getter=isPlaying, nonatomic, readonly) bool playing;
 @property (nonatomic, retain) SXVideoPlaybackQueue *queue;
@@ -73,7 +75,8 @@
 - (void)loadView;
 - (unsigned long long)mode;
 - (void)pause;
-- (void)play;
+- (bool)playButtonTapped;
+- (void)playWithButtonTapped:(bool)arg1;
 - (bool)playbackAllowedForPlaybackCoordinator:(id)arg1;
 - (void)playbackCoordinator:(id)arg1 playbackFailedWithError:(id)arg2;
 - (void)playbackCoordinator:(id)arg1 timeElapsed:(double)arg2 duration:(double)arg3;
@@ -99,6 +102,7 @@
 - (void)setFullscreenBehavior:(unsigned long long)arg1;
 - (void)setLearnMoreButton:(id)arg1;
 - (void)setMode:(unsigned long long)arg1;
+- (void)setPlayButtonTapped:(bool)arg1;
 - (void)setPlayerViewController:(id)arg1;
 - (void)setQueue:(id)arg1;
 - (void)setSkipButton:(id)arg1;

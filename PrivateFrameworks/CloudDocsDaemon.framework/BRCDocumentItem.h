@@ -95,8 +95,9 @@
 - (bool)isEvictable;
 - (bool)isFault;
 - (bool)isPackage;
+- (bool)isShareableItem;
 - (bool)isVisibleIniCloudDrive;
-- (void)learnItemID:(id)arg1 ownerKey:(id)arg2 path:(id)arg3 markLost:(bool)arg4;
+- (void)learnItemID:(id)arg1 ownerKey:(id)arg2 sharingOptions:(unsigned long long)arg3 path:(id)arg4 markLost:(bool)arg5;
 - (void)learnThumbnailSignatureFromLiveVersion:(id)arg1;
 - (id)liveConflictLoserEtags;
 - (id)liveThumbnailSignature;
@@ -104,7 +105,7 @@
 - (void)markForceNeedsSyncUp;
 - (void)markForceUpload;
 - (void)markItemForgottenByServer;
-- (bool)markLatestRequestAcknowledgedInZone:(id)arg1;
+- (bool)markLatestSyncRequestAcknowledgedInZone:(id)arg1;
 - (void)markLatestSyncRequestRejectedInZone:(id)arg1;
 - (void)markLiveFromStageWithPath:(id)arg1;
 - (void)markNeedsReading;

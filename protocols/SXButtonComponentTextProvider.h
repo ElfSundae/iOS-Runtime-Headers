@@ -5,6 +5,6 @@
 
 @required
 
-- (NSString *)buttonText;
+- (NSString *)textForComponent:(id <SXButtonComponent>)arg1;
 
 @end

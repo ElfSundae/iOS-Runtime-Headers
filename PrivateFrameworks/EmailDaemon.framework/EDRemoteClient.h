@@ -6,6 +6,7 @@
     EDAccountRepository * _accountRepository;
     EDActivityRegistry * _activityRegistry;
     NSXPCConnection * _clientConnection;
+    EDClientResumer * _clientResumer;
     EDClientState * _clientState;
     EDDaemonInterfaceFactory * _daemonInterfaceFactory;
     EDFetchController * _fetchController;
@@ -23,7 +24,7 @@
 @property (nonatomic, readonly) EDAccountRepository *accountRepository;
 @property (nonatomic, readonly) EDActivityRegistry *activityRegistry;
 @property (nonatomic, readonly) NSXPCConnection *clientConnection;
-@property (nonatomic, retain) EDClientState *clientState;
+@property (nonatomic, readonly) EDClientState *clientState;
 @property (nonatomic, readonly) EDDaemonInterfaceFactory *daemonInterfaceFactory;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -46,6 +47,7 @@
 - (id)clientConnection;
 - (id)clientState;
 - (id)daemonInterfaceFactory;
+- (void)dealloc;
 - (void)debugStatusWithCompletionHandler:(id /* block */)arg1;
 - (id)fetchController;
 - (void)getAccountRepositoryInterface:(id /* block */)arg1;
@@ -65,7 +67,7 @@
 - (id)messageRepository;
 - (id)outgoingMessageRepository;
 - (id)searchableIndex;
-- (void)setClientState:(id)arg1;
+- (void)setAllowsBackgroundResume:(bool)arg1;
 - (void)test_tearDown;
 - (id)vipManagerInterface;
 

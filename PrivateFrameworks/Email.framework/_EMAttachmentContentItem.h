@@ -38,6 +38,7 @@
 
 - (void).cxx_destruct;
 - (id)UTType;
+- (bool)_isSinglePagePDFWithContentURL:(id)arg1;
 - (id)availableRepresentations;
 - (id)contentID;
 - (long long)dataTransferByteCount;

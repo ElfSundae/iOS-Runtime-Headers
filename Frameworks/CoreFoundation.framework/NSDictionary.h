@@ -1398,6 +1398,10 @@
 
 - (unsigned long long)re_actionIdentifierHashValue;
 
+// Image: /System/Library/PrivateFrameworks/ReminderKit.framework/ReminderKit
+
+- (bool)remdes_boolForKey:(id)arg1 defaultValue:(bool)arg2;
+
 // Image: /System/Library/PrivateFrameworks/RemoteConfiguration.framework/RemoteConfiguration
 
 + (id)rc_dictionaryFromData:(id)arg1 error:(id*)arg2;

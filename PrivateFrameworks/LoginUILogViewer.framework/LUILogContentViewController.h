@@ -30,6 +30,7 @@
 
 - (void).cxx_destruct;
 - (void)_applyScreenShotAnimation;
+- (bool)_canShowWhileLocked;
 - (id)_createLogLocatorView;
 - (id)_createLogOptionsView;
 - (id)_createLogTextView;

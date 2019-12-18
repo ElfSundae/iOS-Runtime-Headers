@@ -5,10 +5,10 @@
 
 @required
 
-- (<SXActionActivityGroup> *)activityGroupForAction:(SXAction *)arg1;
+- (<SXActionActivityGroup> *)activityGroupForAction:(id <SXAction>)arg1;
 
 @optional
 
-- (<SXActionPreviewActivity> *)previewActivityForAction:(SXAction *)arg1;
+- (<SXActionPreviewActivity> *)previewActivityForAction:(id <SXAction>)arg1;
 
 @end

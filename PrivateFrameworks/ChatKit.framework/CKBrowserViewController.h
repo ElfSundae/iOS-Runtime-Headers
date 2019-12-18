@@ -104,6 +104,7 @@
 - (bool)shouldSuppressEntryView;
 - (void)startPPTTestNamed:(id)arg1;
 - (bool)supportsQuickView;
+- (void)tearDownRemoteViewIfNeeded;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidTransitionToCompactPresentation;

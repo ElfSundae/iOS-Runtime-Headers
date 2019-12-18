@@ -28,6 +28,7 @@
 @property (getter=isThreeDTouchEnabled, nonatomic) bool threeDTouchEnabled;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)avatarView;
 - (id)contactStore;
 - (id)contacts;

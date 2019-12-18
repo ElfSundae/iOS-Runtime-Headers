@@ -41,7 +41,6 @@
 @property (nonatomic, retain) PUCropToolControllerSpec *spec;
 
 - (void).cxx_destruct;
-- (bool)_canShowWhileLocked;
 - (id)allAspectRatios;
 - (void)aspectButtonPressed:(id)arg1;
 - (id)aspectButtons;

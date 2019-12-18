@@ -3,10 +3,17 @@
  */
 
 @interface RealityKit.__RKEntityLookAtCameraAction : RealityKit.__RKEntityAction {
+    void animationDeadline;
+    void animationDuration;
+    void axis;
+    void currentAnimation;
     void deadline;
-    void direction;
+    void didInit;
     void duration;
-    void upVector;
+    void face;
+    void faceRotation;
+    void loops;
+    void rotation;
     void updateSubscription;
 }
 

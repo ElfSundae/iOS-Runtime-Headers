@@ -34,6 +34,7 @@
 @property (nonatomic, retain) APUIWFLIntentController *wfIntentController;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (unsigned long long)_cardFormatForContentRequest:(id)arg1;
 - (void)_constructCardViewControllerForInteraction:(id)arg1 completion:(id /* block */)arg2;
 - (id)_contentForCardRequestWithInteraction:(id)arg1;

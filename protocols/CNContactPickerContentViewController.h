@@ -5,6 +5,7 @@
 
 @required
 
+- (UIBarButtonItem *)addContactBarButtonItem;
 - (<CNContactPickerContentDelegate> *)delegate;
 - (void)invalidate;
 - (void)invalidateSelectionAnimated:(bool)arg1;

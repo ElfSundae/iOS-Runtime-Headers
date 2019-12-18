@@ -15,6 +15,7 @@
 - (NSString *)currentScaleImageSize;
 - (void)didInsertAttachment:(MFAttachment *)arg1;
 - (void)didInsertBodyText:(NSString *)arg1;
+- (void)didRemoveAttachment:(MFAttachment *)arg1;
 - (NSArray *)emailAddresses;
 - (bool)hasAttachments;
 - (void)importDocument;
@@ -36,12 +37,12 @@
 
 @optional
 
-- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })additionalContentInsetForBodyField:(UIView<MFComposeBodyField> *)arg1;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })additionalContentInsetForComposeWebView:(MFComposeWebView *)arg1;
 - (bool)canShowContentVariationPicker;
-- (void)composeBodyFieldDidChangeFontAttributes:(NSDictionary *)arg1;
-- (void)composeBodyFieldDidFinishLoad;
-- (void)composeBodyFieldDidResignFirstResponder;
 - (void)composeViewBodyTextChanged:(MFMailComposeView *)arg1;
+- (void)composeWebViewDidChangeFontAttributes:(NSDictionary *)arg1;
+- (void)composeWebViewDidFinishLoad;
+- (void)composeWebViewDidResignFirstResponder;
 - (NSString *)contentVariationName;
 - (void)showContentVariationPickerFromRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 inView:(UIView *)arg2;
 - (void)showMissingAttachmentDataAlert;

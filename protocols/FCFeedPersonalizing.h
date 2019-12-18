@@ -18,7 +18,8 @@
 @optional
 
 - (NSArray *)bestOfGroupFromItems:(NSArray *)arg1 configurationSet:(long long)arg2;
-- (double)personalizedScoreForFeatureWithIdentifier:(NSString *)arg1 items:(NSArray *)arg2 baselineClicksMultiplier:(double)arg3;
+- (void)fetchAggregateMapForPersonalizingItem:(void *)arg1 completion:(void *)arg2; // needs 2 arg types, found 7: <FCFeedPersonalizingItem> *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSDictionary *, void*
+- (double)personalizedScoreForFeatureWithIdentifier:(NSString *)arg1 items:(NSArray *)arg2;
 - (void)prepareFavorites:(void *)arg1; // needs 1 arg types, found 5: id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, void*
 - (NSMapTable *)scoreProfilesForItems:(NSArray *)arg1 configurationSet:(long long)arg2;
 - (FCFeedPersonalizedItems *)sortItems:(NSArray *)arg1 configurationSet:(long long)arg2;

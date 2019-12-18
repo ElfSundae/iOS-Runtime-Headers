@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 - (void)_addDomainAtIndexPath:(id)arg1;
 - (void)_addServerAtIndexPath:(id)arg1;
+- (bool)_canShowWhileLocked;
 - (void)_updateSaveEnabled;
 - (long long)dnsConfig;
 - (id)domains;

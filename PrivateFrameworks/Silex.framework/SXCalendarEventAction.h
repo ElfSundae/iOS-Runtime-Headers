@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXCalendarEventAction : SXAction {
+@interface SXCalendarEventAction : NSObject <SXAction> {
     NSURL * _URL;
     bool  _allDay;
     NSDate * _endDate;
@@ -15,12 +15,17 @@
 
 @property (nonatomic, copy) NSURL *URL;
 @property (nonatomic) bool allDay;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, copy) NSDate *endDate;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *location;
 @property (nonatomic, copy) SXFormattedText *notes;
 @property (nonatomic, readonly, copy) NSDate *startDate;
+@property (readonly) Class superclass;
 @property (nonatomic, copy) NSTimeZone *timeZone;
 @property (nonatomic, copy) NSString *title;
+@property (nonatomic, readonly) NSString *type;
 
 - (void).cxx_destruct;
 - (id)URL;
@@ -39,5 +44,6 @@
 - (id)startDate;
 - (id)timeZone;
 - (id)title;
+- (id)type;
 
 @end

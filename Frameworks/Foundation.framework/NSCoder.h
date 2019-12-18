@@ -267,11 +267,6 @@
 
 - (bool)ef_isNSXPCCoder;
 
-// Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
-
-- (double)geo_decodeGEOMachAbsoluteTimeForKey:(id)arg1;
-- (void)geo_encodeGEOMachAbsoluteTime:(double)arg1 forKey:(id)arg2;
-
 // Image: /System/Library/PrivateFrameworks/HomeKitDaemon.framework/HomeKitDaemon
 
 - (id)applicationBundleIdentifier;

@@ -11,6 +11,7 @@
     NSDate * _dateLastViewed;
     NSAttributedString * _groupName;
     bool  _hasLoadedAllMessages;
+    bool  _holdWasKnownSenderUpdates;
     bool  _isReportedAsSpam;
     unsigned int  _limitToLoad;
     NSString * _name;
@@ -23,6 +24,7 @@
     NSString * _selectedLastAddressedSIMID;
     int  _wasDetectedAsSMSSpam;
     int  _wasDetectedAsiMessageSpam;
+    bool  _wasKnownSender;
 }
 
 @property (nonatomic, retain) NSNumber *businessConversation;
@@ -42,6 +44,7 @@
 @property (nonatomic, readonly) bool hasDisplayName;
 @property (nonatomic) bool hasLoadedAllMessages;
 @property (nonatomic, readonly) bool hasUnreadMessages;
+@property (nonatomic) bool holdWasKnownSenderUpdates;
 @property (getter=isIgnoringTypingUpdates, nonatomic) bool ignoringTypingUpdates;
 @property (nonatomic, readonly) bool isPreviewTextForAttachment;
 @property (nonatomic) bool isReportedAsSpam;
@@ -63,6 +66,7 @@
 @property (nonatomic, retain) NSSet *pendingRecipients;
 @property (getter=isPinned, nonatomic) bool pinned;
 @property (nonatomic, copy) NSString *previewText;
+@property (nonatomic, readonly) NSString *rawAddressedName;
 @property (nonatomic, readonly) CKEntity *recipient;
 @property (nonatomic, readonly) unsigned long long recipientCount;
 @property (nonatomic, readonly, copy) NSArray *recipientStrings;
@@ -80,6 +84,7 @@
 @property (nonatomic, readonly) int wasDetectedAsSMSSpam;
 @property (nonatomic, readonly) int wasDetectedAsSpam;
 @property (nonatomic, readonly) int wasDetectedAsiMessageSpam;
+@property (nonatomic) bool wasKnownSender;
 
 + (bool)_iMessage_canAcceptMediaObjectType:(int)arg1 givenMediaObjects:(id)arg2;
 + (bool)_iMessage_canSendComposition:(id)arg1 lastAddressedHandle:(id)arg2 lastAddressedSIMID:(id)arg3 currentService:(id)arg4 forceSMS:(bool)arg5 error:(id*)arg6;
@@ -166,13 +171,16 @@
 - (bool)hasReplyEnabled;
 - (bool)hasUnreadMessages;
 - (bool)hasVerifiedBusiness;
+- (bool)holdWasKnownSenderUpdates;
 - (id)init;
 - (id)initWithChat:(id)arg1;
 - (bool)isAppleConversation;
+- (bool)isBlockedByCommunicationLimits;
 - (bool)isBusinessConversation;
 - (bool)isDowngraded;
 - (bool)isGroupConversation;
 - (bool)isIgnoringTypingUpdates;
+- (bool)isKnownSender;
 - (bool)isMakoConversation;
 - (bool)isMuted;
 - (bool)isPending;
@@ -199,6 +207,7 @@
 - (id)messageWithComposition:(id)arg1;
 - (id)messagesFromComposition:(id)arg1;
 - (id)name;
+- (id)nameWithRawAddresses:(bool)arg1;
 - (bool)needsReload;
 - (bool)noAvailableServices;
 - (id)orderedContactsForAvatar3DTouchUIWithKeysToFetch:(id)arg1;
@@ -209,6 +218,7 @@
 - (id)pendingHandles;
 - (id)pendingRecipients;
 - (id)previewText;
+- (id)rawAddressedName;
 - (id)recipient;
 - (unsigned long long)recipientCount;
 - (id)recipientStrings;
@@ -233,6 +243,7 @@
 - (void)setDisplayName:(id)arg1;
 - (void)setForceMMS:(bool)arg1;
 - (void)setHasLoadedAllMessages:(bool)arg1;
+- (void)setHoldWasKnownSenderUpdates:(bool)arg1;
 - (void)setIgnoringTypingUpdates:(bool)arg1;
 - (void)setIsReportedAsSpam:(bool)arg1;
 - (void)setLimitToLoad:(unsigned int)arg1;
@@ -254,6 +265,7 @@
 - (void)setSelectedLastAddressedSIMID:(id)arg1;
 - (void)setSendReadReceipts:(bool)arg1;
 - (void)setUnsentComposition:(id)arg1;
+- (void)setWasKnownSender:(bool)arg1;
 - (id)shortDescription;
 - (bool)shouldSendReadReceipts;
 - (bool)shouldShowCharacterCount;
@@ -266,9 +278,11 @@
 - (void)updateDisplayNameIfSMSSpam;
 - (void)updateLastViewedDate;
 - (void)updateUserActivity;
+- (void)updateWasKnownSender;
 - (int)wasDetectedAsSMSSpam;
 - (int)wasDetectedAsSpam;
 - (int)wasDetectedAsiMessageSpam;
+- (bool)wasKnownSender;
 - (void)willBecomeInactive;
 
 @end

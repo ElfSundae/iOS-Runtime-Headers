@@ -11,6 +11,7 @@
     NSString * _reason;
     NSString * _reasonType;
     NSArray * _recipients;
+    NSString * _trialID;
 }
 
 @property (nonatomic, readonly, copy) NSString *bundleID;
@@ -21,6 +22,7 @@
 @property (nonatomic, copy) NSString *reason;
 @property (nonatomic, copy) NSString *reasonType;
 @property (nonatomic, copy) NSArray *recipients;
+@property (nonatomic, copy) NSString *trialID;
 
 + (id)suggestionForBundleID:(id)arg1 derivedIntentIdentifier:(id)arg2 knowledgeStore:(id)arg3 contactResolver:(id)arg4 reason:(id)arg5 reasonType:(id)arg6;
 + (bool)supportsSecureCoding;
@@ -43,5 +45,7 @@
 - (void)setReason:(id)arg1;
 - (void)setReasonType:(id)arg1;
 - (void)setRecipients:(id)arg1;
+- (void)setTrialID:(id)arg1;
+- (id)trialID;
 
 @end

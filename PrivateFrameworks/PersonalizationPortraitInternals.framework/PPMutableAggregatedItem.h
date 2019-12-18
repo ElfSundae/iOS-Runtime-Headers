@@ -14,7 +14,6 @@
     float  _minScore;
     NSDate * _minSourceDate;
     NSMutableSet * _osBuildSet;
-    NSDate * _previousSourceDate;
     PPU16CountedSet * _rankHistogram;
     unsigned int  _recordCount;
     PPU16CountedSet * _sourceDayOfWeekCountedSet;
@@ -37,7 +36,6 @@
 @property (nonatomic, readonly) float minScore;
 @property (nonatomic, readonly) NSDate *minSourceDate;
 @property (nonatomic, readonly) NSMutableSet *osBuildSet;
-@property (nonatomic, readonly) NSDate *previousSourceDate;
 @property (nonatomic, readonly) PPU16CountedSet *rankHistogram;
 @property (nonatomic, readonly) unsigned int recordCount;
 @property (nonatomic, readonly) PPU16CountedSet *sourceDayOfWeekCountedSet;
@@ -51,6 +49,11 @@
 + (float)_decay:(float)arg1 decayRate:(float)arg2 timeElapsedSeconds:(double)arg3;
 
 - (void).cxx_destruct;
+- (unsigned long long)_processNamedEntityRecords:(id)arg1 scoringDate:(id)arg2 multiplier:(float)arg3 perRecordDecayRate:(float)arg4;
+- (unsigned long long)_processRecord:(id)arg1 algorithm:(unsigned long long)arg2 previousSourceDate:(id)arg3 scoringDate:(id)arg4 perRecordDecayRate:(float)arg5 score:(float)arg6 decayedSumAddend:(float)arg7;
+- (unsigned long long)_processTopicRecords:(id)arg1 scoringDate:(id)arg2 perRecordDecayRate:(float)arg3 ignoreMultiplier:(bool)arg4;
+- (void)_resetPropertiesWithAlgorithmMaxValue:(unsigned long long)arg1;
+- (id)_sortRecordsByDescendingSourceDate:(id)arg1;
 - (id)algorithmCountedSet;
 - (id)assetVersionSet;
 - (id)bundleIdCountedSet;
@@ -66,7 +69,6 @@
 - (float)minScore;
 - (id)minSourceDate;
 - (id)osBuildSet;
-- (id)previousSourceDate;
 - (id)rankHistogram;
 - (unsigned int)recordCount;
 - (id)sourceDayOfWeekCountedSet;

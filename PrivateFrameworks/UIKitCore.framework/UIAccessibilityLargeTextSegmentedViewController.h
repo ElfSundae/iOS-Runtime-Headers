@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSArray *segments;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_configureSegmentViews;
 - (void)_orientationChanged:(id)arg1;
 - (void)buttonPress:(id)arg1;

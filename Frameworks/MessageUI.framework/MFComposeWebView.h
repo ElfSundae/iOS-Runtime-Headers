@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
  */
 
-@interface MFComposeWebView : WKWebView <MFComposeBodyField, MFComposeBodyFieldInternal, MFComposeBodyFieldObserver, WKNavigationDelegate, WKUIDelegatePrivate, _WKInputDelegate> {
+@interface MFComposeWebView : WKWebView <MFComposeBodyFieldObserver, WKNavigationDelegate, WKUIDelegatePrivate, _WKInputDelegate> {
     NSMutableDictionary * _attachmentCIDsByIdentifier;
     bool  _attachmentDataMissingAlertDisplayed;
     unsigned long long  _attachmentSequenceNumber;
@@ -46,8 +46,9 @@
 + (id)_webViewConfiguration;
 
 - (void).cxx_destruct;
+- (void)_addAdditionalItemsToCalloutBar;
 - (void)_addAttachment:(id)arg1;
-- (id)_addInlineAttachmentWithData:(id)arg1 fileName:(id)arg2 type:(id)arg3;
+- (id)_addInlineAttachmentWithData:(id)arg1 fileName:(id)arg2 type:(id)arg3 contentID:(id)arg4;
 - (id)_attachmentInfoByIdentifier;
 - (id)_attachmentInfoByURL;
 - (id)_bodyFieldProxy;
@@ -56,17 +57,19 @@
 - (void)_decreaseQuoteLevel:(id)arg1;
 - (void)_decreaseQuoteLevelKeyCommandInvoked:(id)arg1;
 - (void)_didTapCameraButton:(id)arg1;
-- (void)_didTapFormatAccessoryViewButton:(id)arg1;
 - (void)_didTapImportDocumentButton:(id)arg1;
 - (void)_didTapInsertDrawingOrMarkupButton:(id)arg1;
 - (void)_didTapInsertPhotoButton:(id)arg1;
 - (void)_didTapScanDocumentButton:(id)arg1;
+- (id)_filenameForVideoAttachmentAtURL:(id)arg1;
+- (bool)_getExtensionAndMimeTypeForImageData:(id)arg1 outExtension:(id*)arg2 outMimeType:(id*)arg3;
 - (void)_increaseQuoteLevel:(id)arg1;
 - (void)_increaseQuoteLevelKeyCommandInvoked:(id)arg1;
 - (void)_insertDocumentFromData:(id)arg1 isImage:(bool)arg2 contentID:(id)arg3;
 - (id)_leadingInputAssistantItemGroup;
 - (id)_mailComposeEditingLeadingInputAssistantGroup;
 - (id)_mailComposeEditingTrailingInputAssistantGroups;
+- (id)_makeAttachmentDataWithFileURL:(id)arg1 type:(id)arg2;
 - (void)_menuDidHide:(id)arg1;
 - (void)_pasteAsQuotationKeyCommandInvoked:(id)arg1;
 - (void)_removeAttachment:(id)arg1;
@@ -121,14 +124,16 @@
 - (void)layoutWithMinimumSize;
 - (id)mailComposeViewDelegate;
 - (void)markupSelectedAttachment;
+- (id)mimeTypeForFilename:(id)arg1;
 - (id)nextAttachmentName;
 - (void)placeCaretAtStartOfBodyField;
 - (id)plainTextContent;
+- (void)prepareDataForDocumentAtURLForInsertion:(id)arg1 completion:(id /* block */)arg2;
 - (void)prependMarkupString:(id)arg1 quote:(bool)arg2;
 - (void)prependPreamble:(id)arg1 quote:(bool)arg2;
 - (void)prependString:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })rectOfElementWithID:(id)arg1;
-- (void)releaseFocusAfterDismissing;
+- (void)releaseFocusAfterDismissing:(bool)arg1;
 - (void)removeDropPlaceholders;
 - (void)removeMediaWithAssetIdentifier:(id)arg1;
 - (void)replaceAttachment:(id)arg1 withDocumentAtURL:(id)arg2 completion:(id /* block */)arg3;

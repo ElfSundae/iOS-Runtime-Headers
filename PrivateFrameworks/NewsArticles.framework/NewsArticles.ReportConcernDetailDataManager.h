@@ -5,6 +5,7 @@
 @interface NewsArticles.ReportConcernDetailDataManager : Swift._SwiftObject {
     void concern;
     void headline;
+    void historyService;
     void service;
 }
 

@@ -3,6 +3,8 @@
  */
 
 @interface FCSubscriptionButtonConfiguration : NSObject <NSCopying> {
+    FCColor * _buttonColor;
+    FCColor * _buttonTextColor;
     bool  _dismissLandingPagePostPurchase;
     NSString * _landingPageArticleID;
     NSString * _nonTrialText;
@@ -13,6 +15,8 @@
     NSString * _trialText;
 }
 
+@property (nonatomic, retain) FCColor *buttonColor;
+@property (nonatomic, retain) FCColor *buttonTextColor;
 @property (getter=shouldDismissLandingPagePostPurchase, nonatomic) bool dismissLandingPagePostPurchase;
 @property (nonatomic, copy) NSString *landingPageArticleID;
 @property (nonatomic, copy) NSString *nonTrialText;
@@ -32,16 +36,20 @@
 + (id)defaultTrialText;
 
 - (void).cxx_destruct;
+- (id)buttonColor;
+- (id)buttonTextColor;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithConfigDictionary:(id)arg1;
-- (id)initWithSubscriptionButtonType:(unsigned long long)arg1 trialText:(id)arg2 nonTrialText:(id)arg3 targetType:(unsigned long long)arg4 postPurchaseActionType:(unsigned long long)arg5 postPurchaseURL:(id)arg6 landingPageArticleID:(id)arg7 dismissLandingPagePostPurchase:(bool)arg8;
+- (id)initWithSubscriptionButtonType:(unsigned long long)arg1 trialText:(id)arg2 nonTrialText:(id)arg3 buttonColor:(id)arg4 buttonTextColor:(id)arg5 targetType:(unsigned long long)arg6 postPurchaseActionType:(unsigned long long)arg7 postPurchaseURL:(id)arg8 landingPageArticleID:(id)arg9 dismissLandingPagePostPurchase:(bool)arg10;
 - (bool)isEqual:(id)arg1;
 - (id)landingPageArticleID;
 - (id)nonTrialText;
 - (unsigned long long)postPurchaseActionType;
 - (id)postPurchaseURL;
+- (void)setButtonColor:(id)arg1;
+- (void)setButtonTextColor:(id)arg1;
 - (void)setDismissLandingPagePostPurchase:(bool)arg1;
 - (void)setLandingPageArticleID:(id)arg1;
 - (void)setNonTrialText:(id)arg1;

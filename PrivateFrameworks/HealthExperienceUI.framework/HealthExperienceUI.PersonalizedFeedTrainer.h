@@ -4,6 +4,7 @@
 
 @interface HealthExperienceUI.PersonalizedFeedTrainer : Swift._SwiftObject {
     void delegate;
+    void dwellPolicy;
     void feedItemDisplayBegan;
     void feedItemDurations;
     void sessionWasBackgrounded;

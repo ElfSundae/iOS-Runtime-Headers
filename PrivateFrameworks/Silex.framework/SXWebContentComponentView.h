@@ -2,21 +2,21 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXWebContentComponentView : SXComponentView <SXReachabilityObserver, SXViewportChangeListener> {
+@interface SXWebContentComponentView : SXComponentView <SWReachabilityObserver, SXViewportChangeListener> {
     <SXAnalyticsReporting> * _analyticsReporting;
     SXWebContentComponentExposureEvent * _componentExposureEvent;
     SXComponentExposureMonitor * _componentExposureMonitor;
     <SXWebContentConfigurationProvider> * _configurationProvider;
-    SXWebContentContainerViewController * _containerViewController;
+    SWContainerViewController * _containerViewController;
     <SXWebContentDataSourceProviding> * _dataSourceProvider;
     UILabel * _errorLabel;
     SXWebContentComponentInteractionManager * _interactionManager;
     NFPendingPromise * _invalidationPromise;
     <SXLayoutInvalidator> * _layoutInvalidator;
     UIActivityIndicatorView * _loadingIndicator;
-    <SXWebContentLoadingPolicyProvider> * _loadingPolicyProvider;
-    <SXWebContentNavigationManager> * _navigationManager;
-    <SXReachabilityProvider> * _reachabilityProvider;
+    <SWLoadingPolicyProvider> * _loadingPolicyProvider;
+    <SWNavigationManager> * _navigationManager;
+    <SWReachabilityProvider> * _reachabilityProvider;
     <SXResourceDataSource> * _resourceDataSource;
     NFStateMachine * _stateMachine;
     UITapGestureRecognizer * _tapGestureRecognizer;
@@ -26,7 +26,7 @@
 @property (nonatomic, retain) SXWebContentComponentExposureEvent *componentExposureEvent;
 @property (nonatomic, readonly) SXComponentExposureMonitor *componentExposureMonitor;
 @property (nonatomic, readonly) <SXWebContentConfigurationProvider> *configurationProvider;
-@property (nonatomic, readonly) SXWebContentContainerViewController *containerViewController;
+@property (nonatomic, readonly) SWContainerViewController *containerViewController;
 @property (nonatomic, readonly) <SXWebContentDataSourceProviding> *dataSourceProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -36,9 +36,9 @@
 @property (nonatomic, retain) NFPendingPromise *invalidationPromise;
 @property (nonatomic, readonly) <SXLayoutInvalidator> *layoutInvalidator;
 @property (nonatomic, readonly) UIActivityIndicatorView *loadingIndicator;
-@property (nonatomic, readonly) <SXWebContentLoadingPolicyProvider> *loadingPolicyProvider;
-@property (nonatomic, readonly) <SXWebContentNavigationManager> *navigationManager;
-@property (nonatomic, readonly) <SXReachabilityProvider> *reachabilityProvider;
+@property (nonatomic, readonly) <SWLoadingPolicyProvider> *loadingPolicyProvider;
+@property (nonatomic, readonly) <SWNavigationManager> *navigationManager;
+@property (nonatomic, readonly) <SWReachabilityProvider> *reachabilityProvider;
 @property (nonatomic, readonly) <SXResourceDataSource> *resourceDataSource;
 @property (nonatomic, readonly) NFStateMachine *stateMachine;
 @property (readonly) Class superclass;

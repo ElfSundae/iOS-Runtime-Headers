@@ -112,6 +112,7 @@
 @property (nonatomic, retain) <EFCancelable> *loadingSpinnerTailspinToken;
 @property (nonatomic, retain) MFMessageContentLoadingView *loadingView;
 @property (nonatomic, retain) MFMailboxProvider *mailboxProvider;
+@property (nonatomic, readonly) bool mayShareToUnmanaged;
 @property (nonatomic) long long messageBlockingReason;
 @property (nonatomic, retain) UIView *previousContentSnapshot;
 @property (nonatomic, retain) _MFMessageContentResizeWrapperView *resizingWrapperView;
@@ -140,6 +141,7 @@
 - (void)_addScriptHandlerForKey:(id)arg1 handler:(id /* block */)arg2;
 - (void)_adjustHeaderOffsetForZoom;
 - (double)_adjustWebViewInsetsToAccomodateHeaderAndFooter;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_adjustedRectForAttachmentRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)_alertMailDropDownloadIsTooLargeForCell:(bool)arg1;
 - (bool)_allAttachmentsArePhotosOrVideos;
 - (id)_attachmentPreviewsFromData:(id)arg1;
@@ -169,7 +171,6 @@
 - (void)_loadBlockedMessageContactWarningWithRepresentation:(id)arg1;
 - (void)_logRequestFinishWithSuccess:(bool)arg1;
 - (id)_mailboxForBanner:(id)arg1;
-- (bool)_mayShareToUnmanaged;
 - (void)_notifyDelegateScrollViewSizeChanged:(struct CGSize { double x1; double x2; })arg1;
 - (bool)_objectContainsNonEmptyString:(id)arg1;
 - (void)_observeBlockedSenderListChangedNotification;
@@ -236,6 +237,7 @@
 - (void)didTapHasMoreContentBannerView:(id)arg1;
 - (void)dismissPresentedViewController:(id)arg1;
 - (id)displayMetrics;
+- (id)downloadFutureForContentItem:(id)arg1;
 - (void)endResizing;
 - (id)footerView;
 - (void)footerViewDidChangeHeight:(id)arg1;
@@ -261,6 +263,7 @@
 - (id)loadingView;
 - (void)mailDropBannerDidTriggerDownload:(id)arg1;
 - (id)mailboxProvider;
+- (bool)mayShareToUnmanaged;
 - (long long)messageBlockingReason;
 - (void)prepareContentViewForResizingWithSnapshotRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (void)prepareForReuse;
@@ -332,6 +335,7 @@
 - (void)webProcessDidFinishDocumentLoadForURL:(id)arg1;
 - (void)webProcessDidFinishLoadForURL:(id)arg1;
 - (id)webView;
+- (void)webView:(id)arg1 contextMenuForElement:(id)arg2 willCommitWithAnimator:(id)arg3;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(id /* block */)arg3;
 - (void)webView:(id)arg1 decidePolicyForNavigationResponse:(id)arg2 decisionHandler:(id /* block */)arg3;
 - (void)webView:(id)arg1 didCommitNavigation:(id)arg2;

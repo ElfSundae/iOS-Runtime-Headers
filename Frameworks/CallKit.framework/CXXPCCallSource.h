@@ -30,6 +30,7 @@
 - (id)init;
 - (id)initWithConnection:(id)arg1;
 - (bool)isConnected;
+- (bool)isPermittedToUseBluetoothAccessories;
 - (bool)isPermittedToUsePrivateAPI;
 - (bool)isPermittedToUsePublicAPI;
 - (int)processIdentifier;

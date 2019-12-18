@@ -4,14 +4,14 @@
 
 @interface SXWebContentComponentSizerFactory : NSObject <SXComponentSizerFactory> {
     <SXDOMObjectProviding> * _DOMObjectProvider;
-    <SXWebContentLoadingPolicyProvider> * _loadingPolicyProvider;
+    <SWLoadingPolicyProvider> * _loadingPolicyProvider;
 }
 
 @property (nonatomic, readonly) <SXDOMObjectProviding> *DOMObjectProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) <SXWebContentLoadingPolicyProvider> *loadingPolicyProvider;
+@property (nonatomic, readonly) <SWLoadingPolicyProvider> *loadingPolicyProvider;
 @property (nonatomic, readonly) int role;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSString *type;

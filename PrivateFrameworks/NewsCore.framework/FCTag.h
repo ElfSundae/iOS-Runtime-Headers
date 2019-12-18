@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NewsCore.framework/NewsCore
  */
 
-@interface FCTag : NSObject <FCChannelProviding, FCFeedTheming, FCSectionProviding, FCTagProviding, FCTopicProviding> {
+@interface FCTag : NSObject <FCChannelProviding, FCFeedTheming, FCSectionProviding, FCTagProviding, FCTagStocksFields, FCTopicProviding> {
     NSArray * _allowedStorefrontIDs;
     NSString * _backIssuesListID;
     NSString * _backgroundColorHexString;
@@ -84,7 +84,7 @@
         double width; 
         double height; 
     }  _nameImageSize;
-    FCSubscriptionButtonConfiguration * _paidBundleSubscriptionButtonConfiguration;
+    FCPaywallConfiguration * _paidBundlePaywallConfiguration;
     NSString * _parentID;
     NSString * _pptFeedIDOverride;
     NSString * _primaryAudience;
@@ -104,6 +104,9 @@
     NSArray * _sectionFeedConfigurations;
     NSArray * _sectionIDs;
     NSString * _subtitle;
+    NSString * _supergroupConfigJson;
+    FCSectionSupergroupKnobs * _supergroupKnobs;
+    NSString * _supergroupKnobsJson;
     FCInterestToken * _tagInterestToken;
     NTPBTagRecord * _tagRecord;
     FCInterestToken * _tagRecordInterestToken;
@@ -192,7 +195,7 @@
 @property (nonatomic, readonly) FCAssetHandle *nameImageMaskWidgetHQAssetHandle;
 @property (nonatomic, readonly) FCAssetHandle *nameImageMaskWidgetLQAssetHandle;
 @property (nonatomic) struct CGSize { double x1; double x2; } nameImageSize;
-@property (nonatomic, readonly, copy) FCSubscriptionButtonConfiguration *paidBundleSubscriptionButtonConfiguration;
+@property (nonatomic, readonly, copy) FCPaywallConfiguration *paidBundlePaywallConfiguration;
 @property (nonatomic, readonly, copy) NSString *parentID;
 @property (nonatomic, copy) NSString *pptFeedIDOverride;
 @property (nonatomic, readonly, copy) NSString *primaryAudience;
@@ -211,8 +214,13 @@
 @property (nonatomic, readonly) long long score;
 @property (nonatomic, copy) NSArray *sectionFeedConfigurations;
 @property (nonatomic, readonly, copy) NSArray *sectionIDs;
+@property (nonatomic, readonly, copy) NSString *stocksFeedConfigJSON;
+@property (nonatomic, readonly) <FCTagStocksFields> *stocksFields;
 @property (nonatomic, readonly, copy) NSString *subtitle;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) NSString *supergroupConfigJson;
+@property (nonatomic, readonly) FCSectionSupergroupKnobs *supergroupKnobs;
+@property (nonatomic, readonly) NSString *supergroupKnobsJson;
 @property (nonatomic, readonly) bool supportsNotifications;
 @property (nonatomic, retain) FCInterestToken *tagInterestToken;
 @property (nonatomic, readonly) NTPBTagRecord *tagRecord;
@@ -324,7 +332,7 @@
 - (id)nameImageMaskWidgetHQAssetHandle;
 - (id)nameImageMaskWidgetLQAssetHandle;
 - (struct CGSize { double x1; double x2; })nameImageSize;
-- (id)paidBundleSubscriptionButtonConfiguration;
+- (id)paidBundlePaywallConfiguration;
 - (id)paidFeedIDForBin:(long long)arg1;
 - (id)paidFeedIDForSection:(id)arg1 bin:(long long)arg2;
 - (id)parentID;
@@ -363,7 +371,12 @@
 - (void)setPptFeedIDOverride:(id)arg1;
 - (void)setSectionFeedConfigurations:(id)arg1;
 - (void)setTagInterestToken:(id)arg1;
+- (id)stocksFeedConfigJSON;
+- (id)stocksFields;
 - (id)subtitle;
+- (id)supergroupConfigJson;
+- (id)supergroupKnobs;
+- (id)supergroupKnobsJson;
 - (bool)supportsNotifications;
 - (id)tagInterestToken;
 - (id)tagRecord;

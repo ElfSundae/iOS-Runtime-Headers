@@ -5,6 +5,7 @@
 @interface UNSNotificationSourceDescription : NSObject {
     bool  _allowCriticalAlerts;
     bool  _allowPrivateProperties;
+    bool  _allowServiceExtensionFiltering;
     bool  _allowUnlimitedContentBody;
     bool  _allowUnlimitedPendingNotifications;
     bool  _automaticallyShowSettings;
@@ -46,6 +47,7 @@
 
 @property (nonatomic) bool allowCriticalAlerts;
 @property (nonatomic) bool allowPrivateProperties;
+@property (nonatomic) bool allowServiceExtensionFiltering;
 @property (nonatomic) bool allowUnlimitedContentBody;
 @property (nonatomic) bool allowUnlimitedPendingNotifications;
 @property (nonatomic) bool automaticallyShowSettings;
@@ -87,7 +89,7 @@
 + (id)_validEnvironmentFromEnvironment:(id)arg1;
 + (id)applicationSourceDescriptionWithApplication:(id)arg1;
 + (id)applicationSourceDescriptionWithBundleIdentifier:(id)arg1;
-+ (id)descriptionWithBundleIdentifier:(id)arg1 path:(id)arg2;
++ (id)descriptionWithBundleIdentifier:(id)arg1 path:(id)arg2 allowServiceExtensionFiltering:(bool)arg3;
 + (id)sourceDescriptionWithBundleIdentifier:(id)arg1;
 + (id)systemSourceDescriptionWithBundleIdentifier:(id)arg1;
 + (id)systemSourceDescriptionWithBundleURL:(id)arg1;
@@ -97,6 +99,7 @@
 - (void).cxx_destruct;
 - (bool)allowCriticalAlerts;
 - (bool)allowPrivateProperties;
+- (bool)allowServiceExtensionFiltering;
 - (bool)allowUnlimitedContentBody;
 - (bool)allowUnlimitedPendingNotifications;
 - (bool)automaticallyShowSettings;
@@ -122,6 +125,7 @@
 - (id)pushEnvironment;
 - (void)setAllowCriticalAlerts:(bool)arg1;
 - (void)setAllowPrivateProperties:(bool)arg1;
+- (void)setAllowServiceExtensionFiltering:(bool)arg1;
 - (void)setAllowUnlimitedContentBody:(bool)arg1;
 - (void)setAllowUnlimitedPendingNotifications:(bool)arg1;
 - (void)setAutomaticallyShowSettings:(bool)arg1;

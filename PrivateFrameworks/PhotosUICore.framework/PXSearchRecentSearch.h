@@ -17,10 +17,12 @@
 
 - (void).cxx_destruct;
 - (id)description;
+- (id)dictionaryForArchiving;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
 - (id)initWithRepresentedObjects:(id)arg1 searchText:(id)arg2;
 - (bool)isEqual:(id)arg1;
 - (id)representedObjects;

@@ -5,7 +5,7 @@
 @interface _WKDownload : NSObject <NSCopying, WKObject> {
     struct ObjectStorage<WebKit::DownloadProxy> { 
         struct type { 
-            unsigned char __lx[336]; 
+            unsigned char __lx[392]; 
         } data; 
     }  _download;
 }

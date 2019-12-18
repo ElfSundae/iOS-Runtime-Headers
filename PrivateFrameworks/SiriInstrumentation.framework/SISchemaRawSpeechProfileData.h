@@ -2,16 +2,12 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaRawSpeechProfileData : PBCodable <NSSecureCoding, SISchemaRawSpeechProfileData> {
+@interface SISchemaRawSpeechProfileData : PBCodable {
     NSData * _r;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, copy) NSData *r;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;

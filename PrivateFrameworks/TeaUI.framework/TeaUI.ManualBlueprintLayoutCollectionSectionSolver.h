@@ -5,6 +5,7 @@
 @interface TeaUI.ManualBlueprintLayoutCollectionSectionSolver : Swift._SwiftObject {
     void layoutDirection;
     void layoutOptions;
+    void supplementarySolver;
 }
 
 @end

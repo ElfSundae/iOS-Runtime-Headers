@@ -10,7 +10,7 @@
 
 @property (nonatomic, readonly) unsigned long long estimatedSizeInBytes;
 @property (nonatomic, readonly, copy) NSString *identifier;
-@property (nonatomic, copy) NSMutableArray *items;
+@property (nonatomic, retain) NSMutableArray *items;
 @property (nonatomic, readonly) <EDIndexableItem> *referenceItem;
 @property (nonatomic, readonly) bool requiresPreprocessing;
 

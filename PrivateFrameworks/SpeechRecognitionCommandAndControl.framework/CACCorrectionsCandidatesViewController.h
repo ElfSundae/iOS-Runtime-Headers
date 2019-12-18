@@ -33,6 +33,7 @@
 @property (nonatomic, retain) UILabel *titleLabel;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)allCandidates;
 - (id)alternatives;
 - (id)candidateBackdropView;

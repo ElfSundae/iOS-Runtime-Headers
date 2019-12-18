@@ -5,6 +5,6 @@
 
 @required
 
-- (TSPlugin *)createPluginWithIdentifier:(NSString *)arg1 group:(id <FCForYouMagazineFeedGroup>)arg2;
+- (TSPlugin *)createPluginWithIdentifier:(NSString *)arg1 group:(id <FCForYouBridgedFeedGroup>)arg2;
 
 @end

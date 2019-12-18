@@ -18,8 +18,6 @@
 @property (copy) NSString *vlinkColor;
 @property (readonly) int width;
 
-// Image: /System/Library/PrivateFrameworks/WebKitLegacy.framework/WebKitLegacy
-
 - (id)_createDocumentFragmentWithMarkupString:(id)arg1 baseURLString:(id)arg2;
 - (id)_createDocumentFragmentWithText:(id)arg1;
 - (id)alinkColor;
@@ -51,11 +49,5 @@
 - (int)width;
 - (void)write:(id)arg1;
 - (void)writeln:(id)arg1;
-
-// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
-
-+ (id)mf_listElements;
-
-- (id)mf_createMessageQuoteElement;
 
 @end

@@ -10,7 +10,9 @@
 - (<FCPurchaseManagerDelegate> *)delegate;
 - (NFPromise *)fetchPurchaseMetadataForPurchaseID:(NSString *)arg1 restorePurcase:(bool)arg2;
 - (bool)isPurchaseOngoingForTagID:(NSString *)arg1;
+- (<FCPurchaseFlowOverrideProviderType> *)purchaseFlowOverrideProvider;
 - (void)setDelegate:(id <FCPurchaseManagerDelegate>)arg1;
+- (void)setPurchaseFlowOverrideProvider:(id <FCPurchaseFlowOverrideProviderType>)arg1;
 - (void)simulateFailurePurchaseWithProductID:(NSString *)arg1 transactionState:(long long)arg2 error:(NSError *)arg3;
 - (void)simulateSuccessfulPurchaseWithProductID:(NSString *)arg1 tagID:(NSString *)arg2 purchaseID:(NSString *)arg3;
 - (void)startBundlePurchaseWithPurchase:(FCPurchase *)arg1 error:(id*)arg2;

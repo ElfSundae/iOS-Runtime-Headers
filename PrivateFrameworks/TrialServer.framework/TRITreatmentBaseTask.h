@@ -14,6 +14,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithExperimentId:(struct NSString { Class x1; }*)arg1 treatmentId:(struct NSString { Class x1; }*)arg2;
+- (bool)isEqual:(id)arg1;
+- (id)metrics;
 - (struct NSString { Class x1; }*)treatmentId;
 
 @end

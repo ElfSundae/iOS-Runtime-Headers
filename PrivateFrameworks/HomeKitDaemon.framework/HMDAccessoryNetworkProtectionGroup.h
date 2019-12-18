@@ -15,7 +15,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) HMDHome *home;
+@property (nonatomic) HMDHome *home;
 @property (nonatomic, retain) NSString *manufacturer;
 @property (readonly) Class superclass;
 @property (nonatomic) long long targetProtectionMode;

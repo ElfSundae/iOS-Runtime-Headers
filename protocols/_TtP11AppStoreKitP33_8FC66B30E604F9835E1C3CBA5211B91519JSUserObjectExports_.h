@@ -6,6 +6,8 @@
 @required
 
 - (NSString *)accountIdentifier;
+- (_TtC11AppStoreKit8JSCookie *)cookieForUrlWithName:(NSString *)arg1 :(NSString *)arg2;
+- (NSArray *)cookiesForUrl:(NSString *)arg1;
 - (NSString *)dsid;
 - (NSString *)firstName;
 - (bool)isManagedAppleID;

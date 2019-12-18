@@ -15,6 +15,7 @@
 @property (nonatomic, copy) NSArray *textItemViews;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (double)currentMaxWidth;
 - (void)infoCardThemeChanged;

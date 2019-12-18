@@ -3,9 +3,9 @@
  */
 
 @interface TeaUI.PatternSectionDecorationView : UICollectionReusableView <TUGutterViewBoundsObserver> {
-    void currentAsset;
-    void gradientView;
+    void model;
     void patternView;
+    void token;
 }
 
 - (void).cxx_destruct;

@@ -5,10 +5,11 @@
 @interface SSMetricsController : NSObject {
     SSMetricsConfiguration * _configuration;
     SSXPCConnection * _connection;
-    NSTimer * _flushEventsTimer;
     bool  _flushOnForeground;
     NSObject<OS_dispatch_queue> * _flushSerialQueue;
+    id /* block */  _flushTimerBlock;
     bool  _flushTimerEnabled;
+    NSObject<OS_dispatch_queue> * _flushTimerQueue;
     NSObject<OS_dispatch_queue> * _serialQueue;
 }
 

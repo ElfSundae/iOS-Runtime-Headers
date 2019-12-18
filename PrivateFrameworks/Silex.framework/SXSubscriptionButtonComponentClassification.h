@@ -2,11 +2,10 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXSubscriptionButtonComponentClassification : SXComponentClassification
+@interface SXSubscriptionButtonComponentClassification : SXButtonComponentClassification
 
 + (int)role;
 + (id)roleString;
-+ (id)typeString;
 
 - (id)accessibilityContextualLabel;
 - (Class)componentModelClass;

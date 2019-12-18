@@ -16,6 +16,7 @@
     UILabel * _headingLabel;
     UIImageView * _maskImageView;
     PKDiscoveryMedia * _media;
+    long long  _priority;
     bool  _removing;
     struct UIEdgeInsets { 
         double top; 
@@ -34,6 +35,7 @@
 @property (nonatomic, copy) id /* block */ dismissAction;
 @property (nonatomic) long long displayType;
 @property (nonatomic) bool hasSafeAreaInsetOverride;
+@property (nonatomic, readonly) long long priority;
 @property (getter=isRemoving, nonatomic) bool removing;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } safeAreaOverrideInsets;
 
@@ -65,6 +67,7 @@
 - (id)initWithArticleLayout:(id)arg1 displayType:(long long)arg2 dismissImage:(id)arg3 callToActionTappedOverride:(id /* block */)arg4;
 - (bool)isRemoving;
 - (void)layoutSubviews;
+- (long long)priority;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })safeAreaOverrideInsets;
 - (void)setArticleLayout:(id)arg1;
 - (void)setCallToActionTappedOverride:(id /* block */)arg1;

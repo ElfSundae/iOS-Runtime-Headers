@@ -8,6 +8,7 @@
     UILabel * _errorTitleLabel;
     FailureBarView * _failureView;
     UIButton * _optionsButton;
+    NSString * _optionsButtonTitle;
     id /* block */  _passcodeOptionsHandler;
     UILabel * _pinPolicyLabel;
     UILabel * _titleLabel;
@@ -17,6 +18,7 @@
 @property (nonatomic) <PSPINEntryViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, copy) NSString *optionsButtonTitle;
 @property (nonatomic, copy) id /* block */ passcodeOptionsHandler;
 @property (readonly) Class superclass;
 
@@ -37,9 +39,11 @@
 - (void)notifyDelegatePINEntered;
 - (id)optionsButton;
 - (void)optionsButtonTapped;
+- (id)optionsButtonTitle;
 - (id /* block */)passcodeOptionsHandler;
 - (void)setBlocked:(bool)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setOptionsButtonTitle:(id)arg1;
 - (void)setPINPolicyString:(id)arg1 visible:(bool)arg2;
 - (void)setPasscodeOptionsHandler:(id /* block */)arg1;
 - (void)setShowsOptionsButton:(bool)arg1;

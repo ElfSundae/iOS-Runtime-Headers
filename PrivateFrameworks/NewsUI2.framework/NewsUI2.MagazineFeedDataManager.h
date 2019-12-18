@@ -4,6 +4,7 @@
 
 @interface NewsUI2.MagazineFeedDataManager : Swift._SwiftObject <TSPluginDelegate> {
     void accessQueue;
+    void bundlePurchasePrewarmer;
     void categoriesModule;
     void dataPrewarmer;
     void delegate;

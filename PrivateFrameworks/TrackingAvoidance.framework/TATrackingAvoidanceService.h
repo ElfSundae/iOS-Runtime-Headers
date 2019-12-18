@@ -6,6 +6,7 @@
     unsigned long long  _currentSessionID;
     NSDate * _latestClassificationDate;
     NSHashTable * _observers;
+    TATrackingAvoidanceServiceSettings * _serviceSettings;
     TASettings * _settings;
     TAStore * _store;
 }

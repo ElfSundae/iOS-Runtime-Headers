@@ -50,6 +50,10 @@
 @property (nonatomic, readonly) bool hasGenerousMargins;
 @property (nonatomic, readonly) double headerBottomPadding;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } layoutMargins;
+@property (nonatomic, readonly) double mailActionCardLargerMediumDetentCoverage;
+@property (nonatomic, readonly) double mailActionCardMaximumContainerViewHeightForLargerMediumDetent;
+@property (nonatomic, readonly) double mailActionCardPreferredHeightForPad;
+@property (nonatomic, readonly) double mailActionCardSmallerMediumDetentCoverage;
 @property (nonatomic, readonly) double messageBottomPaddingInConversation;
 @property (nonatomic, readonly) double messageBottomPaddingInConversationForMailActionHeader;
 @property (nonatomic, readonly) double messageTopPaddingInConversation;
@@ -105,6 +109,10 @@
 - (double)headerBottomPadding;
 - (bool)isEqual:(id)arg1;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })layoutMargins;
+- (double)mailActionCardLargerMediumDetentCoverage;
+- (double)mailActionCardMaximumContainerViewHeightForLargerMediumDetent;
+- (double)mailActionCardPreferredHeightForPad;
+- (double)mailActionCardSmallerMediumDetentCoverage;
 - (double)messageBottomPaddingInConversation;
 - (double)messageBottomPaddingInConversationForMailActionHeader;
 - (double)messageTopPaddingInConversation;

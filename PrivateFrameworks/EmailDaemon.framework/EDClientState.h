@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/EmailDaemon.framework/EmailDaemon
  */
 
-@interface EDClientState : NSObject <EFLoggable> {
+@interface EDClientState : NSObject <EDForegroundReporting, EFLoggable> {
     bool  _isForeground;
     NSArray * _visibleMailboxesObjectIds;
 }

@@ -11,6 +11,7 @@
 @property (nonatomic, retain) NSMutableArray *viewControllers;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)installViewController:(id)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
 - (void)loadView;
 - (void)setViewControllers:(id)arg1;

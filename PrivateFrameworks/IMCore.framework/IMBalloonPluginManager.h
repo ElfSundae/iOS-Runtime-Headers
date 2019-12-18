@@ -7,7 +7,6 @@
     id  _highMemoryExtensionMatchingContext;
     NSMutableDictionary * _pluginIDToMetadataCache;
     NSString * _pluginMetaDataFolder;
-    NSMutableDictionary * _pluginsBundleIDMap;
     NSMutableDictionary * _pluginsMap;
     NSMutableSet * _pluginsToRemoveAfterExtensionsUpdate;
     Class  _richLinksDataSourceClass;
@@ -17,7 +16,6 @@
 @property (nonatomic, retain) id highMemoryExtensionMatchingContext;
 @property (nonatomic, retain) NSMutableDictionary *pluginIDToMetadataCache;
 @property (nonatomic, retain) NSString *pluginMetaDataFolder;
-@property (nonatomic, retain) NSMutableDictionary *pluginsBundleIDMap;
 @property (nonatomic, retain) NSMutableDictionary *pluginsMap;
 @property (nonatomic, retain) NSMutableSet *pluginsToRemoveAfterExtensionsUpdate;
 @property (nonatomic, readonly, retain) Class richLinksDataSourceClass;
@@ -77,7 +75,6 @@
 - (void)pluginChatItem:(id)arg1 didRelinquishReusableController:(id)arg2;
 - (id)pluginIDToMetadataCache;
 - (id)pluginMetaDataFolder;
-- (id)pluginsBundleIDMap;
 - (id)pluginsMap;
 - (id)pluginsToRemoveAfterExtensionsUpdate;
 - (id)recipientIDForRecipient:(id)arg1 appID:(id)arg2;
@@ -88,7 +85,6 @@
 - (void)setPluginEnabled:(bool)arg1 identifier:(id)arg2;
 - (void)setPluginIDToMetadataCache:(id)arg1;
 - (void)setPluginMetaDataFolder:(id)arg1;
-- (void)setPluginsBundleIDMap:(id)arg1;
 - (void)setPluginsMap:(id)arg1;
 - (void)setPluginsToRemoveAfterExtensionsUpdate:(id)arg1;
 - (id)systemBundleIdentifierForPluginIdentifier:(id)arg1;

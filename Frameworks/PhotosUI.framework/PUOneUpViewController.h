@@ -65,6 +65,7 @@
     bool  _appearanceTransitionAnimationsDisabled;
     PUBrowsingOneUpVisibilityHelper * _browsingOneUpVisibilityHelper;
     PUBrowsingSession * _browsingSession;
+    PUCPAnalyticsBrowsingViewModelChangeObserver * _cpAnalyticsChangeObserver;
     bool  _isPresentedForPreview;
     PULoadingIndicatorController * _loadingIndicatorController;
     struct { 
@@ -131,6 +132,7 @@
 @property (nonatomic) bool appearanceTransitionAnimationsDisabled;
 @property (nonatomic, retain) PUBrowsingOneUpVisibilityHelper *browsingOneUpVisibilityHelper;
 @property (nonatomic, readonly) PUBrowsingSession *browsingSession;
+@property (nonatomic, readonly) PUCPAnalyticsBrowsingViewModelChangeObserver *cpAnalyticsChangeObserver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -334,6 +336,7 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })contextualNotification:(id)arg1 containingFrameInCoordinateSpace:(id)arg2;
 - (bool)contextualNotification:(id)arg1 shouldPassthroughPoint:(struct CGPoint { double x1; double x2; })arg2 inCoordinateSpace:(id)arg3;
 - (void)contextualNotificationWasTapped:(id)arg1;
+- (id)cpAnalyticsChangeObserver;
 - (id)createAssetTransitionInfo;
 - (void)createPreviewActionControllerForManagerIfNeeded:(id)arg1 withPresentingViewController:(id)arg2;
 - (void)dealloc;

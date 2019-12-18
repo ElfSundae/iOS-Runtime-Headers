@@ -21,14 +21,15 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_sortedEditorialGroupEmittersWithForYouGroupsConfiguration:(id)arg1;
+- (id)_sortedConfigurableGroupEmittersWithForYouGroupsConfiguration:(id)arg1 forYouConfig:(id)arg2;
+- (id)allEmitterClasses;
 - (id)configurationManager;
 - (void)d_fetchAllHeadlinesWithCloudContext:(id)arg1 sinceDate:(id)arg2 filter:(bool)arg3 personalize:(bool)arg4 completionHandler:(id /* block */)arg5;
 - (bool)derivesContentsFromExplicitSubscriptions;
 - (id)editionAtDate:(id)arg1;
 - (id)editionFollowingEdition:(id)arg1;
 - (long long)feedFilterOptions;
-- (id)feedGroupEmittersWithConfiguration:(id)arg1;
+- (id)feedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (id)feedPaginator;
 - (long long)feedPersonalizationConfigurationSet;
 - (id)feedPersonalizer;
@@ -38,7 +39,8 @@
 - (id)initWithIdentifier:(id)arg1 savedStoriesCount:(long long)arg2 configurationManager:(id)arg3 subscriptionList:(id)arg4 feedPersonalizer:(id)arg5 paidAccessChecker:(id)arg6;
 - (id)languagesWithSubscriptionController:(id)arg1;
 - (id)name;
-- (id)offlineFeedGroupEmittersWithConfiguration:(id)arg1;
+- (bool)needsForYouConfig;
+- (id)offlineFeedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (id)paidAccessChecker;
 - (void)prepareToProvideFeedGroupEmittersWithCallbackQueue:(id)arg1 completionHandler:(id /* block */)arg2;
 - (unsigned long long)savedStoriesCount;

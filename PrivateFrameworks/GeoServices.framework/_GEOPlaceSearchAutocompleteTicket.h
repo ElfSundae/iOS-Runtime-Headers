@@ -4,6 +4,7 @@
 
 @interface _GEOPlaceSearchAutocompleteTicket : GEOAbstractRequestResponseTicket <GEOMapServiceCompletionTicket> {
     NSString * _searchQuery;
+    GEOAutocompleteSessionData * _sessionData;
 }
 
 @property (getter=isCancelled, nonatomic, readonly) bool cancelled;
@@ -23,7 +24,7 @@
 - (bool)autocompleteTopSectionIsQuerySuggestions;
 - (id)clientRankingModel;
 - (bool)hasShouldDisplayNoResults;
-- (id)initWithRequest:(id)arg1 traits:(id)arg2 searchQuery:(id)arg3;
+- (id)initWithRequest:(id)arg1 traits:(id)arg2 searchQuery:(id)arg3 sessionData:(id)arg4;
 - (bool)isRapEnabled;
 - (bool)matchesFragment:(id)arg1;
 - (double)retainSearchTime;

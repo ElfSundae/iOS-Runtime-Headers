@@ -28,7 +28,7 @@
 @property (nonatomic, retain) NSString *title;
 
 + (id)changeRequestForMomentShare:(id)arg1;
-+ (id)creationRequestForMomentShareWithTitle:(id)arg1 mode:(short)arg2 creationDate:(id)arg3 createMomentShareAssetsFromAssets:(id)arg4 assetCreationOptions:(id)arg5 preview:(id)arg6 originatingMomentShare:(id)arg7;
++ (id)creationRequestForMomentShareWithTitle:(id)arg1 mode:(short)arg2 creationDate:(id)arg3 createMomentShareAssetsFromAssets:(id)arg4 creationOptionsPerAsset:(id)arg5 preview:(id)arg6 originatingMomentShare:(id)arg7;
 + (void)expungeMomentShares:(id)arg1;
 + (void)trashMomentShares:(id)arg1;
 + (id)validateMomentShareCreationDate:(id)arg1 error:(id*)arg2;
@@ -42,7 +42,7 @@
 - (bool)allowMutationToManagedObject:(id)arg1 propertyKey:(id)arg2 error:(id*)arg3;
 - (bool)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id*)arg3;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id*)arg2;
-- (void)createMomentShareAssetsFromAssets:(id)arg1 withAssetCreationOptions:(id)arg2 withPreview:(id)arg3;
+- (void)createMomentShareAssetsFromAssets:(id)arg1 withCreationOptionsPerAsset:(id)arg2 withPreview:(id)arg3;
 - (id)creationDate;
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initForNewObject;

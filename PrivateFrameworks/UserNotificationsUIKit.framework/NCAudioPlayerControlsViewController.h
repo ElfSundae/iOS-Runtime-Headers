@@ -18,6 +18,7 @@
 
 - (void).cxx_destruct;
 - (id)URL;
+- (bool)_canShowWhileLocked;
 - (void)detailSlider:(id)arg1 didChangeValue:(float)arg2;
 - (void)detailSliderTrackingDidBegin:(id)arg1;
 - (void)detailSliderTrackingDidCancel:(id)arg1;

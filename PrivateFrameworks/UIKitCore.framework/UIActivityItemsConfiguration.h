@@ -5,6 +5,7 @@
 @interface UIActivityItemsConfiguration : NSObject <UIActivityItemsConfigurationReading> {
     NSArray * _activityItems;
     id /* block */  _applicationActivitiesProvider;
+    NSArray * _excludedActivityTypes;
     NSArray * _itemProviders;
     id  _localObject;
     id /* block */  _metadataProvider;
@@ -15,6 +16,7 @@
 }
 
 @property (nonatomic, readonly, copy) NSArray *_activityItems;
+@property (setter=_setExcludedActivityTypes:, nonatomic, copy) NSArray *_excludedActivityTypes;
 @property (nonatomic, readonly) bool _hasItemsForActivityItemsConfiguration;
 @property (nonatomic, readonly, copy) NSArray *applicationActivitiesForActivityItemsConfiguration;
 @property (nonatomic, copy) id /* block */ applicationActivitiesProvider;
@@ -38,9 +40,11 @@
 - (void).cxx_destruct;
 - (id)_activityItems;
 - (void)_commonInit;
+- (id)_excludedActivityTypes;
 - (bool)_hasItemsForActivityItemsConfiguration;
 - (id)_initWithActivityItemSources:(id)arg1;
 - (id)_initWithActivityItems:(id)arg1 applicationActivities:(id)arg2;
+- (void)_setExcludedActivityTypes:(id)arg1;
 - (id)activityItemsConfigurationMetadataForItemAtIndex:(long long)arg1 key:(id)arg2;
 - (id)activityItemsConfigurationMetadataForKey:(id)arg1;
 - (id)activityItemsConfigurationPreviewForItemAtIndex:(long long)arg1 intent:(id)arg2 suggestedSize:(struct CGSize { double x1; double x2; })arg3;
@@ -71,5 +75,6 @@
 // Image: /System/Library/PrivateFrameworks/TeaUI.framework/TeaUI
 
 - (id)initTSWithActivityItemSources:(id)arg1;
+- (void)ts_setExcludedActivityTypes:(id)arg1;
 
 @end

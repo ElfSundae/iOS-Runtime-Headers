@@ -2,13 +2,17 @@
    Image: /System/Library/PrivateFrameworks/WorkflowUI.framework/WorkflowUI
  */
 
-@interface WFAutomationTypeChooserViewController : UITableViewController {
+@interface WFAutomationTypeChooserViewController : UITableViewController <WFHomeManagerEventObserver> {
     <WFAutomationTypeChooserViewControllerDelegate> * _delegate;
     WFHomeManager * _homeManager;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <WFAutomationTypeChooserViewControllerDelegate> *delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) WFHomeManager *homeManager;
+@property (readonly) Class superclass;
 
 + (unsigned long long)automationTypeForHomeManager:(id)arg1;
 
@@ -17,6 +21,7 @@
 - (void)choosePersonalAutomation:(id)arg1;
 - (id)delegate;
 - (id)homeManager;
+- (void)homeManagerDidUpdateHomes:(id)arg1;
 - (id)initWithHomeManager:(id)arg1;
 - (bool)isModalInPresentation;
 - (void)setDelegate:(id)arg1;

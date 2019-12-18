@@ -14,6 +14,7 @@
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)description;
 - (id)fontName;
 - (id)fontURL;
 - (unsigned long long)hash;

@@ -39,7 +39,7 @@
 - (void).cxx_destruct;
 - (void)_notifyUserInteractionEnabledChanged:(bool)arg1 routeType:(unsigned long long)arg2;
 - (void)_notifyVolumeChangedForVolumeController:(id)arg1 volumeControlAvailable:(bool)arg2 effectiveVolume:(float)arg3;
-- (id)_packageNameForRoute:(id)arg1 isRTL:(bool)arg2;
+- (id)_packageNameForRoute:(id)arg1 isRTL:(bool)arg2 isSlider:(bool)arg3;
 - (unsigned long long)_routeForVolumeController:(id)arg1;
 - (bool)_setupOutputDevicesAndVolumeControllersIfNeeded;
 - (id)_volumePackageNameForRTL:(bool)arg1;
@@ -50,7 +50,7 @@
 - (id)init;
 - (bool)isSplitRoute;
 - (id)observers;
-- (id)packageNameForRouteType:(unsigned long long)arg1 isRTL:(bool)arg2;
+- (id)packageNameForRouteType:(unsigned long long)arg1 isRTL:(bool)arg2 isSlider:(bool)arg3;
 - (bool)primaryInteractionEnabled;
 - (id)primaryOutputDeviceRoute;
 - (id)primaryVolumeController;

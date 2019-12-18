@@ -22,6 +22,7 @@
 + (id)intrinsicSizeDescriptorControlSizeDescriptor:(id)arg1 titlePosition:(unsigned long long)arg2;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)contentViewController;
 - (id)initWithContentViewController:(id)arg1;
 - (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;

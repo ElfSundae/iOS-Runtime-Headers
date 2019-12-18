@@ -29,11 +29,11 @@
     WKNavigation * _initialNavigation;
     bool  _isCurrentlyLoadingEmbedData;
     <SXLayoutInvalidator> * _layoutInvalidator;
-    <SXReachabilityProvider> * _reachabilityProvider;
+    <SWReachabilityProvider> * _reachabilityProvider;
     SXRelatedWebViewCache * _relatedWebViewCache;
     NFMultiDelegate * _scriptMessageHandler;
     NSString * _userScript;
-    SXWebCrashRetryThrottler * _webCrashRetryThrottler;
+    SWCrashRetryThrottler * _webCrashRetryThrottler;
     WKWebView * _webView;
     WKWebView * _webViewPresentingInFullscreen;
 }
@@ -58,12 +58,12 @@
 @property (nonatomic, retain) WKNavigation *initialNavigation;
 @property (nonatomic) bool isCurrentlyLoadingEmbedData;
 @property (nonatomic, readonly) <SXLayoutInvalidator> *layoutInvalidator;
-@property (nonatomic, readonly) <SXReachabilityProvider> *reachabilityProvider;
+@property (nonatomic, readonly) <SWReachabilityProvider> *reachabilityProvider;
 @property (nonatomic, readonly) SXRelatedWebViewCache *relatedWebViewCache;
 @property (nonatomic, readonly) NFMultiDelegate *scriptMessageHandler;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSString *userScript;
-@property (nonatomic, retain) SXWebCrashRetryThrottler *webCrashRetryThrottler;
+@property (nonatomic, retain) SWCrashRetryThrottler *webCrashRetryThrottler;
 @property (nonatomic, retain) WKWebView *webView;
 @property (nonatomic, retain) WKWebView *webViewPresentingInFullscreen;
 

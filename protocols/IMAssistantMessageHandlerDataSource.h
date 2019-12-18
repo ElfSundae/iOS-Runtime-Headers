@@ -10,7 +10,10 @@
 - (NSCache *)contactIdentifierToUnifiedContactIdentifierCache;
 - (<IMAssistantContactsDataSource> *)contactsDataSource;
 - (NSCache *)handleToContactIdentifierCache;
+- (bool)isInternationalSpamFilteringEnabled;
 - (<IMLocationManager> *)locationManagerDataSource;
+- (bool)screentimeAllowedToShowChat:(IMChat *)arg1;
+- (bool)screentimeAllowedToShowConversationWithHandleIDs:(NSArray *)arg1;
 - (NSCache *)spiHandleToPersonCache;
 
 @end

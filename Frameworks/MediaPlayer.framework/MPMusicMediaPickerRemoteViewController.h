@@ -16,6 +16,7 @@
 + (id)serviceViewControllerInterface;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)mediaPickerController;
 - (void)remoteMediaPickerDidCancel;
 - (void)remoteMediaPickerDidPickMediaItems:(id)arg1;

@@ -16,6 +16,7 @@
 
 - (void).cxx_destruct;
 - (void)applyToMutableContainer:(id)arg1;
+- (id)description;
 - (id)initWithProperty:(id)arg1 value:(id)arg2;
 - (id)property;
 - (id)value;

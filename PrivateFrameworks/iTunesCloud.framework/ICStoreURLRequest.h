@@ -21,6 +21,7 @@
 @property (nonatomic) bool shouldUseMescalSigning;
 @property (nonatomic, readonly, copy) ICStoreRequestContext *storeRequestContext;
 
++ (unsigned long long)_defaultMaxRetryCountForReason:(id)arg1;
 + (id)currentConnectionTypeHeader;
 
 - (void).cxx_destruct;

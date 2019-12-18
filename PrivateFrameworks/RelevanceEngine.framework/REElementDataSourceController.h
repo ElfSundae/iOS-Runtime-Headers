@@ -64,9 +64,11 @@
 - (void)_namespaceElementIdentifier:(id)arg1 section:(id)arg2;
 - (void)_performOrEnqueueUpdateBlock:(id /* block */)arg1;
 - (id)_queue_elementsForIds:(id)arg1;
+- (void)_queue_pause;
 - (void)_queue_performUpdates;
 - (void)_queue_processUpdates:(id)arg1 forSection:(id)arg2;
 - (void)_queue_reloadWithQOS:(unsigned int)arg1 qosOffset:(int)arg2 forceReload:(bool)arg3 completion:(id /* block */)arg4;
+- (void)_queue_resume;
 - (void)_queue_scheduleUpdate:(id)arg1;
 - (void)_queue_updateDataSourceLocationUse;
 - (void)_removeElementForIdentifier:(id)arg1;
@@ -104,6 +106,7 @@
 - (void)invalidateElements;
 - (id)name;
 - (void)pause;
+- (void)pauseIfNeeded;
 - (void)prepareToUnload;
 - (void)refreshElement:(id)arg1;
 - (void)reloadElement:(id)arg1;

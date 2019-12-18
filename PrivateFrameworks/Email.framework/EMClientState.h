@@ -4,13 +4,11 @@
 
 @interface EMClientState : NSObject <EFLoggable> {
     EMRemoteConnection * _connection;
-    NSProgress * _daemonBooster;
     EFObservable<EFObserver> * _foregroundObservable;
     bool  _isForeground;
 }
 
 @property (retain) EMRemoteConnection *connection;
-@property (retain) NSProgress *daemonBooster;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) EFObservable<EFObserver> *foregroundObservable;
@@ -26,13 +24,12 @@
 - (void)_handleApplicationWillEnterForeground;
 - (void)_updateRemoteInterface;
 - (id)connection;
-- (id)daemonBooster;
+- (id)daemonBoosterWithDescription:(id)arg1;
 - (id)foregroundObservable;
 - (id)initWithRemoteConnection:(id)arg1;
 - (bool)isForeground;
 - (void)setConnection:(id)arg1;
 - (void)setCurrentlyVisibleMailboxes:(id)arg1;
-- (void)setDaemonBooster:(id)arg1;
 - (void)setForegroundObservable:(id)arg1;
 - (void)setIsForeground:(bool)arg1;
 

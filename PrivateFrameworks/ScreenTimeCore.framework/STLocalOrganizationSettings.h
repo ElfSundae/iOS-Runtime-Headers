@@ -5,6 +5,7 @@
 @interface STLocalOrganizationSettings : STCoreOrganizationSettings
 
 @property (nonatomic, retain) STLocalOrganization *organization;
+@property (nonatomic, copy) NSString *recoveryAltDSID;
 
 - (id)computeUniqueIdentifier;
 - (id)dictionaryRepresentation;

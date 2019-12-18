@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaDeviceFixedContext : PBCodable <NSSecureCoding, SISchemaDeviceFixedContext> {
+@interface SISchemaDeviceFixedContext : PBCodable {
     NSString * _deviceType;
     NSString * _siriDeviceID;
     NSString * _siriInputLanguage;
@@ -12,16 +12,12 @@
     NSString * _systemLocale;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic, copy) NSString *deviceType;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, copy) NSString *siriDeviceID;
 @property (nonatomic, copy) NSString *siriInputLanguage;
 @property (nonatomic, copy) NSString *siriVoiceLanguage;
 @property (nonatomic, copy) NSString *speechID;
-@property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *systemBuild;
 @property (nonatomic, copy) NSString *systemLocale;
 

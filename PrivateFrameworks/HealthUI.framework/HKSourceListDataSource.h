@@ -29,23 +29,24 @@
 @property (nonatomic) bool shouldIncludeSpecialSources;
 @property (nonatomic, readonly) HKSourceListDataModel *sources;
 
++ (id /* block */)_builtinIconFetchTransformer;
++ (id /* block */)_builtinInstallationStatusTransformer;
++ (id /* block */)_builtinPurposeStringsFetchTransformer;
++ (void)_performTransformations:(id)arg1 model:(id)arg2 completion:(id /* block */)arg3;
++ (void)_remoteWatchAppPurposeStringsForBundleIdentifier:(id)arg1 completion:(id /* block */)arg2;
++ (void)fetchIconForSource:(id)arg1 completion:(id /* block */)arg2;
+
 - (void).cxx_destruct;
-- (id /* block */)_builtinIconFetchTransformer;
-- (id /* block */)_builtinInstallationStatusTransformer;
-- (id /* block */)_builtinPurposeStringsFetchTransformer;
 - (void)_didFetchSources:(id)arg1 error:(id)arg2 completion:(id /* block */)arg3;
 - (void)_fakeSourceForInstalledAppWithBundleIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (void)_notifyObserversForDataSourceUpdate;
-- (void)_performTransformations:(id)arg1 model:(id)arg2 completion:(id /* block */)arg3;
 - (void)_prependBuiltinTransformers;
-- (void)_remoteWatchAppPurposeStringsForBundleIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (id)_specialAppBundleIdentifiers;
 - (void)_throttledNotificationOfDataSourceUpdate;
 - (void)addFetchTransformer:(id /* block */)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (bool)deliverUpdates;
-- (void)fetchIconForSource:(id)arg1 completion:(id /* block */)arg2;
 - (void)fetchModelForSources:(id)arg1 completion:(id /* block */)arg2;
 - (void)fetchSources;
 - (id)healthStore;

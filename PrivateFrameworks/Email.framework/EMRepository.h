@@ -13,7 +13,7 @@
 @property (nonatomic, retain) <EFScheduler> *observerScheduler;
 
 - (void).cxx_destruct;
-- (id)_init;
+- (id)initInternal;
 - (id)interfaceFuture;
 - (id)interfaceProtocol;
 - (id)observerScheduler;

@@ -24,7 +24,7 @@
 @property (getter=isCameraManuallyDisabled, readonly) bool cameraManuallyDisabled;
 @property (readonly) NSString *clientIdentifier;
 @property (readonly) unsigned long long currentAccessMode;
-@property (getter=isCurrentDevicePrimaryResident, readonly) bool currentDevicePrimaryResident;
+@property (getter=isCurrentDeviceConfirmedPrimaryResident, readonly) bool currentDeviceConfirmedPrimaryResident;
 @property (readonly) HMDCameraProfileSettingsModel *currentSettingsModel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly) HMDCameraProfileSettingsModel *defaultSettingsModel;
@@ -107,7 +107,7 @@
 - (id)initWithIdentifier:(id)arg1 hapAccessory:(id)arg2 workQueue:(id)arg3 zoneManager:(id)arg4 notificationCenter:(id)arg5 bulletinBoard:(id)arg6;
 - (id)isAnyUserAtHome;
 - (bool)isCameraManuallyDisabled;
-- (bool)isCurrentDevicePrimaryResident;
+- (bool)isCurrentDeviceConfirmedPrimaryResident;
 - (id)localZone:(id)arg1 didProcessModelCreation:(id)arg2;
 - (id)localZone:(id)arg1 didProcessModelDeletion:(id)arg2;
 - (id)localZone:(id)arg1 didProcessModelUpdate:(id)arg2;

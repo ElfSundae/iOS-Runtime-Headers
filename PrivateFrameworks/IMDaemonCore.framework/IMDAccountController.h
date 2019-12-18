@@ -44,6 +44,7 @@
 - (void)activateAccount:(id)arg1;
 - (void)activateAccounts:(id)arg1;
 - (id)activeAccounts;
+- (bool)activeAccountsAreEligibleForSpamFilter;
 - (id)activeAccountsForService:(id)arg1;
 - (id)activeSessions;
 - (void)addAccount:(id)arg1;
@@ -58,6 +59,7 @@
 - (void)deactivateAccounts:(id)arg1 force:(bool)arg2;
 - (void)dealloc;
 - (void)deferredSave;
+- (bool)hasActivePhoneAccount;
 - (id)init;
 - (bool)isAccountActive:(id)arg1;
 - (bool)isLoading;

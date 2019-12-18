@@ -4,6 +4,8 @@
 
 @interface STIntroductionController : NSObject {
     bool  _allowParentalControls;
+    NSString * _altDSID;
+    bool  _askForRecoveryAppleID;
     NSString * _childName;
     id /* block */  _completionBlock;
     bool  _forceParentalControls;
@@ -14,6 +16,8 @@
 }
 
 @property bool allowParentalControls;
+@property (copy) NSString *altDSID;
+@property bool askForRecoveryAppleID;
 @property (copy) NSString *childName;
 @property (copy) id /* block */ completionBlock;
 @property bool forceParentalControls;
@@ -28,6 +32,8 @@
 - (void)_viewControllerCompleted:(id)arg1;
 - (id)_viewControllerFollowingViewController:(id)arg1;
 - (bool)allowParentalControls;
+- (id)altDSID;
+- (bool)askForRecoveryAppleID;
 - (id)childName;
 - (id /* block */)completionBlock;
 - (bool)forceParentalControls;
@@ -38,6 +44,8 @@
 - (id)navigationController;
 - (void)presentOverViewController:(id)arg1;
 - (void)setAllowParentalControls:(bool)arg1;
+- (void)setAltDSID:(id)arg1;
+- (void)setAskForRecoveryAppleID:(bool)arg1;
 - (void)setChildName:(id)arg1;
 - (void)setCompletionBlock:(id /* block */)arg1;
 - (void)setForceParentalControls:(bool)arg1;

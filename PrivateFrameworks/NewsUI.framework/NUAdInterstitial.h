@@ -21,6 +21,7 @@
 - (void)interstitialAd:(id)arg1 didFailWithError:(id)arg2;
 - (void)interstitialAdDidLoad:(id)arg1;
 - (void)interstitialAdDidUnload:(id)arg1;
+- (void)missedOpportunityToFill;
 - (void)setCompletionBlock:(id /* block */)arg1;
 - (void)setInterstitial:(id)arg1;
 

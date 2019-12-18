@@ -16,6 +16,7 @@
 - (bool)itemDidShowDefaultUIAtLocation:(struct CGPoint { double x1; double x2; })arg1;
 - (bool)itemWasDoubleClickedWithHitTestResult:(PXGHitTestResult *)arg1;
 - (bool)itemWasRightClickedWithHitTestResult:(PXGHitTestResult *)arg1 location:(struct CGPoint { double x1; double x2; })arg2;
+- (void)notifySelectedCellsChanged;
 - (void)selectAssets:(NSArray *)arg1;
 
 @end

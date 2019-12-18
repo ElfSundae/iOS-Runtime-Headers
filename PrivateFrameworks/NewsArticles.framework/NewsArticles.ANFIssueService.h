@@ -3,7 +3,7 @@
  */
 
 @interface NewsArticles.ANFIssueService : Swift._SwiftObject {
-    void headlineService;
+    void issueArticleService;
     void personalizer;
 }
 

@@ -13,6 +13,7 @@
     FCPurchaseController * _purchaseController;
     <FCPurchaseIntegrityChecker> * _purchaseIntegrityChecker;
     <FCPurchaseReceiptProvider> * _purchaseReceiptProvider;
+    <FCPurchaseFlowOverrideProviderType> * purchaseFlowOverrideProvider;
 }
 
 @property (nonatomic, readonly) <FCBundleSubscriptionManagerType> *bundleSubscriptionManager;
@@ -26,6 +27,7 @@
 @property (nonatomic, retain) NSMutableDictionary *ongoingPurchaseEntriesByProductID;
 @property (nonatomic, readonly) <FCPaymentTransactionManager> *paymentTransactionManager;
 @property (nonatomic, readonly) FCPurchaseController *purchaseController;
+@property (nonatomic, retain) <FCPurchaseFlowOverrideProviderType> *purchaseFlowOverrideProvider;
 @property (nonatomic, readonly) <FCPurchaseIntegrityChecker> *purchaseIntegrityChecker;
 @property (nonatomic, readonly) <FCPurchaseReceiptProvider> *purchaseReceiptProvider;
 @property (readonly) Class superclass;
@@ -55,6 +57,7 @@
 - (id)paymentTransactionManager;
 - (void)performEntitlementWithTagID:(id)arg1 completion:(id /* block */)arg2;
 - (id)purchaseController;
+- (id)purchaseFlowOverrideProvider;
 - (id)purchaseIntegrityChecker;
 - (id)purchaseReceiptProvider;
 - (void)removeOngoingPurchaseEntryForProductID:(id)arg1;
@@ -64,6 +67,7 @@
 - (void)setLastSignedInItunesAccountDSID:(id)arg1;
 - (void)setLocalStore:(id)arg1;
 - (void)setOngoingPurchaseEntriesByProductID:(id)arg1;
+- (void)setPurchaseFlowOverrideProvider:(id)arg1;
 - (bool)signInDetected;
 - (void)simulateFailurePurchaseWithProductID:(id)arg1 transactionState:(long long)arg2 error:(id)arg3;
 - (void)simulateSuccessfulPurchaseWithProductID:(id)arg1 tagID:(id)arg2;

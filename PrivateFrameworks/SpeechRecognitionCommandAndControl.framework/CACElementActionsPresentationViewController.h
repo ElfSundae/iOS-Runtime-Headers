@@ -33,6 +33,7 @@
 + (bool)canShowElementActionsForElement:(id)arg1;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)actionForAXAction:(id)arg1;
 - (id)alertController;
 - (id)element;

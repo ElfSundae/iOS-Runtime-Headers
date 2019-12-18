@@ -6,6 +6,7 @@
     BRFieldCKInfo * _ckInfo;
     NSSet * _conflictLoserEtags;
     NSData * _contentSignature;
+    NSNumber * _editedSinceShared;
     NSString * _lastEditorDeviceName;
     NSNumber * _lastEditorDeviceOrUserRowID;
     NSData * _lazyXattr;
@@ -21,12 +22,13 @@
 @property (nonatomic, retain) BRFieldCKInfo *ckInfo;
 @property (nonatomic, retain) NSSet *conflictLoserEtags;
 @property (nonatomic, retain) NSData *contentSignature;
+@property (nonatomic, retain) NSNumber *editedSinceShared;
 @property (nonatomic, readonly) bool hasThumbnail;
 @property (nonatomic, readonly) bool isPackage;
 @property (nonatomic, retain) NSString *lastEditorDeviceName;
 @property (nonatomic, retain) NSNumber *lastEditorDeviceOrUserRowID;
 @property (nonatomic, retain) NSNumber *lastEditorDeviceRowID;
-@property (nonatomic, retain) NSNumber *lastEditorRowID;
+@property (nonatomic, retain) BRCUserRowID *lastEditorRowID;
 @property (nonatomic, retain) NSData *lazyXattr;
 @property (nonatomic) long long mtime;
 @property (nonatomic, retain) NSString *originalPOSIXName;
@@ -51,6 +53,7 @@
 - (id)descriptionWithContext:(id)arg1;
 - (unsigned long long)diffAgainst:(id)arg1;
 - (id)displayNameWithoutExtension:(bool)arg1;
+- (id)editedSinceShared;
 - (void)encodeWithCoder:(id)arg1;
 - (bool)hasThumbnail;
 - (id)initFromResultSet:(id)arg1 pos:(int)arg2;
@@ -73,6 +76,7 @@
 - (void)setCkInfo:(id)arg1;
 - (void)setConflictLoserEtags:(id)arg1;
 - (void)setContentSignature:(id)arg1;
+- (void)setEditedSinceShared:(id)arg1;
 - (void)setLastEditorDeviceName:(id)arg1;
 - (void)setLastEditorDeviceOrUserRowID:(id)arg1;
 - (void)setLastEditorDeviceRowID:(id)arg1;

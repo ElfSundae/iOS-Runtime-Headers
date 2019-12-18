@@ -3,10 +3,10 @@
  */
 
 @interface SXButtonComponentActionProvider : NSObject <SXButtonComponentActionProvider> {
-    SXAction * _action;
+    <SXAction> * _action;
 }
 
-@property (nonatomic, readonly) SXAction *action;
+@property (nonatomic, readonly) <SXAction> *action;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -14,7 +14,6 @@
 
 - (void).cxx_destruct;
 - (id)action;
-- (id)buttonAction;
 - (id)initWithAction:(id)arg1;
 
 @end

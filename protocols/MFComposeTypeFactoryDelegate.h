@@ -8,8 +8,8 @@
 - (<MFMailAccountProxyGenerator> *)accountProxyGenerator;
 - (NSArray *)attachments;
 - (NSArray *)bccRecipients;
-- (UIView<MFComposeBodyField> *)bodyField;
 - (NSArray *)ccRecipients;
+- (MFComposeWebView *)composeWebView;
 - (MFMutableMessageHeaders *)savedHeaders;
 - (MFMailAccountProxy *)sendingAccountProxy;
 - (NSString *)sendingEmailAddress;

@@ -67,11 +67,6 @@
 - (long long)hk_countLines;
 - (void)hk_readLinesInFile:(id /* block */)arg1;
 
-// Image: /System/Library/Frameworks/SensorKit.framework/SensorKit
-
-- (id)pathname;
-- (id)segmentName;
-
 // Image: /System/Library/PrivateFrameworks/AppleServiceToolkit.framework/AppleServiceToolkit
 
 + (id)fileHandleForCreatingURL:(id)arg1 protection:(id)arg2 error:(id*)arg3;
@@ -103,6 +98,11 @@
 // Image: /System/Library/PrivateFrameworks/PhotoLibraryServices.framework/PhotoLibraryServices
 
 - (void)writeBytes:(const void*)arg1 length:(unsigned long long)arg2;
+
+// Image: /System/Library/PrivateFrameworks/SensorKit.framework/SensorKit
+
+- (id)pathname;
+- (id)segmentName;
 
 // Image: /System/Library/PrivateFrameworks/SpotlightServices.framework/SpotlightServices
 

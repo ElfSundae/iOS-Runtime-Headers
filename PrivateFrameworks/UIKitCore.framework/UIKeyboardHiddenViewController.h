@@ -22,6 +22,7 @@
 
 - (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_applicationWillDeactivate:(id)arg1;
+- (bool)_canShowWhileLocked;
 - (id)_deferredTargetForClientContext:(unsigned int)arg1;
 - (void)_deviceWillLock:(id)arg1;
 - (bool)_formSheetObeysContentContainerSize;

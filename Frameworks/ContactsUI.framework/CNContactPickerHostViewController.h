@@ -8,6 +8,7 @@
     NSExtension * _extension;
 }
 
+@property (nonatomic, readonly) UIBarButtonItem *addContactBarButtonItem;
 @property (nonatomic, retain) <NSCopying> *currentRequestIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <CNContactPickerContentDelegate> *delegate;
@@ -22,6 +23,7 @@
 + (bool)getViewController:(id /* block */)arg1;
 
 - (void).cxx_destruct;
+- (id)addContactBarButtonItem;
 - (id)currentRequestIdentifier;
 - (id)delegate;
 - (id)extension;

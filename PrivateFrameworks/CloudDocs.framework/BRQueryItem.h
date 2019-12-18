@@ -27,6 +27,10 @@
             unsigned int isTrashed : 1; 
             unsigned int itemMode : 3; 
             unsigned int fromReadOnlyDB : 1; 
+            unsigned int isSharedFolderSubItem : 1; 
+            unsigned int possiblyContainsSharedToMeItem : 1; 
+            unsigned int possiblyContainsSharedByMeItem : 1; 
+            unsigned int editedSinceShared : 1; 
             unsigned char BRQueryItemKind; 
             unsigned char kind; 
         } ; 
@@ -45,6 +49,7 @@
     long long  _physicalHandle;
     NSString * _physicalName;
     id  _replacement;
+    BRFileObjectID * _shareRootFileObjectID;
     NSNumber * _size;
     NSURL * _url;
     NSNumber * _zoneRowID;
@@ -70,6 +75,7 @@
 @property (getter=isDownloaded, nonatomic, readonly) bool downloaded;
 @property (getter=isDownloading, nonatomic, readonly) bool downloading;
 @property (nonatomic, readonly, copy) NSError *downloadingError;
+@property (nonatomic, readonly) bool editedSinceShared;
 @property (getter=isExcludedFromSync, nonatomic, readonly) bool excludedFromSync;
 @property (nonatomic, readonly) NSDictionary *extendedAttributes;
 @property (nonatomic, readonly) NSNumber *favoriteRank;
@@ -152,6 +158,8 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (bool)_isInSharedZone;
+- (bool)_isSharedFolderSubItem;
 - (void)_mergeAttrs:(id)arg1;
 - (void)_mergeURL:(id)arg1;
 - (id)appLibraryID;
@@ -181,6 +189,7 @@
 - (id)documentSize;
 - (id)downloadingError;
 - (id)downloadingStatus;
+- (bool)editedSinceShared;
 - (void)encodeWithCoder:(id)arg1;
 - (id)favoriteRank;
 - (id)fileObjectID;
@@ -190,6 +199,7 @@
 - (id)filename;
 - (id)fp_cloudContainerIdentifier;
 - (bool)fp_isContainer;
+- (bool)fp_isLastModifiedByCurrentUser;
 - (id)fp_spotlightDomainIdentifier;
 - (id)hasUnresolvedConflicts;
 - (unsigned long long)hash;
@@ -217,6 +227,7 @@
 - (bool)isShared;
 - (bool)isSharedByCurrentUser;
 - (bool)isSymlink;
+- (bool)isTopLevelSharedItem;
 - (bool)isTrashed;
 - (bool)isUploadActive;
 - (bool)isUploaded;

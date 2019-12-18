@@ -71,6 +71,7 @@
 @property (nonatomic, readonly, copy) NSArray *moreFromPublisherArticleIDs;
 @property (nonatomic, readonly) bool needsRapidUpdates;
 @property (nonatomic, readonly) unsigned long long order;
+@property (nonatomic, readonly, copy) <FCHeadlineProviding> *originalHeadline;
 @property (getter=isPaid, nonatomic, readonly) bool paid;
 @property (getter=isPressRelease, nonatomic, readonly) bool pressRelease;
 @property (nonatomic, readonly, copy) NSString *primaryAudience;
@@ -130,13 +131,16 @@
 
 - (void).cxx_destruct;
 - (bool)conformsToProtocol:(id)arg1;
+- (id)description;
 - (id)displayDate;
 - (void)forwardInvocation:(id)arg1;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithHeadline:(id)arg1 overrideMetadata:(id)arg2 configuration:(id)arg3;
 - (id)methodSignatureForSelector:(SEL)arg1;
+- (id)originalHeadline;
 - (id)publishDate;
 - (bool)respondsToSelector:(SEL)arg1;
+- (id)shortExcerpt;
 - (id)storyStyle;
 - (unsigned long long)storyType;
 - (id)title;

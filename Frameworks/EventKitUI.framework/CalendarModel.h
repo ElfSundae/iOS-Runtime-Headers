@@ -52,7 +52,7 @@
 @property (nonatomic) bool showMonthAsDivided;
 @property (nonatomic, retain) NSArray *sortedEnabledDelegates;
 @property (nonatomic, readonly, retain) EKSource *sourceForSelectedIdentity;
-@property (nonatomic, readonly) long long visibleCalendarCount;
+@property (nonatomic, copy) NSSet *unselectedCalendars;
 
 + (id)calendarModelWithDataPath:(id)arg1;
 + (id)calendarModelWithEventStore:(id)arg1;
@@ -71,6 +71,7 @@
 - (void)_ignoredErrorsChanged;
 - (void)_invalidateCachedOccurrences;
 - (void)_invalidateOccurrenceCacheDataSources;
+- (void)_loadVisibleCalendarsIfNeeded;
 - (void)_localeChanged:(id)arg1;
 - (void)_notificationCountExpired:(id)arg1;
 - (id)_notificationMonitor;
@@ -83,6 +84,7 @@
 - (void)_sceneEnteredBackground:(id)arg1;
 - (void)_sceneEnteredForeground:(id)arg1;
 - (void)_searchResultsAvailable:(id)arg1;
+- (bool)_setSelectedCalendars:(id)arg1;
 - (void)_significantTimeChange:(id)arg1;
 - (void)_systemWake;
 - (void)_timeZoneChanged:(id)arg1;
@@ -134,6 +136,7 @@
 - (id)occurrencesForStartDate:(id)arg1 endDate:(id)arg2 preSorted:(bool)arg3 waitForLoad:(bool)arg4;
 - (id)occurrencesForStartDay:(id)arg1 endDay:(id)arg2 preSorted:(bool)arg3 waitForLoad:(bool)arg4;
 - (id)persistedSceneState;
+- (void)postSelectedCalendarsChanged;
 - (void)prepareForAppSuspend;
 - (long long)readWriteCalendarCount;
 - (id)refreshAccountListIfNeeded:(bool)arg1;
@@ -172,15 +175,16 @@
 - (void)setShowMonthAsDivided:(bool)arg1;
 - (void)setSortedEnabledDelegates:(id)arg1;
 - (void)setSourceForSelectedIdentity:(id)arg1;
+- (void)setUnselectedCalendars:(id)arg1;
 - (bool)showDayAsList;
 - (bool)showMonthAsDivided;
 - (void)simulateFirstLoadFinished;
 - (id)sortedEnabledDelegates;
 - (id)sourceForSelectedIdentity;
 - (void)startNotificationMonitor;
+- (id)unselectedCalendars;
 - (void)updateAfterAppResume;
 - (void)updateSelectedDateTimeZone;
 - (void)updateSourceForSelectedIdentity:(id)arg1 selectedCalendars:(id)arg2;
-- (long long)visibleCalendarCount;
 
 @end

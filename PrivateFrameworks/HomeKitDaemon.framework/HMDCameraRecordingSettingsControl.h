@@ -95,6 +95,7 @@
 - (id)delegate;
 - (bool)didTriggerABCForConfigure;
 - (void)handleAccessoryConfigured:(id)arg1;
+- (void)handleAccessoryIsNotConfiguredError;
 - (void)handleAccessoryUnreachable:(id)arg1;
 - (void)handleCameraProfileSettingsDidWriteToAccessory:(id)arg1;
 - (void)handleCharacteristicValueUpdated:(id)arg1;

@@ -3,7 +3,6 @@
  */
 
 @interface ICURLRequest : NSObject <NSProgressReporting> {
-    NSObject<OS_dispatch_queue> * _accessQueue;
     NSDictionary * _avDownloadOptions;
     bool  _cancelOnHTTPErrors;
     id /* block */  _completionHandler;
@@ -13,7 +12,10 @@
     long long  _handlingType;
     double  _lastProgressUpdateTime;
     double  _lastUpdateTime;
-    unsigned long long  _maxRetryCount;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _lock;
+    NSMutableDictionary * _maxRetryCounts;
     NSObject<OS_dispatch_queue> * _observerQueue;
     NSMutableArray * _observers;
     bool  _prioritize;
@@ -25,8 +27,9 @@
     NSURL * _responseDataURL;
     ICURLResponseHandler * _responseHandler;
     NSData * _resumeData;
-    unsigned long long  _retryCount;
+    NSMutableDictionary * _retryCounts;
     double  _retryDelay;
+    NSString * _retryReason;
     double  _startTime;
     NSURLSessionTask * _task;
     long long  _type;
@@ -57,8 +60,9 @@
 @property (nonatomic, retain) NSURL *responseDataURL;
 @property (nonatomic, retain) ICURLResponseHandler *responseHandler;
 @property (nonatomic, readonly, copy) NSData *resumeData;
-@property (nonatomic) unsigned long long retryCount;
+@property (nonatomic, readonly) unsigned long long retryCount;
 @property (nonatomic) double retryDelay;
+@property (nonatomic, retain) NSString *retryReason;
 @property (nonatomic) double startTime;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) NSURLSessionTask *task;
@@ -67,7 +71,14 @@
 @property (nonatomic, retain) NSURLResponse *urlResponse;
 @property (nonatomic, retain) NSObject<OS_dispatch_semaphore> *waitSemaphore;
 
++ (unsigned long long)_defaultMaxRetryCountForReason:(id)arg1;
+
 - (void).cxx_destruct;
+- (void)_ensureValidRetryReason:(id)arg1;
+- (void)_incrementRetryCountForReason:(id)arg1;
+- (unsigned long long)_maxRetryCountForReason:(id)arg1;
+- (unsigned long long)_retryCountForReason:(id)arg1;
+- (void)_setMaxRetryCount:(unsigned long long)arg1 forReason:(id)arg2;
 - (void)addObserver:(id)arg1;
 - (id)avDownloadOptions;
 - (void)buildURLRequestWithCompletionHandler:(id /* block */)arg1;
@@ -98,6 +109,7 @@
 - (id)resumeData;
 - (unsigned long long)retryCount;
 - (double)retryDelay;
+- (id)retryReason;
 - (void)setAvDownloadOptions:(id)arg1;
 - (void)setCancelOnHTTPErrors:(bool)arg1;
 - (void)setCompletionHandler:(id /* block */)arg1;
@@ -115,8 +127,8 @@
 - (void)setResponseData:(id)arg1;
 - (void)setResponseDataURL:(id)arg1;
 - (void)setResponseHandler:(id)arg1;
-- (void)setRetryCount:(unsigned long long)arg1;
 - (void)setRetryDelay:(double)arg1;
+- (void)setRetryReason:(id)arg1;
 - (void)setStartTime:(double)arg1;
 - (void)setTask:(id)arg1;
 - (void)setType:(long long)arg1;

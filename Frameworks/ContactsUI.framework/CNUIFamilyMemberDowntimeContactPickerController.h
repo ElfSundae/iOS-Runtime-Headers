@@ -2,12 +2,12 @@
    Image: /System/Library/Frameworks/ContactsUI.framework/ContactsUI
  */
 
-@interface CNUIFamilyMemberDowntimeContactPickerController : UIViewController <CNContactContentViewControllerDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UITableViewDataSource, UITableViewDelegate> {
+@interface CNUIFamilyMemberDowntimeContactPickerController : UIViewController <CNContactContentViewControllerDelegate, UIAdaptivePresentationControllerDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UITableViewDataSource, UITableViewDelegate> {
     NSArray * _allFamilyMembers;
     FAFamilyMember * _childFamilyMember;
     CNContactFormatter * _contactCardWarningFormatter;
     CNContactFormatter * _contactCellLabelFormatter;
-    CNContactContentViewController * _contactViewController;
+    CNContactViewController * _contactViewController;
     CNUIFamilyMemberDowntimeContactDataSource * _dataSource;
     <CNUIFamilyMemberDowntimeContactPickerControllerDelegate> * _delegate;
     CNUIFamilyMemberContactsEditingStrategy * _editingStrategy;
@@ -24,7 +24,7 @@
 @property (nonatomic, readonly) FAFamilyMember *childFamilyMember;
 @property (nonatomic, readonly) CNContactFormatter *contactCardWarningFormatter;
 @property (nonatomic, readonly) CNContactFormatter *contactCellLabelFormatter;
-@property (nonatomic, retain) CNContactContentViewController *contactViewController;
+@property (nonatomic, retain) CNContactViewController *contactViewController;
 @property (nonatomic, readonly) CNUIFamilyMemberDowntimeContactDataSource *dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <CNUIFamilyMemberDowntimeContactPickerControllerDelegate> *delegate;
@@ -66,6 +66,7 @@
 - (void)keyboardWillChange:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)preferredForNameMeContact;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (id)presentedContactIndexPath;
 - (void)saveSanitizedSelectedContacts:(id)arg1;
 - (id)searchBar;

@@ -45,6 +45,7 @@
 
 - (void).cxx_destruct;
 - (void)CFX_animateWithDuration:(double)arg1 animatingIn:(bool)arg2 completion:(id /* block */)arg3;
+- (bool)_canShowWhileLocked;
 - (void)configureWorkingEffect;
 - (void)dealloc;
 - (id)delegate;

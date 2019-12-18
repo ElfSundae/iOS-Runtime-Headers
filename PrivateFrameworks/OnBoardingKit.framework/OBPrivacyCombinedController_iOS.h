@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSLayoutConstraint *tableViewHeightConstraint;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)identifiers;
 - (id)initWithIdentifiers:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;

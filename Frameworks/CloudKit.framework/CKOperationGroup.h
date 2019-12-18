@@ -63,6 +63,7 @@
 
 // Image: /System/Library/PrivateFrameworks/CloudDocsDaemon.framework/CloudDocsDaemon
 
++ (id)br_aggressiveChaining;
 + (id)br_downloadConflictingVersions;
 + (id)br_downloadOpportunistic;
 + (id)br_downloadOptimizeStorageOff;
@@ -72,6 +73,7 @@
 + (id)br_downloadUserInitiated;
 + (id)br_fetchIdentityXPC;
 + (id)br_fetchNonLocalVersions;
++ (id)br_osUpgradeMigration;
 + (id)br_publishingRequest;
 + (id)br_purge;
 + (id)br_quotaUpdateUploader;

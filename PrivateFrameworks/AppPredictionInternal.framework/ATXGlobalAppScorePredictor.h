@@ -3,13 +3,12 @@
  */
 
 @interface ATXGlobalAppScorePredictor : NSObject {
-    MLModel * _globalPopularityPredictor;
     _PASCFBurstTrie * _index;
-    ATXLocationManager * _locationManager;
+    <ATXLocationManagerProtocol> * _locationManager;
     _PASCFBurstTrie * _signalsTrie;
 }
 
-@property (nonatomic, retain) ATXLocationManager *locationManager;
+@property (nonatomic, retain) <ATXLocationManagerProtocol> *locationManager;
 
 + (id)sharedInstance;
 

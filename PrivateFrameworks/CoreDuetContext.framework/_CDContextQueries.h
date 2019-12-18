@@ -14,6 +14,7 @@
 + (id)actionSetUUID;
 + (id)activeDateInterval;
 + (id)alarmIDKey;
++ (id)altitudeKey;
 + (id)appBundleIdKey;
 + (id)appLaunchReasonKey;
 + (id)appUsageBundleID;
@@ -119,6 +120,7 @@
 + (id)keyPathForIntentsDataDictionary;
 + (id)keyPathForKeybagLockStatus;
 + (id)keyPathForLastUseDate;
++ (id)keyPathForLocationCoordinates;
 + (id)keyPathForLowBattery;
 + (id)keyPathForLowPowerModeStatus;
 + (id)keyPathForMDCSDeviceIDsWithProxySourceDeviceUUID:(id)arg1;
@@ -157,8 +159,10 @@
 + (id)keyPathForWiredConnectionQuality;
 + (id)keyPathForWorkoutDataDictionary;
 + (id)keyPathForWorkoutStatus;
++ (id)latitudeKey;
 + (id)locationOfInterestTypeKey;
 + (id)locationOfInterestUUIDKey;
++ (id)longitudeKey;
 + (id)modeIdentifier;
 + (id)modifiedDateKey;
 + (id)nextSunriseKey;
@@ -202,6 +206,7 @@
 + (id)subjectKey;
 + (id)sunriseSunsetAvailabilityStatusKey;
 + (id)timerIDKey;
++ (id)timestampKey;
 + (id)title;
 + (id)transitionWithinTimeIntervalKey;
 + (id)userActivityRequiredString;

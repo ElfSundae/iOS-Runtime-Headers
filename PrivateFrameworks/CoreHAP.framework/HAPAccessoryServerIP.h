@@ -144,8 +144,6 @@
 - (bool)_isSessionEstablished;
 - (id)_joinAccessoryNetworkWithCompletion:(id /* block */)arg1;
 - (void)_listPairingsWithCompletionQueue:(id)arg1 completionHandler:(id /* block */)arg2;
-- (bool)_mergeExistingAccessory:(id)arg1 withNewAccessory:(id)arg2;
-- (bool)_mergeExistingService:(id)arg1 withNewService:(id)arg2;
 - (void)_notifyDelegateNeedsOwnershipToken;
 - (void)_notifyDelegatesOfAddAccessoryFailure;
 - (void)_notifyDelegatesPairingStopped:(id)arg1;
@@ -209,6 +207,7 @@
 - (bool)econnresetRetryInProgress;
 - (void)enableEvents:(bool)arg1 forCharacteristics:(id)arg2 withCompletionHandler:(id /* block */)arg3 queue:(id)arg4;
 - (void)getAccessoryInfo:(id /* block */)arg1;
+- (void)handleHTTPClientUnavailableErrorWithCompletion:(id /* block */)arg1 serializationType:(unsigned long long)arg2;
 - (void)handleUpdatesForCharacteristics:(id)arg1 stateNumber:(id)arg2;
 - (id)hapWACAccessory;
 - (id)hapWACAccessoryClient;
@@ -267,6 +266,9 @@
 - (void)resetPostSoftAuthWAC;
 - (void)resolveLocalHostnameWithCompletionHandler:(id /* block */)arg1;
 - (id)resolvers;
+- (void)sendGETRequestToURL:(id)arg1 timeout:(double)arg2 completionHandler:(id /* block */)arg3;
+- (void)sendPOSTRequestToURL:(id)arg1 request:(id)arg2 serializationType:(unsigned long long)arg3 completionHandler:(id /* block */)arg4;
+- (void)sendPUTRequestToURL:(id)arg1 request:(id)arg2 serializationType:(unsigned long long)arg3 timeout:(double)arg4 completionHandler:(id /* block */)arg5;
 - (id)services;
 - (void)setAuthenticated:(bool)arg1;
 - (void)setAuthenticatedProtocolInfo:(id)arg1;

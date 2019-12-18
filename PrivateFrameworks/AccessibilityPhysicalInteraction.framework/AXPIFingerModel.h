@@ -11,6 +11,7 @@
     }  _location;
     bool  _pressed;
     bool  _selected;
+    unsigned long long  _shape;
 }
 
 @property (nonatomic, retain) <AXPIFingerModelDelegate> *delegate;
@@ -18,6 +19,7 @@
 @property (nonatomic) struct CGPoint { double x1; double x2; } location;
 @property (getter=isPressed, nonatomic) bool pressed;
 @property (getter=isSelected, nonatomic) bool selected;
+@property (nonatomic) unsigned long long shape;
 
 + (id)fingerModelForLocation:(struct CGPoint { double x1; double x2; })arg1;
 
@@ -33,5 +35,7 @@
 - (void)setLocation:(struct CGPoint { double x1; double x2; })arg1;
 - (void)setPressed:(bool)arg1;
 - (void)setSelected:(bool)arg1;
+- (void)setShape:(unsigned long long)arg1;
+- (unsigned long long)shape;
 
 @end

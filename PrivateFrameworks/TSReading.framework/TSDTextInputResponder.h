@@ -174,7 +174,7 @@
 - (id)tokenizer;
 - (void)unmarkText;
 
-// Image: /System/Library/PrivateFrameworks/SilexText.framework/SilexText
+// Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
 
 - (bool)p_accessibilityShouldCheckAncestorCanPerformAction:(SEL)arg1 withSender:(id)arg2;
 

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PersonalizationPortrait.framework/PersonalizationPortrait
  */
 
-@interface PPNamedEntityRecord : _PASZonedObject <NSCopying, NSMutableCopying, NSSecureCoding> {
+@interface PPNamedEntityRecord : _PASZonedObject <NSCopying, NSMutableCopying, NSSecureCoding, PPRecord> {
     unsigned char  _algorithm;
     BOOL  _bucketizedSentimentScore;
     unsigned char  _changeType;

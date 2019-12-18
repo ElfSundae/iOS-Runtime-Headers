@@ -20,6 +20,7 @@
     long long  _displayMode;
     NSArray * _displayedPropertyKeys;
     long long  _editMode;
+    bool  _editingProposedInformation;
     NSArray * _extraBarButtonItems;
     NSString * _highlightedPropertyIdentifier;
     bool  _highlightedPropertyImportant;
@@ -27,6 +28,7 @@
     bool  _ignoreViewWillBePresented;
     bool  _ignoresParentalRestrictions;
     NSString * _importantMessage;
+    NSString * _initialPrompt;
     NSString * _message;
     long long  _mode;
     CNContainer * _parentContainer;
@@ -38,6 +40,7 @@
     NSArray * _prohibitedPropertyKeys;
     CNContactRecentsReference * _recentsData;
     bool  _requiresSetup;
+    bool  _shouldDrawNavigationBar;
     bool  _shouldShowLinkedContacts;
     bool  _showingMeContact;
     NSAttributedString * _verifiedInfoMessage;
@@ -67,6 +70,7 @@
 @property (nonatomic) long long displayMode;
 @property (nonatomic, copy) NSArray *displayedPropertyKeys;
 @property (nonatomic) long long editMode;
+@property (nonatomic) bool editingProposedInformation;
 @property (nonatomic, retain) NSArray *extraBarButtonItems;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) NSString *highlightedPropertyIdentifier;
@@ -74,6 +78,7 @@
 @property (nonatomic, retain) NSString *highlightedPropertyKey;
 @property (nonatomic) bool ignoresParentalRestrictions;
 @property (nonatomic, copy) NSString *importantMessage;
+@property (nonatomic, retain) NSString *initialPrompt;
 @property (nonatomic, copy) NSString *message;
 @property (nonatomic, readonly) long long mode;
 @property (nonatomic, retain) CNContainer *parentContainer;
@@ -86,6 +91,7 @@
 @property (nonatomic, retain) NSArray *prohibitedPropertyKeys;
 @property (nonatomic, retain) CNContactRecentsReference *recentsData;
 @property (nonatomic) bool requiresSetup;
+@property (nonatomic) bool shouldDrawNavigationBar;
 @property (nonatomic) bool shouldShowLinkedContacts;
 @property (nonatomic) bool showingMeContact;
 @property (readonly) Class superclass;
@@ -141,6 +147,7 @@
 - (id)displayedPropertyKeys;
 - (void)editCancel:(id)arg1;
 - (long long)editMode;
+- (bool)editingProposedInformation;
 - (void)enableCancelKeyboardShortcut;
 - (void)enableSaveKeyboardShortcut;
 - (id)extraBarButtonItems;
@@ -153,6 +160,7 @@
 - (id)importantMessage;
 - (id)initWithMode:(long long)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (id)initialPrompt;
 - (bool)isModalInPresentation;
 - (void)isPresentingEditingController:(bool)arg1;
 - (void)isPresentingFullscreen:(bool)arg1;
@@ -195,12 +203,14 @@
 - (void)setDoneButtonText:(id)arg1 enabled:(bool)arg2;
 - (void)setEditMode:(long long)arg1;
 - (void)setEditing:(bool)arg1 animated:(bool)arg2;
+- (void)setEditingProposedInformation:(bool)arg1;
 - (void)setExtraBarButtonItems:(id)arg1;
 - (void)setHighlightedPropertyIdentifier:(id)arg1;
 - (void)setHighlightedPropertyImportant:(bool)arg1;
 - (void)setHighlightedPropertyKey:(id)arg1;
 - (void)setIgnoresParentalRestrictions:(bool)arg1;
 - (void)setImportantMessage:(id)arg1;
+- (void)setInitialPrompt:(id)arg1;
 - (void)setMessage:(id)arg1;
 - (void)setParentContainer:(id)arg1;
 - (void)setParentGroup:(id)arg1;
@@ -210,12 +220,14 @@
 - (void)setProhibitedPropertyKeys:(id)arg1;
 - (void)setRecentsData:(id)arg1;
 - (void)setRequiresSetup:(bool)arg1;
+- (void)setShouldDrawNavigationBar:(bool)arg1;
 - (void)setShouldShowLinkedContacts:(bool)arg1;
 - (void)setShowingMeContact:(bool)arg1;
 - (void)setVerifiedInfoMessage:(id)arg1;
 - (void)setViewController:(id)arg1;
 - (void)setWarningMessage:(id)arg1;
 - (bool)shouldAutomaticallyForwardAppearanceMethods;
+- (bool)shouldDrawNavigationBar;
 - (bool)shouldPerformDefaultActionForContact:(id)arg1 propertyKey:(id)arg2 propertyIdentifier:(id)arg3;
 - (bool)shouldShowLinkedContacts;
 - (bool)showingMeContact;

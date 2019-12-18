@@ -82,6 +82,7 @@
 - (id /* block */)loadingCompletionHandler;
 - (bool)loadingFailed;
 - (id)loadingViewController;
+- (struct CGSize { double x1; double x2; })preferredContentSize;
 - (void)previewDidAppear:(bool)arg1;
 - (void)previewDidDisappear:(bool)arg1;
 - (id)previewItem;

@@ -60,6 +60,7 @@
 - (bool)activateAndHandleReconnectAccount:(id)arg1;
 - (bool)activateAndHandleReconnectAccounts:(id)arg1;
 - (id)activeAccounts;
+- (long long)activeAccountsAreEligibleForSpamFilter;
 - (id)activeAccountsForService:(id)arg1;
 - (id)activeIMessageAccount;
 - (id)activeSMSAccount;

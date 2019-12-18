@@ -13,6 +13,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (unsigned long long)actionExperienceForScoredHeuristicAction:(struct ATXScoredPrediction { Class x1; }*)arg1;
 + (double)computeHeuristicEngagementScoreWithPriorAlpha:(int)arg1 priorBeta:(int)arg2 confirms:(double)arg3 rejects:(double)arg4 totalConfirms:(double)arg5 totalRejects:(double)arg6;
 + (double)generateScoreForHeuristic:(id)arg1;
 

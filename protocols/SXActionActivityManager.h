@@ -5,8 +5,8 @@
 
 @required
 
-- (<SXActionActivityGroup> *)activityGroupForAction:(SXAction *)arg1;
-- (<SXActionPreviewActivity> *)previewActivityForAction:(SXAction *)arg1;
-- (void)registerActionActivityProvider:(id <SXActionActivityProvider>)arg1 actionType:(Class)arg2;
+- (<SXActionActivityGroup> *)activityGroupForAction:(id <SXAction>)arg1;
+- (<SXActionPreviewActivity> *)previewActivityForAction:(id <SXAction>)arg1;
+- (void)registerActionActivityProvider:(id <SXActionActivityProvider>)arg1 actionType:(NSString *)arg2;
 
 @end

@@ -2,17 +2,13 @@
    Image: /System/Library/PrivateFrameworks/ContactsUICore.framework/ContactsUICore
  */
 
-@interface CNUICoreContactScratchpad : NSObject <CNUICoreFamilyMemberCandidateContactsContainer> {
+@interface CNUICoreContactScratchpad : NSObject {
     NSSet * _edits;
 }
 
 @property (nonatomic, readonly) NSSet *allContacts;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) NSSet *edits;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSSet *modifiedContacts;
-@property (readonly) Class superclass;
 
 + (id)editMatchingContact:(id)arg1 inEdits:(id)arg2;
 + (id)editsByReplacingEdit:(id)arg1 withUpdatedEdit:(id)arg2 inEdits:(id)arg3;

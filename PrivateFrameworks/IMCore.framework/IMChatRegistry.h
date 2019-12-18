@@ -165,6 +165,7 @@
 - (void)_noteChatInit:(id)arg1;
 - (bool)_postMessageSentNotifications;
 - (void)_postMultiWayStateChangedNotification:(id)arg1;
+- (void)_previouslyBlackholedChatLoadedWithHandleIDs:(id)arg1 chat:(id)arg2;
 - (void)_processMessageForAccount:(id)arg1 chat:(id)arg2 style:(unsigned char)arg3 chatProperties:(id)arg4 groupID:(id)arg5 chatPersonCentricID:(id)arg6 message:(id)arg7;
 - (void)_processMessagesForAccount:(id)arg1 chat:(id)arg2 style:(unsigned char)arg3 chatProperties:(id)arg4 groupID:(id)arg5 chatPersonCentricID:(id)arg6 messages:(id)arg7 messagesComingFromStorage:(bool)arg8;
 - (void)_registerChat:(id)arg1 isIncoming:(bool)arg2 guid:(id)arg3;
@@ -295,6 +296,7 @@
 - (id)performanceLogHandle;
 - (bool)personaKitRetriveAPITimedOut;
 - (id)preExistingAllChats;
+- (void)previouslyBlackholedChatLoadedWithHandleIDs:(id)arg1 chat:(id)arg2;
 - (id)registryChangeHistoryChatsToObserveSet;
 - (id)registryChangeHistoryChatsToUnregisterSet;
 - (void)screenTimeEnablementChanged:(bool)arg1;
@@ -313,6 +315,7 @@
 - (void)setupComplete:(bool)arg1 info:(id)arg2;
 - (id)simulatedChats;
 - (void)systemApplicationDidResume;
+- (id)unblackholeAndLoadChatWithIMHandles:(id)arg1;
 - (void)uncachedAttachmentCountQuery:(id)arg1 chatID:(id)arg2 services:(id)arg3 finishedWithResult:(id)arg4;
 - (unsigned long long)unreadCount;
 - (void)unreadCountChanged:(long long)arg1;

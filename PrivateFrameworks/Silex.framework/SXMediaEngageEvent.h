@@ -8,7 +8,7 @@
     double  _mediaFrameRate;
     NSString * _mediaPauseMethod;
     unsigned long long  _mediaPausePosition;
-    NSString * _mediaPlayMethod;
+    unsigned long long  _mediaPlayMethod;
     NSString * _mediaResumeMethod;
     unsigned long long  _mediaResumePosition;
     double  _mediaTimePlayed;
@@ -22,7 +22,7 @@
 @property (nonatomic) double mediaFrameRate;
 @property (nonatomic, retain) NSString *mediaPauseMethod;
 @property (nonatomic) unsigned long long mediaPausePosition;
-@property (nonatomic, retain) NSString *mediaPlayMethod;
+@property (nonatomic) unsigned long long mediaPlayMethod;
 @property (nonatomic, retain) NSString *mediaResumeMethod;
 @property (nonatomic) unsigned long long mediaResumePosition;
 @property (nonatomic) double mediaTimePlayed;
@@ -36,7 +36,7 @@
 - (double)mediaFrameRate;
 - (id)mediaPauseMethod;
 - (unsigned long long)mediaPausePosition;
-- (id)mediaPlayMethod;
+- (unsigned long long)mediaPlayMethod;
 - (id)mediaResumeMethod;
 - (unsigned long long)mediaResumePosition;
 - (double)mediaTimePlayed;
@@ -46,7 +46,7 @@
 - (void)setMediaFrameRate:(double)arg1;
 - (void)setMediaPauseMethod:(id)arg1;
 - (void)setMediaPausePosition:(unsigned long long)arg1;
-- (void)setMediaPlayMethod:(id)arg1;
+- (void)setMediaPlayMethod:(unsigned long long)arg1;
 - (void)setMediaResumeMethod:(id)arg1;
 - (void)setMediaResumePosition:(unsigned long long)arg1;
 - (void)setMediaTimePlayed:(double)arg1;

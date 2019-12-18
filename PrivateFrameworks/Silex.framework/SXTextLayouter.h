@@ -3,18 +3,18 @@
  */
 
 @interface SXTextLayouter : NSObject {
-    STTextTangierDocumentRoot * _documentRoot;
+    SXTextTangierDocumentRoot * _documentRoot;
     NSSet * _exclusionPaths;
     TSDLayoutController * _layoutController;
-    STTextTangierContainerInfo * _textInfo;
+    SXTextTangierContainerInfo * _textInfo;
     SXTextSource * _textSource;
 }
 
-@property (nonatomic, retain) STTextTangierDocumentRoot *documentRoot;
+@property (nonatomic, retain) SXTextTangierDocumentRoot *documentRoot;
 @property (nonatomic, retain) NSSet *exclusionPaths;
 @property (nonatomic, retain) TSDLayoutController *layoutController;
 @property (nonatomic, readonly) NSArray *paragraphRanges;
-@property (nonatomic, retain) STTextTangierContainerInfo *textInfo;
+@property (nonatomic, retain) SXTextTangierContainerInfo *textInfo;
 @property (nonatomic, retain) SXTextSource *textSource;
 
 - (void).cxx_destruct;

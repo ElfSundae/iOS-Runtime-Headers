@@ -16,6 +16,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly, copy) NSString *identifier;
+@property (getter=isPermittedToUseBluetoothAccessories, nonatomic, readonly) bool permittedToUseBluetoothAccessories;
 @property (getter=isPermittedToUsePrivateAPI, nonatomic, readonly) bool permittedToUsePrivateAPI;
 @property (getter=isPermittedToUsePublicAPI, nonatomic, readonly) bool permittedToUsePublicAPI;
 @property (nonatomic, readonly) int processIdentifier;
@@ -37,6 +38,7 @@
 - (id)identifier;
 - (id)init;
 - (bool)isConnected;
+- (bool)isPermittedToUseBluetoothAccessories;
 - (bool)isPermittedToUsePrivateAPI;
 - (bool)isPermittedToUsePublicAPI;
 - (int)processIdentifier;

@@ -717,8 +717,8 @@
 // Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
 
 - (id)mf_classesForUICustomization;
-- (id)mf_findViewControllerOfClass:(Class)arg1 startAtTopOfStack:(bool)arg2;
 - (id)mf_keyPathsMapForUICustomization;
+- (id)mf_viewControllerOfClass:(Class)arg1 startFromTopOfStack:(bool)arg2;
 
 // Image: /System/Library/Frameworks/PhotosUI.framework/PhotosUI
 

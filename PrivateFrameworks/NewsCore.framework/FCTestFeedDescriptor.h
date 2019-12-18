@@ -15,10 +15,11 @@
 + (id)descriptorWithContext:(id)arg1;
 + (id)descriptorWithContext:(id)arg1 tag:(id)arg2;
 
+- (id)allEmitterClasses;
 - (bool)disableFiltering;
 - (bool)disableGroupMerging;
 - (bool)enableSingletonGroups;
-- (id)feedGroupEmittersWithConfiguration:(id)arg1;
+- (id)feedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (void)setDisableFiltering:(bool)arg1;
 - (void)setDisableGroupMerging:(bool)arg1;
 - (void)setEnableSingletonGroups:(bool)arg1;

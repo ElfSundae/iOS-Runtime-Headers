@@ -16,6 +16,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_cleanupForDismissal;
 - (void)dismissIfNecessary;
 - (id)initWithBarButtonItemGroups:(id)arg1 fromButtonBar:(id)arg2;

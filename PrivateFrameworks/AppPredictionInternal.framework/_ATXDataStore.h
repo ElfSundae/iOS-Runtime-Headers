@@ -30,6 +30,7 @@
 - (void)_enumerateAppInfoAppActionsExecutingBlock:(id /* block */)arg1;
 - (void)_enumerateAppInfoBundlesExecutingBlock:(id /* block */)arg1;
 - (id)_lastAppLaunchDateOfType:(long long)arg1;
+- (void)_markBundleId:(id)arg1 asEnterpriseApp:(bool)arg2;
 - (void)_markBundleIdAsExtension:(id)arg1;
 - (void)_markBundleIdsAsExtension:(id)arg1;
 - (long long)_regenerateSlotSetKeyForBundleId:(id)arg1;
@@ -111,6 +112,7 @@
 - (void)migrateWithMigrationPlan:(id)arg1;
 - (void)migrationPre44WriteActionType:(id)arg1 bundleId:(id)arg2 date:(id)arg3 action:(id)arg4 slotSets:(id)arg5 timeZone:(id)arg6 prevLocationUUID:(id)arg7 locationUUID:(id)arg8 weight:(double)arg9 actionUUID:(id)arg10 motionType:(long long)arg11;
 - (bool)migrationUpdateOrInsertTimestamp:(long long)arg1 intoColumn:(id)arg2 forBundleId:(id)arg3;
+- (long long)migration_AddEnterpriseAppInfo;
 - (long long)migration_AddExtensionInfo;
 - (long long)migration_AddFeedbackColumns;
 - (long long)migration_AppLaunchHistogramToTable;
@@ -137,7 +139,7 @@
 - (unsigned long long)numActionKeyOccurrencesForActionKey:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (unsigned long long)numActionParameterHashOccurrencesForActionKey:(id)arg1 parameterHash:(unsigned long long)arg2 startDate:(id)arg3 endDate:(id)arg4;
 - (void)pruneMessageRecipientsAddedBefore:(id)arg1;
-- (void)recordConfirms:(double)arg1 rejects:(double)arg2 forFeedbackType:(unsigned long long)arg3 forActionType:(id)arg4 bundleId:(id)arg5 action:(id)arg6 slotSet:(id)arg7 actionUUID:(id)arg8 date:(id)arg9 consumerSubType:(unsigned char)arg10;
+- (void)recordConfirms:(double)arg1 rejects:(double)arg2 forFeedbackType:(unsigned long long)arg3 forActionType:(id)arg4 bundleId:(id)arg5 action:(id)arg6 slotSet:(id)arg7 actionUUID:(id)arg8 date:(id)arg9 consumerSubType:(unsigned char)arg10 geohash:(long long)arg11 coarseGeohash:(long long)arg12;
 - (void)regenerateSlotSetKeyForBundleId:(id)arg1;
 - (void)removeActionDataForActionUUID:(id)arg1;
 - (void)removeActionDataForBundleId:(id)arg1;
@@ -167,7 +169,7 @@
 - (void)updateOrInsertCategoricalHistogramData:(id)arg1 forHistogram:(long long)arg2;
 - (void)updateOrInsertGenreId:(id)arg1 subGenreIds:(id)arg2 forBundleId:(id)arg3;
 - (void)updateOrInsertHistogramData:(id)arg1 forHistogram:(long long)arg2;
-- (void)updateOrInsertInstallTimestamp:(long long)arg1 genreId:(id)arg2 subGenreIds:(id)arg3 app2VecCluster:(id)arg4 forBundleId:(id)arg5 isExtension:(bool)arg6;
+- (void)updateOrInsertInstallTimestamp:(long long)arg1 genreId:(id)arg2 subGenreIds:(id)arg3 app2VecCluster:(id)arg4 forBundleId:(id)arg5 isExtension:(bool)arg6 isEnterpriseApp:(bool)arg7;
 - (void)updateOrInsertMedianSecondsBetweenAppActions:(id)arg1 forAppAction:(id)arg2;
 - (void)updateOrInsertMedianSecondsBetweenLaunches:(id)arg1 forBundleId:(id)arg2;
 - (void)updateOrInsertMessageRecipient:(id)arg1 dateMessaged:(id)arg2;
@@ -177,7 +179,7 @@
 - (void)updateOrInsertTimestamp:(long long)arg1 forAppAction:(id)arg2;
 - (void)updateOrInsertTimestamp:(long long)arg1 intoColumn:(id)arg2 forBundleId:(id)arg3 isExtension:(bool)arg4;
 - (void)updateSchemaVersionNumberTo:(long long)arg1;
-- (void)writeActionType:(id)arg1 bundleId:(id)arg2 date:(id)arg3 action:(id)arg4 slotSets:(id)arg5 timeZone:(id)arg6 prevLocationUUID:(id)arg7 locationUUID:(id)arg8 weight:(double)arg9 actionUUID:(id)arg10 motionType:(long long)arg11 appSessionStartDate:(id)arg12 appSessionEndDate:(id)arg13;
+- (void)writeActionType:(id)arg1 bundleId:(id)arg2 date:(id)arg3 action:(id)arg4 slotSets:(id)arg5 timeZone:(id)arg6 prevLocationUUID:(id)arg7 locationUUID:(id)arg8 weight:(double)arg9 actionUUID:(id)arg10 motionType:(long long)arg11 appSessionStartDate:(id)arg12 appSessionEndDate:(id)arg13 geohash:(long long)arg14 coarseGeohash:(long long)arg15;
 - (void)writeApp2VecCluster:(id)arg1 forBundleId:(id)arg2;
 - (void)writeAppActionLaunches:(id)arg1 followingAppAction:(id)arg2;
 - (void)writeAverageSecondsBetweenAppActions:(id)arg1 forAppAction:(id)arg2;

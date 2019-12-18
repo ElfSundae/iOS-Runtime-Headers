@@ -8,7 +8,7 @@
     NSString * _identifier;
     RPStreamSession * _rapportStream;
     SidecarSession * _session;
-    unsigned long long  _status;
+    _Atomic unsigned long long  _status;
 }
 
 @property (readonly) long long fileDescriptor;
@@ -22,6 +22,7 @@
 @property (nonatomic, readonly) long long transport;
 @property (readonly) long long type;
 
++ (bool)automaticallyNotifiesObserversForKey:(id)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
@@ -41,6 +42,7 @@
 - (void)sendOPACK:(id)arg1 completion:(id /* block */)arg2;
 - (id)session;
 - (void)setHandler:(id /* block */)arg1;
+- (void)setStatus:(unsigned long long)arg1;
 - (unsigned long long)status;
 - (long long)transport;
 - (long long)type;

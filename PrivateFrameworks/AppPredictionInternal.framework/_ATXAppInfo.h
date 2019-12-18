@@ -8,6 +8,7 @@
     NSString * _bundleId;
     NSNumber * _genreId;
     NSDate * _installDate;
+    bool  _isEnterpriseApp;
     bool  _isExtension;
     NSDate * _lastLaunch;
     NSDate * _lastSpotlightLaunch;
@@ -20,6 +21,7 @@
 @property (nonatomic, copy) NSString *bundleId;
 @property (nonatomic, copy) NSNumber *genreId;
 @property (nonatomic, copy) NSDate *installDate;
+@property (nonatomic) bool isEnterpriseApp;
 @property (nonatomic) bool isExtension;
 @property (nonatomic, copy) NSDate *lastLaunch;
 @property (nonatomic, copy) NSDate *lastSpotlightLaunch;
@@ -33,11 +35,9 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)genreId;
 - (id)init;
-- (id)initWithBundleId:(id)arg1;
-- (id)initWithBundleId:(id)arg1 isExtension:(bool)arg2;
-- (id)initWithBundleId:(id)arg1 isExtension:(bool)arg2 installDate:(id)arg3 genreId:(id)arg4 subGenreIds:(id)arg5 app2VecCluster:(id)arg6;
-- (id)initWithBundleId:(id)arg1 isExtension:(bool)arg2 installDate:(id)arg3 lastLaunch:(id)arg4 lastSpotlightLaunch:(id)arg5 averageSecondsBetweenLaunches:(id)arg6 medianSecondsBetweenLaunches:(id)arg7 genreId:(id)arg8 subGenreIds:(id)arg9 app2VecCluster:(id)arg10;
+- (id)initWithBundleId:(id)arg1 isExtension:(bool)arg2 isEnterpriseApp:(bool)arg3 installDate:(id)arg4 lastLaunch:(id)arg5 lastSpotlightLaunch:(id)arg6 averageSecondsBetweenLaunches:(id)arg7 medianSecondsBetweenLaunches:(id)arg8 genreId:(id)arg9 subGenreIds:(id)arg10 app2VecCluster:(id)arg11;
 - (id)installDate;
+- (bool)isEnterpriseApp;
 - (bool)isExtension;
 - (id)lastLaunch;
 - (id)lastSpotlightLaunch;
@@ -47,6 +47,7 @@
 - (void)setBundleId:(id)arg1;
 - (void)setGenreId:(id)arg1;
 - (void)setInstallDate:(id)arg1;
+- (void)setIsEnterpriseApp:(bool)arg1;
 - (void)setIsExtension:(bool)arg1;
 - (void)setLastLaunch:(id)arg1;
 - (void)setLastSpotlightLaunch:(id)arg1;

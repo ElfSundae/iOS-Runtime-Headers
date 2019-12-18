@@ -27,6 +27,7 @@
 - (void)_removeItemsForIndexableMessages:(id)arg1;
 - (id)database;
 - (void)enableIndexingAndBeginScheduling:(bool)arg1;
+- (void)enableIndexingAndBeginScheduling:(bool)arg1 budgetConfiguration:(id)arg2;
 - (id)index;
 - (id)initWithDatabase:(id)arg1 hookResponder:(id)arg2;
 - (bool)needsReindex;

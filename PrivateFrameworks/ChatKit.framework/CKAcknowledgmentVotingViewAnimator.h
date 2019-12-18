@@ -24,6 +24,6 @@
 - (void)setAnimatorModelItems:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setSectionAnimators:(id)arg1;
-- (void)startAnimation;
+- (void)startAnimationWithDelay:(double)arg1;
 
 @end

@@ -56,6 +56,8 @@
 @property (nonatomic) int slotPosition;
 @property (readonly) Class superclass;
 
+// Image: /System/Library/Frameworks/iAd.framework/iAd
+
 - (void).cxx_destruct;
 - (bool)_considerClosingAdSpace;
 - (void)_dismissModalInterstitial;
@@ -143,5 +145,11 @@
 - (bool)shouldTestVisibilityAtPoint:(struct CGPoint { double x1; double x2; })arg1;
 - (int)slotPosition;
 - (void)storyboardViewControllerDidPresent;
+
+// Image: /System/Library/PrivateFrameworks/NewsArticles.framework/NewsArticles
+
+- (void)na_missedOpportunityToFill;
+- (void)na_setDisplayed:(bool)arg1;
+- (void)na_setLastErrorCode:(long long)arg1;
 
 @end

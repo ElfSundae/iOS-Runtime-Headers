@@ -16,6 +16,7 @@
 - (bool)hideAttachment;
 - (id)initWithFileURL:(NSURL *)arg1 transcoderUserInfo:(NSDictionary *)arg2 attributionInfo:(NSDictionary *)arg3 hideAttachment:(bool)arg4;
 - (id)initWithTransferGUID:(NSString *)arg1 imMessage:(IMMessage *)arg2;
+- (bool)isDirectory;
 - (bool)isDownloadable;
 - (bool)isDownloading;
 - (bool)isFileDataReady;

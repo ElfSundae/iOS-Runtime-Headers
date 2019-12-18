@@ -4,6 +4,7 @@
 
 @interface CSPaddingHeaderViewController : UIViewController
 
+- (bool)_canShowWhileLocked;
 - (void)loadView;
 - (void)setPadding:(struct CGSize { double x1; double x2; })arg1;
 

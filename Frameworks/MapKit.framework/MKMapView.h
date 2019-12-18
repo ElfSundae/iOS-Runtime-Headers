@@ -838,6 +838,7 @@
 - (void)locationManagerUpdatedLocation:(id)arg1;
 - (id)mapAttributionWithStringAttributes:(id)arg1;
 - (id)mapAttributionWithStringAttributes:(id)arg1 allowMultiLine:(bool)arg2;
+- (id)mapAttributionWithStringAttributes:(id)arg1 underlineText:(bool)arg2;
 - (void)mapLayer:(id)arg1 arSessionWasInterrupted:(unsigned long long)arg2;
 - (void)mapLayer:(id)arg1 arTrackingStateDidChange:(unsigned long long)arg2 reason:(unsigned long long)arg3;
 - (void)mapLayer:(id)arg1 canShowFlyoverDidChange:(bool)arg2;
@@ -990,6 +991,7 @@
 - (void)toggleLocationConsole:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateLayoutGuides;
+- (id)urlForMapAttribution;
 - (id)userLocation;
 - (id)userLocationView;
 - (long long)userTrackingMode;

@@ -3,6 +3,7 @@
  */
 
 @interface AppStoreKit.BasePresenter : Swift._SwiftObject {
+    void advertRotationData;
     void impressionsCatalogue;
     void isUpdating;
     void metricsPage;

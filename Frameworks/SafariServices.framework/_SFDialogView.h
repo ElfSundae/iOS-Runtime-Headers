@@ -15,11 +15,13 @@
     NSLayoutConstraint * _obscuredInsetTopConstraint;
 }
 
+@property (nonatomic, readonly) UIView *contentView;
 @property (nonatomic) <_SFDialogViewDelegate> *delegate;
 
 - (void).cxx_destruct;
 - (void)_keyboardDismissGesture:(id)arg1;
 - (bool)becomeFirstResponder;
+- (id)contentView;
 - (id)delegate;
 - (void)didAppear;
 - (id)initWithCoder:(id)arg1;

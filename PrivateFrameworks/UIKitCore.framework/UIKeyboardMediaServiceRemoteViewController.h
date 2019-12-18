@@ -19,6 +19,7 @@
 + (id)serviceViewControllerInterface;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)delegate;
 - (void)dismissCard;
 - (void)draggedStickerToPoint:(struct CGPoint { double x1; double x2; })arg1;

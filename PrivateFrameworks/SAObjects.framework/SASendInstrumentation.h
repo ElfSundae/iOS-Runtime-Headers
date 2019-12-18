@@ -11,6 +11,7 @@
 @property (nonatomic, copy) NSString *eventTransmittedTimestampRefId;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSArray *instrumentationBatch;
+@property (nonatomic, copy) NSString *payloadVersion;
 @property (nonatomic, copy) NSString *refId;
 @property (readonly) Class superclass;
 
@@ -22,9 +23,11 @@
 - (id)eventTransmittedTimestampRefId;
 - (id)groupIdentifier;
 - (id)instrumentationBatch;
+- (id)payloadVersion;
 - (bool)requiresResponse;
 - (void)setEventTransmittedRelativeToBootTimeTimestampNs:(id)arg1;
 - (void)setEventTransmittedTimestampRefId:(id)arg1;
 - (void)setInstrumentationBatch:(id)arg1;
+- (void)setPayloadVersion:(id)arg1;
 
 @end

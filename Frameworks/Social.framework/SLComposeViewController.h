@@ -59,6 +59,7 @@
 - (bool)_addURL:(id)arg1 type:(long long)arg2 preview:(id)arg3;
 - (bool)_addVideoAsset:(id)arg1 preview:(id)arg2;
 - (bool)_addVideoData:(id)arg1 preview:(id)arg2;
+- (bool)_canShowWhileLocked;
 - (id)_containedRemoteViewController;
 - (void)_handleRemoteViewFailure;
 - (void)_instantiateAndBeginExtensionIfNeeded;

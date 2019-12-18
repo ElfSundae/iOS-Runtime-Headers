@@ -2,22 +2,21 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaClientTransportEventMetadata : PBCodable <NSSecureCoding, SISchemaClientTransportEventMetadata> {
+@interface SISchemaClientTransportEventMetadata : PBCodable {
+    NSString * _arrivedServerPod;
     long long  _eventTransmittedRelativeToBootTimeTimestampNs;
     NSString * _eventTransmittedTimestampRefId;
     long long  _serverArrivedTimestampNs;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
+@property (nonatomic, copy) NSString *arrivedServerPod;
 @property (nonatomic) long long eventTransmittedRelativeToBootTimeTimestampNs;
 @property (nonatomic, copy) NSString *eventTransmittedTimestampRefId;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) long long serverArrivedTimestampNs;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)arrivedServerPod;
 - (id)dictionaryRepresentation;
 - (long long)eventTransmittedRelativeToBootTimeTimestampNs;
 - (id)eventTransmittedTimestampRefId;
@@ -28,6 +27,7 @@
 - (id)jsonData;
 - (bool)readFrom:(id)arg1;
 - (long long)serverArrivedTimestampNs;
+- (void)setArrivedServerPod:(id)arg1;
 - (void)setEventTransmittedRelativeToBootTimeTimestampNs:(long long)arg1;
 - (void)setEventTransmittedTimestampRefId:(id)arg1;
 - (void)setServerArrivedTimestampNs:(long long)arg1;

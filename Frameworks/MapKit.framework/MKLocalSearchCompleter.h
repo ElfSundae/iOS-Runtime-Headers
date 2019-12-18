@@ -4,6 +4,7 @@
 
 @interface MKLocalSearchCompleter : NSObject {
     <MKAutocompleteAnalyticsProvider> * _analyticsProvider;
+    GEOAutocompleteSessionData * _autocompleteSessionData;
     bool  _autocompleteTopSectionIsQuerySuggestions;
     GEOSearchCategory * _categoryFilter;
     GEOClientRankingModel * _clientRankingModel;
@@ -45,6 +46,7 @@
     <MKLocationManagerOperation> * _singleLocationUpdate;
     GEOSortPriorityMapping * _sortPriorityMapping;
     int  _source;
+    bool  _statefulQueriesEnabled;
     MKLocalSearchCompletion * _tappedQuerySuggestionCompletion;
     double  _timeSinceLastInBoundingRegion;
     NSTimer * _timer;
@@ -79,6 +81,7 @@
 @property (getter=_shouldPreloadTransitInfo, setter=_setShouldPreloadTransitInfo:, nonatomic) bool shouldPreloadTransitInfo;
 @property (getter=_showAutocompleteClientSource, nonatomic, readonly) bool showAutocompleteClientSource;
 @property (getter=_sortPriorityMapping, nonatomic, readonly) GEOSortPriorityMapping *sortPriorityMapping;
+@property (nonatomic) bool statefulQueriesEnabled;
 @property (getter=_tappedQuerySuggestionCompletion, setter=_setTappedQuerySuggestionCompletion:, nonatomic, retain) MKLocalSearchCompletion *tappedQuerySuggestionCompletion;
 @property (nonatomic) double timeSinceLastInBoundingRegion;
 @property (nonatomic, retain) GEOMapServiceTraits *traits;
@@ -113,6 +116,7 @@
 - (struct { struct CLLocationCoordinate2D { double x_1_1_1; double x_1_1_2; } x1; struct { double x_2_1_1; double x_2_1_2; } x2; })boundingRegion;
 - (void)cancel;
 - (id)categoryFilter;
+- (void)clearQueryState;
 - (id)context;
 - (void)dealloc;
 - (id)delegate;
@@ -151,9 +155,11 @@
 - (void)setResultTypes:(unsigned long long)arg1;
 - (void)setRetainedSearchMetadata:(id)arg1;
 - (void)setSource:(int)arg1;
+- (void)setStatefulQueriesEnabled:(bool)arg1;
 - (void)setTimeSinceLastInBoundingRegion:(double)arg1;
 - (void)setTraits:(id)arg1;
 - (int)source;
+- (bool)statefulQueriesEnabled;
 - (double)timeSinceLastInBoundingRegion;
 - (double)timeToNextRequest;
 - (id)traits;

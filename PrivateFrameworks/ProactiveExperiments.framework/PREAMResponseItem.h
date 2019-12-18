@@ -12,9 +12,11 @@
         unsigned int replyTextId : 1; 
         unsigned int responseClassId : 1; 
         unsigned int isApricotDevice : 1; 
+        unsigned int isCustomResponse : 1; 
     }  _has;
     NSString * _hostProcess;
     bool  _isApricotDevice;
+    bool  _isCustomResponse;
     NSString * _lang;
     NSString * _locale;
     unsigned int  _modelId;
@@ -31,6 +33,7 @@
 @property (nonatomic, readonly) bool hasExperimentId;
 @property (nonatomic, readonly) bool hasHostProcess;
 @property (nonatomic) bool hasIsApricotDevice;
+@property (nonatomic) bool hasIsCustomResponse;
 @property (nonatomic, readonly) bool hasLang;
 @property (nonatomic, readonly) bool hasLocale;
 @property (nonatomic) bool hasModelId;
@@ -41,6 +44,7 @@
 @property (nonatomic, readonly) bool hasTreatmentModelName;
 @property (nonatomic, retain) NSString *hostProcess;
 @property (nonatomic) bool isApricotDevice;
+@property (nonatomic) bool isCustomResponse;
 @property (nonatomic, retain) NSString *lang;
 @property (nonatomic, retain) NSString *locale;
 @property (nonatomic) unsigned int modelId;
@@ -63,6 +67,7 @@
 - (bool)hasExperimentId;
 - (bool)hasHostProcess;
 - (bool)hasIsApricotDevice;
+- (bool)hasIsCustomResponse;
 - (bool)hasLang;
 - (bool)hasLocale;
 - (bool)hasModelId;
@@ -74,6 +79,7 @@
 - (unsigned long long)hash;
 - (id)hostProcess;
 - (bool)isApricotDevice;
+- (bool)isCustomResponse;
 - (bool)isEqual:(id)arg1;
 - (id)lang;
 - (id)locale;
@@ -87,12 +93,14 @@
 - (void)setExperimentId:(id)arg1;
 - (void)setHasAgeGroup:(bool)arg1;
 - (void)setHasIsApricotDevice:(bool)arg1;
+- (void)setHasIsCustomResponse:(bool)arg1;
 - (void)setHasModelId:(bool)arg1;
 - (void)setHasPosition:(bool)arg1;
 - (void)setHasReplyTextId:(bool)arg1;
 - (void)setHasResponseClassId:(bool)arg1;
 - (void)setHostProcess:(id)arg1;
 - (void)setIsApricotDevice:(bool)arg1;
+- (void)setIsCustomResponse:(bool)arg1;
 - (void)setLang:(id)arg1;
 - (void)setLocale:(id)arg1;
 - (void)setModelId:(unsigned int)arg1;

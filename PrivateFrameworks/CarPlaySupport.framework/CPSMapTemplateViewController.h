@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CarPlaySupport.framework/CarPlaySupport
  */
 
-@interface CPSMapTemplateViewController : CPSBaseTemplateViewController <BKSHIDEventDeliveryPolicyObserving, CARNavigationOwnershipManagerDelegate, CARSessionObserving, CPMapTemplateProviding, CPSApplicationStateObserving, CPSButtonDelegate, CPSEventObserving, CPSLayoutHelperViewDelegate, CPSLinearFocusProviding, CPSNavigationAlertQueueDelegate, CPSNavigationDisplaying, CPSPanEventDelegate, CPSTripInitiating, UIGestureRecognizerDelegate> {
+@interface CPSMapTemplateViewController : CPSBaseTemplateViewController <BKSHIDEventDeliveryPolicyObserving, CARNavigationOwnershipManagerDelegate, CARSessionObserving, CPMapTemplateProviding, CPNavigationSessionProviding, CPSApplicationStateObserving, CPSButtonDelegate, CPSEventObserving, CPSLayoutHelperViewDelegate, CPSLinearFocusProviding, CPSNavigationAlertQueueDelegate, CPSNavigationDisplaying, CPSPanEventDelegate, CPSTripInitiating, UIGestureRecognizerDelegate> {
     bool  _applicationIsFrontmost;
     CPSApplicationStateMonitor * _applicationStateMonitor;
     NSMutableSet * _autoHideDisabledReasons;

@@ -30,6 +30,7 @@
 - (unsigned long long)_backoffBeforeProcessingLostItemWithStamp:(unsigned long long)arg1 appLibrary:(id)arg2;
 - (void)_cancelScan;
 - (void)_close;
+- (bool)_createSharedZoneIfNecessaryWithLookup:(id)arg1;
 - (void)_delayJobID:(id)arg1 by:(double)arg2;
 - (void)_didResolvedDocumentID:(unsigned int)arg1 fileID:(unsigned long long)arg2 zone:(id)arg3;
 - (bool)_fetchNextLostItemID:(id*)arg1 parentID:(id*)arg2 appLibraryRowID:(id*)arg3 tooManyScans:(bool*)arg4 stamp:(long long*)arg5;
@@ -77,7 +78,7 @@
 - (id)itemForCreatedDocumentsDirectory:(id)arg1 appLibrary:(id)arg2 path:(id)arg3;
 - (id)lookupAndReadItemUnderCoordinationAtURL:(id)arg1;
 - (id)lostScanGroup;
-- (bool)needsLookupReloadAfterHandlingCrossZoneMoveWithItem:(id)arg1 relpath:(id)arg2;
+- (BOOL)needsLookupReloadAfterHandlingCrossZoneMoveWithItem:(id)arg1 relpath:(id)arg2;
 - (void)readUnderCoordinationAtURL:(id)arg1;
 - (bool)readUnderCoordinationWithLookup:(id)arg1;
 - (void)reset;

@@ -11,10 +11,13 @@
     NSString * _name;
     SPHandle * _owner;
     NSDate * _pairingDate;
+    long long  _productId;
     SPBeaconRole * _role;
     NSSet * _shares;
     NSString * _stableIdentifier;
+    NSString * _systemVersion;
     NSDictionary * _taskInformation;
+    long long  _vendorId;
 }
 
 @property (nonatomic) bool accepted;
@@ -25,10 +28,13 @@
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) SPHandle *owner;
 @property (nonatomic, copy) NSDate *pairingDate;
+@property (nonatomic) long long productId;
 @property (nonatomic, copy) SPBeaconRole *role;
 @property (nonatomic, copy) NSSet *shares;
 @property (nonatomic, copy) NSString *stableIdentifier;
+@property (nonatomic, copy) NSString *systemVersion;
 @property (nonatomic, copy) NSDictionary *taskInformation;
+@property (nonatomic) long long vendorId;
 
 + (id)SPOwner;
 + (bool)supportsSecureCoding;
@@ -48,6 +54,7 @@
 - (id)name;
 - (id)owner;
 - (id)pairingDate;
+- (long long)productId;
 - (id)role;
 - (void)setAccepted:(bool)arg1;
 - (void)setCorrelationIdentifier:(id)arg1;
@@ -57,12 +64,17 @@
 - (void)setName:(id)arg1;
 - (void)setOwner:(id)arg1;
 - (void)setPairingDate:(id)arg1;
+- (void)setProductId:(long long)arg1;
 - (void)setRole:(id)arg1;
 - (void)setShares:(id)arg1;
 - (void)setStableIdentifier:(id)arg1;
+- (void)setSystemVersion:(id)arg1;
 - (void)setTaskInformation:(id)arg1;
+- (void)setVendorId:(long long)arg1;
 - (id)shares;
 - (id)stableIdentifier;
+- (id)systemVersion;
 - (id)taskInformation;
+- (long long)vendorId;
 
 @end

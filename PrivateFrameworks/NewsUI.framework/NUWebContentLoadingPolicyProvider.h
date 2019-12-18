@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NewsUI.framework/NewsUI
  */
 
-@interface NUWebContentLoadingPolicyProvider : NSObject <SXWebContentLoadingPolicyProvider> {
+@interface NUWebContentLoadingPolicyProvider : NSObject <SWLoadingPolicyProvider> {
     <FCHeadlineProviding> * _headline;
 }
 

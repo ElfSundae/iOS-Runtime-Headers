@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXTextView : UIView <STTextCanvasRenderSource, STTextTangierRepAccessibilityDataSource, TSDRepDirectLayerHosting> {
+@interface SXTextView : UIView <SXTextCanvasRenderSource, SXTextTangierRepAccessibilityDataSource, TSDRepDirectLayerHosting> {
     TSDCanvas * _canvas;
     <SXTextViewDelegate> * _delegate;
     struct CGRect { 
@@ -29,10 +29,10 @@
             double height; 
         } size; 
     }  _parentFrame;
-    STTextTangierFlowRep<STTextTangierRepAccessibilityElement> * _rep;
+    SXTextTangierFlowRep<SXTextTangierRepAccessibilityElement> * _rep;
     CALayer * _repContainerLayer;
     bool  _shouldHyphenate;
-    STTextTangierContainerInfo * _textInfo;
+    SXTextTangierContainerInfo * _textInfo;
     SXTextLayouter * _textLayouter;
     SXTextSource * _textSource;
 }
@@ -48,11 +48,11 @@
 @property (nonatomic) bool mightBeVisuallyMisplaced;
 @property (nonatomic, retain) CALayer *overlayContainerLayer;
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } parentFrame;
-@property (nonatomic) STTextTangierFlowRep<STTextTangierRepAccessibilityElement> *rep;
+@property (nonatomic) SXTextTangierFlowRep<SXTextTangierRepAccessibilityElement> *rep;
 @property (nonatomic, retain) CALayer *repContainerLayer;
 @property (nonatomic) bool shouldHyphenate;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) STTextTangierContainerInfo *textInfo;
+@property (nonatomic, readonly) SXTextTangierContainerInfo *textInfo;
 @property (nonatomic, retain) SXTextLayouter *textLayouter;
 @property (nonatomic, readonly) SXTextSource *textSource;
 

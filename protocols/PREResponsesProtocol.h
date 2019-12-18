@@ -5,7 +5,7 @@
 
 @required
 
-- (void)preResponseItemsForMessage:(void *)arg1 maximumResponses:(void *)arg2 conversationHistory:(void *)arg3 language:(void *)arg4 modelFilePath:(void *)arg5 modelConfigPath:(void *)arg6 registerDisplayed:(void *)arg7 completion:(void *)arg8; // needs 8 arg types, found 14: NSString *, unsigned long long, NSArray *, NSString *, NSString *, NSString *, bool, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSArray *, NSError *, void*
+- (void)preResponseItemsForMessage:(void *)arg1 maximumResponses:(void *)arg2 conversationHistory:(void *)arg3 forContext:(void *)arg4 time:(void *)arg5 language:(void *)arg6 modelFilePath:(void *)arg7 modelConfigPath:(void *)arg8 registerDisplayed:(void *)arg9 completion:(void *)arg10; // needs 10 arg types, found 16: NSString *, unsigned long long, NSArray *, NSString *, NSDate *, NSString *, NSString *, NSString *, bool, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSArray *, NSError *, void*
 - (void)registerResponse:(NSString *)arg1 position:(NSNumber *)arg2 isCanned:(bool)arg3 isUsingQuickResponses:(bool)arg4 locale:(NSString *)arg5 modelConfigPath:(NSString *)arg6;
 
 @end

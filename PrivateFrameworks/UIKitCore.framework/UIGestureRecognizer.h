@@ -6,6 +6,7 @@
     NSMutableSet * _activeEvents;
     NSArray * _allowedPressTypes;
     long long  _allowedTouchTypes;
+    bool  _analyticsGestureHandled;
     NSObservationSource * _beganObservable;
     NSMutableArray * _delayedPresses;
     NSMutableArray * _delayedTouches;
@@ -134,6 +135,7 @@
 - (void)_addTouch:(id)arg1 forEvent:(id)arg2;
 - (bool)_affectedByGesture:(id)arg1;
 - (id)_allActiveTouches;
+- (bool)_analyticsIsGestureHandled;
 - (void)_appendDescription:(id)arg1 forDependencies:(id)arg2 toString:(id)arg3 atLevel:(int)arg4;
 - (void)_appendDescriptionToString:(id)arg1 atLevel:(int)arg2 includingDependencies:(bool)arg3;
 - (void)_appendSubclassDescription:(id)arg1;
@@ -216,6 +218,7 @@
 - (bool)_requiresSystemGesturesToFail;
 - (void)_resetGestureRecognizer;
 - (void)_setAcceptsFailureRequiments:(bool)arg1;
+- (void)_setAnalyticsGestureHandled:(bool)arg1;
 - (void)_setCanExcludeWithActiveRequirements:(bool)arg1;
 - (void)_setDirty;
 - (void)_setEventObserving:(bool)arg1;

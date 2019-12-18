@@ -6,7 +6,7 @@
     NSMutableDictionary * _conflictLosersToResolveByRecordID;
     float  _cost;
     NSMutableArray * _createdAppLibraryNames;
-    NSMutableArray * _deletedRecordIDs;
+    NSMutableOrderedSet * _deletedRecordIDs;
     BRCLocalItem * _itemNeedingPCSChaining;
     NSMutableArray * _iworkUnsharedShareIDs;
     NSMutableArray * _packagesInFlight;
@@ -26,7 +26,7 @@
 @property (nonatomic, readonly) float cost;
 @property (nonatomic, readonly) NSMutableArray *createdAppLibraryNames;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic, retain) NSMutableArray *deletedRecordIDs;
+@property (nonatomic, retain) NSMutableOrderedSet *deletedRecordIDs;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) BRCLocalItem *itemNeedingPCSChaining;

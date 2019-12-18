@@ -14,7 +14,9 @@
     FCClientEndpointConnection * _endpointConnection;
     FCFeedManager * _feedManager;
     <FCFlintHelper> * _flintHelper;
+    <FCForYouBridgedConfigurationParser> * _forYouBridgedConfigurationParser;
     <FCForYouMagazineFeedManaging> * _forYouMagazineFeedManager;
+    <FCForYouPluginGroupManaging> * _forYouPluginGroupManager;
     FCAccessChecker * _issueAccessChecker;
     FCNetworkBehaviorMonitor * _networkBehaviorMonitor;
     FCNotificationController * _notificationController;
@@ -54,7 +56,9 @@
 @property (nonatomic, readonly) <FCFeedPersonalizing> *feedPersonalizer;
 @property (nonatomic) <FCFlintHelper> *flintHelper;
 @property (nonatomic, readonly) FCFlintResourceManager *flintResourceManager;
+@property (nonatomic, retain) <FCForYouBridgedConfigurationParser> *forYouBridgedConfigurationParser;
 @property (nonatomic) <FCForYouMagazineFeedManaging> *forYouMagazineFeedManager;
+@property (nonatomic) <FCForYouPluginGroupManaging> *forYouPluginGroupManager;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) <FCContentContextInternal> *internalContentContext;
 @property (nonatomic, readonly) <FCPrivateDataContextInternal> *internalPrivateDataContext;
@@ -126,7 +130,9 @@
 - (void)fetchPrivateDataEncryptionMigrationIsDesiredForDatabase:(id)arg1 completion:(id /* block */)arg2;
 - (id)flintHelper;
 - (id)flintResourceManager;
+- (id)forYouBridgedConfigurationParser;
 - (id)forYouMagazineFeedManager;
+- (id)forYouPluginGroupManager;
 - (id)init;
 - (id)initForTesting;
 - (id)initForTestingWithDesiredHeadlineFieldOptions:(unsigned long long)arg1;
@@ -175,7 +181,9 @@
 - (void)setContentContext:(id)arg1;
 - (void)setCurrentIssuesChecker:(id)arg1;
 - (void)setFlintHelper:(id)arg1;
+- (void)setForYouBridgedConfigurationParser:(id)arg1;
 - (void)setForYouMagazineFeedManager:(id)arg1;
+- (void)setForYouPluginGroupManager:(id)arg1;
 - (void)setIssueAccessChecker:(id)arg1;
 - (void)setOptions:(long long)arg1;
 - (void)setPaidAccessChecker:(id)arg1;

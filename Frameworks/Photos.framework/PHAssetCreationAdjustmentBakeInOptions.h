@@ -3,6 +3,7 @@
  */
 
 @interface PHAssetCreationAdjustmentBakeInOptions : NSObject <NSCopying> {
+    bool  _flattenLivePhotoToStillIfNeeded;
     bool  _shouldBakeInIfAdjustedByThirdParty;
     bool  _shouldBakeInIfContainsPenultimateResources;
     bool  _shouldBakeInIfCropped;
@@ -12,6 +13,7 @@
     bool  _shouldBakeInIfTimelineTrimmed;
 }
 
+@property (nonatomic) bool flattenLivePhotoToStillIfNeeded;
 @property (nonatomic) bool shouldBakeInIfAdjustedByThirdParty;
 @property (nonatomic) bool shouldBakeInIfContainsPenultimateResources;
 @property (nonatomic) bool shouldBakeInIfCropped;
@@ -25,8 +27,10 @@
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (void)encodeToXPCDict:(id)arg1;
+- (bool)flattenLivePhotoToStillIfNeeded;
 - (id)init;
 - (id)initWithXPCDict:(id)arg1;
+- (void)setFlattenLivePhotoToStillIfNeeded:(bool)arg1;
 - (void)setShouldBakeInIfAdjustedByThirdParty:(bool)arg1;
 - (void)setShouldBakeInIfContainsPenultimateResources:(bool)arg1;
 - (void)setShouldBakeInIfCropped:(bool)arg1;

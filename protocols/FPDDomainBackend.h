@@ -34,7 +34,6 @@
 - (NSProgress *)startProvidingItemAtURL:(void *)arg1 readingOptions:(void *)arg2 request:(void *)arg3 completionHandler:(void *)arg4; // needs 4 arg types, found 9: NSURL *, unsigned long long, FPDRequest *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSError *, void*
 - (bool)updateRootAfterDomainChangeWithError:(id*)arg1;
 - (void)valuesForAttributes:(void *)arg1 forURL:(void *)arg2 request:(void *)arg3 completionHandler:(void *)arg4; // needs 4 arg types, found 10: NSArray *, NSURL *, FPDRequest *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSDictionary *, NSError *, void*
-- (void)writeCheckReportTo:(void *)arg1 limitNumberOfItems:(void *)arg2 completionHandler:(void *)arg3; // needs 3 arg types, found 8: FPCTLTermDumper *, bool, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, NSError *, void*
 
 @optional
 

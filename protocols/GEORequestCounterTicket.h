@@ -5,6 +5,7 @@
 
 @required
 
+- (<GEORequestCounterTicket> *)createSubtask:(bool)arg1;
 - (void)requestCompletedWithResult:(unsigned char)arg1 xmitBytes:(long long)arg2 recvBytes:(long long)arg3;
 - (void)startingRequestWithTask:(NSURLSessionTask *)arg1;
 

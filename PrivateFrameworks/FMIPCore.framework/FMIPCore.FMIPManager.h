@@ -18,7 +18,6 @@
     void refreshingController;
     union { in /* Warning: Unrecognized filer type: 'u' using 'void*' */ void*x1; long x2; long x3; }  selectedDevice;
     void serverInteractionController;
-    void trackingAvoidance;
     void urlHandler;
 }
 

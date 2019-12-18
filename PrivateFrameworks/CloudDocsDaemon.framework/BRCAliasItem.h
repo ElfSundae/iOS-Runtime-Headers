@@ -11,7 +11,7 @@
 @property (nonatomic, readonly) BRCClientZone *targetClientZone;
 @property (nonatomic, readonly) BRCItemID *targetItemID;
 
-+ (void)fillStructureRecord:(id)arg1 inZone:(id)arg2 itemID:(id)arg3 ckInfo:(id)arg4 parentID:(id)arg5 targetItemID:(id)arg6 targetZone:(id)arg7 diffs:(unsigned long long)arg8 isFolderShare:(bool)arg9 beingDeadInServerTruth:(bool)arg10 pcsChained:(bool)arg11;
++ (void)fillStructureRecord:(id)arg1 inZone:(id)arg2 itemID:(id)arg3 ckInfo:(id)arg4 parentID:(id)arg5 targetItemID:(id)arg6 targetZone:(id)arg7 diffs:(unsigned long long)arg8 isFolderShare:(bool)arg9 beingDeadInServerTruth:(bool)arg10 shouldPCSChainStatus:(unsigned char)arg11;
 + (id)targetReferenceWithItemID:(id)arg1 targetZone:(id)arg2 isFolderShare:(bool)arg3;
 
 - (bool)_deleteFromDB:(id)arg1 keepAliases:(bool)arg2;
@@ -27,7 +27,7 @@
 - (void)markNeedsUploadOrSyncingUpWithAliasTarget:(id)arg1;
 - (void)rewriteOrDeleteAliasOnDiskWithTarget:(id)arg1;
 - (bool)startDownloadInTask:(id)arg1 options:(unsigned long long)arg2 error:(id*)arg3;
-- (id)structureRecordBeingDeadInServerTruth:(bool)arg1 stageID:(id)arg2 pcsChained:(bool)arg3;
+- (id)structureRecordBeingDeadInServerTruth:(bool)arg1 stageID:(id)arg2 shouldPCSChainStatus:(unsigned char)arg3;
 - (id)targetAppLibrary;
 - (id)targetClientZone;
 - (id)targetDocument;

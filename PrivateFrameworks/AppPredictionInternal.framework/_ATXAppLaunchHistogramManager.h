@@ -5,6 +5,7 @@
 @interface _ATXAppLaunchHistogramManager : NSObject {
     long long  _SSIDPruningMethod;
     long long  _actionConfirmsRejectsPruningMethod;
+    long long  _appJointContextPruningMethod;
     long long  _aprConfirmsRejectsPruningMethod;
     long long  _aprIntentDonationPruningMethod;
     NSObject<OS_dispatch_queue> * _backgroundSaverQueue;
@@ -12,6 +13,7 @@
     _ATXDataStore * _datastore;
     NSMutableDictionary * _histograms;
     int  _maxActionConfirmsRejectsActionCount;
+    int  _maxAppJointContextKeyCount;
     int  _maxAprConfirmsRejectsIntentCount;
     int  _maxAprIntentDonationIntentCount;
     int  _maxSSIDCount;

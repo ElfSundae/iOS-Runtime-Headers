@@ -49,7 +49,7 @@
 - (void)nextVideoStartPlaying;
 - (void)playbackFailedWithError:(id)arg1;
 - (void)playbackFinished;
-- (void)playbackInitiated;
+- (void)playbackInitiatedWithButtonTapped:(bool)arg1;
 - (void)playbackPaused;
 - (void)playbackResumed;
 - (void)playbackStarted;

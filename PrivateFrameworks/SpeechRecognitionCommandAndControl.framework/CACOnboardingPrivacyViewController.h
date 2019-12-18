@@ -11,6 +11,7 @@
 + (id)defaultController;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)_defaultController;
 - (id)acceptButton;
 - (void)allowDataCollection;

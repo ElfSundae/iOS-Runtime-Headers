@@ -9,6 +9,7 @@
         unsigned long long size; 
     }  _activeGroupEmitterIDRefs;
     NSMutableArray * _cursors;
+    NTPBFeedRefreshSessionForYouConfig * _forYouConfig;
     struct { 
         int *list; 
         unsigned long long count; 
@@ -30,8 +31,10 @@
 @property (nonatomic, readonly) int*activeGroupEmitterIDRefs;
 @property (nonatomic, readonly) unsigned long long activeGroupEmitterIDRefsCount;
 @property (nonatomic, retain) NSMutableArray *cursors;
+@property (nonatomic, retain) NTPBFeedRefreshSessionForYouConfig *forYouConfig;
 @property (nonatomic, readonly) int*groupEmitterIDRefs;
 @property (nonatomic, readonly) unsigned long long groupEmitterIDRefsCount;
+@property (nonatomic, readonly) bool hasForYouConfig;
 @property (nonatomic, readonly) bool hasIdentifier;
 @property (nonatomic) bool hasIsOffline;
 @property (nonatomic, readonly) bool hasLastCompletedEdition;
@@ -67,9 +70,11 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)forYouConfig;
 - (int)groupEmitterIDRefAtIndex:(unsigned long long)arg1;
 - (int*)groupEmitterIDRefs;
 - (unsigned long long)groupEmitterIDRefsCount;
+- (bool)hasForYouConfig;
 - (bool)hasIdentifier;
 - (bool)hasIsOffline;
 - (bool)hasLastCompletedEdition;
@@ -91,6 +96,7 @@
 - (id)refreshDate;
 - (void)setActiveGroupEmitterIDRefs:(int*)arg1 count:(unsigned long long)arg2;
 - (void)setCursors:(id)arg1;
+- (void)setForYouConfig:(id)arg1;
 - (void)setGroupEmitterIDRefs:(int*)arg1 count:(unsigned long long)arg2;
 - (void)setHasIsOffline:(bool)arg1;
 - (void)setHasReachedEnd:(bool)arg1;

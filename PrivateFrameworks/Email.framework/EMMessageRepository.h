@@ -43,7 +43,6 @@
 - (id)_cachedItemForItem:(id)arg1 observers:(id)arg2 validationBlock:(id /* block */)arg3;
 - (void)_detectChangesForMatchedAddedObjectIDs:(id)arg1 observerationIdentifier:(id)arg2 matchedChangesHandler:(id /* block */)arg3;
 - (id)_existingObservedItemForObjectID:(id)arg1;
-- (id)_init;
 - (void)_notifyRecoverableObservers;
 - (id)_predictMailboxForMovingMessagesWithIDs:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)_undoActionForConversationAction:(id)arg1;
@@ -55,6 +54,7 @@
 - (id)currentObservers;
 - (void)didFinishBlockingMainThreadForFuture:(id)arg1;
 - (void)didStartBlockingMainThreadForFuture:(id)arg1;
+- (id)initInternal;
 - (id)initWithRemoteConnection:(id)arg1 mailboxRepository:(id)arg2 vipManager:(id)arg3 blockedSenderManager:(id)arg4;
 - (void)loadOlderMessagesForMailboxes:(id)arg1;
 - (id)mailboxRepository;

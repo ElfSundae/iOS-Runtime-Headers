@@ -24,7 +24,6 @@
     NSMutableSet * _objectIDsToProcess;
     NSMutableSet * _objectIDsToRetry;
     NSOperationQueue * _operationQueue;
-    ICSelectorDelayer * _pollingSelectorDelayer;
     NSObject<OS_dispatch_queue> * _processingQueue;
     ICSelectorDelayer * _processingSelectorDelayer;
     long long  _qualityOfService;
@@ -32,6 +31,7 @@
     NSTimer * _retryTimer;
     NSMutableSet * _subscribedSubscriptionIDs;
     bool  _syncDisabledByServer;
+    ICSelectorDelayer * _syncSelectorDelayer;
 }
 
 @property (nonatomic) long long accountStatus;
@@ -57,7 +57,6 @@
 @property (nonatomic, retain) NSMutableSet *objectIDsToProcess;
 @property (nonatomic, retain) NSMutableSet *objectIDsToRetry;
 @property (nonatomic, retain) NSOperationQueue *operationQueue;
-@property (retain) ICSelectorDelayer *pollingSelectorDelayer;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *processingQueue;
 @property (retain) ICSelectorDelayer *processingSelectorDelayer;
 @property (nonatomic) long long qualityOfService;
@@ -65,6 +64,7 @@
 @property (retain) NSTimer *retryTimer;
 @property (retain) NSMutableSet *subscribedSubscriptionIDs;
 @property (nonatomic) bool syncDisabledByServer;
+@property (retain) ICSelectorDelayer *syncSelectorDelayer;
 
 + (id)allZoneIDsInAccountZoneIDs:(id)arg1;
 + (void)batchRecordsToSave:(id)arg1 delete:(id)arg2 maxRecordCountPerBatch:(unsigned long long)arg3 maxRecordSizePerBatch:(unsigned long long)arg4 withBlock:(id /* block */)arg5;
@@ -165,7 +165,7 @@
 - (void)fetchUserRecordWithAccountID:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)fetchUserRecordWithContainer:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)finishOperationsForRecordID:(id)arg1 completionHandler:(id /* block */)arg2;
-- (void)firePollingSyncRequest;
+- (void)fireSyncRequest;
 - (void)handleDatabaseNotification:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)handleGenericPartialFailuresForError:(id)arg1 operation:(id)arg2;
 - (void)handleNotification:(id)arg1 completionHandler:(id /* block */)arg2;
@@ -207,8 +207,6 @@
 - (id)operationsToModifyRecordsToSave:(id)arg1 delete:(id)arg2 rootRecordIDsByShareID:(id)arg3 database:(id)arg4;
 - (bool)partialError:(id)arg1 containsErrorCode:(long long)arg2;
 - (void)pauseCloudSyncWhileSynchronouslyPerformingBlock:(id /* block */)arg1;
-- (void)pollIfNecessary;
-- (id)pollingSelectorDelayer;
 - (void)printOperationQueue;
 - (void)processAllCloudObjectsWithCompletionHandler:(id /* block */)arg1;
 - (void)processObjectIDs:(id)arg1 operationQueue:(id)arg2 completionHandler:(id /* block */)arg3;
@@ -252,7 +250,6 @@
 - (void)setObjectIDsToProcess:(id)arg1;
 - (void)setObjectIDsToRetry:(id)arg1;
 - (void)setOperationQueue:(id)arg1;
-- (void)setPollingSelectorDelayer:(id)arg1;
 - (void)setProcessingQueue:(id)arg1;
 - (void)setProcessingSelectorDelayer:(id)arg1;
 - (void)setQualityOfService:(long long)arg1;
@@ -260,10 +257,13 @@
 - (void)setRetryTimer:(id)arg1;
 - (void)setSubscribedSubscriptionIDs:(id)arg1;
 - (void)setSyncDisabledByServer:(bool)arg1;
+- (void)setSyncSelectorDelayer:(id)arg1;
 - (void)startRetryTimerIfNecessaryWithError:(id)arg1;
 - (id)subscribedSubscriptionIDs;
 - (id)subscriptionForDatabase:(id)arg1;
 - (bool)syncDisabledByServer;
+- (void)syncIfNeeded;
+- (id)syncSelectorDelayer;
 - (void)syncWithReason:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)syncWithReason:(id)arg1 onlyIfReachable:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (double)timeIntervalToRetryAfterFromError:(id)arg1;

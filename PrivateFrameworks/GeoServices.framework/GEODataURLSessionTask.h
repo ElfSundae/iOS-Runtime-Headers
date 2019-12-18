@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEODataURLSessionTask : NSObject <GEODataSessionTask, GEODataSessionUpdatableTask, GEOStateCapturing> {
+@interface GEODataURLSessionTask : NSObject <GEODataSessionTask, GEODataSessionUpdatableTask> {
     NSObject<OS_os_activity> * _activity;
     NSURLSessionTask * _backingTask;
     bool  _backingTaskNeedsResume;
@@ -31,8 +31,6 @@
     unsigned int  _sessionIdentifier;
     NSObject<OS_dispatch_queue> * _sessionIsolation;
     double  _startTime;
-    unsigned long long  _stateCaptureHandle;
-    unsigned int  _taskIdentifier;
     NSURLSessionTaskMetrics * _urlTaskMetrics;
     NSObject<OS_voucher> * _voucher;
 }
@@ -75,7 +73,6 @@
 @property (nonatomic) unsigned int sessionIdentifier;
 @property (nonatomic, readonly) double startTime;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) unsigned int taskIdentifier;
 @property (nonatomic, readonly) NSURLSessionTaskMetrics *urlTaskMetrics;
 
 - (void).cxx_destruct;
@@ -87,7 +84,6 @@
 - (id)backingTask;
 - (id)cachedData;
 - (void)cancel;
-- (id)captureStateWithHints:(struct os_state_hints_s { unsigned int x1; char *x2; unsigned int x3; unsigned int x4; }*)arg1;
 - (id)clientMetrics;
 - (unsigned long long)contentLength;
 - (id)contentLengthString;
@@ -95,7 +91,6 @@
 - (id)createURLSessionTaskWithSession:(id)arg1 request:(id)arg2;
 - (void)dataSession:(id)arg1 taskDidCompleteWithError:(id)arg2;
 - (void)dataSession:(id)arg1 willSendRequestForEstablishedConnection:(id)arg2 completionHandler:(id /* block */)arg3;
-- (void)dealloc;
 - (id)debugDescription;
 - (id)delegate;
 - (void)delegateAsync:(id /* block */)arg1;
@@ -141,7 +136,6 @@
 - (void)setSessionIdentifier:(unsigned int)arg1;
 - (void)start;
 - (double)startTime;
-- (unsigned int)taskIdentifier;
 - (void)updateRequest:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)urlTaskMetrics;
 - (bool)validateContentLengthWithError:(id*)arg1;

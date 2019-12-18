@@ -1326,6 +1326,7 @@
 - (id)fc_safeObjectAtIndex:(unsigned long long)arg1;
 - (id)fc_safeSubarrayWithCountFromBack:(unsigned long long)arg1;
 - (id)fc_safeSubarrayWithCountFromFront:(unsigned long long)arg1;
+- (id)fc_setByCollectingObjectsWithBlock:(id /* block */)arg1;
 - (id)fc_setByTransformingWithBlock:(id /* block */)arg1;
 - (id)fc_setOfObjectsPassingTest:(id /* block */)arg1;
 - (id)fc_sortedArrayStartingWithElementsSatisfying:(id /* block */)arg1 sortedBy:(id /* block */)arg2;

@@ -27,7 +27,6 @@
 @property (nonatomic, retain) PUPhotoEditToolPickerSpec *toolPickerSpec;
 
 - (void).cxx_destruct;
-- (bool)_canShowWhileLocked;
 - (void)createSelectionIndicatorView;
 - (id)initWithLayoutDirection:(long long)arg1 style:(long long)arg2;
 - (double)interToolSpacing;

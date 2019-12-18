@@ -312,6 +312,7 @@
     float  _prev_max_fp16;
     float  _prev_maxedr;
     float  _prev_maxpq;
+    int  _prev_processingType;
     float  _prev_s2t_ratio;
     float  _prev_sat2_p1;
     float  _prev_sat2_p2;

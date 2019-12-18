@@ -22,6 +22,7 @@
 }
 
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } backgroundInsets;
+@property (nonatomic, readonly) UIView *backgroundView;
 @property (nonatomic) double brightness;
 @property (getter=isHighlighted, nonatomic) bool highlighted;
 
@@ -30,6 +31,7 @@
 - (void).cxx_destruct;
 - (void)_addHighlightViewIfNecessary;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })backgroundInsets;
+- (id)backgroundView;
 - (double)brightness;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 backgroundView:(id)arg2 foregroundImage:(id)arg3;

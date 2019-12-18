@@ -4,6 +4,7 @@
 
 @interface GKSConnectivitySettings : NSObject
 
++ (void)clearAllSettingsWithRefreshIntervalInSeconds:(int)arg1;
 + (unsigned int)getAbTestMasterLocalSwitches;
 + (unsigned char)getAbTestingState;
 + (double)getAdaptiveLearningA;

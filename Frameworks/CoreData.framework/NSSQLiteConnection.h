@@ -230,6 +230,7 @@
 - (id)initForSQLCore:(id)arg1;
 - (unsigned long long)insertArray:(id)arg1 forEntity:(id)arg2 includeOnConflict:(bool)arg3;
 - (void)insertBatchDeleteChangesForTransactionID:(long long)arg1;
+- (void)insertBatchInserts:(id)arg1 transactionID:(long long)arg2;
 - (void)insertChanges:(id)arg1 type:(long long)arg2 transactionID:(long long)arg3 context:(id)arg4;
 - (unsigned long long)insertDictionaryBlock:(id /* block */)arg1 forEntity:(id)arg2 includeOnConflict:(bool)arg3;
 - (unsigned long long)insertManagedObjectBlock:(id /* block */)arg1 forEntity:(id)arg2 includeOnConflict:(bool)arg3;

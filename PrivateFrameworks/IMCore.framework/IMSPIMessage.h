@@ -66,6 +66,7 @@
 @property (retain) LPLinkMetadata *richLinkMetadata;
 @property (retain) IMSPIHandle *sender;
 @property (retain) NSString *service;
+@property (readonly) IMSPIChat *spiChat;
 @property (retain) NSString *subject;
 @property (retain) NSString *summary;
 @property (retain) NSString *text;
@@ -135,6 +136,7 @@
 - (void)setSubject:(id)arg1;
 - (void)setSummary:(id)arg1;
 - (void)setText:(id)arg1;
+- (id)spiChat;
 - (id)subject;
 - (id)summary;
 - (id)text;

@@ -5,6 +5,6 @@
 
 @required
 
-- (void)registerSerializer:(id <SXActionSerializer>)arg1 actionType:(Class)arg2;
+- (void)registerSerializer:(id <SXActionSerializer>)arg1 actionType:(NSString *)arg2;
 
 @end

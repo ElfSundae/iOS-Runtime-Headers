@@ -15,7 +15,7 @@
     NSData * _confirmSignature;
     NSData * _ecid;
     NSUUID * _identifier;
-    long long  _keyGenerationStatus;
+    NSData * _keyGenerationStatus;
     NSString * _maskedAppleID;
     NSString * _name;
     NSData * _nonce;
@@ -30,6 +30,7 @@
     NSData * _serverSignature;
     NSData * _systemPublicKey;
     NSString * _systemVersion;
+    NSString * _userMessage;
     long long  _vendorId;
 }
 
@@ -45,7 +46,7 @@
 @property (nonatomic, copy) NSData *confirmSignature;
 @property (nonatomic, copy) NSData *ecid;
 @property (nonatomic, copy) NSUUID *identifier;
-@property (nonatomic) long long keyGenerationStatus;
+@property (nonatomic, copy) NSData *keyGenerationStatus;
 @property (nonatomic, copy) NSString *maskedAppleID;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSData *nonce;
@@ -60,6 +61,7 @@
 @property (nonatomic, copy) NSData *serverSignature;
 @property (nonatomic, copy) NSData *systemPublicKey;
 @property (nonatomic, copy) NSString *systemVersion;
+@property (nonatomic, copy) NSString *userMessage;
 @property (nonatomic) long long vendorId;
 
 + (bool)supportsSecureCoding;
@@ -81,7 +83,7 @@
 - (id)identifier;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 nonce:(id)arg2;
-- (long long)keyGenerationStatus;
+- (id)keyGenerationStatus;
 - (id)maskedAppleID;
 - (id)name;
 - (id)nonce;
@@ -106,7 +108,7 @@
 - (void)setConfirmSignature:(id)arg1;
 - (void)setEcid:(id)arg1;
 - (void)setIdentifier:(id)arg1;
-- (void)setKeyGenerationStatus:(long long)arg1;
+- (void)setKeyGenerationStatus:(id)arg1;
 - (void)setMaskedAppleID:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setNonce:(id)arg1;
@@ -121,6 +123,7 @@
 - (void)setServerSignature:(id)arg1;
 - (void)setSystemPublicKey:(id)arg1;
 - (void)setSystemVersion:(id)arg1;
+- (void)setUserMessage:(id)arg1;
 - (void)setVendorId:(long long)arg1;
 - (id)systemPublicKey;
 - (id)systemVersion;
@@ -129,8 +132,8 @@
 - (void)updateName:(id)arg1 roleId:(long long)arg2;
 - (void)updatePairingLocation:(id)arg1;
 - (void)updateWithPayloadSignature:(id)arg1 attestation:(id)arg2 collaborativeKey:(id)arg3 systemVersion:(id)arg4 vendorId:(long long)arg5 productId:(long long)arg6 ecid:(id)arg7 chipId:(id)arg8 serialNumber:(id)arg9;
-- (void)updateWithSeed:(id)arg1 collaborativeKeyC2:(id)arg2 serverSignature:(id)arg3 serverPublicKey:(id)arg4 maskedAppleID:(id)arg5 baaIntermediateCert:(id)arg6 baaLeafCert:(id)arg7;
-- (void)updateWithStatus:(long long)arg1 collaborativeKeyC3:(id)arg2 signatureS4:(id)arg3;
+- (void)updateWithSeed:(id)arg1 collaborativeKeyC2:(id)arg2 serverSignature:(id)arg3 serverPublicKey:(id)arg4 maskedAppleID:(id)arg5 userMessage:(id)arg6 baaIntermediateCert:(id)arg7 baaLeafCert:(id)arg8;
+- (id)userMessage;
 - (long long)vendorId;
 
 @end

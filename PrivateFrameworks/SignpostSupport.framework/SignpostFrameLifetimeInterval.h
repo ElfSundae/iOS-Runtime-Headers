@@ -13,6 +13,7 @@
     NSDictionary * _pidToContextInfoArrayDict;
     unsigned long long  _previousFramePresentationMCT;
     SignpostRenderServerRenderInterval * _renderInterval;
+    NSArray * _skippedRenders;
     unsigned int  _swapID;
 }
 
@@ -20,6 +21,7 @@
 @property (nonatomic, readonly) SignpostContextInfo *contextInfoForHIDInput;
 @property (nonatomic, readonly) NSSet *contributingPIDs;
 @property (nonatomic, readonly) unsigned int displayID;
+@property (nonatomic, readonly) NSNumber *displayIDNum;
 @property (nonatomic, readonly) unsigned long long displayRefreshIntervalDurationMachTime;
 @property (nonatomic, readonly) SignpostContextInfo *earliestTimeContextInfo;
 @property (nonatomic, readonly) SignpostFrameLatencyInterval *frameLatencyInterval;
@@ -36,6 +38,7 @@
 @property (nonatomic, readonly) unsigned long long previousFramePresentationMCT;
 @property (nonatomic, readonly) SignpostRenderServerRenderInterval *renderInterval;
 @property (nonatomic, readonly) bool renderIntervalIsLong;
+@property (nonatomic, readonly) NSArray *skippedRenders;
 @property (nonatomic, readonly) unsigned int swapID;
 @property (nonatomic, readonly) <SignpostSupportTimeInterval> *userVisibleGlitchInterval;
 
@@ -43,12 +46,14 @@
 
 - (void).cxx_destruct;
 - (id)_glitchIntervalWithRoundingUp:(bool)arg1;
+- (bool)_hasDisplayID;
 - (bool)_isLongMCT:(unsigned long long)arg1 expectedFrameLatency:(unsigned char)arg2;
 - (unsigned long long)_overrunBeginMCT;
 - (unsigned char)bufferCount;
 - (id)contextInfoForHIDInput;
 - (id)contributingPIDs;
 - (unsigned int)displayID;
+- (id)displayIDNum;
 - (unsigned long long)displayRefreshIntervalDurationMachTime;
 - (id)earliestTimeContextInfo;
 - (id)frameLatencyInterval;
@@ -58,8 +63,8 @@
 - (unsigned int)frameSeed;
 - (id)hidLatencyInterval;
 - (bool)hidLatencyIsLong;
-- (id)initWithInterval:(id)arg1 contextArray:(id)arg2 hidLatencyInterval:(id)arg3 renderInterval:(id)arg4 frameLatencyInterval:(id)arg5;
-- (id)initWithInterval:(id)arg1 contextArray:(id)arg2 renderInterval:(id)arg3;
+- (id)initWithInterval:(id)arg1 contextArray:(id)arg2 hidLatencyInterval:(id)arg3 renderInterval:(id)arg4 frameLatencyInterval:(id)arg5 frameSeedToSkippedRenderIntervals:(id)arg6;
+- (id)initWithInterval:(id)arg1 contextArray:(id)arg2 renderInterval:(id)arg3 frameSeedToSkippedRenderIntervals:(id)arg4;
 - (bool)mayBeFirstFrame;
 - (unsigned long long)missedVBLCount;
 - (id)pidToContextInfoArrayDict;
@@ -67,6 +72,7 @@
 - (unsigned long long)previousFramePresentationMCT;
 - (id)renderInterval;
 - (bool)renderIntervalIsLong;
+- (id)skippedRenders;
 - (unsigned int)swapID;
 - (id)userVisibleGlitchInterval;
 

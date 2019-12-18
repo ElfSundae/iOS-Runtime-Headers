@@ -7,6 +7,7 @@
     PPNotificationHandler * _contactsHandler;
     <NSObject> * _contactsToken;
     EKEventStore * _ekStore;
+    long long  _eventKitChangeTrackingToken;
     PPEventKitNotificationHandler * _eventKitHandler;
     <NSObject> * _eventKitToken;
     <NSObject> * _meCardDonationToken;
@@ -22,5 +23,6 @@
 }
 
 - (void).cxx_destruct;
+- (id)description;
 
 @end

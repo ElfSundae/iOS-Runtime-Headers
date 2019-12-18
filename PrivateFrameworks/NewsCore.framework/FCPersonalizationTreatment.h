@@ -24,6 +24,9 @@
     double  _articleRecirculationPrimaryFeedArticleReadPenalty;
     double  _articleRecirculationPrimaryFeedAutofavoritedVoteCoefficient;
     double  _articleRecirculationPrimaryFeedBaselineRatePrior;
+    double  _articleRecirculationPrimaryFeedBundleFreeMultiplierForFreeUsers;
+    double  _articleRecirculationPrimaryFeedBundleFreeMultiplierForPaidUsers;
+    double  _articleRecirculationPrimaryFeedBundleFreeMultiplierForTrialUsers;
     double  _articleRecirculationPrimaryFeedBundlePaidMultiplierForFreeUsers;
     double  _articleRecirculationPrimaryFeedBundlePaidMultiplierForPaidUsers;
     double  _articleRecirculationPrimaryFeedBundlePaidMultiplierForTrialUsers;
@@ -73,6 +76,9 @@
     double  _articleRecirculationSecondaryFeedArticleReadPenalty;
     double  _articleRecirculationSecondaryFeedAutofavoritedVoteCoefficient;
     double  _articleRecirculationSecondaryFeedBaselineRatePrior;
+    double  _articleRecirculationSecondaryFeedBundleFreeMultiplierForFreeUsers;
+    double  _articleRecirculationSecondaryFeedBundleFreeMultiplierForPaidUsers;
+    double  _articleRecirculationSecondaryFeedBundleFreeMultiplierForTrialUsers;
     double  _articleRecirculationSecondaryFeedBundlePaidMultiplierForFreeUsers;
     double  _articleRecirculationSecondaryFeedBundlePaidMultiplierForPaidUsers;
     double  _articleRecirculationSecondaryFeedBundlePaidMultiplierForTrialUsers;
@@ -141,6 +147,9 @@
     double  _bestOfBundleArticleReadPenalty;
     double  _bestOfBundleAutofavoritedVoteCoefficient;
     double  _bestOfBundleBaselineRatePrior;
+    double  _bestOfBundleBundleFreeMultiplierForFreeUsers;
+    double  _bestOfBundleBundleFreeMultiplierForPaidUsers;
+    double  _bestOfBundleBundleFreeMultiplierForTrialUsers;
     double  _bestOfBundleBundlePaidMultiplierForFreeUsers;
     double  _bestOfBundleBundlePaidMultiplierForPaidUsers;
     double  _bestOfBundleBundlePaidMultiplierForTrialUsers;
@@ -186,6 +195,9 @@
     double  _bestOfBundleRealTimeUserFeedbackPublishDateHalfLifeCoefficient;
     double  _bestOfBundleSubscribedChannelScoreCoefficient;
     double  _bestOfBundleSubscribedTopicsScoreCoefficient;
+    double  _bundleFreeMultiplierForFreeUsers;
+    double  _bundleFreeMultiplierForPaidUsers;
+    double  _bundleFreeMultiplierForTrialUsers;
     double  _bundlePaidMultiplierForFreeUsers;
     double  _bundlePaidMultiplierForPaidUsers;
     double  _bundlePaidMultiplierForTrialUsers;
@@ -242,6 +254,9 @@
     double  _forYouGroupArticleSubset;
     double  _forYouGroupAutofavoritedVoteCoefficient;
     double  _forYouGroupBaselineRatePrior;
+    double  _forYouGroupBundleFreeMultiplierForFreeUsers;
+    double  _forYouGroupBundleFreeMultiplierForPaidUsers;
+    double  _forYouGroupBundleFreeMultiplierForTrialUsers;
     double  _forYouGroupBundlePaidMultiplierForFreeUsers;
     double  _forYouGroupBundlePaidMultiplierForPaidUsers;
     double  _forYouGroupBundlePaidMultiplierForTrialUsers;
@@ -327,6 +342,9 @@
     double  _magazineFeedArticleReadPenalty;
     double  _magazineFeedAutofavoritedVoteCoefficient;
     double  _magazineFeedBaselineRatePrior;
+    double  _magazineFeedBundleFreeMultiplierForFreeUsers;
+    double  _magazineFeedBundleFreeMultiplierForPaidUsers;
+    double  _magazineFeedBundleFreeMultiplierForTrialUsers;
     double  _magazineFeedBundlePaidMultiplierForFreeUsers;
     double  _magazineFeedBundlePaidMultiplierForPaidUsers;
     double  _magazineFeedBundlePaidMultiplierForTrialUsers;
@@ -533,6 +551,9 @@
     double  _topicFeedArticleReadPenalty;
     double  _topicFeedAutofavoritedVoteCoefficient;
     double  _topicFeedBaselineRatePrior;
+    double  _topicFeedBundleFreeMultiplierForFreeUsers;
+    double  _topicFeedBundleFreeMultiplierForPaidUsers;
+    double  _topicFeedBundleFreeMultiplierForTrialUsers;
     double  _topicFeedBundlePaidMultiplierForFreeUsers;
     double  _topicFeedBundlePaidMultiplierForPaidUsers;
     double  _topicFeedBundlePaidMultiplierForTrialUsers;
@@ -640,6 +661,9 @@
 @property (nonatomic, readonly) double articleRecirculationPrimaryFeedArticleReadPenalty;
 @property (nonatomic, readonly) double articleRecirculationPrimaryFeedAutofavoritedVoteCoefficient;
 @property (nonatomic, readonly) double articleRecirculationPrimaryFeedBaselineRatePrior;
+@property (nonatomic, readonly) double articleRecirculationPrimaryFeedBundleFreeMultiplierForFreeUsers;
+@property (nonatomic, readonly) double articleRecirculationPrimaryFeedBundleFreeMultiplierForPaidUsers;
+@property (nonatomic, readonly) double articleRecirculationPrimaryFeedBundleFreeMultiplierForTrialUsers;
 @property (nonatomic, readonly) double articleRecirculationPrimaryFeedBundlePaidMultiplierForFreeUsers;
 @property (nonatomic, readonly) double articleRecirculationPrimaryFeedBundlePaidMultiplierForPaidUsers;
 @property (nonatomic, readonly) double articleRecirculationPrimaryFeedBundlePaidMultiplierForTrialUsers;
@@ -689,6 +713,9 @@
 @property (nonatomic, readonly) double articleRecirculationSecondaryFeedArticleReadPenalty;
 @property (nonatomic, readonly) double articleRecirculationSecondaryFeedAutofavoritedVoteCoefficient;
 @property (nonatomic, readonly) double articleRecirculationSecondaryFeedBaselineRatePrior;
+@property (nonatomic, readonly) double articleRecirculationSecondaryFeedBundleFreeMultiplierForFreeUsers;
+@property (nonatomic, readonly) double articleRecirculationSecondaryFeedBundleFreeMultiplierForPaidUsers;
+@property (nonatomic, readonly) double articleRecirculationSecondaryFeedBundleFreeMultiplierForTrialUsers;
 @property (nonatomic, readonly) double articleRecirculationSecondaryFeedBundlePaidMultiplierForFreeUsers;
 @property (nonatomic, readonly) double articleRecirculationSecondaryFeedBundlePaidMultiplierForPaidUsers;
 @property (nonatomic, readonly) double articleRecirculationSecondaryFeedBundlePaidMultiplierForTrialUsers;
@@ -757,6 +784,9 @@
 @property (nonatomic, readonly) double bestOfBundleArticleReadPenalty;
 @property (nonatomic, readonly) double bestOfBundleAutofavoritedVoteCoefficient;
 @property (nonatomic, readonly) double bestOfBundleBaselineRatePrior;
+@property (nonatomic, readonly) double bestOfBundleBundleFreeMultiplierForFreeUsers;
+@property (nonatomic, readonly) double bestOfBundleBundleFreeMultiplierForPaidUsers;
+@property (nonatomic, readonly) double bestOfBundleBundleFreeMultiplierForTrialUsers;
 @property (nonatomic, readonly) double bestOfBundleBundlePaidMultiplierForFreeUsers;
 @property (nonatomic, readonly) double bestOfBundleBundlePaidMultiplierForPaidUsers;
 @property (nonatomic, readonly) double bestOfBundleBundlePaidMultiplierForTrialUsers;
@@ -802,6 +832,9 @@
 @property (nonatomic, readonly) double bestOfBundleRealTimeUserFeedbackPublishDateHalfLifeCoefficient;
 @property (nonatomic, readonly) double bestOfBundleSubscribedChannelScoreCoefficient;
 @property (nonatomic, readonly) double bestOfBundleSubscribedTopicsScoreCoefficient;
+@property (nonatomic, readonly) double bundleFreeMultiplierForFreeUsers;
+@property (nonatomic, readonly) double bundleFreeMultiplierForPaidUsers;
+@property (nonatomic, readonly) double bundleFreeMultiplierForTrialUsers;
 @property (nonatomic, readonly) double bundlePaidMultiplierForFreeUsers;
 @property (nonatomic, readonly) double bundlePaidMultiplierForPaidUsers;
 @property (nonatomic, readonly) double bundlePaidMultiplierForTrialUsers;
@@ -858,6 +891,9 @@
 @property (nonatomic, readonly) double forYouGroupArticleSubset;
 @property (nonatomic, readonly) double forYouGroupAutofavoritedVoteCoefficient;
 @property (nonatomic, readonly) double forYouGroupBaselineRatePrior;
+@property (nonatomic, readonly) double forYouGroupBundleFreeMultiplierForFreeUsers;
+@property (nonatomic, readonly) double forYouGroupBundleFreeMultiplierForPaidUsers;
+@property (nonatomic, readonly) double forYouGroupBundleFreeMultiplierForTrialUsers;
 @property (nonatomic, readonly) double forYouGroupBundlePaidMultiplierForFreeUsers;
 @property (nonatomic, readonly) double forYouGroupBundlePaidMultiplierForPaidUsers;
 @property (nonatomic, readonly) double forYouGroupBundlePaidMultiplierForTrialUsers;
@@ -943,6 +979,9 @@
 @property (nonatomic, readonly) double magazineFeedArticleReadPenalty;
 @property (nonatomic, readonly) double magazineFeedAutofavoritedVoteCoefficient;
 @property (nonatomic, readonly) double magazineFeedBaselineRatePrior;
+@property (nonatomic, readonly) double magazineFeedBundleFreeMultiplierForFreeUsers;
+@property (nonatomic, readonly) double magazineFeedBundleFreeMultiplierForPaidUsers;
+@property (nonatomic, readonly) double magazineFeedBundleFreeMultiplierForTrialUsers;
 @property (nonatomic, readonly) double magazineFeedBundlePaidMultiplierForFreeUsers;
 @property (nonatomic, readonly) double magazineFeedBundlePaidMultiplierForPaidUsers;
 @property (nonatomic, readonly) double magazineFeedBundlePaidMultiplierForTrialUsers;
@@ -1148,6 +1187,9 @@
 @property (nonatomic, readonly) double topicFeedArticleReadPenalty;
 @property (nonatomic, readonly) double topicFeedAutofavoritedVoteCoefficient;
 @property (nonatomic, readonly) double topicFeedBaselineRatePrior;
+@property (nonatomic, readonly) double topicFeedBundleFreeMultiplierForFreeUsers;
+@property (nonatomic, readonly) double topicFeedBundleFreeMultiplierForPaidUsers;
+@property (nonatomic, readonly) double topicFeedBundleFreeMultiplierForTrialUsers;
 @property (nonatomic, readonly) double topicFeedBundlePaidMultiplierForFreeUsers;
 @property (nonatomic, readonly) double topicFeedBundlePaidMultiplierForPaidUsers;
 @property (nonatomic, readonly) double topicFeedBundlePaidMultiplierForTrialUsers;
@@ -1256,6 +1298,9 @@
 - (double)articleRecirculationPrimaryFeedArticleReadPenalty;
 - (double)articleRecirculationPrimaryFeedAutofavoritedVoteCoefficient;
 - (double)articleRecirculationPrimaryFeedBaselineRatePrior;
+- (double)articleRecirculationPrimaryFeedBundleFreeMultiplierForFreeUsers;
+- (double)articleRecirculationPrimaryFeedBundleFreeMultiplierForPaidUsers;
+- (double)articleRecirculationPrimaryFeedBundleFreeMultiplierForTrialUsers;
 - (double)articleRecirculationPrimaryFeedBundlePaidMultiplierForFreeUsers;
 - (double)articleRecirculationPrimaryFeedBundlePaidMultiplierForPaidUsers;
 - (double)articleRecirculationPrimaryFeedBundlePaidMultiplierForTrialUsers;
@@ -1305,6 +1350,9 @@
 - (double)articleRecirculationSecondaryFeedArticleReadPenalty;
 - (double)articleRecirculationSecondaryFeedAutofavoritedVoteCoefficient;
 - (double)articleRecirculationSecondaryFeedBaselineRatePrior;
+- (double)articleRecirculationSecondaryFeedBundleFreeMultiplierForFreeUsers;
+- (double)articleRecirculationSecondaryFeedBundleFreeMultiplierForPaidUsers;
+- (double)articleRecirculationSecondaryFeedBundleFreeMultiplierForTrialUsers;
 - (double)articleRecirculationSecondaryFeedBundlePaidMultiplierForFreeUsers;
 - (double)articleRecirculationSecondaryFeedBundlePaidMultiplierForPaidUsers;
 - (double)articleRecirculationSecondaryFeedBundlePaidMultiplierForTrialUsers;
@@ -1373,6 +1421,9 @@
 - (double)bestOfBundleArticleReadPenalty;
 - (double)bestOfBundleAutofavoritedVoteCoefficient;
 - (double)bestOfBundleBaselineRatePrior;
+- (double)bestOfBundleBundleFreeMultiplierForFreeUsers;
+- (double)bestOfBundleBundleFreeMultiplierForPaidUsers;
+- (double)bestOfBundleBundleFreeMultiplierForTrialUsers;
 - (double)bestOfBundleBundlePaidMultiplierForFreeUsers;
 - (double)bestOfBundleBundlePaidMultiplierForPaidUsers;
 - (double)bestOfBundleBundlePaidMultiplierForTrialUsers;
@@ -1418,6 +1469,9 @@
 - (double)bestOfBundleRealTimeUserFeedbackPublishDateHalfLifeCoefficient;
 - (double)bestOfBundleSubscribedChannelScoreCoefficient;
 - (double)bestOfBundleSubscribedTopicsScoreCoefficient;
+- (double)bundleFreeMultiplierForFreeUsers;
+- (double)bundleFreeMultiplierForPaidUsers;
+- (double)bundleFreeMultiplierForTrialUsers;
 - (double)bundlePaidMultiplierForFreeUsers;
 - (double)bundlePaidMultiplierForPaidUsers;
 - (double)bundlePaidMultiplierForTrialUsers;
@@ -1476,6 +1530,9 @@
 - (double)forYouGroupArticleSubset;
 - (double)forYouGroupAutofavoritedVoteCoefficient;
 - (double)forYouGroupBaselineRatePrior;
+- (double)forYouGroupBundleFreeMultiplierForFreeUsers;
+- (double)forYouGroupBundleFreeMultiplierForPaidUsers;
+- (double)forYouGroupBundleFreeMultiplierForTrialUsers;
 - (double)forYouGroupBundlePaidMultiplierForFreeUsers;
 - (double)forYouGroupBundlePaidMultiplierForPaidUsers;
 - (double)forYouGroupBundlePaidMultiplierForTrialUsers;
@@ -1564,6 +1621,9 @@
 - (double)magazineFeedArticleReadPenalty;
 - (double)magazineFeedAutofavoritedVoteCoefficient;
 - (double)magazineFeedBaselineRatePrior;
+- (double)magazineFeedBundleFreeMultiplierForFreeUsers;
+- (double)magazineFeedBundleFreeMultiplierForPaidUsers;
+- (double)magazineFeedBundleFreeMultiplierForTrialUsers;
 - (double)magazineFeedBundlePaidMultiplierForFreeUsers;
 - (double)magazineFeedBundlePaidMultiplierForPaidUsers;
 - (double)magazineFeedBundlePaidMultiplierForTrialUsers;
@@ -1770,6 +1830,9 @@
 - (double)topicFeedArticleReadPenalty;
 - (double)topicFeedAutofavoritedVoteCoefficient;
 - (double)topicFeedBaselineRatePrior;
+- (double)topicFeedBundleFreeMultiplierForFreeUsers;
+- (double)topicFeedBundleFreeMultiplierForPaidUsers;
+- (double)topicFeedBundleFreeMultiplierForTrialUsers;
 - (double)topicFeedBundlePaidMultiplierForFreeUsers;
 - (double)topicFeedBundlePaidMultiplierForPaidUsers;
 - (double)topicFeedBundlePaidMultiplierForTrialUsers;

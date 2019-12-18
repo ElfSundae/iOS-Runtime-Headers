@@ -35,6 +35,7 @@
     UIPanGestureRecognizer * _panGestureRecognizer;
     UIView * _platterView;
     unsigned long long  _rubberbandingEdges;
+    bool  _touchEverEnteredMenu;
     _UIVelocityIntegrator * _velocityIntegrator;
 }
 
@@ -59,7 +60,6 @@
 @property (nonatomic, retain) _UIVelocityIntegrator *velocityIntegrator;
 
 - (void).cxx_destruct;
-- (id)_actionScrubPathWithInitialLocation:(struct CGPoint { double x1; double x2; })arg1;
 - (void)_animationsForActionsStyleWithLocation:(struct CGPoint { double x1; double x2; })arg1 ended:(bool)arg2;
 - (void)_animationsForAnyAttachedAccessoryViews;
 - (void)_animationsForPreviewPlusActionsStyleWithTranslation:(struct CGPoint { double x1; double x2; })arg1 location:(struct CGPoint { double x1; double x2; })arg2;
@@ -73,7 +73,8 @@
 - (double)_rangeOfMotion;
 - (struct CGPoint { double x1; double x2; })_rubberBandedTranslationForGestureTranslation:(struct CGPoint { double x1; double x2; })arg1;
 - (double)_tearOffSpeedMultiplier;
-- (void)_updatePlatterGestureDebugUIWithGesture:(id)arg1;
+- (void)_updateActionScrubPathWithLocationIfNecessary:(struct CGPoint { double x1; double x2; })arg1;
+- (void)_updatePlatterGestureDebugUIWithGesture:(id)arg1 invalidate:(bool)arg2;
 - (void)_updateViewPositionsWithTranslation:(struct CGPoint { double x1; double x2; })arg1 location:(struct CGPoint { double x1; double x2; })arg2 ended:(bool)arg3 withVelocity:(bool)arg4;
 - (id)accessoryViews;
 - (id)actionsView;

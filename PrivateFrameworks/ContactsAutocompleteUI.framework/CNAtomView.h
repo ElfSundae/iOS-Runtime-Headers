@@ -57,6 +57,7 @@
 + (id)_defaultLabelAttributesWithFont:(id)arg1 wrappingEnabled:(bool)arg2;
 + (id)_defaultLabelAttributesWithWrappingEnabled:(bool)arg1;
 + (id)_defaultTintColor;
++ (id)_downtimeBlockedTintColor;
 + (id)_failureTintColor;
 + (struct CGPoint { double x1; double x2; })defaultBaselinePoint;
 + (id)defaultFont;

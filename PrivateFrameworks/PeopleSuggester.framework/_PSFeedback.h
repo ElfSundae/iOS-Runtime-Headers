@@ -29,6 +29,7 @@
 - (double)delay;
 - (bool)dryRun;
 - (id)feedbackPayload;
+- (id)getTrialID;
 - (unsigned long long)indexOfEngagedSuggestion;
 - (id)initWithAction:(id)arg1 delay:(double)arg2 context:(id)arg3 suggestions:(id)arg4 numberOfVisibleSuggestions:(float)arg5 sessionIdentifier:(id)arg6;
 - (id)knowledgeEvent;

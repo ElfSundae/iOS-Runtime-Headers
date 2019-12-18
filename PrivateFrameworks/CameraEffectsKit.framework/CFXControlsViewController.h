@@ -27,6 +27,7 @@
 @property (nonatomic) bool usesInternalCaptureSession;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)controlsContainerView;
 - (id)controlsContainerViewHeightConstraint;
 - (id)controlsContainerViewLeadingConstraint;

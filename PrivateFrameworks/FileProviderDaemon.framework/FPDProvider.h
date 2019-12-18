@@ -96,7 +96,6 @@
 - (id)supportURL;
 - (bool)supportsEnumeration;
 - (bool)supportsFPFS;
-- (void)writeCheckReportTo:(id)arg1 limitNumberOfItems:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (void)writeDomainProperties;
 
 @end

@@ -4,6 +4,7 @@
 
 @interface FCForYouConfigRecordSource : FCRecordSource
 
+- (void)_updateForYouConfigRecord:(id)arg1;
 - (unsigned long long)highThresholdDataSizeLimit;
 - (unsigned long long)lowThresholdDataSizeLimit;
 - (id)nonLocalizableKeys;

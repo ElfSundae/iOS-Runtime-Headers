@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Message.framework/Message
  */
 
-@interface MFLocalActionReplayHandler : NSObject <EFLoggable> {
+@interface MFLocalActionReplayHandler : NSObject <EFLoggable, EFPubliclyDescribable> {
     MailAccount * _account;
     NSMutableArray * _actionsToReplay;
     MFMailMessageLibrary * _library;
@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSMutableArray *actionsToReplay;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly, copy) NSString *ef_publicDescription;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) MFMailMessageLibrary *library;
 @property (nonatomic, retain) EDLocalActionPersistence *localActionPersistence;
@@ -35,6 +36,7 @@
 - (id)actionsToReplay;
 - (void)addNewAction:(id)arg1;
 - (void)connectionEstablished;
+- (id)ef_publicDescription;
 - (id)initWithLibrary:(id)arg1 account:(id)arg2;
 - (id)library;
 - (id)localActionPersistence;

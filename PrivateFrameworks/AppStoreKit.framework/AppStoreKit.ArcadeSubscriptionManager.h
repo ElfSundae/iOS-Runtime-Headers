@@ -3,6 +3,7 @@
  */
 
 @interface AppStoreKit.ArcadeSubscriptionManager : NSObject <SKPaymentTransactionObserver> {
+    void activeStoreAccountProvider;
     void arcadeSubscriptionFamilyId;
     void logger;
     void observers;

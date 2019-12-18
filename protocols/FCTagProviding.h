@@ -47,7 +47,7 @@
 - (FCAssetHandle *)nameImageCompactAssetHandle;
 - (FCAssetHandle *)nameImageMaskWidgetHQAssetHandle;
 - (FCAssetHandle *)nameImageMaskWidgetLQAssetHandle;
-- (FCSubscriptionButtonConfiguration *)paidBundleSubscriptionButtonConfiguration;
+- (FCPaywallConfiguration *)paidBundlePaywallConfiguration;
 - (NSString *)paidFeedIDForBin:(long long)arg1;
 - (void)ppt_overrideFeedID:(NSString *)arg1;
 - (FCPurchaseOfferableConfiguration *)prefetchPurchaseOffer;
@@ -65,6 +65,7 @@
 - (NSDate *)publisherSpecifiedArticleIDsModifiedDate;
 - (NSString *)replacementID;
 - (long long)score;
+- (<FCTagStocksFields> *)stocksFields;
 - (NSString *)subtitle;
 - (unsigned long long)tagType;
 - (<FCFeedTheming> *)theme;

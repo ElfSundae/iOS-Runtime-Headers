@@ -2,54 +2,33 @@
    Image: /System/Library/PrivateFrameworks/AccessibilitySharedSupport.framework/AccessibilitySharedSupport
  */
 
-@interface AXSSMotionTrackingInput : NSObject {
-    NSMutableArray * __allCaptureDevices;
-    AVCaptureDeviceDiscoverySession * __captureDeviceDiscoverySession;
-    NSMutableArray * __compatibleCaptureDevices;
-    bool  __monitoring;
-    AVCaptureDevice * _captureDeviceToUse;
-    <AXSSMotionTrackingInputDelegate> * _delegate;
-    NSString * _desiredCaptureDeviceUniqueID;
-}
+@interface AXSSMotionTrackingInput : NSObject <NSCopying, NSSecureCoding>
 
-@property (nonatomic, retain) NSMutableArray *_allCaptureDevices;
-@property (nonatomic, retain) AVCaptureDeviceDiscoverySession *_captureDeviceDiscoverySession;
-@property (nonatomic, retain) NSMutableArray *_compatibleCaptureDevices;
-@property (nonatomic) bool _monitoring;
-@property (nonatomic, readonly, copy) NSArray *allCaptureDevices;
-@property (nonatomic, retain) AVCaptureDevice *captureDeviceToUse;
-@property (nonatomic, readonly, copy) NSArray *compatibleCaptureDevices;
-@property (nonatomic) <AXSSMotionTrackingInputDelegate> *delegate;
-@property (nonatomic, copy) NSString *desiredCaptureDeviceUniqueID;
+@property (nonatomic, readonly) bool isCamera;
+@property (nonatomic, readonly) bool isHIDDevice;
+@property (nonatomic, readonly, copy) NSString *name;
+@property (nonatomic, readonly, copy) NSDictionary *plistDictionary;
+@property (nonatomic, readonly) bool supportsExpressions;
+@property (nonatomic, readonly) bool supportsLookAtPoint;
+@property (nonatomic, readonly) unsigned long long trackingType;
+@property (nonatomic, readonly, copy) NSString *uniqueIdentifier;
 
-- (void).cxx_destruct;
-- (id)_allCaptureDevices;
-- (void)_allCaptureDevicesChanged:(id)arg1;
-- (void)_captureDeviceConnected:(id)arg1;
-- (void)_captureDeviceDisconnected:(id)arg1;
-- (id)_captureDeviceDiscoverySession;
-- (void)_captureDeviceUpdated;
-- (id)_compatibleCaptureDevices;
-- (bool)_monitoring;
-- (void)_resetDiscoverySession;
-- (void)_startDiscoverySession;
-- (void)_stopDiscoverySession;
-- (id)allCaptureDevices;
-- (id)captureDeviceToUse;
-- (id)compatibleCaptureDevices;
-- (void)dealloc;
-- (id)delegate;
-- (id)desiredCaptureDeviceUniqueID;
-- (id)initWithDesiredCaptureDeviceUniqueID:(id)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
-- (void)setCaptureDeviceToUse:(id)arg1;
-- (void)setDelegate:(id)arg1;
-- (void)setDesiredCaptureDeviceUniqueID:(id)arg1;
-- (void)set_allCaptureDevices:(id)arg1;
-- (void)set_captureDeviceDiscoverySession:(id)arg1;
-- (void)set_compatibleCaptureDevices:(id)arg1;
-- (void)set_monitoring:(bool)arg1;
-- (void)startMonitoring;
-- (void)stopMonitoring;
++ (id)motionTrackingInputFromPlistDictionary:(id)arg1;
++ (bool)supportsSecureCoding;
+
+- (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)init;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithPlistDictionary:(id)arg1;
+- (bool)isCamera;
+- (bool)isEqual:(id)arg1;
+- (bool)isEqualToMotionTrackingInput:(id)arg1;
+- (bool)isHIDDevice;
+- (id)plistDictionary;
+- (bool)supportsExpressions;
+- (bool)supportsLookAtPoint;
+- (unsigned long long)trackingType;
 
 @end

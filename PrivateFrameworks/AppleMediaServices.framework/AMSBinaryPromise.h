@@ -26,6 +26,7 @@
 - (bool)cancel;
 - (id)catchWithBlock:(id /* block */)arg1;
 - (id /* block */)completionHandlerAdapter;
+- (id)continueWithBlock:(id /* block */)arg1;
 - (bool)finishWithError:(id)arg1;
 - (bool)finishWithPromise:(id)arg1;
 - (bool)finishWithSuccess;

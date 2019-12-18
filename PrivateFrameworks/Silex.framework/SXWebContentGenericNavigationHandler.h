@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXWebContentGenericNavigationHandler : NSObject <SXWebContentNavigationHandler> {
+@interface SXWebContentGenericNavigationHandler : NSObject <SWNavigationHandler> {
     <SXURLActionFactory> * _URLActionFactory;
     <SXActionManager> * _actionManager;
 }

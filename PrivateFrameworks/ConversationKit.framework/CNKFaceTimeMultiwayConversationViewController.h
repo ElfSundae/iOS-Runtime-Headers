@@ -64,6 +64,7 @@
 - (void)openMessagesConversation;
 - (id)pipViewController;
 - (bool)prefersHomeIndicatorAutoHidden;
+- (void)resetEffectsState;
 - (void)restartAutoHideInCallControlsDrawerTimer;
 - (void)serverDidTimeout:(id)arg1;
 - (void)setControllerIsPipped:(bool)arg1;

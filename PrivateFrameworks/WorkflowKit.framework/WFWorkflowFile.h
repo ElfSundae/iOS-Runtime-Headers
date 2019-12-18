@@ -15,6 +15,7 @@
 @property (nonatomic, retain) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, readonly) unsigned long long estimatedSize;
 @property (nonatomic, readonly) WFFileRepresentation *file;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) WFWorkflowIcon *icon;
@@ -37,6 +38,7 @@
 - (id)actions;
 - (id)creationDate;
 - (id)descriptor;
+- (unsigned long long)estimatedSize;
 - (id)file;
 - (id)fileDataWithError:(id*)arg1;
 - (id)icon;

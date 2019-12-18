@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/EmailDaemon.framework/EmailDaemon
  */
 
-@interface EDThreadPersistence : NSObject <EDAccountChangeHookResponder, EDDatabaseChangeHookResponder, EDMailboxChangeHookResponder, EDMessageChangeHookResponder, EDPersistenceDatabaseSchemaProvider, EDProtectedDataReconciliationHookResponder, EDThreadScopeManagerDataSource, EFLoggable> {
+@interface EDThreadPersistence : NSObject <EDAccountChangeHookResponder, EDDatabaseChangeHookResponder, EDMailboxChangeHookResponder, EDMessageChangeHookResponder, EDPersistenceDatabaseSchemaProvider, EDProtectedDataReconciliationHookResponder, EDThreadScopeManagerDataSource, EFLoggable, EFSignpostable> {
     EMBlockedSenderManager * _blockedSenderManager;
     EDPersistenceDatabase * _database;
     EDPersistenceHookRegistry * _hookRegistry;
@@ -30,6 +30,7 @@
 @property (nonatomic, readonly) EDPersistenceHookRegistry *hookRegistry;
 @property (nonatomic, readonly) EDMessagePersistence *messagePersistence;
 @property (nonatomic, retain) <EFScheduler> *reconciliationCleanupScheduler;
+@property (readonly) unsigned long long signpostID;
 @property (readonly) Class superclass;
 @property (nonatomic, retain) EFDebouncer *threadRecomputationDebouncer;
 @property (nonatomic, retain) <EFScheduler> *threadRecomputationScheduler;
@@ -37,6 +38,7 @@
 @property (nonatomic, readonly) <EMVIPManager> *vipManager;
 
 + (id)log;
++ (id)signpostLog;
 + (id)tablesAndForeignKeysToResolve:(id*)arg1 associationsToResolve:(id*)arg2;
 + (id)threadMailboxesTableSchema;
 + (id)threadRecipientsTableSchema;
@@ -104,7 +106,7 @@
 - (id)_sendersForThreadDatabaseID:(id)arg1;
 - (id)_sendersFromMessagesForThreadObjectID:(id)arg1;
 - (bool)_setPriorityForDisplayMessageSenderForThreadObjectID:(id)arg1;
-- (id)_statementForOldestThreadInMailbox:(id)arg1 threadScope:(id)arg2;
+- (id)_statementForOldestThreadInMailbox:(id)arg1 threadScope:(id)arg2 createMailboxDatabaseIDIfNecessary:(bool)arg3;
 - (id)_threadDatabaseIDExpressionForThreadScopeDatabaseID:(long long)arg1 conversation:(long long)arg2;
 - (id)_threadExpressionForThreadScopeDatabaseID:(long long)arg1 conversation:(long long)arg2;
 - (id)_threadForWrappedMessages:(id)arg1 objectID:(id)arg2;
@@ -153,6 +155,7 @@
 - (void)setReconciliationCleanupScheduler:(id)arg1;
 - (void)setThreadRecomputationDebouncer:(id)arg1;
 - (void)setThreadRecomputationScheduler:(id)arg1;
+- (unsigned long long)signpostID;
 - (id)threadForObjectID:(id)arg1 originatingQuery:(id)arg2 error:(id*)arg3;
 - (id)threadObjectIDBeforeThreadObjectID:(id)arg1 forSortDescriptors:(id)arg2 excluding:(id)arg3;
 - (id)threadObjectIDsByNextExistingForThreadObjectIDs:(id)arg1 forSortDescriptors:(id)arg2 excluding:(id)arg3;

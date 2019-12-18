@@ -28,9 +28,9 @@
 - (id)deleteItem:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)fetchConfigurationAssetWithType:(id)arg1 completionHandler:(id /* block */)arg2;
 - (id)fetchConfigurationAssetWithType:(id)arg1 configuration:(id)arg2 completionHandler:(id /* block */)arg3;
-- (id)fetchItemWithID:(id)arg1 itemType:(Class)arg2 properties:(id)arg3 completionHandler:(id /* block */)arg4;
-- (id)fetchItemsWithPredicate:(id)arg1 itemType:(Class)arg2 properties:(id)arg3 completionHandler:(id /* block */)arg4;
-- (id)fetchItemsWithPredicate:(id)arg1 itemType:(Class)arg2 properties:(id)arg3 sortDescriptors:(id)arg4 resultsLimit:(unsigned long long)arg5 completionHandler:(id /* block */)arg6;
+- (id)fetchItemWithID:(id)arg1 itemType:(Class)arg2 groupName:(id)arg3 properties:(id)arg4 completionHandler:(id /* block */)arg5;
+- (id)fetchItemsWithPredicate:(id)arg1 itemType:(Class)arg2 groupName:(id)arg3 properties:(id)arg4 completionHandler:(id /* block */)arg5;
+- (id)fetchItemsWithPredicate:(id)arg1 itemType:(Class)arg2 groupName:(id)arg3 properties:(id)arg4 sortDescriptors:(id)arg5 resultsLimit:(unsigned long long)arg6 completionHandler:(id /* block */)arg7;
 - (id)fetchRecordIDs:(id)arg1 desiredKeys:(id)arg2 operationGroup:(id)arg3 completionHandler:(id /* block */)arg4;
 - (id)initWithContainer:(id)arg1 database:(id)arg2;
 - (bool)performExpensiveFetchOperations;

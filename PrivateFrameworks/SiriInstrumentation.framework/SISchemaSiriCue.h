@@ -2,16 +2,12 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaSiriCue : PBCodable <NSSecureCoding, SISchemaSiriCue> {
+@interface SISchemaSiriCue : PBCodable {
     int  _siriCueType;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) int siriCueType;
-@property (readonly) Class superclass;
 
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

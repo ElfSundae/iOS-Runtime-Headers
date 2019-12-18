@@ -9,8 +9,9 @@
     unsigned long long  _maxSubAttachmentsPerAttachment;
     NSNumber * _maximumAttachmentSizeMB;
     NSString * _minimumClientVersion;
-    double  _pollingInterval;
     unsigned long long  _resultsLimitPerSyncOperation;
+    bool  _shouldSyncWhenEnteringForeground;
+    double  _syncInterval;
     ICCloudThrottlingPolicy * _throttlingPolicy;
 }
 
@@ -20,8 +21,9 @@
 @property (nonatomic) unsigned long long maxSubAttachmentsPerAttachment;
 @property (nonatomic, retain) NSNumber *maximumAttachmentSizeMB;
 @property (nonatomic, copy) NSString *minimumClientVersion;
-@property (nonatomic) double pollingInterval;
 @property (nonatomic) unsigned long long resultsLimitPerSyncOperation;
+@property (nonatomic) bool shouldSyncWhenEnteringForeground;
+@property (nonatomic) double syncInterval;
 @property (nonatomic, retain) ICCloudThrottlingPolicy *throttlingPolicy;
 
 + (id)availableConfigurationURLs;
@@ -44,7 +46,6 @@
 - (unsigned long long)maxSubAttachmentsPerAttachment;
 - (id)maximumAttachmentSizeMB;
 - (id)minimumClientVersion;
-- (double)pollingInterval;
 - (unsigned long long)resultsLimitPerSyncOperation;
 - (void)setConfigurationFromDictionary:(id)arg1;
 - (void)setDownloadTimer:(id)arg1;
@@ -53,9 +54,12 @@
 - (void)setMaxSubAttachmentsPerAttachment:(unsigned long long)arg1;
 - (void)setMaximumAttachmentSizeMB:(id)arg1;
 - (void)setMinimumClientVersion:(id)arg1;
-- (void)setPollingInterval:(double)arg1;
 - (void)setResultsLimitPerSyncOperation:(unsigned long long)arg1;
+- (void)setShouldSyncWhenEnteringForeground:(bool)arg1;
+- (void)setSyncInterval:(double)arg1;
 - (void)setThrottlingPolicy:(id)arg1;
+- (bool)shouldSyncWhenEnteringForeground;
+- (double)syncInterval;
 - (id)throttlingPolicy;
 
 @end

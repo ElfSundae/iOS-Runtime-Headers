@@ -8,8 +8,10 @@
     TADisplayOnCalculator * _displayOnCalculator;
     NSNumber * _distanceToClosestLoi;
     NSMutableDictionary * _earliestUtAdvertisements;
+    NSDate * _entryDurationOfConsiderationClosed;
     NSDate * _exitIntervalBeginning;
     TALocationLite * _latestLocation;
+    bool  _latestLocationInsideVisit;
     NSMutableDictionary * _latestUtAdvertisements;
     unsigned long long  _loiType;
     NSMutableOrderedSet * _lruUtAdvertisementCache;
@@ -20,12 +22,14 @@
 
 @property (nonatomic, readonly) NSMutableDictionary *earliestUtAdvertisements;
 @property (nonatomic, readonly, copy) TALocationLite *latestLocation;
+@property (nonatomic, readonly) bool latestLocationInsideVisit;
 @property (nonatomic, readonly) NSMutableDictionary *latestUtAdvertisements;
 @property (nonatomic, readonly) unsigned long long loiType;
 @property (nonatomic, readonly, copy) TACLVisit *poiArrival;
 @property (nonatomic, readonly, copy) TACLVisit *poiDeparture;
 
 - (void).cxx_destruct;
+- (void)addScanCompleted:(id)arg1;
 - (void)addSystemState:(id)arg1;
 - (void)addUTAdvertisement:(id)arg1;
 - (void)calculateExitIntervalWithDisplayOnBudget:(double)arg1;
@@ -42,6 +46,7 @@
 - (id)initWithTACLVisit:(id)arg1 uniqueUTBufferCap:(unsigned long long)arg2 displayEventBufferSizeCap:(unsigned long long)arg3;
 - (bool)isClosed;
 - (id)latestLocation;
+- (bool)latestLocationInsideVisit;
 - (id)latestUtAdvertisements;
 - (unsigned long long)loiType;
 - (id)mostRecentAdvertisementDate;

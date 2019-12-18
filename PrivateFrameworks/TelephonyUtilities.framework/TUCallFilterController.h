@@ -14,15 +14,20 @@
 - (void).cxx_destruct;
 - (id)actionsDelegate;
 - (id)bundleIdentifierForDialRequest:(id)arg1;
+- (unsigned long long)callFilterStatusForDialRequest:(id)arg1;
 - (bool)containsRestrictedHandle:(id)arg1 forBundleIdentifier:(id)arg2;
+- (bool)containsRestrictedHandle:(id)arg1 forBundleIdentifier:(id)arg2 performSynchronously:(bool)arg3;
 - (id)initWithActionsDelegate:(id)arg1 serialQueue:(id)arg2;
 - (bool)isUnknownAddress:(id)arg1 normalizedAddress:(id)arg2 forBundleIdentifier:(id)arg3;
 - (bool)isUnknownHandle:(id)arg1;
 - (id)policyForAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
 - (id)queue;
 - (bool)shouldRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
+- (bool)shouldRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2 performSynchronously:(bool)arg3;
 - (bool)shouldRestrictDialRequest:(id)arg1;
+- (bool)shouldRestrictDialRequest:(id)arg1 performSynchronously:(bool)arg2;
 - (bool)shouldRestrictJoinConversationRequest:(id)arg1;
+- (bool)shouldRestrictJoinConversationRequest:(id)arg1 performSynchronously:(bool)arg2;
 - (bool)silenceUnknownCallersEnabled;
 - (bool)willRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
 

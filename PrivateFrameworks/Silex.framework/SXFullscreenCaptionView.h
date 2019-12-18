@@ -2,15 +2,15 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXFullscreenCaptionView : UIView <STStandaloneTextLayoutDelegate, SXAutoSizedCanvasControllerDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate> {
+@interface SXFullscreenCaptionView : UIView <SXAutoSizedCanvasControllerDelegate, SXStandaloneTextLayoutDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate> {
     <SXComponentActionHandler> * _actionHandler;
     SXAutoSizedCanvasController * _autoSizeCanvasController;
     UIVisualEffectView * _backgroundView;
     SXFullscreenCaption * _caption;
-    STStandaloneTextInfo * _captionInfo;
-    STStandaloneTextLayout * _captionLayout;
+    SXStandaloneTextInfo * _captionInfo;
+    SXStandaloneTextLayout * _captionLayout;
     <SXFullscreenCaptionViewDelegate> * _delegate;
-    STTextTangierDocumentRoot * _documentRoot;
+    SXTextTangierDocumentRoot * _documentRoot;
     int  _expansionMode;
     struct UIEdgeInsets { 
         double top; 
@@ -37,7 +37,7 @@
     }  _temporaryLayoutRect;
     SXTextSource * _textSource;
     <SXTextSourceFactory> * _textSourceFactory;
-    STTextTangierStorage * _textStorage;
+    SXTextTangierStorage * _textStorage;
     unsigned long long  _viewIndex;
 }
 
@@ -45,12 +45,12 @@
 @property (nonatomic, retain) SXAutoSizedCanvasController *autoSizeCanvasController;
 @property (nonatomic, retain) UIVisualEffectView *backgroundView;
 @property (nonatomic, readonly) SXFullscreenCaption *caption;
-@property (nonatomic, retain) STStandaloneTextInfo *captionInfo;
-@property (nonatomic, retain) STStandaloneTextLayout *captionLayout;
+@property (nonatomic, retain) SXStandaloneTextInfo *captionInfo;
+@property (nonatomic, retain) SXStandaloneTextLayout *captionLayout;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <SXFullscreenCaptionViewDelegate> *delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, retain) STTextTangierDocumentRoot *documentRoot;
+@property (nonatomic, retain) SXTextTangierDocumentRoot *documentRoot;
 @property (nonatomic, readonly) bool expanded;
 @property (nonatomic, readonly) int expansionMode;
 @property (nonatomic) struct UIEdgeInsets { double x1; double x2; double x3; double x4; } fullInsets;
@@ -63,7 +63,7 @@
 @property (nonatomic) struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; } temporaryLayoutRect;
 @property (nonatomic, retain) SXTextSource *textSource;
 @property (nonatomic, readonly) <SXTextSourceFactory> *textSourceFactory;
-@property (nonatomic, retain) STTextTangierStorage *textStorage;
+@property (nonatomic, retain) SXTextTangierStorage *textStorage;
 @property (nonatomic, readonly) unsigned long long viewIndex;
 
 + (void)_applyStyle:(id)arg1 toStorage:(id)arg2;

@@ -208,6 +208,7 @@
 @property (nonatomic, readonly) bool faceTimeVideoIsWhitelisted;
 @property (nonatomic, readonly) UIImage *facetimeAudioIcon;
 @property (nonatomic, readonly) double fadeInBubbleAnimationDuration;
+@property (nonatomic, readonly) UIFont *filterCellTitleFont;
 @property (nonatomic, readonly) UIImage *forwardImage;
 @property (nonatomic, readonly) UIImage *genericDocumentIcon;
 @property (nonatomic, readonly) UIImage *grayA1AckImage;
@@ -266,6 +267,7 @@
 @property (nonatomic, readonly) double maxTranscriptPortraitHeight;
 @property (nonatomic, readonly) double maxTranscriptPortraitWidth;
 @property (nonatomic, readonly) double mediumTranscriptSpace;
+@property (nonatomic, readonly) double messageAcknowledgementVotingViewHeight;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } messageAcknowledgmentPickerBarAcknowledgmentImageSize;
 @property (nonatomic, readonly) struct CGSize { double x1; double x2; } messageAcknowledgmentPickerBarAcknowledgmentItemBalloonSize;
 @property (nonatomic, readonly) NSArray *messageAcknowledgmentPickerBarAcknowledgmentOrder;
@@ -769,6 +771,7 @@
 - (bool)faceTimeVideoIsWhitelisted;
 - (id)facetimeAudioIcon;
 - (double)fadeInBubbleAnimationDuration;
+- (id)filterCellTitleFont;
 - (id)forwardImage;
 - (id)fullscreenPickerActionLayoutAxisPrioritiesForWidth:(double)arg1;
 - (id)genericDocumentIcon;
@@ -844,6 +847,7 @@
 - (double)maxTranscriptPortraitHeight;
 - (double)maxTranscriptPortraitWidth;
 - (double)mediumTranscriptSpace;
+- (double)messageAcknowledgementVotingViewHeight;
 - (id)messageAcknowledgmentImageNameForType:(long long)arg1;
 - (struct CGSize { double x1; double x2; })messageAcknowledgmentPickerBarAcknowledgmentImageSize;
 - (struct CGSize { double x1; double x2; })messageAcknowledgmentPickerBarAcknowledgmentItemBalloonSize;
@@ -977,6 +981,8 @@
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })senderTranscriptInsets;
 - (id)senderTranscriptTextAttributes;
 - (void)setHUDStyle:(long long)arg1;
+- (void)setupNavBarAppearanceWithNavigationController:(id)arg1;
+- (void)setupNavBarAppearanceWithNavigationController:(id)arg1 withBackgroundColor:(id)arg2;
 - (bool)shouldAdjustWidthForSendFailure;
 - (bool)shouldAlignRecipientGlyphsWithMargins;
 - (bool)shouldAnimateGifsInPhotoGrid;

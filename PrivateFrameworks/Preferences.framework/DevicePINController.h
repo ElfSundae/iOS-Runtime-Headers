@@ -17,6 +17,8 @@
     UIBarButtonItem * _nextButton;
     NSNumber * _numericPIN;
     NSString * _oldPassword;
+    id /* block */  _passcodeOptionsHandler;
+    NSString * _passcodeOptionsTitle;
     id  _pinDelegate;
     NSNumber * _pinLength;
     NSNumber * _requiresKeyboard;
@@ -34,6 +36,8 @@
 @property (nonatomic) bool hidesCancelButton;
 @property (nonatomic) bool hidesNavigationButtons;
 @property (getter=isNumericPIN, nonatomic) bool numericPIN;
+@property (nonatomic, copy) id /* block */ passcodeOptionsHandler;
+@property (nonatomic, copy) NSString *passcodeOptionsTitle;
 @property (nonatomic) <DevicePINControllerDelegate> *pinDelegate;
 @property (nonatomic) int pinLength;
 @property (nonatomic) bool requiresKeyboard;
@@ -92,6 +96,8 @@
 - (long long)numberOfFailedAttempts;
 - (struct CGSize { double x1; double x2; })overallContentSizeForViewInPopover;
 - (id)passcodeOptionsAlertController;
+- (id /* block */)passcodeOptionsHandler;
+- (id)passcodeOptionsTitle;
 - (void)performActionAfterPINEntry;
 - (void)performActionAfterPINRemove;
 - (void)performActionAfterPINSet;
@@ -114,6 +120,8 @@
 - (void)setPIN:(id)arg1;
 - (void)setPIN:(id)arg1 completion:(id /* block */)arg2;
 - (void)setPane:(id)arg1;
+- (void)setPasscodeOptionsHandler:(id /* block */)arg1;
+- (void)setPasscodeOptionsTitle:(id)arg1;
 - (void)setPinDelegate:(id)arg1;
 - (void)setPinLength:(int)arg1;
 - (void)setRequiresKeyboard:(bool)arg1;

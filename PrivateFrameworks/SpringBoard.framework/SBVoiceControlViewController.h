@@ -43,6 +43,7 @@
 - (void)_avSystemControllerHeadphoneJackIsConnectedDidChangeNotification:(id)arg1;
 - (void)_avSystemControllerPickableRoutesDidChangeNotification:(id)arg1;
 - (id)_availableRouteDictionaries;
+- (bool)_canShowWhileLocked;
 - (void)_configureRoutingIfNeeded;
 - (void)_continueRecognitionAction;
 - (void)_continueWithRecognitionAction;

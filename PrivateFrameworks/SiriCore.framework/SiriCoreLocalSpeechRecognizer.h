@@ -21,14 +21,15 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)dictionaryWithContentsProfilePathForLanguage:(id)arg1 errorOut:(id*)arg2;
 + (id)installedAssetSizeWithError:(id*)arg1;
++ (id)profilePathForLanguage:(id)arg1 errorOut:(id*)arg2;
 + (id)purgeInstalledAssetsWithError:(id*)arg1;
 + (id)speechProfileDataLastModifiedDataForLanguage:(id)arg1;
 
 - (void).cxx_destruct;
 - (id)_connection;
 - (id)_newConnection;
-- (void)_readProfileAndUserDataWithLanguage:(id)arg1 allowOverride:(bool)arg2 completion:(id /* block */)arg3;
 - (id)_service;
 - (id)_serviceWithFunctionName:(id)arg1 errorHandler:(id /* block */)arg2;
 - (id)_synchronousServiceWithErrorHandler:(id /* block */)arg1;
@@ -44,6 +45,7 @@
 - (id)initWithDelegate:(id)arg1 instanceUUID:(unsigned char)arg2;
 - (void)invalidate;
 - (void)preheatSpeechRecognitionWithLanguage:(id)arg1;
+- (void)readProfileAndUserDataWithLanguage:(id)arg1 allowOverride:(bool)arg2 completion:(id /* block */)arg3;
 - (void)resetDESWithCompletion:(id /* block */)arg1;
 - (void)runAdaptationRecipeEvaluation:(id)arg1 recordData:(id)arg2 attachments:(id)arg3 completion:(id /* block */)arg4;
 - (oneway void)speechServiceDidFinishRecognitionWithStatistics:(id)arg1 error:(id)arg2;

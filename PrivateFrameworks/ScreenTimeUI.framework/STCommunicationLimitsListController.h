@@ -10,6 +10,7 @@
     PSSpecifier * _iCloudContactsSpecifier;
     PSSpecifier * _manageContactsGroupSpecifier;
     PSSpecifier * _manageContactsSpecifier;
+    bool  _syncingiCloudContacts;
 }
 
 @property (retain) STCommunicationLimits *communicationLimits;
@@ -23,17 +24,24 @@
 @property (retain) PSSpecifier *manageContactsGroupSpecifier;
 @property (retain) PSSpecifier *manageContactsSpecifier;
 @property (readonly) Class superclass;
+@property bool syncingiCloudContacts;
 
 - (void).cxx_destruct;
 - (id)_allowContactEditing:(id)arg1;
 - (void)_communicationLimitsDidChangeFrom:(id)arg1 to:(id)arg2;
+- (void)_didCancelSyncingiCloudContacts;
+- (void)_didFinishSyncingiCloudContacts;
+- (void)_didStartSyncingiCloudContacts;
+- (void)_indicateiCloudContactsSyncingStatus;
 - (id)_manageContacts:(id)arg1;
-- (id)_numberOfFamilyMemberContacts:(id)arg1;
+- (id)_manageContactsGroupFooterText;
 - (void)_setAllowContactEditing:(id)arg1 specifier:(id)arg2;
 - (void)_setManageContacts:(id)arg1 specifier:(id)arg2;
-- (void)_showOrHideiCloudContactsSpecifier:(long long)arg1;
+- (void)_startSyncingiCloudContacts;
 - (id)_statusPendingDetailText:(id)arg1;
+- (id)_totaliCloudContactsDetailText:(id)arg1;
 - (void)_updateAllowContactEditing:(id)arg1;
+- (void)_updateManageContactsGroupFooterView;
 - (id)communicationLimits;
 - (void)dealloc;
 - (void)dismissPresentedViewController:(id)arg1;
@@ -55,7 +63,11 @@
 - (void)setICloudContactsSpecifier:(id)arg1;
 - (void)setManageContactsGroupSpecifier:(id)arg1;
 - (void)setManageContactsSpecifier:(id)arg1;
+- (void)setSyncingiCloudContacts:(bool)arg1;
 - (id)specifiers;
+- (bool)syncingiCloudContacts;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
+- (void)viewDidLoad;
 
 @end

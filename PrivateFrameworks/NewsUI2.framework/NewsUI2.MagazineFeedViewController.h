@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NewsUI2.framework/NewsUI2
  */
 
-@interface NewsUI2.MagazineFeedViewController : UIViewController <TSTabBarSplitViewAutoObserver, TUPluggable> {
+@interface NewsUI2.MagazineFeedViewController : UIViewController <TSTabBarSplitViewAutoObserver, TUDeselectable, TUKeyCommandTraversable, TUPluggable> {
     void alertPresenter;
     void barCompressionManager;
     void blueprintSelectionProvider;
@@ -10,6 +10,7 @@
     void eventHandler;
     void heightChangeRelayoutThreshold;
     void isBeingUsedAsPlugin;
+    void mastheadStyleOptionsProvider;
     void offlineAlertControllerFactory;
     void pluggableDelegate;
     void sharingActivityProviderFactory;
@@ -21,6 +22,7 @@
 @property (nonatomic) <TUPluggableDelegate> *pluggableDelegate;
 
 - (void).cxx_destruct;
+- (void)deselect;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)initializeWithCompletion:(id /* block */)arg1;
@@ -29,6 +31,7 @@
 - (void)relayoutWithCompletion:(id /* block */)arg1;
 - (void)setIsBeingUsedAsPlugin:(bool)arg1;
 - (void)setPluggableDelegate:(id)arg1;
+- (void)startTraversingWithDirection:(long long)arg1;
 - (void)tabBarSplitViewDidChangeFocusToFocus:(long long)arg1 action:(long long)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(bool)arg1;

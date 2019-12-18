@@ -32,6 +32,7 @@
 - (id)messagePTaskStore;
 - (id)modificationStamp;
 - (id)newestChatWithOriginalGroupID:(id)arg1 onService:(id)arg2;
+- (void)remapMessageError:(unsigned int)arg1 toError:(unsigned int)arg2 forChat:(id)arg3 completion:(id /* block */)arg4;
 - (void)removeMessageWithGUID:(id)arg1 fromChat:(id)arg2;
 - (void)setChatIsFiltered:(bool)arg1 withChatGuid:(id)arg2;
 - (void)setMessagePTaskStore:(id)arg1;

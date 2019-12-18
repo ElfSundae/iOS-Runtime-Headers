@@ -4,6 +4,7 @@
 
 @interface FCForYouConfig : NSObject <NSCopying> {
     FCSpecialEventGroupConfig * _breakingNewsGroupConfig;
+    <FCForYouBridgedConfiguration> * _bridgedConfiguration;
     FCGroupConfig * _coverArticlesGroupConfig;
     NSArray * _demoGroupConfigs;
     NSArray * _editorialGroupConfigs;
@@ -19,6 +20,7 @@
 
 @property (nonatomic, readonly) NSArray *breakingNewsArticleIDs;
 @property (nonatomic, retain) FCSpecialEventGroupConfig *breakingNewsGroupConfig;
+@property (nonatomic, copy) <FCForYouBridgedConfiguration> *bridgedConfiguration;
 @property (nonatomic, readonly) NSString *coverArticlesArticleListID;
 @property (nonatomic, retain) FCGroupConfig *coverArticlesGroupConfig;
 @property (nonatomic, readonly) NSArray *demoGroupConfigs;
@@ -34,6 +36,7 @@
 @property (nonatomic, retain) FCSpecialEventGroupConfig *specialEventGroupConfig;
 @property (nonatomic, readonly) NSString *spotlightArticleID;
 @property (nonatomic, retain) FCSpotlightGroupConfig *spotlightGroupConfig;
+@property (nonatomic, readonly) NSArray *todayFeedTopStoriesArticleIDs;
 @property (nonatomic, readonly) NSArray *topStoriesCombinedArticleIDs;
 @property (nonatomic, retain) FCTopStoriesGroupConfig *topStoriesGroupConfig;
 @property (nonatomic, readonly) NSArray *topVideosArticleIDs;
@@ -44,6 +47,7 @@
 - (void).cxx_destruct;
 - (id)breakingNewsArticleIDs;
 - (id)breakingNewsGroupConfig;
+- (id)bridgedConfiguration;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)coverArticlesArticleListID;
 - (id)coverArticlesGroupConfig;
@@ -53,11 +57,12 @@
 - (id)editorialSectionTagIDs;
 - (id)fetchedDate;
 - (id)forYouConfigRecord;
-- (id)initWithRecord:(id)arg1 interestToken:(id)arg2;
+- (id)initWithRecord:(id)arg1 interestToken:(id)arg2 bridgedConfiguration:(id)arg3;
 - (id)interestToken;
 - (id)moreVideosArticleListID;
 - (id)moreVideosGroupConfig;
 - (void)setBreakingNewsGroupConfig:(id)arg1;
+- (void)setBridgedConfiguration:(id)arg1;
 - (void)setCoverArticlesGroupConfig:(id)arg1;
 - (void)setEditorialGroupConfigs:(id)arg1;
 - (void)setForYouConfigRecord:(id)arg1;
@@ -72,6 +77,7 @@
 - (id)specialEventGroupConfig;
 - (id)spotlightArticleID;
 - (id)spotlightGroupConfig;
+- (id)todayFeedTopStoriesArticleIDs;
 - (id)topStoriesCombinedArticleIDs;
 - (id)topStoriesGroupConfig;
 - (id)topVideosArticleIDs;

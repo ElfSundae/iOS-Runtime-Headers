@@ -55,9 +55,10 @@
 - (void)setNotificationReceivedAndWaiting:(bool)arg1;
 - (id)sponsoredSearchRequestForLanguageLocale:(id)arg1;
 - (bool)startUpdatingIDs;
+- (void)updateClickData:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)updateClickDataWith:(id)arg1;
+- (void)updateDESRecord:(id)arg1 forEvent:(long long)arg2;
 - (void)updateFrequencyCapData:(id)arg1;
-- (void)updateSponsoredFrequencyCapData:(id)arg1;
 - (void)updateToroDownloadData:(id)arg1 forType:(long long)arg2;
 - (id)userTargetingProperties;
 

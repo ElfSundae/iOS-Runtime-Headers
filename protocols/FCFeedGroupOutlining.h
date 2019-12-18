@@ -7,12 +7,12 @@
 
 - (FCColorGradient *)backgroundGradient;
 - (NSString *)backingTagID;
-- (FCColor *)cardBackgroundColor;
+- (<FCForYouBridgedFeedGroup> *)bridgedGroup;
+- (<FCCardStyleProviding> *)cardStyle;
 - (NSDate *)creationDate;
 - (NSString *)ctaText;
+- (<FCCardStyleProviding> *)darkCardStyle;
 - (FCColorGradient *)darkStyleBackgroundGradient;
-- (FCColor *)darkStyleCardBackgroundColor;
-- (FCColorGradient *)darkStyleSauceGradient;
 - (FCColor *)darkStyleTitleColor;
 - (NTPBDiscoverMoreVideosInfo *)discoverMoreVideosInfo;
 - (FCFeedEdition *)edition;
@@ -21,14 +21,13 @@
 - (NSArray *)headlines;
 - (NSString *)identifier;
 - (NSArray *)issueIDs;
-- (<FCForYouMagazineFeedGroup> *)magazineGroup;
 - (unsigned long long)mergeID;
 - (unsigned long long)options;
-- (FCColorGradient *)sauceGradient;
 - (NSString *)sourceIdentifier;
 - (NSString *)subtitle;
 - (NSString *)title;
 - (FCColor *)titleColor;
+- (bool)usesPlaceholderHeadlines;
 - (NSArray *)videoPlaylistHeadlines;
 
 @end

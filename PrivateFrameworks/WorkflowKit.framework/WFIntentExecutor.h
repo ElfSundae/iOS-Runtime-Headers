@@ -52,5 +52,6 @@
 - (bool)skipResolveAndConfirm;
 - (void)startConnectionWithCompletionHandler:(id /* block */)arg1;
 - (void)startWithCompletionHandler:(id /* block */)arg1;
+- (void)updateIntentWithItemToConfirm:(id)arg1 forSlot:(id)arg2 onIntent:(id)arg3;
 
 @end

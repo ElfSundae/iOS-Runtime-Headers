@@ -3,6 +3,7 @@
  */
 
 @interface NewsUI2.MagazineFeedBlueprintLayoutBuilder : Swift._SwiftObject {
+    void assetManager;
     void baseStyler;
     void feedLayoutSolver;
     void groupTitleViewLayoutAttributesFactory;

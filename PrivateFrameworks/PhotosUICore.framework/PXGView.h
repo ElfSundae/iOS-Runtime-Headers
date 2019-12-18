@@ -122,6 +122,7 @@
 - (bool)itemWasRightClickedWithHitTestResult:(id)arg1 location:(struct CGPoint { double x1; double x2; })arg2;
 - (id)metalView;
 - (id /* block */)nextDidLayoutHandler;
+- (void)notifySelectedCellsChanged;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
 - (void)ppt_cleanUpAfterTest:(id)arg1 isScrollTest:(bool)arg2;
 - (id)ppt_currentTestOptions;

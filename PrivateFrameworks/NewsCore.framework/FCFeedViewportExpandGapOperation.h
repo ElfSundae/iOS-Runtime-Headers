@@ -41,7 +41,7 @@
 + (id)_sanitizeViewport:(id)arg1 context:(id)arg2 feedDescriptor:(id)arg3 configuration:(id)arg4;
 
 - (void).cxx_destruct;
-- (id)_groupEmitterWithIdentifier:(id)arg1;
+- (void)_fetchAssetsForInsertedGroup:(id)arg1 cachedOnly:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (id)bookmark;
 - (bool)cachedOnly;
 - (id)configuration;

@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NewsUI2.framework/NewsUI2
  */
 
-@interface NewsUI2.SpecialEventsNavigationObserver : NSObject <SXWebContentNavigationObserver> {
+@interface NewsUI2.SpecialEventsNavigationObserver : NSObject <SWNavigationObserver> {
     void onObservation;
 }
 

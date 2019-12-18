@@ -5,10 +5,16 @@
 @interface ATXActionStatistics : NSObject {
     NSMutableDictionary * _statisticsForParameters;
     double  _totalCoarseTimeOfDayCount;
+    double  _totalCoarseTimePOWLocationCount;
+    double  _totalCoarseTimePOWLocationOccurrences;
     double  _totalConfirms;
+    double  _totalConfirmsCoarseTimePOWLocationCount;
+    double  _totalConfirmsCoarseTimePOWLocationOccurrences;
     double  _totalConfirmsInLockscreen;
     double  _totalConfirmsInSpotlight;
     double  _totalConfirmsInSpotlightWithinMeanWindow;
+    double  _totalConfirmsSpecificTimeDOWLocationCount;
+    double  _totalConfirmsSpecificTimeDOWLocationOccurrences;
     double  _totalConfirmsTodayInLockscreen;
     double  _totalDayAndLocationCount;
     double  _totalDayAndLocationOccurrences;
@@ -36,10 +42,16 @@
     double  _totalPrevLocationCount;
     double  _totalPreviousLocationOccurrences;
     double  _totalRejects;
+    double  _totalRejectsCoarseTimePOWLocationCount;
+    double  _totalRejectsCoarseTimePOWLocationOccurrences;
     double  _totalRejectsInLockscreen;
     double  _totalRejectsInSpotlight;
     double  _totalRejectsInSpotlightWithinMeanWindow;
+    double  _totalRejectsSpecificTimeDOWLocationCount;
+    double  _totalRejectsSpecificTimeDOWLocationOccurrences;
     double  _totalRejectsTodayInLockscreen;
+    double  _totalSpecificTimeDOWLocationCount;
+    double  _totalSpecificTimeDOWLocationOccurrences;
     double  _totalThirtyMinuteWindowCount;
     double  _totalTimeAndDayAndLocationCount;
     double  _totalTimeAndDayAndLocationOccurrences;

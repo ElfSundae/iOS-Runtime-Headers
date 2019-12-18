@@ -20,7 +20,7 @@
 - (void)clear;
 - (int)countWhereA:(unsigned short)arg1 b:(unsigned short)arg2;
 - (void)decayByFactor:(float)arg1;
-- (void)decayWithHalfLife:(float)arg1;
+- (void)decayWithHalfLifeInDays:(float)arg1;
 - (void)deleteWhereA:(unsigned short)arg1 b:(unsigned short)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (float)entropyWhereA:(unsigned short)arg1 b:(unsigned short)arg2;

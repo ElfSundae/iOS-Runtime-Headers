@@ -14,6 +14,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)bumpPriorityOnQueue:(id)arg1 withCompletion:(id /* block */)arg2;
++ (void)flushFeedbackWithCompletion:(id /* block */)arg1;
 + (id)sharedManager;
 
 - (void).cxx_destruct;

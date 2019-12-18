@@ -52,6 +52,7 @@
 - (void)didUpdateLocationForFingerModel:(id)arg1;
 - (void)didUpdatePressStateForFingerModel:(id)arg1;
 - (void)didUpdateSelectedStateForFingerModel:(id)arg1;
+- (void)didUpdateShapeForFingerModel:(id)arg1;
 - (void)endUpdates;
 - (void)enumerateFingersUsingBlock:(id /* block */)arg1;
 - (id)fingerContainerView;

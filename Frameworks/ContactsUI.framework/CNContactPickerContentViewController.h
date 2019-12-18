@@ -32,6 +32,7 @@
     NSString * _prompt;
 }
 
+@property (nonatomic, readonly) UIBarButtonItem *addContactBarButtonItem;
 @property (nonatomic) bool allowsCancel;
 @property (nonatomic) bool allowsDeletion;
 @property (nonatomic) bool allowsEditing;
@@ -74,6 +75,7 @@
 - (void)_selectedProperty:(id)arg1;
 - (void)_updatePromptWithViewSize:(struct CGSize { double x1; double x2; })arg1 transitionCoordinator:(id)arg2;
 - (id)_validatePredicatesWithError:(id*)arg1;
+- (id)addContactBarButtonItem;
 - (bool)allowsCancel;
 - (bool)allowsDeletion;
 - (bool)allowsEditing;

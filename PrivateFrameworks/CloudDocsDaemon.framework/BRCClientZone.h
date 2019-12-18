@@ -6,6 +6,7 @@
     bool  _activated;
     NSMutableArray * _allItemsDidUploadTrackers;
     NSMutableIndexSet * _appliedTombstoneRanks;
+    NSMutableArray * _blocksWaitingOnCrossZoneMoveProcessing;
     UMUserSyncTask * _bubbleSyncTask;
     BRCCreateZoneAndSubscribeOperation * _createZoneOperation;
     NSObject<OS_dispatch_queue> * _createZoneQueue;
@@ -16,6 +17,8 @@
     NSMutableDictionary * _downloadedBlockToPerformForItemID;
     <NSObject> * _hasWorkDidUpdateObserver;
     bool  _isInitialCreation;
+    NSMutableSet * _itemIDsBlockedFromSyncForCZMProcessing;
+    NSMutableDictionary * _itemsBlockedByAssociationForCZMProcessing;
     NSDate * _lastAttemptedSyncDownDate;
     long long  _lastInsertedRank;
     NSDate * _lastSyncDownDate;
@@ -28,6 +31,7 @@
     NSMutableDictionary * _onDiskBlockToPerformForItemID;
     NSString * _osNameRequiredToSync;
     NSString * _ownerName;
+    NSMutableDictionary * _parentsOfCZMFaults;
     BRCThrottleBase * _readerThrottle;
     unsigned long long  _requestID;
     NSObject<OS_dispatch_source> * _resetTimer;
@@ -76,11 +80,13 @@
 @property (nonatomic, readonly) bool isForeground;
 @property (nonatomic, readonly) bool isPrivateZone;
 @property (nonatomic, readonly) bool isSharedZone;
+@property (nonatomic, readonly) NSSet *itemIDsBlockedFromSyncForCZMProcessing;
 @property (nonatomic, retain) NSDate *lastAttemptedSyncDownDate;
 @property (nonatomic, readonly) long long lastInsertedRank;
 @property (nonatomic, readonly) BRMangledID *mangledID;
 @property (nonatomic) bool needsSave;
 @property (nonatomic, readonly) NSString *osNameRequiredToSync;
+@property (nonatomic, readonly) NSDictionary *parentsOfCZMFaults;
 @property (nonatomic, readonly) NSMutableDictionary *plist;
 @property (nonatomic, readonly) BRCItemID *rootItemID;
 @property (nonatomic, retain) BRCServerZone *serverZone;
@@ -107,6 +113,7 @@
 - (void)_dumpRecursivePropertiesOfItemByRowID:(unsigned long long)arg1 context:(id)arg2 depth:(int)arg3;
 - (void)_enumerateFaultsWithBlock:(id /* block */)arg1 rowID:(unsigned long long)arg2 batchSize:(unsigned long long)arg3;
 - (struct PQLResultSet { Class x1; }*)_faultsEnumeratorFromRow:(unsigned long long)arg1 batchSize:(unsigned long long)arg2;
+- (void)_finishedProcessingItemThatMovedToThisZone:(id)arg1;
 - (void)_finishedReset:(unsigned long long)arg1 completionHandler:(id /* block */)arg2;
 - (void)_fixupMissingCrossMovedItems;
 - (void)_forDBUpgrade_setStateBits:(unsigned int)arg1 clearStateBits:(unsigned int)arg2;
@@ -121,12 +128,16 @@
 - (void)_performAfterResetServerAndClientTruthsAndUnlinkDataAndPurgeTheZone:(id /* block */)arg1;
 - (void)_performResetAndWantsUnlink:(bool)arg1 clientTruthBlock:(id /* block */)arg2 completionBlock:(id /* block */)arg3;
 - (void)_prepareForForegroundSyncDown;
+- (id)_refreshItemFromDB:(id)arg1;
 - (void)_removeAllShareAcceptanceBlocks;
 - (void)_removeDownloadedBlockToPerformForItemID:(id)arg1;
+- (void)_removeItemAndProcess:(id)arg1;
+- (void)_removeItemFromCZMProcessingIfNotAssociated:(id)arg1;
 - (void)_removeOnDiskBlockToPerformForItemID:(id)arg1;
 - (void)_removeTargetedAliasesWithCompletionBlock:(id /* block */)arg1;
 - (void)_reset:(unsigned long long)arg1 completionHandler:(id /* block */)arg2;
 - (bool)_resetItemsTable;
+- (void)_startDownloadingItemIfNecessary:(id)arg1;
 - (void)_startSync;
 - (void)_syncUpOfRecords:(id)arg1 createdAppLibraryNames:(id)arg2 didFinishWithError:(id)arg3;
 - (void)_t_addItemID:(id)arg1 blockedForSyncUpUntilOSName:(id)arg2;
@@ -220,6 +231,9 @@
 - (id)itemByRowID:(unsigned long long)arg1;
 - (id)itemByRowID:(unsigned long long)arg1 db:(id)arg2;
 - (id)itemCountPendingUploadOrSyncUpAndReturnError:(id*)arg1;
+- (void)itemCrossZoneMoved:(id)arg1 toParentID:(id)arg2;
+- (id)itemIDsBlockedFromSyncForCZMProcessing;
+- (void)itemMovedIntoShareInThisZone:(id)arg1 associatedItemID:(id)arg2;
 - (BOOL)itemTypeByItemID:(id)arg1 db:(id)arg2;
 - (struct PQLResultSet { Class x1; }*)itemsEnumeratorWithDB:(id)arg1;
 - (struct PQLResultSet { Class x1; }*)itemsParentedToThisZoneButLivingInAnOtherZone;
@@ -234,6 +248,7 @@
 - (void)notifyClient:(id)arg1 afterNextSyncDown:(id /* block */)arg2;
 - (id)osNameRequiredToSync;
 - (id)ownerName;
+- (id)parentsOfCZMFaults;
 - (void)performBlock:(id /* block */)arg1 whenItemWithIDIsDownloaded:(id)arg2;
 - (void)performBlock:(id /* block */)arg1 whenItemWithIDIsOnDisk:(id)arg2;
 - (void)performBlock:(id /* block */)arg1 whenSyncDownCompletesLookingForItemID:(id)arg2;
@@ -286,10 +301,12 @@
 - (unsigned int)state;
 - (bool)supportsKeepingClientItemsDuringReset;
 - (id)syncDeadlineSource;
+- (id)syncDownAnalyticsError;
 - (id)syncDownImmediately;
 - (void)syncDownOperation:(id)arg1 didFinishWithError:(id)arg2 status:(long long)arg3;
 - (unsigned int)syncState;
 - (id)syncThrottles;
+- (id)syncUpAnalyticsError;
 - (unsigned int)syncUpBatchSize;
 - (id)taskTracker;
 - (long long)throttleHashWithItemID:(id)arg1;
@@ -297,6 +314,7 @@
 - (void)updateWithPlist:(id)arg1;
 - (bool)validateItemsLoggingToFile:(struct __sFILE { char *x1; int x2; int x3; short x4; short x5; struct __sbuf { char *x_6_1_1; int x_6_1_2; } x6; int x7; void *x8; int (*x9)(); int (*x10)(); int (*x11)(); int (*x12)(); struct __sbuf { char *x_13_1_1; int x_13_1_2; } x13; struct __sFILEX {} *x14; int x15; unsigned char x16[3]; unsigned char x17[1]; struct __sbuf { char *x_18_1_1; int x_18_1_2; } x18; int x19; long long x20; }*)arg1 db:(id)arg2;
 - (bool)validateStructureLoggingToFile:(struct __sFILE { char *x1; int x2; int x3; short x4; short x5; struct __sbuf { char *x_6_1_1; int x_6_1_2; } x6; int x7; void *x8; int (*x9)(); int (*x10)(); int (*x11)(); int (*x12)(); struct __sbuf { char *x_13_1_1; int x_13_1_2; } x13; struct __sFILEX {} *x14; int x15; unsigned char x16[3]; unsigned char x17[1]; struct __sbuf { char *x_18_1_1; int x_18_1_2; } x18; int x19; long long x20; }*)arg1 db:(id)arg2;
+- (void)waitForCrossZoneMoveProcessingWithCompletion:(id /* block */)arg1;
 - (id)xattrForSignature:(id)arg1;
 - (id)xattrForSignature:(id)arg1 db:(id)arg2;
 - (id)zoneName;

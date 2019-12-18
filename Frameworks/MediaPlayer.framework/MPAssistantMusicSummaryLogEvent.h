@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 - (double)blockingSecureKeyLoadDuration;
 - (long long)eventCode;
+- (id)eventName;
 - (id)eventPayload;
 - (id)perceivedTotalStartupTime;
 - (void)setBlockingSecureKeyLoadDuration:(double)arg1;

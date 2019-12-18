@@ -48,6 +48,8 @@
     NSString * _relativePath;
     NSSet * _roots;
     BRCAccountSession * _session;
+    unsigned int  _sharedBookmarkResolved;
+    NSString * _sharedItemBookmark;
     long long  _size;
     NSString * _symlinkContent;
     unsigned short  _type;
@@ -101,6 +103,7 @@
 @property (nonatomic, readonly) NSData *quarantineInfo;
 @property (nonatomic, readonly) BRCRelativePath *root;
 @property (nonatomic, readonly) BRCAccountSession *session;
+@property (nonatomic, readonly) NSString *sharedItemBookmark;
 @property (nonatomic, readonly) long long size;
 @property (nonatomic, readonly) NSString *symlinkContent;
 @property (nonatomic) unsigned short type;
@@ -200,6 +203,7 @@
 - (void)setAppLibrary:(id)arg1;
 - (void)setItemScope:(unsigned char)arg1;
 - (void)setType:(unsigned short)arg1;
+- (id)sharedItemBookmark;
 - (long long)size;
 - (id)symlinkContent;
 - (unsigned short)type;

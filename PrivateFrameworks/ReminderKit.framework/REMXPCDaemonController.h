@@ -59,6 +59,7 @@
 - (void)setXpcConnection:(id)arg1;
 - (id)storeContainerToken;
 - (id)syncChangeTrackingPerformerWithReason:(id)arg1 errorHandler:(id /* block */)arg2;
+- (id)syncDebugPerformerWithErrorHandler:(id /* block */)arg1;
 - (id)syncDebugPerformerWithReason:(id)arg1 errorHandler:(id /* block */)arg2;
 - (id)syncIndexingPerformerWithReason:(id)arg1 errorHandler:(id /* block */)arg2;
 - (id)syncStorePerformerWithReason:(id)arg1 errorHandler:(id /* block */)arg2;

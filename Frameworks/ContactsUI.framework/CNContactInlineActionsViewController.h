@@ -49,6 +49,7 @@
 + (id)descriptorForRequiredKeys;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)actionItems;
 - (id)actionListDataSource;
 - (double)actionTypesInterspace;

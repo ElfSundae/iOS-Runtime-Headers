@@ -9,5 +9,6 @@
 - (id)pinInstructionsPrompt;
 - (void)setPIN:(id)arg1;
 - (bool)validatePIN:(id)arg1;
+- (void)viewWillAppear:(bool)arg1;
 
 @end

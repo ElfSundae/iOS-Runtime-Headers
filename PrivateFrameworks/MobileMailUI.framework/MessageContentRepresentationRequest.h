@@ -10,6 +10,7 @@
     }  _contentRepresentationLock;
     <EMContentItemRequestDelegate> * _delegate;
     EFFuture * _futureContentRepresentation;
+    _Atomic bool  _hasError;
     bool  _includeSuggestionItems;
     EFObservable<EFObserver> * _inputObservable;
     <EMCollectionItemID> * _itemID;
@@ -26,6 +27,7 @@
 @property (nonatomic, readonly) EMMessage *message;
 @property (nonatomic, readonly) EFFuture *messageFuture;
 @property (readonly) unsigned long long signpostID;
+@property (readonly) unsigned long long state;
 @property (readonly) Class superclass;
 
 + (id)defaultScheduler;
@@ -54,6 +56,7 @@
 - (void)retry;
 - (unsigned long long)signpostID;
 - (void)start;
+- (unsigned long long)state;
 - (void)updateItemID:(id)arg1 messageList:(id)arg2;
 - (id)waitForResult;
 

@@ -2,13 +2,17 @@
    Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
  */
 
-@interface AMSFinancePaymentSheetResponse : NSObject {
+@interface AMSFinancePaymentSheetResponse : NSObject <AMSFinancePerformable> {
     AMSFinanceAuthenticateResponse * _authenticateResponse;
     AMSPaymentSheetRequest * _paymentSheetRequest;
 }
 
 @property (nonatomic, readonly) AMSFinanceAuthenticateResponse *authenticateResponse;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) AMSPaymentSheetRequest *paymentSheetRequest;
+@property (readonly) Class superclass;
 
 + (id)_attributedStringForSalableInfoStringArray:(id)arg1 account:(id)arg2 shouldUppercase:(bool)arg3;
 + (id)_attributedStringForStringArray:(id)arg1 useGrey:(bool)arg2 account:(id)arg3 shouldUppercase:(bool)arg4;

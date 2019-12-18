@@ -25,6 +25,7 @@
 @property (nonatomic, retain) NSString *name;
 @property (nonatomic, retain) NSData *userDefinedValue;
 
++ (id)metricWithName:(id)arg1;
 + (id)metricWithName:(id)arg1 categoricalValue:(id)arg2;
 + (id)metricWithName:(id)arg1 doubleValue:(double)arg2;
 + (id)metricWithName:(id)arg1 integerValue:(long long)arg2;

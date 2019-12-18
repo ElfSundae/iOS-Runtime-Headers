@@ -2,16 +2,12 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaTurnInteraction : PBCodable <NSSecureCoding, SISchemaTurnInteraction> {
+@interface SISchemaTurnInteraction : PBCodable {
     NSString * _interactionId;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *interactionId;
 @property (nonatomic, readonly) NSData *jsonData;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;

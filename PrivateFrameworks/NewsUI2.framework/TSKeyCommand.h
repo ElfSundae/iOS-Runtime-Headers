@@ -5,7 +5,6 @@
 @interface TSKeyCommand : NSObject {
     void controller;
     void flags;
-    void invalidator;
     void key;
     void selector;
     void title;

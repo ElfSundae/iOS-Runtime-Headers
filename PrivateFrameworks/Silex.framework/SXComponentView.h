@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXComponentView : UIView <STTextCanvasRenderSource, SXAXAssistiveTechStatusChangeListener, SXComponentInteractable, SXTransitionableComponentView, UIGestureRecognizerDelegate> {
+@interface SXComponentView : UIView <SXAXAssistiveTechStatusChangeListener, SXComponentInteractable, SXTextCanvasRenderSource, SXTransitionableComponentView, UIGestureRecognizerDelegate> {
     <SXDOMObjectProviding> * _DOMObjectProvider;
     struct CGRect { 
         struct CGPoint { 

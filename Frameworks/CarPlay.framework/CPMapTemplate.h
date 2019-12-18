@@ -10,6 +10,8 @@
     bool  _hidesButtonsWithNavigationBar;
     NSArray * _mapButtons;
     <CPMapTemplateDelegate> * _mapDelegate;
+    <CPNavigationSessionProviding> * _navigationSessionProvider;
+    NAFuture * _navigationSessionProviderFuture;
     NSMutableDictionary * _postedBannerObjects;
     unsigned long long  _tripEstimateStyle;
     NSArray * _tripPreviews;
@@ -27,6 +29,8 @@
 @property (nonatomic, retain) NSArray *leadingNavigationBarButtons;
 @property (nonatomic, retain) NSArray *mapButtons;
 @property (nonatomic) <CPMapTemplateDelegate> *mapDelegate;
+@property (nonatomic, retain) <CPNavigationSessionProviding> *navigationSessionProvider;
+@property (nonatomic, retain) NAFuture *navigationSessionProviderFuture;
 @property (getter=isPanningInterfaceVisible, nonatomic, readonly) bool panningInterfaceVisible;
 @property (nonatomic, retain) NSMutableDictionary *postedBannerObjects;
 @property (readonly) Class superclass;
@@ -80,6 +84,8 @@
 - (bool)mapButton:(id)arg1 setImageSet:(id)arg2;
 - (id)mapButtons;
 - (id)mapDelegate;
+- (id)navigationSessionProvider;
+- (id)navigationSessionProviderFuture;
 - (id)postedBannerObjects;
 - (void)presentNavigationAlert:(id)arg1 animated:(bool)arg2;
 - (void)previewTripIdentifier:(id)arg1 usingRouteIdentifier:(id)arg2;
@@ -89,6 +95,8 @@
 - (void)setHidesButtonsWithNavigationBar:(bool)arg1;
 - (void)setMapButtons:(id)arg1;
 - (void)setMapDelegate:(id)arg1;
+- (void)setNavigationSessionProvider:(id)arg1;
+- (void)setNavigationSessionProviderFuture:(id)arg1;
 - (void)setPostedBannerObjects:(id)arg1;
 - (void)setTripEstimateStyle:(unsigned long long)arg1;
 - (void)showPanningInterfaceAnimated:(bool)arg1;

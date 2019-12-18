@@ -70,6 +70,7 @@
 - (void)pushSearchTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(id /* block */)arg5;
 - (id)remoteObjectProxy;
 - (void)requestBannerProviderWithReply:(id /* block */)arg1;
+- (void)requestNavigationProviderForMapTemplate:(id)arg1 withReply:(id /* block */)arg2;
 - (id)rootMapController;
 - (id)scene;
 - (id)sceneIdentifier;

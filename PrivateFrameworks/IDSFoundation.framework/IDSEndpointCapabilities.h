@@ -28,7 +28,7 @@
     BOOL  _supportsMediaV2;
     BOOL  _supportsOriginalTimestampOrderingV1;
     BOOL  _supportsPhotosExtensionV1;
-    BOOL  _supportsProtobufPayloadDataV1;
+    BOOL  _supportsProtobufPayloadDataV2;
     BOOL  _supportsScreenTimeV2;
     BOOL  _supportsStickersV1;
     BOOL  _supportsUpdateAttachmentsV1;

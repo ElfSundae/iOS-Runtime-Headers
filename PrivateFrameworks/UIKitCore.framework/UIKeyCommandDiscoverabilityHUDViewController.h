@@ -10,6 +10,7 @@
 @property (nonatomic, retain) UIKeyCommandDiscoverabilityHUDView *view;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_updateVisualStyle;
 - (void)animateOutWithCompletion:(id /* block */)arg1;
 - (void)dealloc;

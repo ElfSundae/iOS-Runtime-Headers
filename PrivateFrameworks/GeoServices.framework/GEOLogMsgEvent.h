@@ -7,6 +7,7 @@
     GEOLogMsgEventClientACSuggestions * _clientAcSuggestions;
     GEOLogMsgEventCommuteWindow * _commuteWindow;
     GEOLogMsgEventDirections * _directionsEvent;
+    GEOLogMsgEventDirectionsRequestDetails * _directionsRequestDetails;
     GEOLogMsgEventDisplayAnalytic * _displayAnalytic;
     int  _eventType;
     struct { 
@@ -16,6 +17,7 @@
         unsigned int read_clientAcSuggestions : 1; 
         unsigned int read_commuteWindow : 1; 
         unsigned int read_directionsEvent : 1; 
+        unsigned int read_directionsRequestDetails : 1; 
         unsigned int read_displayAnalytic : 1; 
         unsigned int read_fullNavTrace : 1; 
         unsigned int read_genericAppErrorEvent : 1; 
@@ -53,6 +55,7 @@
         unsigned int wrote_clientAcSuggestions : 1; 
         unsigned int wrote_commuteWindow : 1; 
         unsigned int wrote_directionsEvent : 1; 
+        unsigned int wrote_directionsRequestDetails : 1; 
         unsigned int wrote_displayAnalytic : 1; 
         unsigned int wrote_fullNavTrace : 1; 
         unsigned int wrote_genericAppErrorEvent : 1; 
@@ -134,6 +137,7 @@
 @property (nonatomic, retain) GEOLogMsgEventClientACSuggestions *clientAcSuggestions;
 @property (nonatomic, retain) GEOLogMsgEventCommuteWindow *commuteWindow;
 @property (nonatomic, retain) GEOLogMsgEventDirections *directionsEvent;
+@property (nonatomic, retain) GEOLogMsgEventDirectionsRequestDetails *directionsRequestDetails;
 @property (nonatomic, retain) GEOLogMsgEventDisplayAnalytic *displayAnalytic;
 @property (nonatomic) int eventType;
 @property (nonatomic, retain) GEOLogMsgEventFullNavTrace *fullNavTrace;
@@ -143,6 +147,7 @@
 @property (nonatomic, readonly) bool hasClientAcSuggestions;
 @property (nonatomic, readonly) bool hasCommuteWindow;
 @property (nonatomic, readonly) bool hasDirectionsEvent;
+@property (nonatomic, readonly) bool hasDirectionsRequestDetails;
 @property (nonatomic, readonly) bool hasDisplayAnalytic;
 @property (nonatomic) bool hasEventType;
 @property (nonatomic, readonly) bool hasFullNavTrace;
@@ -218,6 +223,7 @@
 - (void)_readClientAcSuggestions;
 - (void)_readCommuteWindow;
 - (void)_readDirectionsEvent;
+- (void)_readDirectionsRequestDetails;
 - (void)_readDisplayAnalytic;
 - (void)_readFullNavTrace;
 - (void)_readGenericAppErrorEvent;
@@ -261,6 +267,7 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)directionsEvent;
+- (id)directionsRequestDetails;
 - (id)displayAnalytic;
 - (int)eventType;
 - (id)eventTypeAsString:(int)arg1;
@@ -271,6 +278,7 @@
 - (bool)hasClientAcSuggestions;
 - (bool)hasCommuteWindow;
 - (bool)hasDirectionsEvent;
+- (bool)hasDirectionsRequestDetails;
 - (bool)hasDisplayAnalytic;
 - (bool)hasEventType;
 - (bool)hasFullNavTrace;
@@ -334,6 +342,7 @@
 - (void)setClientAcSuggestions:(id)arg1;
 - (void)setCommuteWindow:(id)arg1;
 - (void)setDirectionsEvent:(id)arg1;
+- (void)setDirectionsRequestDetails:(id)arg1;
 - (void)setDisplayAnalytic:(id)arg1;
 - (void)setEventType:(int)arg1;
 - (void)setFullNavTrace:(id)arg1;

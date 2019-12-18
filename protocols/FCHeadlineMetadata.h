@@ -10,6 +10,7 @@
 
 @optional
 
+- (NSString *)shortExcerpt;
 - (NSString *)title;
 
 @end

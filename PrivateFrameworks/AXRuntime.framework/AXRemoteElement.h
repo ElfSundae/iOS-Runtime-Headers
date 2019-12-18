@@ -73,6 +73,10 @@
 - (id)uuid;
 - (unsigned long long)uuidHash;
 
+// Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
+
+- (id)_accessibilityNextElementsForSpeakThis;
+
 // Image: /System/Library/PrivateFrameworks/UIAccessibility.framework/UIAccessibility
 
 - (bool)_accessibilityEnumerateSiblingsWithParent:(id*)arg1 options:(id)arg2 usingBlock:(id /* block */)arg3;

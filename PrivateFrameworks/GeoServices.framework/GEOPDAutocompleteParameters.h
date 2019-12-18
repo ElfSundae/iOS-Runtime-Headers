@@ -7,15 +7,18 @@
     GEOPDAutocompleteParametersAllEntries * _allEntries;
     GEOPDAutocompleteParametersAllEntriesWithBrowse * _allEntriesWithBrowse;
     GEOPDAutocompleteFilter * _autocompleteFilter;
+    GEOPDAutocompleteSessionData * _autocompleteSessionData;
     GEOPDAutocompleteParametersBrandProfileSearch * _brandProfileSearch;
     struct { 
         unsigned int has_requestType : 1; 
         unsigned int has_shouldPopulateMapsIdentifier : 1; 
+        unsigned int has_supportAutocompleteSessionData : 1; 
         unsigned int read_unknownFields : 1; 
         unsigned int read_addressOnly : 1; 
         unsigned int read_allEntriesWithBrowse : 1; 
         unsigned int read_allEntries : 1; 
         unsigned int read_autocompleteFilter : 1; 
+        unsigned int read_autocompleteSessionData : 1; 
         unsigned int read_brandProfileSearch : 1; 
         unsigned int read_fullEntries : 1; 
         unsigned int read_localitiesAndLandmarks : 1; 
@@ -28,6 +31,7 @@
         unsigned int wrote_allEntriesWithBrowse : 1; 
         unsigned int wrote_allEntries : 1; 
         unsigned int wrote_autocompleteFilter : 1; 
+        unsigned int wrote_autocompleteSessionData : 1; 
         unsigned int wrote_brandProfileSearch : 1; 
         unsigned int wrote_fullEntries : 1; 
         unsigned int wrote_localitiesAndLandmarks : 1; 
@@ -37,6 +41,7 @@
         unsigned int wrote_venueSearch : 1; 
         unsigned int wrote_requestType : 1; 
         unsigned int wrote_shouldPopulateMapsIdentifier : 1; 
+        unsigned int wrote_supportAutocompleteSessionData : 1; 
     }  _flags;
     GEOPDAutocompleteParametersFullEntriesOnly * _fullEntries;
     GEOPDAutocompleteParametersLocalitiesAndLandmarks * _localitiesAndLandmarks;
@@ -51,6 +56,7 @@
     int  _requestType;
     bool  _shouldPopulateMapsIdentifier;
     GEOPDAutocompleteParametersSiriSearch * _siriSearch;
+    bool  _supportAutocompleteSessionData;
     PBUnknownFields * _unknownFields;
     GEOPDAutocompleteParametersVenueSearch * _venueSearch;
 }
@@ -59,12 +65,14 @@
 @property (nonatomic, retain) GEOPDAutocompleteParametersAllEntries *allEntries;
 @property (nonatomic, retain) GEOPDAutocompleteParametersAllEntriesWithBrowse *allEntriesWithBrowse;
 @property (nonatomic, retain) GEOPDAutocompleteFilter *autocompleteFilter;
+@property (nonatomic, retain) GEOPDAutocompleteSessionData *autocompleteSessionData;
 @property (nonatomic, retain) GEOPDAutocompleteParametersBrandProfileSearch *brandProfileSearch;
 @property (nonatomic, retain) GEOPDAutocompleteParametersFullEntriesOnly *fullEntries;
 @property (nonatomic, readonly) bool hasAddressOnly;
 @property (nonatomic, readonly) bool hasAllEntries;
 @property (nonatomic, readonly) bool hasAllEntriesWithBrowse;
 @property (nonatomic, readonly) bool hasAutocompleteFilter;
+@property (nonatomic, readonly) bool hasAutocompleteSessionData;
 @property (nonatomic, readonly) bool hasBrandProfileSearch;
 @property (nonatomic, readonly) bool hasFullEntries;
 @property (nonatomic, readonly) bool hasLocalitiesAndLandmarks;
@@ -73,6 +81,7 @@
 @property (nonatomic) bool hasRequestType;
 @property (nonatomic) bool hasShouldPopulateMapsIdentifier;
 @property (nonatomic, readonly) bool hasSiriSearch;
+@property (nonatomic) bool hasSupportAutocompleteSessionData;
 @property (nonatomic, readonly) bool hasVenueSearch;
 @property (nonatomic, retain) GEOPDAutocompleteParametersLocalitiesAndLandmarks *localitiesAndLandmarks;
 @property (nonatomic, retain) GEOPDAutocompleteParametersOfflineRegionSearch *offlineRegionSearch;
@@ -80,6 +89,7 @@
 @property (nonatomic) int requestType;
 @property (nonatomic) bool shouldPopulateMapsIdentifier;
 @property (nonatomic, retain) GEOPDAutocompleteParametersSiriSearch *siriSearch;
+@property (nonatomic) bool supportAutocompleteSessionData;
 @property (nonatomic, readonly) PBUnknownFields *unknownFields;
 @property (nonatomic, retain) GEOPDAutocompleteParametersVenueSearch *venueSearch;
 
@@ -91,6 +101,7 @@
 - (void)_readAllEntries;
 - (void)_readAllEntriesWithBrowse;
 - (void)_readAutocompleteFilter;
+- (void)_readAutocompleteSessionData;
 - (void)_readBrandProfileSearch;
 - (void)_readFullEntries;
 - (void)_readLocalitiesAndLandmarks;
@@ -102,6 +113,7 @@
 - (id)allEntries;
 - (id)allEntriesWithBrowse;
 - (id)autocompleteFilter;
+- (id)autocompleteSessionData;
 - (id)brandProfileSearch;
 - (void)clearSensitiveFields;
 - (void)clearUnknownFields:(bool)arg1;
@@ -114,6 +126,7 @@
 - (bool)hasAllEntries;
 - (bool)hasAllEntriesWithBrowse;
 - (bool)hasAutocompleteFilter;
+- (bool)hasAutocompleteSessionData;
 - (bool)hasBrandProfileSearch;
 - (bool)hasFullEntries;
 - (bool)hasLocalitiesAndLandmarks;
@@ -122,6 +135,7 @@
 - (bool)hasRequestType;
 - (bool)hasShouldPopulateMapsIdentifier;
 - (bool)hasSiriSearch;
+- (bool)hasSupportAutocompleteSessionData;
 - (bool)hasVenueSearch;
 - (unsigned long long)hash;
 - (id)init;
@@ -139,19 +153,23 @@
 - (void)setAllEntries:(id)arg1;
 - (void)setAllEntriesWithBrowse:(id)arg1;
 - (void)setAutocompleteFilter:(id)arg1;
+- (void)setAutocompleteSessionData:(id)arg1;
 - (void)setBrandProfileSearch:(id)arg1;
 - (void)setFullEntries:(id)arg1;
 - (void)setHasRequestType:(bool)arg1;
 - (void)setHasShouldPopulateMapsIdentifier:(bool)arg1;
+- (void)setHasSupportAutocompleteSessionData:(bool)arg1;
 - (void)setLocalitiesAndLandmarks:(id)arg1;
 - (void)setOfflineRegionSearch:(id)arg1;
 - (void)setPoiAddressOnly:(id)arg1;
 - (void)setRequestType:(int)arg1;
 - (void)setShouldPopulateMapsIdentifier:(bool)arg1;
 - (void)setSiriSearch:(id)arg1;
+- (void)setSupportAutocompleteSessionData:(bool)arg1;
 - (void)setVenueSearch:(id)arg1;
 - (bool)shouldPopulateMapsIdentifier;
 - (id)siriSearch;
+- (bool)supportAutocompleteSessionData;
 - (id)unknownFields;
 - (id)venueSearch;
 - (void)writeTo:(id)arg1;

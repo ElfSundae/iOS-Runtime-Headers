@@ -8,8 +8,11 @@
     void dataManager;
     void delegate;
     void followingManager;
+    void insertAdvertisementBlueprintModifier;
+    void interstitialAdManager;
     void pageBlueprintFactory;
-    void pageBlueprintProvider;
+    void pageBlueprintManager;
+    void pageTracker;
     void sharingIntentFactory;
 }
 

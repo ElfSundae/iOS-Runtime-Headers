@@ -8,9 +8,10 @@
 - (bool)accessibilityShouldScrollForScrollViewController:(SXScrollViewController *)arg1;
 - (bool)accessibilityShouldScrollForScrollViewController:(SXScrollViewController *)arg1 defaultValue:(bool)arg2;
 - (double)navigationBarHeightForScrollViewController:(SXScrollViewController *)arg1;
+- (void)scrollViewController:(SXScrollViewController *)arg1 didApplyDocumentStyle:(id <SXDocumentStyle>)arg2;
 - (void)scrollViewController:(SXScrollViewController *)arg1 enableNavigation:(bool)arg2;
 - (bool)scrollViewController:(SXScrollViewController *)arg1 shouldOccludeAccessibilityElement:(id)arg2;
-- (void)scrollViewController:(SXScrollViewController *)arg1 triggerAction:(SXAction *)arg2;
+- (void)scrollViewController:(SXScrollViewController *)arg1 triggerAction:(id <SXAction>)arg2;
 - (void)scrollViewControllerDidLayoutContent:(SXScrollViewController *)arg1;
 - (void)scrollViewControllerDidScroll:(SXScrollViewController *)arg1;
 - (void)scrollViewControllerDidStopScrolling:(SXScrollViewController *)arg1;

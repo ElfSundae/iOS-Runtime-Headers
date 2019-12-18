@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/CarKit.framework/CarKit
  */
 
-@interface CRCarPlayCapabilities : NSObject {
+@interface CRCarPlayCapabilities : NSObject <NSSecureCoding> {
     NSValue * _dashboardRoundedCorners;
     unsigned long long  _disabledFeature;
     long long  _nowPlayingAlbumArtMode;
@@ -23,10 +23,14 @@
 + (void)_resetCapabilitiesGlobalDomain;
 + (id)capabilitiesIdentifier;
 + (id)capabilitiesVersion;
++ (id)carPlayCapabilitiesCache;
 + (id)fetchCarCapabilities;
++ (void)invalidateCarPlayCapabilitiesCache;
 + (id)newCapabilitiesFromGlobalDomain;
 + (void)setCapabilitiesIdentifier:(id)arg1;
 + (void)setCapabilitiesVersion:(id)arg1;
++ (void)setCarPlayCapabilitiesCache:(id)arg1;
++ (bool)supportsSecureCoding;
 + (void)waitForCarCapabilitiesValues;
 
 - (void).cxx_destruct;
@@ -35,8 +39,10 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)disabledFeature;
+- (void)encodeWithCoder:(id)arg1;
 - (id)informativeText;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithDictionaryRepresentation:(id)arg1;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToCapabilities:(id)arg1;

@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INInteraction : NSObject <CRContent, INFileEnumerable, INImageProxyInjecting, INInteractionExport, INKeyImageProducing, NSCopying, NSSecureCoding> {
+@interface INInteraction : NSObject <CRContent, INEnumerable, INImageProxyInjecting, INInteractionExport, INKeyImageProducing, NSCopying, NSSecureCoding> {
     NSUUID * _contextExtensionUUID;
     NSDateInterval * _dateInterval;
     long long  _direction;
@@ -55,8 +55,7 @@
 - (unsigned long long)_indexingHash;
 - (id)_init;
 - (void)_injectProxiesForImages:(id /* block */)arg1 completion:(id /* block */)arg2;
-- (void)_intents_enumerateFileURLsWithBlock:(id /* block */)arg1 mutate:(bool)arg2;
-- (void)_intents_enumerateFilesWithBlock:(id /* block */)arg1 mutate:(bool)arg2;
+- (bool)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(id /* block */)arg2;
 - (id)_keyImage;
 - (id)_searchableItem;
 - (id)_searchableItemIncludingData:(bool)arg1;

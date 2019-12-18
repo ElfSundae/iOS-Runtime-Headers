@@ -3,6 +3,7 @@
  */
 
 @interface EDSearchableIndexBudgetConfiguration : NSObject <EFPubliclyDescribable> {
+    bool  _allowBacklogIndexingOnPower;
     bool  _autoStartMaintenanceIndexing;
     bool  _enableActivityBasedScheduling;
     long long  _numberOfItemsToIndexOnResume;
@@ -10,6 +11,7 @@
     double  _time;
 }
 
+@property (nonatomic) bool allowBacklogIndexingOnPower;
 @property (nonatomic) bool autoStartMaintenanceIndexing;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -22,16 +24,19 @@
 @property (nonatomic, readonly) double time;
 
 + (id)defaultConfiguration;
++ (id)nonSchedulingBudgetConfiguration;
 
+- (bool)allowBacklogIndexingOnPower;
 - (bool)autoStartMaintenanceIndexing;
 - (id)description;
 - (id)ef_publicDescription;
 - (bool)enableActivityBasedScheduling;
 - (id)init;
 - (id)initWithTime:(double)arg1 periodDuration:(double)arg2 numberOfItemsToIndexOnResume:(long long)arg3;
-- (id)initWithTime:(double)arg1 periodDuration:(double)arg2 numberOfItemsToIndexOnResume:(long long)arg3 enableActivityBasedScheduling:(bool)arg4 autoStartMaintenanceIndexing:(bool)arg5;
+- (id)initWithTime:(double)arg1 periodDuration:(double)arg2 numberOfItemsToIndexOnResume:(long long)arg3 enableActivityBasedScheduling:(bool)arg4 autoStartMaintenanceIndexing:(bool)arg5 allowBacklogIndexingOnPower:(bool)arg6;
 - (long long)numberOfItemsToIndexOnResume;
 - (double)periodDuration;
+- (void)setAllowBacklogIndexingOnPower:(bool)arg1;
 - (void)setAutoStartMaintenanceIndexing:(bool)arg1;
 - (void)setEnableActivityBasedScheduling:(bool)arg1;
 - (double)time;

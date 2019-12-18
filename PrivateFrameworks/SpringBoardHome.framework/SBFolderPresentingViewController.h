@@ -15,6 +15,7 @@
 @property (nonatomic, readonly) SBFolderContainerView *view;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (unsigned long long)backgroundEffect;
 - (id)currentFolderAnimator;
 - (void)dismissPresentedFolderControllerAnimated:(bool)arg1 completion:(id /* block */)arg2;

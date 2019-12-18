@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/NewsUI.framework/NewsUI
  */
 
-@interface NUReachabilityProvider : NSObject <FCNetworkReachabilityObserving, SXReachabilityProvider> {
+@interface NUReachabilityProvider : NSObject <FCNetworkReachabilityObserving, SWReachabilityProvider> {
     FCNetworkReachability * _networkReachability;
     NSHashTable * _observers;
 }

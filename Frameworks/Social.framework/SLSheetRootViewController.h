@@ -24,6 +24,7 @@
 @property (nonatomic, readonly) UITableView *tableView;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (double)_preferredTableViewHeight;
 - (void)_updateCell:(id)arg1 withConfigurationItem:(id)arg2;
 - (void)_updateCellForConfigurationItem:(id)arg1;

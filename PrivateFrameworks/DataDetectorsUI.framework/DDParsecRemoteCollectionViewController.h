@@ -13,6 +13,7 @@
 + (id)serviceViewControllerInterface;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (bool)canBecomeFirstResponder;
 - (void)getStatusBarHidden:(id /* block */)arg1;
 - (id)hostSideDelegate;

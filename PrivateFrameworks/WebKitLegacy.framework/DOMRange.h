@@ -72,14 +72,6 @@
 - (id)toString;
 - (id)webArchive;
 
-// Image: /System/Library/Frameworks/MessageUI.framework/MessageUI
-
-- (id)mf_fileAttachments;
-- (id)mf_firstNode;
-- (void)mf_getBlockBoundaryParent:(id*)arg1 nextSibling:(id*)arg2 atStart:(bool)arg3;
-- (void)mf_hoistRange;
-- (id)mf_lastNode;
-
 // Image: /System/Library/PrivateFrameworks/UIKitCore.framework/UIKitCore
 
 - (id)asDomNode;

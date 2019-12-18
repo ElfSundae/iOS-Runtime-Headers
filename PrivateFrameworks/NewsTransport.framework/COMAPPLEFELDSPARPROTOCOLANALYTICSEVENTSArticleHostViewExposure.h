@@ -32,6 +32,7 @@
     int  _coverArticleDisplayRank;
     int  _coverArticleFeatureType;
     NSString * _creativeId;
+    NSString * _curatedBatchId;
     int  _curatedContentType;
     bool  _didBounce;
     bool  _didExpandDuringView;
@@ -97,6 +98,7 @@
         unsigned int groupLocation : 1; 
         unsigned int groupPresentationReason : 1; 
         unsigned int groupType : 1; 
+        unsigned int heroArticleType : 1; 
         unsigned int loadFailureReason : 1; 
         unsigned int maxActiveTimeSpent : 1; 
         unsigned int maxVerticalScrollPositionEnding : 1; 
@@ -143,6 +145,7 @@
         unsigned int subscriptionOnlyArticle : 1; 
         unsigned int viewFromNotificationDirectOpen : 1; 
     }  _has;
+    int  _heroArticleType;
     NSString * _iadNativeAd;
     NSString * _iadNativeCampaign;
     NSString * _iadNativeCampaignAd;
@@ -217,6 +220,7 @@
     double  _userFeedbackScore;
     NSString * _viewFrameInScreen;
     bool  _viewFromNotificationDirectOpen;
+    NSString * _webEmbedId;
     int  _widgetArticleRank;
     COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSWidgetEngagement * _widgetEngagement;
     int  _widgetSection;
@@ -252,6 +256,7 @@
 @property (nonatomic) int coverArticleDisplayRank;
 @property (nonatomic) int coverArticleFeatureType;
 @property (nonatomic, retain) NSString *creativeId;
+@property (nonatomic, retain) NSString *curatedBatchId;
 @property (nonatomic) int curatedContentType;
 @property (nonatomic) bool didBounce;
 @property (nonatomic) bool didExpandDuringView;
@@ -306,6 +311,7 @@
 @property (nonatomic) bool hasCoverArticleDisplayRank;
 @property (nonatomic) bool hasCoverArticleFeatureType;
 @property (nonatomic, readonly) bool hasCreativeId;
+@property (nonatomic, readonly) bool hasCuratedBatchId;
 @property (nonatomic) bool hasCuratedContentType;
 @property (nonatomic) bool hasDidBounce;
 @property (nonatomic) bool hasDidExpandDuringView;
@@ -330,6 +336,7 @@
 @property (nonatomic) bool hasGroupPresentationReason;
 @property (nonatomic) bool hasGroupType;
 @property (nonatomic, readonly) bool hasGroupViewExposureId;
+@property (nonatomic) bool hasHeroArticleType;
 @property (nonatomic, readonly) bool hasIadNativeAd;
 @property (nonatomic, readonly) bool hasIadNativeCampaign;
 @property (nonatomic, readonly) bool hasIadNativeCampaignAd;
@@ -402,10 +409,12 @@
 @property (nonatomic) bool hasUserFeedbackScore;
 @property (nonatomic, readonly) bool hasViewFrameInScreen;
 @property (nonatomic) bool hasViewFromNotificationDirectOpen;
+@property (nonatomic, readonly) bool hasWebEmbedId;
 @property (nonatomic) bool hasWidgetArticleRank;
 @property (nonatomic, readonly) bool hasWidgetEngagement;
 @property (nonatomic) bool hasWidgetSection;
 @property (nonatomic) bool hasWidgetSectionArticleRank;
+@property (nonatomic) int heroArticleType;
 @property (nonatomic, retain) NSString *iadNativeAd;
 @property (nonatomic, retain) NSString *iadNativeCampaign;
 @property (nonatomic, retain) NSString *iadNativeCampaignAd;
@@ -480,6 +489,7 @@
 @property (nonatomic) double userFeedbackScore;
 @property (nonatomic, retain) NSString *viewFrameInScreen;
 @property (nonatomic) bool viewFromNotificationDirectOpen;
+@property (nonatomic, retain) NSString *webEmbedId;
 @property (nonatomic) int widgetArticleRank;
 @property (nonatomic, retain) COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSWidgetEngagement *widgetEngagement;
 @property (nonatomic) int widgetSection;
@@ -504,6 +514,7 @@
 - (int)StringAsGroupLocation:(id)arg1;
 - (int)StringAsGroupPresentationReason:(id)arg1;
 - (int)StringAsGroupType:(id)arg1;
+- (int)StringAsHeroArticleType:(id)arg1;
 - (int)StringAsLoadFailureReason:(id)arg1;
 - (int)StringAsModuleEventType:(id)arg1;
 - (int)StringAsModuleLocation:(id)arg1;
@@ -557,6 +568,7 @@
 - (int)coverArticleFeatureType;
 - (id)coverArticleFeatureTypeAsString:(int)arg1;
 - (id)creativeId;
+- (id)curatedBatchId;
 - (int)curatedContentType;
 - (id)curatedContentTypeAsString:(int)arg1;
 - (id)description;
@@ -624,6 +636,7 @@
 - (bool)hasCoverArticleDisplayRank;
 - (bool)hasCoverArticleFeatureType;
 - (bool)hasCreativeId;
+- (bool)hasCuratedBatchId;
 - (bool)hasCuratedContentType;
 - (bool)hasDidBounce;
 - (bool)hasDidExpandDuringView;
@@ -648,6 +661,7 @@
 - (bool)hasGroupPresentationReason;
 - (bool)hasGroupType;
 - (bool)hasGroupViewExposureId;
+- (bool)hasHeroArticleType;
 - (bool)hasIadNativeAd;
 - (bool)hasIadNativeCampaign;
 - (bool)hasIadNativeCampaignAd;
@@ -720,11 +734,14 @@
 - (bool)hasUserFeedbackScore;
 - (bool)hasViewFrameInScreen;
 - (bool)hasViewFromNotificationDirectOpen;
+- (bool)hasWebEmbedId;
 - (bool)hasWidgetArticleRank;
 - (bool)hasWidgetEngagement;
 - (bool)hasWidgetSection;
 - (bool)hasWidgetSectionArticleRank;
 - (unsigned long long)hash;
+- (int)heroArticleType;
+- (id)heroArticleTypeAsString:(int)arg1;
 - (id)iadNativeAd;
 - (id)iadNativeCampaign;
 - (id)iadNativeCampaignAd;
@@ -826,6 +843,7 @@
 - (void)setCoverArticleDisplayRank:(int)arg1;
 - (void)setCoverArticleFeatureType:(int)arg1;
 - (void)setCreativeId:(id)arg1;
+- (void)setCuratedBatchId:(id)arg1;
 - (void)setCuratedContentType:(int)arg1;
 - (void)setDidBounce:(bool)arg1;
 - (void)setDidExpandDuringView:(bool)arg1;
@@ -889,6 +907,7 @@
 - (void)setHasGroupLocation:(bool)arg1;
 - (void)setHasGroupPresentationReason:(bool)arg1;
 - (void)setHasGroupType:(bool)arg1;
+- (void)setHasHeroArticleType:(bool)arg1;
 - (void)setHasIsBreakingNewsArticle:(bool)arg1;
 - (void)setHasIsCoverArticle:(bool)arg1;
 - (void)setHasIsDigitalReplicaAd:(bool)arg1;
@@ -935,6 +954,7 @@
 - (void)setHasWidgetArticleRank:(bool)arg1;
 - (void)setHasWidgetSection:(bool)arg1;
 - (void)setHasWidgetSectionArticleRank:(bool)arg1;
+- (void)setHeroArticleType:(int)arg1;
 - (void)setIadNativeAd:(id)arg1;
 - (void)setIadNativeCampaign:(id)arg1;
 - (void)setIadNativeCampaignAd:(id)arg1;
@@ -1009,6 +1029,7 @@
 - (void)setUserFeedbackScore:(double)arg1;
 - (void)setViewFrameInScreen:(id)arg1;
 - (void)setViewFromNotificationDirectOpen:(bool)arg1;
+- (void)setWebEmbedId:(id)arg1;
 - (void)setWidgetArticleRank:(int)arg1;
 - (void)setWidgetEngagement:(id)arg1;
 - (void)setWidgetSection:(int)arg1;
@@ -1032,6 +1053,7 @@
 - (double)userFeedbackScore;
 - (id)viewFrameInScreen;
 - (bool)viewFromNotificationDirectOpen;
+- (id)webEmbedId;
 - (int)widgetArticleRank;
 - (id)widgetEngagement;
 - (int)widgetSection;

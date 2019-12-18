@@ -3,7 +3,7 @@
  */
 
 @interface WFPBRunActionEvent : PBCodable <NSCopying> {
-    NSString * _actionName;
+    NSString * _actionIdentifier;
     bool  _completed;
     struct { 
         unsigned int source : 1; 
@@ -14,9 +14,9 @@
     int  _source;
 }
 
-@property (nonatomic, retain) NSString *actionName;
+@property (nonatomic, retain) NSString *actionIdentifier;
 @property (nonatomic) bool completed;
-@property (nonatomic, readonly) bool hasActionName;
+@property (nonatomic, readonly) bool hasActionIdentifier;
 @property (nonatomic) bool hasCompleted;
 @property (nonatomic, readonly) bool hasKey;
 @property (nonatomic, readonly) bool hasRunSource;
@@ -27,13 +27,13 @@
 
 - (void).cxx_destruct;
 - (int)StringAsSource:(id)arg1;
-- (id)actionName;
+- (id)actionIdentifier;
 - (bool)completed;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (bool)hasActionName;
+- (bool)hasActionIdentifier;
 - (bool)hasCompleted;
 - (bool)hasKey;
 - (bool)hasRunSource;
@@ -44,7 +44,7 @@
 - (void)mergeFrom:(id)arg1;
 - (bool)readFrom:(id)arg1;
 - (id)runSource;
-- (void)setActionName:(id)arg1;
+- (void)setActionIdentifier:(id)arg1;
 - (void)setCompleted:(bool)arg1;
 - (void)setHasCompleted:(bool)arg1;
 - (void)setHasSource:(bool)arg1;

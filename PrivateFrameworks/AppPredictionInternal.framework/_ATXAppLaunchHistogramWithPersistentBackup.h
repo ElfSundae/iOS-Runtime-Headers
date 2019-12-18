@@ -18,7 +18,7 @@
 - (void)addLaunchWithBundleId:(id)arg1 elapsedTime:(double)arg2 weight:(float)arg3;
 - (id)datastore;
 - (void)decayByFactor:(double)arg1;
-- (void)decayWithHalfLife:(double)arg1;
+- (void)decayWithHalfLifeInDays:(double)arg1;
 - (void)flush;
 - (long long)histogramType;
 - (id)initWithDataStore:(id)arg1 histogramType:(long long)arg2;

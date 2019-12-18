@@ -107,6 +107,8 @@
 - (void)_didRemoveRecipient:(id)arg1;
 - (void)_ensureAddButton;
 - (void)_ensureInactiveTextView;
+- (bool)_hasDowntimeBlockedRecipients;
+- (bool)_hasRecipientsWithPresentationOptions:(unsigned long long)arg1;
 - (bool)_hasUnsafeRecipients;
 - (void)_insertAtomAttachment:(id)arg1 andReplaceCharactersInRange:(struct _NSRange { unsigned long long x1; unsigned long long x2; })arg2;
 - (void)_insertAtomAttachment:(id)arg1 atCharacterIndex:(unsigned long long)arg2;

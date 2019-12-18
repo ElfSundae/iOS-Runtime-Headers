@@ -49,6 +49,7 @@
     NSData * _thumbnailData;
     bool  _timeLapse;
     unsigned long long  _uTime;
+    bool  _useExtensionIcon;
     long long  _width;
 }
 
@@ -95,12 +96,12 @@
 @property (nonatomic, copy) NSData *thumbnailData;
 @property (nonatomic) bool timeLapse;
 @property unsigned long long uTime;
+@property (nonatomic) bool useExtensionIcon;
 @property (nonatomic) long long width;
 
 // Image: /System/Library/Frameworks/ImageCaptureCore.framework/ImageCaptureCore
 
 - (void)addSidecarFile:(id)arg1;
-- (void)addSubImageDict:(id)arg1;
 - (id)base;
 - (bool)burstFavorite;
 - (bool)burstPicked;
@@ -211,7 +212,7 @@
 - (void)setImgHasThumbnail:(bool)arg1;
 - (void)setImgOrientation:(unsigned long long)arg1;
 - (void)setImgSpatialOverCaptureGroupID:(id)arg1;
-- (void)setKeywordPropertiesFromMetadata;
+- (void)setKeywordPropertiesFromDict:(id)arg1;
 - (void)setMediaData:(id)arg1;
 - (void)setMediaMetadata:(unsigned long long)arg1;
 - (bool)setMetadata:(id)arg1;
@@ -233,10 +234,10 @@
 - (void)setTimeLapse:(bool)arg1;
 - (void)setUTI:(id)arg1;
 - (void)setUTime:(unsigned long long)arg1;
+- (void)setUseExtensionIcon:(bool)arg1;
 - (void)setWidth:(long long)arg1;
 - (id)sidecarFiles;
 - (id)spatialOverCaptureGroupID;
-- (id)subImageDictForPixelWidth:(id)arg1;
 - (id)subImages;
 - (struct CGImage { }*)thumbnail;
 - (id)thumbnailData;
@@ -244,6 +245,7 @@
 - (bool)timeLapse;
 - (unsigned long long)uTime;
 - (bool)universalFamily;
+- (bool)useExtensionIcon;
 - (long long)width;
 
 // Image: /System/Library/Frameworks/Photos.framework/Photos

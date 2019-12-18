@@ -46,6 +46,7 @@
 - (void)acceptCalDAVSharedList:(id)arg1 queue:(id)arg2 completion:(id /* block */)arg3;
 - (void)acceptShareWithMetadata:(id)arg1 queue:(id)arg2 completion:(id /* block */)arg3;
 - (bool)assertOnMainThreadFetches;
+- (id)compressedDistributedEvaluationDataWithOptions:(id)arg1 error:(id*)arg2;
 - (unsigned long long)countForFetchRequest:(id)arg1 error:(id*)arg2;
 - (id)createShareForListWithID:(id)arg1 error:(id*)arg2;
 - (id)daemonController;

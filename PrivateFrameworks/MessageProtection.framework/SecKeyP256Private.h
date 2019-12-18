@@ -14,6 +14,7 @@
 @property (nonatomic, retain) SecKeyP256Public *publicKey;
 @property (readonly) Class superclass;
 
++ (const struct __CFString { }*)defaultProtectionClassForPlatform;
 + (id)generate;
 + (id)generateWithAccessControl:(struct __CFString { }*)arg1;
 

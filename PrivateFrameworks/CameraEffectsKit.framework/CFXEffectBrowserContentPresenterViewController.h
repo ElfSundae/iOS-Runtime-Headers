@@ -15,6 +15,7 @@
 - (void).cxx_destruct;
 - (double)CFX_alwaysExpandedAppHeight;
 - (id)CFX_constraintsForAlwaysExpandedAppView:(id)arg1 containerView:(id)arg2;
+- (bool)_canShowWhileLocked;
 - (void)configureEffectBrowserContentPresentationForOrientation;
 - (id)delegate;
 - (void)effectBrowserViewController:(id)arg1 dismissExpandedAppViewController:(id)arg2 animated:(bool)arg3 completion:(id /* block */)arg4;

@@ -329,12 +329,14 @@
 - (void)willReplaceContentsFromRep:(id)arg1;
 - (void)willUpdateLayer:(id)arg1;
 
-// Image: /System/Library/PrivateFrameworks/SilexText.framework/SilexText
+// Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
 
-- (struct CGPoint { double x1; double x2; })STAXConvertNaturalPointToScreenSpace:(struct CGPoint { double x1; double x2; })arg1;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })STAXConvertNaturalRectToScreenSpace:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
-- (struct CGPoint { double x1; double x2; })STAXConvertScreenPointToNaturalSpace:(struct CGPoint { double x1; double x2; })arg1;
-- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })STAXConvertScreenRectToNaturalSpace:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (struct CGPoint { double x1; double x2; })SXAXConvertNaturalPointToScreenSpace:(struct CGPoint { double x1; double x2; })arg1;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })SXAXConvertNaturalRectToScreenSpace:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (struct CGPoint { double x1; double x2; })SXAXConvertScreenPointToNaturalSpace:(struct CGPoint { double x1; double x2; })arg1;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })SXAXConvertScreenRectToNaturalSpace:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
+- (id)_accessibilityParentForFindingScrollParent;
+- (id)_accessibilityWindow;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })accessibilityFrame;
 - (bool)isAccessibilityElement;
 

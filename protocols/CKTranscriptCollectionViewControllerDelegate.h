@@ -39,7 +39,14 @@
 
 @optional
 
+- (NSArray *)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 accessoriesForContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2 layoutAnchor:(struct { unsigned long long x1; unsigned long long x2; })arg3;
+- (UIContextMenuConfiguration *)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 contextMenuConfigurationForItemAtIndexPath:(NSIndexPath *)arg2 point:(struct CGPoint { double x1; double x2; })arg3;
+- (UITargetedPreview *)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 previewForDismissingContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
+- (UITargetedPreview *)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 previewForHighlightingContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
+- (_UIContextMenuStyle *)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 styleForContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
 - (void)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 willDisplayBalloonForGUID:(NSString *)arg2;
+- (void)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 willEndContextMenuInteractionWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id <UIContextMenuInteractionAnimating>)arg3;
+- (void)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 willPerformPreviewActionForMenuWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id <UIContextMenuInteractionCommitAnimating>)arg3;
 - (bool)transcriptCollectionViewControllerShouldForceOpaqueMask:(CKTranscriptCollectionViewController *)arg1;
 - (void)transcriptCollectionViewDidBeginMultipleSelectionInteractionAtIndexPath:(NSIndexPath *)arg1;
 - (bool)transcriptCollectionViewShouldBeginMultipleSelectionInteractionAtIndexPath:(NSIndexPath *)arg1;

@@ -26,11 +26,14 @@
 - (id)algorithmData;
 - (id)behavioralScoreByAssetUUIDForAssets:(id)arg1 algorithmProcessor:(id)arg2 personalHighAestheticsThreshold:(double)arg3 personalGoodAestheticsThreshold:(double)arg4;
 - (float)behavioralScoreFromBaseScore:(float)arg1 semanticScore:(float)arg2;
+- (id)goldAssetUUIDs;
 - (id)graph;
 - (id)initWithGraphManager:(id)arg1 algorithm:(long long)arg2;
 - (bool)needBehavioralScoreReprocessingUsingCurrentGoldAssetsUUIDs:(id)arg1 previousGoldAssetUUIDs:(id)arg2;
+- (id)peopleFeatures;
 - (id)previousGoldAssetUUIDs;
 - (void)processBehavioralScoresWithProgressBlock:(id /* block */)arg1;
+- (id)sceneFeatures;
 - (float)semanticScoreFromBehavioralScore:(float)arg1;
 - (void)setAlgorithm:(long long)arg1;
 - (void)setAlgorithmData:(id)arg1;

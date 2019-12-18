@@ -66,6 +66,7 @@
 - (id)initWithActiveCall:(id)arg1 hasJoined:(bool)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)resetEffectsState;
 - (void)serverDidTimeout:(id)arg1;
 - (void)setCall:(id)arg1;
 - (void)setDelegate:(id)arg1;

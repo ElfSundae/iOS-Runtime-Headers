@@ -9,6 +9,7 @@
     AFDictationConnection * _connection;
     <UIDictationConnectionDelegate> * _delegate;
     AFDictationOptions * _dictationOptions;
+    NSMutableDictionary * _lastReceivedPartials;
     NSString * _lastUsedDetectedLanguage;
     NSString * _lastUsedPrimaryLanguage;
     NSMutableArray * _lastUsedTopLanguages;
@@ -27,6 +28,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) AFDictationOptions *dictationOptions;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) NSMutableDictionary *lastReceivedPartials;
 @property (nonatomic, copy) NSString *lastUsedDetectedLanguage;
 @property (nonatomic, copy) NSString *lastUsedPrimaryLanguage;
 @property (nonatomic, retain) NSMutableArray *lastUsedTopLanguages;
@@ -79,6 +81,7 @@
 - (id)dictationOptions;
 - (void)endSession;
 - (id)languageDetectionUserContext;
+- (id)lastReceivedPartials;
 - (id)lastUsedDetectedLanguage;
 - (id)lastUsedPrimaryLanguage;
 - (id)lastUsedTopLanguages;
@@ -98,6 +101,7 @@
 - (void)setConnection:(id)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDictationOptions:(id)arg1;
+- (void)setLastReceivedPartials:(id)arg1;
 - (void)setLastUsedDetectedLanguage:(id)arg1;
 - (void)setLastUsedPrimaryLanguage:(id)arg1;
 - (void)setLastUsedTopLanguages:(id)arg1;

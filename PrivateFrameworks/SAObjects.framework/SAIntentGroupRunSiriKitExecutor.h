@@ -15,6 +15,7 @@
 @property (nonatomic, copy) NSArray *parameterPrompts;
 @property (nonatomic, copy) NSString *parentGoalID;
 @property (nonatomic, retain) SAIntentGroupSiriKitListPosition *readingListPosition;
+@property (nonatomic, retain) SAIntentGroupSiriKitRemoteExecution *remoteExecution;
 @property (nonatomic) bool requiresConditionalMultiUserGrounding;
 @property (nonatomic, retain) SAIntentGroupSiriKitMetrics *siriKitMetrics;
 @property (nonatomic, copy) NSString *userInitiatedAction;
@@ -37,6 +38,7 @@
 - (id)parameterPrompts;
 - (id)parentGoalID;
 - (id)readingListPosition;
+- (id)remoteExecution;
 - (bool)requiresConditionalMultiUserGrounding;
 - (bool)requiresResponse;
 - (void)setAppSelectionState:(id)arg1;
@@ -50,6 +52,7 @@
 - (void)setParameterPrompts:(id)arg1;
 - (void)setParentGoalID:(id)arg1;
 - (void)setReadingListPosition:(id)arg1;
+- (void)setRemoteExecution:(id)arg1;
 - (void)setRequiresConditionalMultiUserGrounding:(bool)arg1;
 - (void)setSiriKitMetrics:(id)arg1;
 - (void)setUserInitiatedAction:(id)arg1;

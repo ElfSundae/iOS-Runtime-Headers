@@ -3,14 +3,11 @@
  */
 
 @interface WFHomeAccessoryConditionalSubjectState : WFConditionalSubjectParameterState {
-    HMCharacteristic * _characteristic;
     WFHMCharacteristicSubstitutableState * _characteristicSubstitutableState;
     NSFormatter * _characteristicValueFormatter;
-    HMHome * _home;
     bool  _negatesValue;
     NSDictionary * _serializedWFHMCharacteristicSubstitutableState;
     NSDictionary * _serializedWFHMServiceParameter;
-    HMService * _service;
     WFHMServiceParameterState * _serviceParameterState;
 }
 

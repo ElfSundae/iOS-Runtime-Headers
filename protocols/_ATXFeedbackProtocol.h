@@ -9,7 +9,9 @@
 - (double)currentBeta;
 - (void)decayCounts;
 - (void)feedbackLaunched:(NSString *)arg1 rejected:(NSArray *)arg2;
+- (void)feedbackLaunched:(NSString *)arg1 rejected:(NSArray *)arg2 date:(NSDate *)arg3 location:(CLLocation *)arg4;
 - (void)feedbackLaunched:(NSString *)arg1 rejected:(NSArray *)arg2 inUnitTest:(bool)arg3;
+- (void)feedbackLaunched:(NSString *)arg1 rejected:(NSArray *)arg2 inUnitTest:(bool)arg3 date:(NSDate *)arg4 location:(CLLocation *)arg5;
 - (void)removeFeedbackForBundle:(NSString *)arg1;
 - (void)resetData;
 

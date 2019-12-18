@@ -6,6 +6,7 @@
     void $__lazy_storage_$_highlightsFeedPopulationDebouncer;
     void $__lazy_storage_$_liveFeedsPopulationDebouncer;
     void childOperationQueue;
+    void debounceInterval;
     void healthExperienceStore;
     void queue;
     void relevanceEngineCoordinator;

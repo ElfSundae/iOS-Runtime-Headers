@@ -5,29 +5,22 @@
 @interface FCSpotlightGroupConfig : FCGroupConfig {
     NSDate * _publishDate;
     NSString * _spotlightArticleID;
-    <FCSpotlightItemStyleProviding> * _spotlightItemStyle;
 }
 
-@property (nonatomic, readonly) FCColor *cardBackgroundColor;
-@property (nonatomic, readonly) FCColor *darkStyleCardBackgroundColor;
-@property (nonatomic, readonly) FCColorGradient *darkStyleSauceColorGradient;
 @property (nonatomic, readonly, copy) NSDate *publishDate;
-@property (nonatomic, readonly) FCColorGradient *sauceColorGradient;
 @property (nonatomic, readonly, copy) NSString *spotlightArticleID;
 @property (nonatomic, readonly, copy) NSString *spotlightCallToActionTitle;
 @property (nonatomic, readonly, copy) NSString *spotlightEyebrowTitle;
-@property (nonatomic, readonly, copy) <FCSpotlightItemStyleProviding> *spotlightItemStyle;
+@property (nonatomic, readonly, copy) <FCCardStyleProviding> *spotlightItemDarkStyle;
+@property (nonatomic, readonly, copy) <FCCardStyleProviding> *spotlightItemStyle;
 
 - (void).cxx_destruct;
-- (id)cardBackgroundColor;
-- (id)darkStyleCardBackgroundColor;
-- (id)darkStyleSauceColorGradient;
 - (id)initWithDictionary:(id)arg1;
 - (id)publishDate;
-- (id)sauceColorGradient;
 - (id)spotlightArticleID;
 - (id)spotlightCallToActionTitle;
 - (id)spotlightEyebrowTitle;
+- (id)spotlightItemDarkStyle;
 - (id)spotlightItemStyle;
 
 @end

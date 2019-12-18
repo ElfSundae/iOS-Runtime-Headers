@@ -19,9 +19,12 @@
 + (id)localAccount;
 + (id)makeIdentifier;
 + (id)makeIdentifierString;
++ (id)os_log;
 + (id)predicateForAccountForContainerWithIdentifier:(id)arg1;
 + (id)predicateForAccountWithExternalIdentifier:(id)arg1;
 + (id)predicateForAccountsWithIdentifiers:(id)arg1;
++ (bool)requestAccountSyncWithDefaultOptions;
++ (bool)requestAccountSyncWithOptions:(unsigned long long)arg1;
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;

@@ -25,6 +25,7 @@
 @property (nonatomic) long long type;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_setFirstResponderAfterCell:(id)arg1;
 - (void)_updateSaveEnabled;
 - (id)clientIDCell;

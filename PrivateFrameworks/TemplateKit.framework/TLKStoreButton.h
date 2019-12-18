@@ -19,9 +19,9 @@
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (id)backgroundView;
 - (void)didMoveToWindow;
+- (struct CGSize { double x1; double x2; })effectiveLayoutSizeFittingSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)highlightView;
 - (id)init;
-- (struct CGSize { double x1; double x2; })intrinsicContentSize;
 - (bool)isEmphasized;
 - (id)label;
 - (void)layoutSubviews;
@@ -31,7 +31,6 @@
 - (void)setIsEmphasized:(bool)arg1;
 - (void)setLabel:(id)arg1;
 - (void)setTitle:(id)arg1;
-- (struct CGSize { double x1; double x2; })sizeThatFits:(struct CGSize { double x1; double x2; })arg1;
 - (id)title;
 - (void)tlk_updateForAppearance:(id)arg1;
 

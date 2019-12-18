@@ -61,6 +61,7 @@
         unsigned int _deliversUpdatesInTouchesMoved : 1; 
         unsigned int _isPredictedTouch : 1; 
         unsigned int _didDispatchAsEnded : 1; 
+        unsigned int _analyticsUsedByAllowedGesture : 1; 
     }  _touchFlags;
     unsigned int  _touchIdentifier;
     _UITouchPredictor * _touchPredictor;
@@ -71,6 +72,7 @@
     float  _zGradient;
 }
 
+@property (getter=_isAnalyticsUsedByAllowedGesture, setter=_setAnalyticsUsedByAllowedGesture:, nonatomic) bool _analyticsUsedByAllowedGesture;
 @property (setter=_setDisplacement:, nonatomic) struct CGSize { double x1; double x2; } _displacement;
 @property (getter=_isEaten, setter=_setEaten:, nonatomic) bool _eaten;
 @property (setter=_setEdgeAim:, nonatomic) unsigned long long _edgeAim;
@@ -148,6 +150,7 @@
 - (bool)_hasForceUpdate;
 - (struct __IOHIDEvent { }*)_hidEvent;
 - (bool)_isAbandoningForwardingRecord;
+- (bool)_isAnalyticsUsedByAllowedGesture;
 - (bool)_isEaten;
 - (bool)_isFirstTouchForView;
 - (bool)_isPredictedTouch;
@@ -175,6 +178,7 @@
 - (SEL)_responderSelectorForPhase:(long long)arg1;
 - (unsigned long long)_senderID;
 - (void)_setAltitudeAngle:(double)arg1;
+- (void)_setAnalyticsUsedByAllowedGesture:(bool)arg1;
 - (void)_setAzimuthAngleInCADisplay:(double)arg1;
 - (void)_setDisplacement:(struct CGSize { double x1; double x2; })arg1;
 - (void)_setEaten:(bool)arg1;

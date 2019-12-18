@@ -5,6 +5,7 @@
 @interface NUArticleHostViewController : UIViewController <NUBarCompressible, NULoadingDelegate, NUPageable, SXAnalyticsReporting> {
     <NUAnalyticsReporting> * _analyticsReporting;
     FCArticle * _article;
+    NUArticleContext * _articleContext;
     <NUArticleViewControllerFactory> * _articleViewControllerFactory;
     FCObservable * _articleViewStyler;
     <NUArticleContentSizeManager> * _contentSizeManager;
@@ -21,6 +22,7 @@
 
 @property (nonatomic, readonly) <NUAnalyticsReporting> *analyticsReporting;
 @property (nonatomic, readonly) FCArticle *article;
+@property (nonatomic, retain) NUArticleContext *articleContext;
 @property (nonatomic, readonly) <NUArticleViewControllerFactory> *articleViewControllerFactory;
 @property (nonatomic, readonly) FCObservable *articleViewStyler;
 @property (nonatomic) long long contentScale;
@@ -45,6 +47,7 @@
 - (void).cxx_destruct;
 - (id)analyticsReporting;
 - (id)article;
+- (id)articleContext;
 - (id)articleViewControllerFactory;
 - (id)articleViewStyler;
 - (bool)becomeFirstResponder;
@@ -71,6 +74,7 @@
 - (bool)resignFirstResponder;
 - (id)responder;
 - (id)scrollView;
+- (void)setArticleContext:(id)arg1;
 - (void)setContentScale:(long long)arg1;
 - (void)setContentSizeCategory:(id)arg1;
 - (void)setContentTypeViewController:(id)arg1;

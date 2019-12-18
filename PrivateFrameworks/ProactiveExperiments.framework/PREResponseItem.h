@@ -4,6 +4,7 @@
 
 @interface PREResponseItem : NSObject <NSSecureCoding> {
     NSNumber * _categoryId;
+    NSNumber * _isCustomResponse;
     NSString * _language;
     NSNumber * _modelId;
     NSNumber * _replySubgroupId;
@@ -13,6 +14,7 @@
 }
 
 @property (nonatomic, readonly) NSNumber *categoryId;
+@property (nonatomic, readonly) NSNumber *isCustomResponse;
 @property (nonatomic, readonly) NSString *language;
 @property (nonatomic, readonly) NSNumber *modelId;
 @property (nonatomic, readonly) NSNumber *replySubgroupId;
@@ -27,8 +29,9 @@
 - (id)categoryId;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithCategoryId:(id)arg1 modelId:(id)arg2 responseClassId:(id)arg3 replySubgroupId:(id)arg4 replyTextId:(id)arg5 replyText:(id)arg6 language:(id)arg7;
+- (id)initWithCategoryId:(id)arg1 modelId:(id)arg2 responseClassId:(id)arg3 replySubgroupId:(id)arg4 replyTextId:(id)arg5 replyText:(id)arg6 language:(id)arg7 isCustomResponse:(id)arg8;
 - (id)initWithCoder:(id)arg1;
+- (id)isCustomResponse;
 - (bool)isEqual:(id)arg1;
 - (bool)isEqualToResponseItem:(id)arg1;
 - (id)language;

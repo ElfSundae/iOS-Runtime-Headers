@@ -13,6 +13,7 @@
     NSString * _guid;
     bool  _hideAttachment;
     IMMessage * _imMessage;
+    bool  _isDirectory;
     bool  _isSticker;
     NSObject<OS_dispatch_queue> * _isolationQueue;
     NSURL * _linkFileURL;
@@ -39,6 +40,7 @@
 @property (nonatomic, readonly, copy) NSString *guid;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) bool hideAttachment;
+@property (nonatomic, readonly) bool isDirectory;
 @property (nonatomic, readonly) bool isSticker;
 @property (nonatomic, copy) NSURL *linkFileURL;
 @property (getter=isRestoring, nonatomic, readonly) bool restoring;
@@ -66,6 +68,7 @@
 - (id)initWithFileURL:(id)arg1 transcoderUserInfo:(id)arg2 attributionInfo:(id)arg3 hideAttachment:(bool)arg4;
 - (id)initWithStickerFileURL:(id)arg1 transferUserInfo:(id)arg2 attributionInfo:(id)arg3;
 - (id)initWithTransferGUID:(id)arg1 imMessage:(id)arg2;
+- (bool)isDirectory;
 - (bool)isDownloadable;
 - (bool)isDownloading;
 - (bool)isFileDataReady;

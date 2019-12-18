@@ -4,21 +4,23 @@
 
 @interface SXEmbedVideoComponentView : SXMediaComponentView <SXViewportChangeListener, WKNavigationDelegate, WKNavigationDelegatePrivate, WKUIDelegate> {
     <SXComponentActionHandler> * _actionHandler;
+    UIActivityIndicatorView * _activityIndicator;
     WKWebsiteDataStore * _dataStore;
     bool  _isPresentingFullscreen;
-    SXWebCrashRetryThrottler * _webCrashRetryThrottler;
+    SWCrashRetryThrottler * _webCrashRetryThrottler;
     WKWebView * _webView;
     bool  _webViewIsLoaded;
 }
 
 @property (nonatomic, readonly) <SXComponentActionHandler> *actionHandler;
+@property (nonatomic, readonly) UIActivityIndicatorView *activityIndicator;
 @property (nonatomic, readonly) WKWebsiteDataStore *dataStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) bool isPresentingFullscreen;
 @property (readonly) Class superclass;
-@property (nonatomic, retain) SXWebCrashRetryThrottler *webCrashRetryThrottler;
+@property (nonatomic, retain) SWCrashRetryThrottler *webCrashRetryThrottler;
 @property (nonatomic, retain) WKWebView *webView;
 @property (nonatomic) bool webViewIsLoaded;
 
@@ -29,6 +31,7 @@
 - (void)_webViewDidExitFullscreen:(id)arg1;
 - (void)_webViewWebProcessDidCrash:(id)arg1;
 - (id)actionHandler;
+- (id)activityIndicator;
 - (bool)allowHierarchyRemoval;
 - (unsigned long long)analyticsMediaType;
 - (unsigned long long)analyticsVideoType;
@@ -38,6 +41,7 @@
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 actionHandler:(id)arg7 websiteDataStore:(id)arg8;
 - (void)initializeWebViewWithURL:(id)arg1;
 - (bool)isPresentingFullscreen;
+- (void)layoutSubviews;
 - (void)presentComponentWithChanges:(struct { bool x1; bool x2; })arg1;
 - (void)renderContents;
 - (void)setIsPresentingFullscreen:(bool)arg1;

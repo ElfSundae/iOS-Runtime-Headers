@@ -48,10 +48,12 @@
 @property (nonatomic, readonly, copy) NSString *localizedStorefrontID;
 @property (nonatomic, readonly) long long lowStorageAutomaticIssueDownloadTTL;
 @property (nonatomic, readonly) long long lowStorageManualIssueDownloadTTL;
+@property (nonatomic, readonly) unsigned long long magazineFeedPaywallType;
 @property (nonatomic, retain) NSDictionary *magazineGenresByGenre;
 @property (getter=areMagazinesEnabled, nonatomic, readonly) bool magazinesEnabled;
 @property (nonatomic, readonly) long long minFollowedMagazinesToHideSuggestionsCompact;
 @property (nonatomic, readonly) long long minFollowedMagazinesToHideSuggestionsRegular;
+@property (nonatomic, readonly) long long minimumArticlesBeforeArticleSoftPaywall;
 @property (nonatomic, readonly) long long minimumArticlesInANFIssueBeforeRead;
 @property (nonatomic, readonly) long long minimumPagesInPDFIssueBeforeRead;
 @property (nonatomic, readonly) long long minimumReadIssuesInMyMagazines;
@@ -142,9 +144,11 @@
 - (id)localizedStorefrontID;
 - (long long)lowStorageAutomaticIssueDownloadTTL;
 - (long long)lowStorageManualIssueDownloadTTL;
+- (unsigned long long)magazineFeedPaywallType;
 - (id)magazineGenresByGenre;
 - (long long)minFollowedMagazinesToHideSuggestionsCompact;
 - (long long)minFollowedMagazinesToHideSuggestionsRegular;
+- (long long)minimumArticlesBeforeArticleSoftPaywall;
 - (long long)minimumArticlesInANFIssueBeforeRead;
 - (long long)minimumPagesInPDFIssueBeforeRead;
 - (long long)minimumReadIssuesInMyMagazines;

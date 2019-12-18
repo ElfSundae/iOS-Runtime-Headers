@@ -16,6 +16,8 @@
 @property (retain) PSSpecifier *allowedCommunicationGroupSpecifier;
 @property (retain) STCommunicationLimits *communicationLimits;
 
++ (void)showCompatibilityAlertIfNeededWithCoordinator:(id)arg1 presentingViewController:(id)arg2;
+
 - (void).cxx_destruct;
 - (id)_allowIntroductions:(id)arg1;
 - (void)_didFinishEditingCommunicationLimit;
@@ -31,6 +33,7 @@
 - (void)setAllowedCommunicationGroupSpecifier:(id)arg1;
 - (void)setCommunicationLimits:(id)arg1;
 - (id)specifiers;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(bool)arg1;
 - (void)willResignActive;

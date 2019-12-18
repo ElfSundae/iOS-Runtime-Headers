@@ -9,7 +9,6 @@
     bool  _currentIdentityProviderSupportsSTB;
     NSObject<OS_dispatch_queue> * _eventQueue;
     bool  _fetchedSetTopBoxProfile;
-    bool  _hasSetTopBoxProfile;
     MTMetricsKit * _mainMetricsKit;
     bool  _optedIn;
     VSPreferences * _preferences;
@@ -26,7 +25,6 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *eventQueue;
 @property (nonatomic) bool fetchedSetTopBoxProfile;
-@property (nonatomic) bool hasSetTopBoxProfile;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, retain) MTMetricsKit *mainMetricsKit;
 @property (nonatomic) bool optedIn;
@@ -88,7 +86,6 @@
 - (void)setCurrentIdentityProviderSupportsSTB:(bool)arg1;
 - (void)setEventQueue:(id)arg1;
 - (void)setFetchedSetTopBoxProfile:(bool)arg1;
-- (void)setHasSetTopBoxProfile:(bool)arg1;
 - (void)setMainMetricsKit:(id)arg1;
 - (void)setOptedIn:(bool)arg1;
 - (void)setPreferences:(id)arg1;

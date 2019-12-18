@@ -15,6 +15,7 @@
 + (id)defaultControllerWithStyle:(unsigned long long)arg1;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)dismissWelcomeController;
 - (void)enableVoiceControlAndMoveToCommandsOverview;
 - (id)initWithTitle:(id)arg1 detailText:(id)arg2 icon:(id)arg3 style:(unsigned long long)arg4;

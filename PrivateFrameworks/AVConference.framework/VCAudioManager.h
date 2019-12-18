@@ -54,7 +54,6 @@
     }  _sourceData;
     NSMutableArray * _startingIOClients;
     unsigned int  _state;
-    NSMutableArray * _suspendedClients;
     NSDictionary * _vpOperatingModeToAudioSessionMediaFormatMapping;
 }
 
@@ -77,10 +76,11 @@
 + (id)sharedInstance;
 
 - (void)_cleanupDeadClients;
-- (void)_resumeSuspendedClients;
-- (void)_suspendAllClients;
+- (void)activateStartingClient:(id)arg1 applyControllerFormat:(bool)arg2;
 - (bool)addClient:(id)arg1;
+- (void)applyControllerFormatToClients:(id)arg1;
 - (void)cleanupInterruptThread;
+- (void)completeStartForAllStartingClients;
 - (void)computeHardwarePreferences;
 - (id)currentAudioSessionMediaProperties;
 - (id)currentAudioUnitProperties;
@@ -92,6 +92,7 @@
 - (void)didSessionResume;
 - (void)didSessionStop;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo { unsigned int x1; double x2; }*)arg1;
+- (void)enterStateStarted;
 - (void)flushEventQueue:(struct opaqueCMSimpleQueue { }*)arg1;
 - (bool)getAudioSessionMediaProperties:(id)arg1 forVPOperatingMode:(unsigned int)arg2;
 - (void)getPreferredFormat:(struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; }*)arg1 blockSize:(double*)arg2 vpOperatingMode:(unsigned int*)arg3 forOperatingMode:(int)arg4 deviceRole:(int)arg5 suggestedFormat:(struct AudioStreamBasicDescription { double x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; unsigned int x7; unsigned int x8; unsigned int x9; }*)arg6;
@@ -133,9 +134,17 @@
 - (void)startClient:(id)arg1;
 - (void)startInterruptThread;
 - (bool)stateIdleWithAudioUnitProperties:(id)arg1 sessionProperties:(id)arg2 client:(id)arg3 newState:(unsigned int*)arg4;
+- (bool)stateInterruptedShouldGoToRunning:(id)arg1;
+- (bool)stateInterruptedShouldGoToStarted:(id)arg1;
+- (bool)stateInterruptedWithAudioUnitProperties:(id)arg1 sessionProperties:(id)arg2 client:(id)arg3 newState:(unsigned int*)arg4;
+- (bool)stateRunningShouldTransitionToInterrupted:(id)arg1;
+- (bool)stateRunningShouldTransitionToStarted:(id)arg1;
 - (void)stateRunningToSessionStarted;
 - (bool)stateRunningWithAudioUnitProperties:(id)arg1 sessionProperties:(id)arg2 client:(id)arg3 newState:(unsigned int*)arg4;
 - (bool)stateSessionStartedWithAudioUnitProperties:(id)arg1 sessionProperties:(id)arg2 client:(id)arg3 newState:(unsigned int*)arg4;
+- (void)stateTransitionInterruptedToRunning;
+- (void)stateTransitionInterruptedToStarted;
+- (void)stateTransitionRunningToInterrupted;
 - (void)stopAUIO;
 - (void)stopAudioSession;
 - (void)stopClient:(id)arg1;

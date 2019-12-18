@@ -6,6 +6,7 @@
     NUArticleAdManager * _adManager;
     <SXAnalyticsReporting> * _analyticsReporting;
     NSString * _anchorFragment;
+    NUArticleContext * _articleContext;
     <NUArticleDataProvider> * _articleDataProvider;
     bool  _articleIsPresentingFullscreen;
     FCObservable * _articleViewStyler;
@@ -23,11 +24,13 @@
     unsigned long long  _presentationMode;
     UIScrollView * _scrollView;
     SXScrollViewController * _scrollViewController;
+    SXVideoPlayerViewControllerManager * _videoPlayerViewControllerManager;
 }
 
 @property (nonatomic, readonly) NUArticleAdManager *adManager;
 @property (nonatomic) <SXAnalyticsReporting> *analyticsReporting;
 @property (nonatomic, copy) NSString *anchorFragment;
+@property (nonatomic, retain) NUArticleContext *articleContext;
 @property (nonatomic, readonly) <NUArticleDataProvider> *articleDataProvider;
 @property (nonatomic) bool articleIsPresentingFullscreen;
 @property (nonatomic, readonly) FCObservable *articleViewStyler;
@@ -50,6 +53,7 @@
 @property (nonatomic, readonly) UIScrollView *scrollView;
 @property (nonatomic, readonly) SXScrollViewController *scrollViewController;
 @property (readonly) Class superclass;
+@property (nonatomic, readonly) SXVideoPlayerViewControllerManager *videoPlayerViewControllerManager;
 
 + (id)_parentOrPresentingViewControllerFor:(id)arg1;
 
@@ -58,6 +62,7 @@
 - (id)adManager;
 - (id)analyticsReporting;
 - (id)anchorFragment;
+- (id)articleContext;
 - (id)articleDataProvider;
 - (bool)articleIsPresentingFullscreen;
 - (id)articleViewStyler;
@@ -70,7 +75,7 @@
 - (id)documentSectionBlueprintProvider;
 - (id)endOfArticleDataProvider;
 - (id)eventManager;
-- (id)initWithArticleDataProvider:(id)arg1 scrollViewController:(id)arg2 articleAdManager:(id)arg3 appStateMonitor:(id)arg4 keyCommandManager:(id)arg5 loadingListeners:(id)arg6 headerBlueprintProvider:(id)arg7 debugSettingsProvider:(id)arg8;
+- (id)initWithArticleDataProvider:(id)arg1 scrollViewController:(id)arg2 articleAdManager:(id)arg3 appStateMonitor:(id)arg4 keyCommandManager:(id)arg5 loadingListeners:(id)arg6 headerBlueprintProvider:(id)arg7 debugSettingsProvider:(id)arg8 videoPlayerViewControllerManager:(id)arg9;
 - (bool)isPreviewingOrShowingHardPaywall;
 - (bool)isShowingDeferredHardPayall;
 - (id)keyCommandManager;
@@ -88,6 +93,7 @@
 - (void)scrollToTopAnimated:(bool)arg1;
 - (id)scrollView;
 - (id)scrollViewController;
+- (void)scrollViewController:(id)arg1 didApplyDocumentStyle:(id)arg2;
 - (void)scrollViewController:(id)arg1 enableNavigation:(bool)arg2;
 - (bool)scrollViewController:(id)arg1 shouldOccludeAccessibilityElement:(id)arg2;
 - (void)scrollViewControllerDidLayoutContent:(id)arg1;
@@ -95,6 +101,7 @@
 - (void)scrollViewControllerRequestsFullscreen:(id)arg1;
 - (void)setAnalyticsReporting:(id)arg1;
 - (void)setAnchorFragment:(id)arg1;
+- (void)setArticleContext:(id)arg1;
 - (void)setArticleIsPresentingFullscreen:(bool)arg1;
 - (void)setContentScale:(long long)arg1;
 - (void)setContentSizeCategory:(id)arg1;
@@ -109,6 +116,7 @@
 - (void)updateScrollViewControllerWithFooterBlueprint:(id)arg1;
 - (void)updateScrollViewControllerWithHeaderBlueprint:(id)arg1;
 - (void)updateTextSelectionForPaywallPresentation;
+- (id)videoPlayerViewControllerManager;
 - (void)viewDidAppear:(bool)arg1;
 - (void)viewDidDisappear:(bool)arg1;
 - (void)viewDidLayoutSubviews;

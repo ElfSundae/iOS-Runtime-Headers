@@ -29,6 +29,7 @@
     GEODataSetDescription * _dataSet;
     NSString * _directionsURLLegacy;
     NSString * _dispatcherURLLegacy;
+    NSMutableArray * _displayStrings;
     NSString * _environment;
     NSString * _etaURLLegacy;
     struct { 
@@ -54,6 +55,7 @@
         unsigned int read_dataSet : 1; 
         unsigned int read_directionsURLLegacy : 1; 
         unsigned int read_dispatcherURLLegacy : 1; 
+        unsigned int read_displayStrings : 1; 
         unsigned int read_environment : 1; 
         unsigned int read_etaURLLegacy : 1; 
         unsigned int read_flyoverRegionVersions : 1; 
@@ -117,6 +119,7 @@
         unsigned int wrote_dataSet : 1; 
         unsigned int wrote_directionsURLLegacy : 1; 
         unsigned int wrote_dispatcherURLLegacy : 1; 
+        unsigned int wrote_displayStrings : 1; 
         unsigned int wrote_environment : 1; 
         unsigned int wrote_etaURLLegacy : 1; 
         unsigned int wrote_flyoverRegionVersions : 1; 
@@ -240,6 +243,7 @@
 @property (nonatomic, retain) GEODataSetDescription *dataSet;
 @property (nonatomic, retain) NSString *directionsURLLegacy;
 @property (nonatomic, retain) NSString *dispatcherURLLegacy;
+@property (nonatomic, retain) NSMutableArray *displayStrings;
 @property (nonatomic, retain) NSString *environment;
 @property (nonatomic, retain) NSString *etaURLLegacy;
 @property (nonatomic, retain) NSData *flyoverRegionVersions;
@@ -333,6 +337,7 @@
 + (Class)activeResourceType;
 + (Class)announcementsSupportedLanguagesType;
 + (Class)attributionType;
++ (Class)displayStringsType;
 + (Class)fontChecksumType;
 + (Class)fontType;
 + (Class)iconChecksumType;
@@ -361,6 +366,7 @@
 - (void)_addNoFlagsActiveScenario:(int)arg1;
 - (void)_addNoFlagsAnnouncementsSupportedLanguages:(id)arg1;
 - (void)_addNoFlagsAttribution:(id)arg1;
+- (void)_addNoFlagsDisplayStrings:(id)arg1;
 - (void)_addNoFlagsFont:(id)arg1;
 - (void)_addNoFlagsFontChecksum:(id)arg1;
 - (void)_addNoFlagsHybridUnavailableRegion:(struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; })arg1;
@@ -399,6 +405,7 @@
 - (void)_readDataSet;
 - (void)_readDirectionsURLLegacy;
 - (void)_readDispatcherURLLegacy;
+- (void)_readDisplayStrings;
 - (void)_readEnvironment;
 - (void)_readEtaURLLegacy;
 - (void)_readFlyoverRegionVersions;
@@ -466,6 +473,7 @@
 - (void)addActiveScenario:(int)arg1;
 - (void)addAnnouncementsSupportedLanguages:(id)arg1;
 - (void)addAttribution:(id)arg1;
+- (void)addDisplayStrings:(id)arg1;
 - (void)addFont:(id)arg1;
 - (void)addFontChecksum:(id)arg1;
 - (void)addHybridUnavailableRegion:(struct GEOTileSetRegion { unsigned int x1; unsigned int x2; unsigned int x3; unsigned int x4; unsigned int x5; unsigned int x6; })arg1;
@@ -505,6 +513,7 @@
 - (void)clearActiveScenarios;
 - (void)clearAnnouncementsSupportedLanguages;
 - (void)clearAttributions;
+- (void)clearDisplayStrings;
 - (void)clearFontChecksums;
 - (void)clearFonts;
 - (void)clearHybridUnavailableRegions;
@@ -535,6 +544,9 @@
 - (id)dictionaryRepresentation;
 - (id)directionsURLLegacy;
 - (id)dispatcherURLLegacy;
+- (id)displayStrings;
+- (id)displayStringsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)displayStringsCount;
 - (void)enumerateFlyoverRegions:(id /* block */)arg1;
 - (id)environment;
 - (id)etaURLLegacy;
@@ -673,6 +685,7 @@
 - (void)setDataSet:(id)arg1;
 - (void)setDirectionsURLLegacy:(id)arg1;
 - (void)setDispatcherURLLegacy:(id)arg1;
+- (void)setDisplayStrings:(id)arg1;
 - (void)setEnvironment:(id)arg1;
 - (void)setEtaURLLegacy:(id)arg1;
 - (void)setFlyoverRegionVersions:(id)arg1;

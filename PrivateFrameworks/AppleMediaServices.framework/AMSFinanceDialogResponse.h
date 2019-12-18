@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices
  */
 
-@interface AMSFinanceDialogResponse : NSObject {
+@interface AMSFinanceDialogResponse : NSObject <AMSFinancePerformable> {
     ACAccount * _account;
     <AMSBagProtocol> * _bag;
     AMSProcessInfo * _clientInfo;
@@ -16,9 +16,13 @@
 @property (nonatomic, retain) <AMSBagProtocol> *bag;
 @property (nonatomic, retain) AMSProcessInfo *clientInfo;
 @property (nonatomic, readonly) bool containsCommerceUIURL;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) NSDictionary *dialogDictionary;
 @property (nonatomic, readonly) AMSDialogRequest *dialogRequest;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, copy) NSString *proxyBundleId;
+@property (readonly) Class superclass;
 
 + (id)_URLForCommerceUIFromURL:(id)arg1 account:(id)arg2;
 + (long long)_actionTypeFromButtonDictionary:(id)arg1;

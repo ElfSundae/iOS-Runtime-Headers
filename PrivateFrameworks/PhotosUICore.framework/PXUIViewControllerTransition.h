@@ -28,6 +28,7 @@
 @property (nonatomic) long long state;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) bool supportsEdgeSwipeBackGesture;
+@property (nonatomic, readonly) long long transitionIdentifier;
 @property (getter=isTransitioningToDetail, nonatomic) bool transitioningToDetail;
 
 + (bool)isTransitionSupportedWithMasterViewController:(id)arg1 detailViewController:(id)arg2;
@@ -53,6 +54,8 @@
 - (long long)state;
 - (bool)supportsEdgeSwipeBackGesture;
 - (double)transitionDuration:(id)arg1;
+- (long long)transitionIdentifier;
+- (long long)transitionIdentifierForTransitionMode:(unsigned long long)arg1;
 - (void)willEndTransition;
 - (void)willStartTransition;
 

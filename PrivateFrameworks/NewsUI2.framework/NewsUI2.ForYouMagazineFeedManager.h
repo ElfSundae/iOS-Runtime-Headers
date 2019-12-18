@@ -14,6 +14,6 @@
 - (id)cursorForTopOfFeed;
 - (void)fetchNextGroupFromCursor:(id)arg1 completion:(id /* block */)arg2;
 - (id)knownCursorForIdentifier:(id)arg1;
-- (id)knownGroupForIdentifier:(id)arg1;
+- (id)knownGroupForIdentifier:(id)arg1 headlines:(id)arg2 assetHandles:(id)arg3;
 
 @end

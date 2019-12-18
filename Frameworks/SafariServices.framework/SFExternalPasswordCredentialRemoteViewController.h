@@ -14,6 +14,7 @@
 + (id)passwordServiceViewControllerName;
 + (id)serviceViewControllerInterface;
 
+- (bool)_canShowWhileLocked;
 - (void)presentExternalPasswordCredentialRemoteViewController;
 
 @end

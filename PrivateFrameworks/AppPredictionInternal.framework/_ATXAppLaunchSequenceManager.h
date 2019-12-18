@@ -16,8 +16,8 @@
 
 - (void).cxx_destruct;
 - (void)addBundleIdToLaunchSequence:(id)arg1 date:(id)arg2;
-- (void)decayAllAppActionLaunchSequencesWithHalfLife:(double)arg1;
-- (void)decayAllLaunchSequencesWithHalfLife:(double)arg1;
+- (void)decayAllAppActionLaunchSequencesWithHalfLifeInDays:(double)arg1;
+- (void)decayAllLaunchSequencesWithHalfLifeInDays:(double)arg1;
 - (void)deleteAllLaunchesForAppActions:(id)arg1;
 - (void)deleteAllLaunchesForBundles:(id)arg1;
 - (id)init;

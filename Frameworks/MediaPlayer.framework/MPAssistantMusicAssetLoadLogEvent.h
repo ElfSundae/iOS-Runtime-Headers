@@ -10,6 +10,7 @@
 
 - (double)duration;
 - (long long)eventCode;
+- (id)eventName;
 - (id)eventPayload;
 - (void)setDuration:(double)arg1;
 

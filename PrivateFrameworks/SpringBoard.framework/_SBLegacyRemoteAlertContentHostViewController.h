@@ -15,6 +15,7 @@
 + (id)serviceViewControllerInterface;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_getPreferredContentSizeWithReplyBlock:(id /* block */)arg1;
 - (id)delegate;
 - (id)description;

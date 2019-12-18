@@ -2,21 +2,17 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaClientEventMetadata : PBCodable <NSSecureCoding, SISchemaClientEventMetadata> {
+@interface SISchemaClientEventMetadata : PBCodable {
     long long  _eventGeneratedRelativeToBootTimeTimestampNs;
     NSString * _eventGeneratedTimestampRefId;
     NSData * _siriDeviceID;
     NSData * _turnID;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) long long eventGeneratedRelativeToBootTimeTimestampNs;
 @property (nonatomic, copy) NSString *eventGeneratedTimestampRefId;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, copy) NSData *siriDeviceID;
-@property (readonly) Class superclass;
 @property (nonatomic, copy) NSData *turnID;
 
 - (void).cxx_destruct;

@@ -3,7 +3,9 @@
  */
 
 @interface CKNotificationChatController : CKCoreChatController <CKMessageEntryViewDelegate, CKMessageEntryViewInputDelegate, UITextInputPayloadDelegate> {
+    bool  _allowedByScreenTime;
     CKMessageEntryViewController * _entryViewController;
+    STLockoutViewController * _lockoutViewController;
     CKFullScreenBalloonViewControllerNotification * _notificationFullScreenBalloonController;
     CKRaiseGesture * _raiseGesture;
     bool  _shouldAllowReplyFromLockScreen;
@@ -11,12 +13,14 @@
     NSExtensionContext * _urlOpenContext;
 }
 
+@property (nonatomic) bool allowedByScreenTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <CKNotificationChatControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) CKMessageEntryView *entryView;
 @property (nonatomic, retain) CKMessageEntryViewController *entryViewController;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, retain) STLockoutViewController *lockoutViewController;
 @property (nonatomic) CKFullScreenBalloonViewControllerNotification *notificationFullScreenBalloonController;
 @property (nonatomic, retain) CKRaiseGesture *raiseGesture;
 @property (nonatomic) bool shouldAllowReplyFromLockScreen;
@@ -25,6 +29,8 @@
 @property (nonatomic) NSExtensionContext *urlOpenContext;
 
 - (void).cxx_destruct;
+- (void)__raiseGestureRecognized:(id)arg1;
+- (void)_allowedByScreenTimeChanged:(id)arg1;
 - (bool)_canShowWhileLocked;
 - (bool)_deviceIsPasscodeLocked;
 - (void)_dismissFullScreenBubbleViewControllerWithSendAnimation:(bool)arg1 completion:(id /* block */)arg2;
@@ -39,6 +45,7 @@
 - (bool)_shouldDisplayTextEntry;
 - (void)_updateEntryViewFrameIfNeeded:(bool)arg1;
 - (void)_updateTitleAnimated:(bool)arg1;
+- (bool)allowedByScreenTime;
 - (double)balloonMaxWidth;
 - (bool)becomeFirstResponder;
 - (bool)canBecomeFirstResponder;
@@ -61,6 +68,8 @@
 - (id)inputAccessoryViewController;
 - (bool)inputAccessoryViewControllerEnabled;
 - (id)launchURLForInputMode:(id)arg1;
+- (id)lockoutViewController;
+- (Class)lockoutViewControllerClass;
 - (bool)messageEntryShouldHideCaret:(id)arg1;
 - (void)messageEntryView:(id)arg1 didTapMediaObject:(id)arg2;
 - (bool)messageEntryView:(id)arg1 shouldInsertMediaObjects:(id)arg2;
@@ -88,10 +97,12 @@
 - (void)registerForTextInputPayloadHandling;
 - (void)sendComposition:(id)arg1;
 - (void)sendCurrentLocationMessage:(id)arg1;
+- (void)setAllowedByScreenTime:(bool)arg1;
 - (void)setConversation:(id)arg1;
 - (void)setEntryView:(id)arg1;
 - (void)setEntryViewController:(id)arg1;
 - (void)setLocalUserIsComposing:(bool)arg1 withPluginBundleID:(id)arg2 typingIndicatorData:(id)arg3;
+- (void)setLockoutViewController:(id)arg1;
 - (void)setNotificationFullScreenBalloonController:(id)arg1;
 - (void)setRaiseGesture:(id)arg1;
 - (void)setSendingMessage:(bool)arg1;

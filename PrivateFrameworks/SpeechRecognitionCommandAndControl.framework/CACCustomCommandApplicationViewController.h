@@ -17,6 +17,7 @@
 @property (nonatomic, retain) NSArray *sortedNames;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)applicationIdentifiersToNames;
 - (id)commandItem;
 - (id)delegate;

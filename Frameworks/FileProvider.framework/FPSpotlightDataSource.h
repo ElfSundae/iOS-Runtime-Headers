@@ -30,6 +30,7 @@
 - (void)collector:(id)arg1 didUpdateItems:(id)arg2;
 - (void)collector:(id)arg1 didUpdateItemsOrigin:(unsigned long long)arg2;
 - (id)delegate;
+- (id)description;
 - (void)enumerationMightHaveResumed;
 - (bool)hasMoreIncoming;
 - (id)initWithQueryDescriptor:(id)arg1 predicate:(id)arg2;

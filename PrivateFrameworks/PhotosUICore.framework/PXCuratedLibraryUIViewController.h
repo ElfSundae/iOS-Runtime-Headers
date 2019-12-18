@@ -27,7 +27,10 @@
     PXTouchingUIGestureRecognizer * _skimmingTouchGesture;
     PXSwipeSelectionManager * _swipeSelectionManager;
     UITapGestureRecognizer * _tapGesture;
-    long long  _trackedScrollZoomLevel;
+    struct { 
+        long long zoomLevel; 
+        long long scrollRegime; 
+    }  _trackedScrollContext;
     PXCuratedLibraryViewProvider * _viewProvider;
     long long  _zoomLevelBeforeBackNavigationTransition;
     PXCuratedLibraryZoomLevelControl * _zoomLevelControl;
@@ -66,7 +69,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) PXSwipeSelectionManager *swipeSelectionManager;
 @property (nonatomic, readonly) UITapGestureRecognizer *tapGesture;
-@property (nonatomic) long long trackedScrollZoomLevel;
+@property (nonatomic) struct { long long x1; long long x2; } trackedScrollContext;
 @property (nonatomic, readonly) long long userInterfaceFeature;
 @property (nonatomic, readonly) PXCuratedLibraryViewProvider *viewProvider;
 @property (nonatomic, readonly) PXCuratedLibraryViewProvider *viewProviderIfLoaded;
@@ -200,7 +203,6 @@
 - (void)px_navigateToStateAllowingTabSwitchingWithOptions:(unsigned long long)arg1 completionHandler:(id /* block */)arg2;
 - (void)px_willTransitionBars;
 - (id)screenEdgePanGestureRecognizer;
-- (void)scrollViewControllerDidEndScrolling:(id)arg1;
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (bool)scrollViewControllerShouldScrollToTop:(id)arg1;
 - (void)scrollViewControllerWillBeginScrolling:(id)arg1;
@@ -217,7 +219,7 @@
 - (void)setIsGridViewReady:(bool)arg1;
 - (void)setMovieProvider:(id)arg1;
 - (void)setNavigatedAssetReference:(id)arg1;
-- (void)setTrackedScrollZoomLevel:(long long)arg1;
+- (void)setTrackedScrollContext:(struct { long long x1; long long x2; })arg1;
 - (void)setZoomLevelBeforeBackNavigationTransition:(long long)arg1;
 - (id)skimmingController;
 - (void)skimmingController:(id)arg1 willHideSkimmingHintsForAssetCollectionReference:(id)arg2 animationDuration:(double)arg3;
@@ -237,7 +239,7 @@
 - (id)tapGesture;
 - (void)touchingUIGestureRecognizerDidBeginTouching:(id)arg1;
 - (void)touchingUIGestureRecognizerDidEndTouching:(id)arg1;
-- (long long)trackedScrollZoomLevel;
+- (struct { long long x1; long long x2; })trackedScrollContext;
 - (void)traitCollectionDidChange:(id)arg1;
 - (long long)userInterfaceFeature;
 - (void)viewDidAppear:(bool)arg1;

@@ -4,6 +4,9 @@
 
 @interface MFSearchableIndexManager_iOS : EDSearchableIndexManager <EDSearchableIndexReasonProvider> {
     EDSearchableIndex * _index;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _indexLock;
     EDSearchableIndexPersistence * _persistence;
     EDSearchableIndexScheduler * _scheduler;
 }
@@ -24,6 +27,7 @@
 - (id)currentReasons;
 - (id)dataSourceRefreshReasons;
 - (void)enableIndexingAndBeginScheduling:(bool)arg1;
+- (void)enableIndexingAndBeginScheduling:(bool)arg1 budgetConfiguration:(id)arg2;
 - (id)exclusionReasons;
 - (id)index;
 - (id)initWithDatabase:(id)arg1 hookResponder:(id)arg2;

@@ -442,6 +442,7 @@
 - (id)alternateName;
 - (bool)alwaysEditing;
 - (id)applyContactStyle;
+- (void)authorizeSave;
 - (id)blockAction;
 - (void)blockListDidChange:(id)arg1;
 - (id)cachedLabelWidths;
@@ -559,6 +560,7 @@
 - (id)initialPrompt;
 - (void)initializeTableViewsForHeaderHeight;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })insetsForContactTableView:(id)arg1;
+- (bool)isHeaderViewPhotoProhibited;
 - (bool)isMailVIP;
 - (bool)isModalInPresentation;
 - (bool)isNicknameProhibited;

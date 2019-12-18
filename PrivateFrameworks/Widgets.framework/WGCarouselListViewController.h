@@ -85,6 +85,7 @@
 - (id)resizeContexts;
 - (void)resizeWidgetWrapperView:(id)arg1 toSize:(struct CGSize { double x1; double x2; })arg2 withTransitionContext:(id)arg3 completion:(id /* block */)arg4;
 - (double)revealProgress;
+- (void)scrollViewDidChangeAdjustedContentInset:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint { double x1; double x2; })arg2 targetContentOffset:(inout struct CGPoint { double x1; double x2; }*)arg3;
 - (void)setCachedThresholds:(id)arg1;

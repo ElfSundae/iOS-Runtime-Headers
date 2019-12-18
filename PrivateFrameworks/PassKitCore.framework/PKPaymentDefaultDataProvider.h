@@ -50,6 +50,7 @@
 - (id)expressPassesInformationWithCardType:(long long)arg1;
 - (id)init;
 - (id)initWithPaymentService:(id)arg1 secureElement:(id)arg2;
+- (void)installmentPlanTransactionsForPassUniqueIdentifier:(id)arg1 accountIdentifier:(id)arg2 withRedemptionType:(long long)arg3 startDate:(id)arg4 endDate:(id)arg5 completion:(id /* block */)arg6;
 - (void)installmentPlansWithTransactionReferenceIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (void)installmentTransactionsForInstallmentPlanIdentifier:(id)arg1 completion:(id /* block */)arg2;
 - (bool)isDeviceInRestrictedMode;

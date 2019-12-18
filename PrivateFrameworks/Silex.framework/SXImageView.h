@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXImageView : UIImageView <STAXCustomRotorItemProvider, SXAnimatedImageDelegate, SXDraggable, SXReachabilityObserver> {
+@interface SXImageView : UIImageView <SWReachabilityObserver, SXAXCustomRotorItemProvider, SXAnimatedImageDelegate, SXDraggable> {
     NSTimer * _activeTimer;
     UIActivityIndicatorView * _activityIndicatorView;
     SXAnimatedImage * _animatedImage;
@@ -16,6 +16,7 @@
     SXImageResource * _imageResource;
     unsigned long long  _intendedFrameIndex;
     NSMapTable * _interestTable;
+    bool  _isDecorative;
     bool  _isScrubbing;
     bool  _paused;
     unsigned long long  _playCount;
@@ -34,7 +35,7 @@
         double x; 
         double y; 
     }  _previousPoint;
-    <SXReachabilityProvider> * _reachabilityProvider;
+    <SWReachabilityProvider> * _reachabilityProvider;
     <SXResourceDataSource> * _resourceDataSource;
     UILongPressGestureRecognizer * _scrubGesture;
     bool  _scrubbingEnabled;
@@ -65,6 +66,7 @@
 @property (nonatomic, readonly) SXImageResource *imageResource;
 @property (nonatomic) unsigned long long intendedFrameIndex;
 @property (nonatomic, retain) NSMapTable *interestTable;
+@property (nonatomic) bool isDecorative;
 @property (nonatomic) bool isScrubbing;
 @property (nonatomic) long long loadingIndicatorStyle;
 @property (nonatomic) bool paused;
@@ -76,7 +78,7 @@
 @property (nonatomic) struct CGSize { double x1; double x2; } preferredQualityLoadingImageSize;
 @property (nonatomic, readonly) bool prefersHighQuality;
 @property (nonatomic) struct CGPoint { double x1; double x2; } previousPoint;
-@property (nonatomic, readonly) <SXReachabilityProvider> *reachabilityProvider;
+@property (nonatomic, readonly) <SWReachabilityProvider> *reachabilityProvider;
 @property (nonatomic, readonly) <SXResourceDataSource> *resourceDataSource;
 @property (nonatomic, retain) UILongPressGestureRecognizer *scrubGesture;
 @property (nonatomic) bool scrubbingEnabled;
@@ -122,6 +124,7 @@
 - (unsigned long long)intendedFrameIndex;
 - (id)interestTable;
 - (bool)isAccessibilityElement;
+- (bool)isDecorative;
 - (bool)isScrubbing;
 - (bool)isVisible;
 - (id)itemsForCustomRotor:(id)arg1;
@@ -161,6 +164,7 @@
 - (void)setHighQualityInterest:(unsigned long long)arg1;
 - (void)setIntendedFrameIndex:(unsigned long long)arg1;
 - (void)setInterestTable:(id)arg1;
+- (void)setIsDecorative:(bool)arg1;
 - (void)setIsScrubbing:(bool)arg1;
 - (void)setLoadingIndicatorStyle:(long long)arg1;
 - (void)setPaused:(bool)arg1;

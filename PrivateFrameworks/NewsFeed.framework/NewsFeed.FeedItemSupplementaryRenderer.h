@@ -5,6 +5,10 @@
 @interface NewsFeed.FeedItemSupplementaryRenderer : Swift._SwiftObject {
     void colorPaletteProvider;
     void featuredIssueSupplementaryViewRenderer;
+    void formatFooterRegistrationIdentifiers;
+    void formatHeaderRegistrationIdentifiers;
+    void formatLayoutViewRenderer;
+    void internalErrorViewRenderer;
 }
 
 @end

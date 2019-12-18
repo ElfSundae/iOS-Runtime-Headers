@@ -4,6 +4,7 @@
 
 @interface SGQuickResponsesConfig : NSObject {
     SGQuickResponsesClassificationParameters * _classificationParams;
+    SGCustomResponsesParameters * _customResponsesParameters;
     NSArray * _labels;
     NSString * _language;
     unsigned long long  _mode;
@@ -15,6 +16,7 @@
 }
 
 @property (nonatomic, readonly) SGQuickResponsesClassificationParameters *classificationParams;
+@property (nonatomic, readonly) SGCustomResponsesParameters *customResponsesParameters;
 @property (nonatomic, readonly) NSArray *labels;
 @property (nonatomic, readonly, copy) NSString *language;
 @property (nonatomic, readonly) unsigned long long mode;
@@ -26,6 +28,7 @@
 
 - (void).cxx_destruct;
 - (id)classificationParams;
+- (id)customResponsesParameters;
 - (id)initWithLanguage:(id)arg1 mode:(unsigned long long)arg2 dictionary:(id)arg3;
 - (id)initWithLanguage:(id)arg1 mode:(unsigned long long)arg2 plistPath:(id)arg3;
 - (id)labels;

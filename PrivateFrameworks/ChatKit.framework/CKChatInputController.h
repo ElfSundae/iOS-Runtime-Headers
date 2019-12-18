@@ -110,6 +110,7 @@
 - (bool)appStoreIsDisplayed;
 - (id)appTitleOverride;
 - (void)applicationWillAddDeactivationReasonNotification:(id)arg1;
+- (id)balloonPluginForIndexPath:(id)arg1;
 - (void)browserAppManagerDidSelectPlugin:(id)arg1;
 - (id)browserPlugin;
 - (id)browserPluginDataSource;
@@ -138,6 +139,7 @@
 - (id)delegate;
 - (void)deviceOrientationManager:(id)arg1 orientationDidChange:(long long)arg2;
 - (void)didBeginInstallingAppWithBundleIdentifier:(id)arg1;
+- (void)didSelectPlugin:(id)arg1;
 - (void)didTransitionFromOrientation:(long long)arg1 toOrientation:(long long)arg2;
 - (void)dismiss;
 - (void)dismissAndReloadInputViews:(bool)arg1;

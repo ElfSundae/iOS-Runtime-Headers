@@ -2,21 +2,17 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaViewContainer : PBCodable <NSSecureCoding, SISchemaViewContainer> {
+@interface SISchemaViewContainer : PBCodable {
     NSString * _dialogIdentifier;
     NSString * _dialogPhase;
     NSString * _snippetClass;
     NSString * _viewID;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic, copy) NSString *dialogIdentifier;
 @property (nonatomic, copy) NSString *dialogPhase;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, copy) NSString *snippetClass;
-@property (readonly) Class superclass;
 @property (nonatomic, copy) NSString *viewID;
 
 - (void).cxx_destruct;

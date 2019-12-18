@@ -33,6 +33,7 @@
 - (void)handleSignpostIntervalBegin:(id)arg1;
 - (id)init;
 - (float)maxDurationSec;
+- (id)newConfiguredExtractor;
 - (void)setMaxDurationSec:(float)arg1;
 - (id)stallAggregation;
 - (id)stallAggregationSnapshot;

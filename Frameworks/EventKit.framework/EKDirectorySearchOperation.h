@@ -16,6 +16,8 @@
 @property (nonatomic, retain) NSError *error;
 @property (nonatomic) bool numberOfMatchesExceededLimit;
 
++ (bool)isSupported;
+
 - (void).cxx_destruct;
 - (void)_finishWithError:(id)arg1;
 - (id)_processGroupsInResults:(id)arg1;

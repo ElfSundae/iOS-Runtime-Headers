@@ -807,6 +807,8 @@
 + (id)hk_activityMoveGoalMetGradientTopColor;
 + (id)hk_activityMoveGoalMissedGradientBottomColor;
 + (id)hk_activityMoveGoalMissedGradientTopColor;
++ (id)hk_activitySeparatorDefaultColor;
++ (id)hk_activitySeparatorLollipopColor;
 + (id)hk_activityStandGoalLineColor;
 + (id)hk_activityStandGoalMetGradientBottomColor;
 + (id)hk_activityStandGoalMetGradientTopColor;
@@ -880,6 +882,7 @@
 + (id)hk_sleepAsleepColor;
 + (id)hk_sleepInBedColor;
 + (id)hk_sleepKeyColor;
++ (id)hk_sourceIconTintColor;
 + (id)hk_unknownCategoryClinicalKeyColor;
 + (id)hk_vitalsClinicalKeyColor;
 + (id)hk_vitalsKeyColor;
@@ -1101,8 +1104,12 @@
 
 // Image: /System/Library/PrivateFrameworks/NewsUI.framework/NewsUI
 
++ (id)nu_darkStyleDividerColor;
 + (id)nu_defaultSystemTintColor;
 + (id)nu_defaultTitleTextColor;
++ (id)nu_dividerColor;
++ (id)nu_dynamicColor:(id)arg1 withDarkStyleVariant:(id)arg2;
++ (id)nu_lightStyleDividerColor;
 
 - (id)nu_colorToCSSRGBA;
 

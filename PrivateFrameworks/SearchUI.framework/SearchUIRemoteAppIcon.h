@@ -4,6 +4,7 @@
 
 @interface SearchUIRemoteAppIcon : SearchUIImage
 
+- (bool)isEqual:(id)arg1;
 - (id)loadImage;
 
 @end

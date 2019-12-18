@@ -3,14 +3,14 @@
  */
 
 @interface SXGalleryItemImageViewFactory : NSObject <SXGalleryItemImageViewFactory> {
-    <SXReachabilityProvider> * _reachabilityProvider;
+    <SWReachabilityProvider> * _reachabilityProvider;
     <SXResourceDataSourceProvider> * _resourceDataSourceProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) <SXReachabilityProvider> *reachabilityProvider;
+@property (nonatomic, readonly) <SWReachabilityProvider> *reachabilityProvider;
 @property (nonatomic, readonly) <SXResourceDataSourceProvider> *resourceDataSourceProvider;
 @property (readonly) Class superclass;
 

@@ -71,7 +71,6 @@
 @property (nonatomic, readonly) bool wantsZoomAndPanEnabled;
 
 - (void).cxx_destruct;
-- (bool)_canShowWhileLocked;
 - (void)_layoutToolGradient;
 - (id)_newTimeMapper;
 - (void)_updateTraitCollectionAndLayoutReferenceSize;

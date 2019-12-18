@@ -80,6 +80,11 @@
 - (id)logMessage;
 - (id)logMessageDictionaryFromProtobufDictionary:(id)arg1;
 
+// Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
+
+- (int)getAnyEventType;
+- (id)wrapAsAnyEvent;
+
 // Image: /System/Library/PrivateFrameworks/VoiceShortcuts.framework/VoiceShortcuts
 
 - (bool)readFrom:(id)arg1 error:(id*)arg2;

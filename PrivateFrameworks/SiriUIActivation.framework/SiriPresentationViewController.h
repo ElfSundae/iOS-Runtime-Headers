@@ -102,6 +102,7 @@
 - (double)_buttonDownTimestamp;
 - (bool)_buttonIdentifierIsHoldToTalkTrigger:(long long)arg1;
 - (void)_callIsActiveDidChangeNotification:(id)arg1;
+- (bool)_canShowWhileLocked;
 - (void)_cancelPendingActivationWithReason:(unsigned long long)arg1;
 - (bool)_cancelPendingPhoneCall;
 - (void)_carSiriButtonHoldToTalkIntervalFiredWithButtonIdentifier:(long long)arg1;

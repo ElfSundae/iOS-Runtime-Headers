@@ -10,6 +10,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool representsCanonicalBloodPressure;
 @property (readonly) Class superclass;
 
 // Image: /System/Library/Frameworks/HealthKit.framework/HealthKit
@@ -32,5 +33,9 @@
 + (id)createWithCodable:(id)arg1;
 
 - (id)codableRepresentationForSync;
+
+// Image: /System/Library/PrivateFrameworks/HealthRecordsUI.framework/HealthRecordsUI
+
+- (bool)representsCanonicalBloodPressure;
 
 @end

@@ -8,6 +8,7 @@
     unsigned int  _dataSet;
     struct { 
         unsigned int has_dataSet : 1; 
+        unsigned int has_linkDisplayStringIndex : 1; 
         unsigned int read_unknownFields : 1; 
         unsigned int read_regions : 1; 
         unsigned int read_badgeChecksum : 1; 
@@ -27,7 +28,9 @@
         unsigned int wrote_resources : 1; 
         unsigned int wrote_url : 1; 
         unsigned int wrote_dataSet : 1; 
+        unsigned int wrote_linkDisplayStringIndex : 1; 
     }  _flags;
+    unsigned int  _linkDisplayStringIndex;
     NSString * _logo;
     NSString * _logoChecksum;
     NSString * _name;
@@ -51,10 +54,12 @@
 @property (nonatomic, readonly) bool hasBadge;
 @property (nonatomic, readonly) bool hasBadgeChecksum;
 @property (nonatomic) bool hasDataSet;
+@property (nonatomic) bool hasLinkDisplayStringIndex;
 @property (nonatomic, readonly) bool hasLogo;
 @property (nonatomic, readonly) bool hasLogoChecksum;
 @property (nonatomic, readonly) bool hasName;
 @property (nonatomic, readonly) bool hasUrl;
+@property (nonatomic) unsigned int linkDisplayStringIndex;
 @property (nonatomic, retain) NSString *logo;
 @property (nonatomic, retain) NSString *logoChecksum;
 @property (nonatomic, retain) NSString *name;
@@ -94,6 +99,7 @@
 - (bool)hasBadge;
 - (bool)hasBadgeChecksum;
 - (bool)hasDataSet;
+- (bool)hasLinkDisplayStringIndex;
 - (bool)hasLogo;
 - (bool)hasLogoChecksum;
 - (bool)hasName;
@@ -102,6 +108,7 @@
 - (id)init;
 - (id)initWithData:(id)arg1;
 - (bool)isEqual:(id)arg1;
+- (unsigned int)linkDisplayStringIndex;
 - (id)logo;
 - (id)logoChecksum;
 - (void)mergeFrom:(id)arg1;
@@ -118,6 +125,8 @@
 - (void)setBadgeChecksum:(id)arg1;
 - (void)setDataSet:(unsigned int)arg1;
 - (void)setHasDataSet:(bool)arg1;
+- (void)setHasLinkDisplayStringIndex:(bool)arg1;
+- (void)setLinkDisplayStringIndex:(unsigned int)arg1;
 - (void)setLogo:(id)arg1;
 - (void)setLogoChecksum:(id)arg1;
 - (void)setName:(id)arg1;

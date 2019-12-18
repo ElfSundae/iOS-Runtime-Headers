@@ -50,6 +50,7 @@
 
 - (void).cxx_destruct;
 - (void)_actuateTapticFeedback;
+- (bool)_canShowWhileLocked;
 - (void)_closeButtonPressed:(id)arg1;
 - (void)_endUsingTapticFeedback;
 - (void)_escapeKeyPressed;

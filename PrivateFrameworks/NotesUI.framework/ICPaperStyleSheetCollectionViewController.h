@@ -11,6 +11,7 @@
 @property (nonatomic) <ICPaperStyleSheetCollectionViewControllerDelegate> *paperStyleDelegate;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (bool)accessibilityPerformEscape;
 - (void)cancelAction:(id)arg1;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;

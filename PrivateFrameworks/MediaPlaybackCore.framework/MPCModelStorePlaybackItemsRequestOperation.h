@@ -14,6 +14,8 @@
 @property (nonatomic, readonly, copy) id /* block */ responseHandler;
 
 - (void).cxx_destruct;
+- (void)_executeWithUserIdentity:(id)arg1;
+- (void)_validateUserIdentityForRequestWithCompletion:(id /* block */)arg1;
 - (void)cancel;
 - (void)execute;
 - (id)initWithRequest:(id)arg1 responseHandler:(id /* block */)arg2;

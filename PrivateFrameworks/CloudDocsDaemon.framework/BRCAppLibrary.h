@@ -25,6 +25,7 @@
     long long  _maxLostStamp;
     bool  _needsSave;
     NSMutableDictionary * _pendingFileCoordinators;
+    NSNumber * _rootQuotaUsage;
     BRCAccountSession * _session;
     unsigned int  _state;
     NSMutableSet * _targetAppLibraries;
@@ -65,6 +66,7 @@
 @property (nonatomic, readonly) NSString *pathRelativeToRoot;
 @property (nonatomic, readonly) NSMutableDictionary *plist;
 @property (nonatomic, readonly) BRCRelativePath *root;
+@property (nonatomic, retain) NSNumber *rootQuotaUsage;
 @property (nonatomic, retain) BRCAccountSession *session;
 @property (nonatomic, readonly) bool shouldEvictUploadedItems;
 @property (nonatomic, readonly) unsigned int state;
@@ -132,8 +134,8 @@
 - (id)documentsPath;
 - (struct PQLResultSet { Class x1; }*)enumerateUserVisibleChildrenDirectoriesOfItemGlobalID:(id)arg1 db:(id)arg2;
 - (struct PQLResultSet { Class x1; }*)enumerateUserVisibleChildrenOfItemGlobalID:(id)arg1 sortOrder:(unsigned char)arg2 offset:(unsigned long long)arg3 limit:(unsigned long long)arg4 db:(id)arg5;
-- (struct BRCDirectoryItem { Class x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; id x9; id x10; unsigned int x11; id x12; unsigned long long x13; id x14; bool x15; unsigned long long x16; unsigned long long x17; unsigned long long x18; }*)fetchRootItem;
-- (struct BRCDirectoryItem { Class x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; id x9; id x10; unsigned int x11; id x12; unsigned long long x13; id x14; bool x15; unsigned long long x16; unsigned long long x17; unsigned long long x18; }*)fetchRootItemInDB:(id)arg1;
+- (struct BRCDirectoryItem { Class x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; id x9; id x10; unsigned int x11; id x12; unsigned long long x13; id x14; bool x15; unsigned long long x16; unsigned long long x17; unsigned long long x18; id x19; }*)fetchRootItem;
+- (struct BRCDirectoryItem { Class x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; id x9; id x10; unsigned int x11; id x12; unsigned long long x13; id x14; bool x15; unsigned long long x16; unsigned long long x17; unsigned long long x18; id x19; }*)fetchRootItemInDB:(id)arg1;
 - (id)fileID;
 - (void)freeFileCoordinationSlotsAfterDelayForRead:(bool)arg1;
 - (id)fsEventsMonitor;
@@ -168,8 +170,8 @@
 - (id)itemByRowID:(unsigned long long)arg1 db:(id)arg2;
 - (id)itemIDByRowID:(unsigned long long)arg1;
 - (id)itemIDByRowID:(unsigned long long)arg1 db:(id)arg2;
-- (struct PQLResultSet { Class x1; }*)itemsEnumeratorChildOf:(id)arg1 rankMin:(unsigned long long)arg2 rankMax:(unsigned long long)arg3 count:(unsigned long long)arg4 db:(id)arg5;
-- (struct PQLResultSet { Class x1; }*)itemsEnumeratorWithRankMin:(unsigned long long)arg1 rankMax:(unsigned long long)arg2 namePrefix:(id)arg3 shouldIncludeFolders:(bool)arg4 shouldIncludeOnlyFolders:(bool)arg5 shouldIncludeDocumentsScope:(bool)arg6 shouldIncludeDataScope:(bool)arg7 shouldIncludeExternalScope:(bool)arg8 shouldIncludeTrashScope:(bool)arg9 count:(unsigned long long)arg10 db:(id)arg11;
+- (struct PQLResultSet { Class x1; }*)itemsEnumeratorChildOf:(id)arg1 withDeadItems:(bool)arg2 rankMin:(unsigned long long)arg3 rankMax:(unsigned long long)arg4 count:(unsigned long long)arg5 db:(id)arg6;
+- (struct PQLResultSet { Class x1; }*)itemsEnumeratorWithRankMin:(unsigned long long)arg1 rankMax:(unsigned long long)arg2 namePrefix:(id)arg3 withDeadItems:(bool)arg4 shouldIncludeFolders:(bool)arg5 shouldIncludeOnlyFolders:(bool)arg6 shouldIncludeDocumentsScope:(bool)arg7 shouldIncludeDataScope:(bool)arg8 shouldIncludeExternalScope:(bool)arg9 shouldIncludeTrashScope:(bool)arg10 count:(unsigned long long)arg11 db:(id)arg12;
 - (struct PQLResultSet { Class x1; }*)liveAliasesEnumeratorTargetingThisAppLibrary;
 - (id)logName;
 - (id)mangledID;
@@ -188,6 +190,7 @@
 - (id)root;
 - (id)rootItemGlobalID;
 - (id)rootItemID;
+- (id)rootQuotaUsage;
 - (void)scheduleContainerMetadataSyncUp;
 - (void)scheduleDeepScanWithReason:(id)arg1;
 - (id)session;
@@ -203,6 +206,7 @@
 - (void)setMaxLostStamp:(long long)arg1;
 - (void)setNeedsSave:(bool)arg1;
 - (void)setRootFileID:(unsigned long long)arg1;
+- (void)setRootQuotaUsage:(id)arg1;
 - (void)setSession:(id)arg1;
 - (bool)setStateBits:(unsigned int)arg1;
 - (void)setZoneRowID:(id)arg1;

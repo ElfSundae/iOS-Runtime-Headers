@@ -25,6 +25,8 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)logMetrics:(id)arg1;
+- (void)logMetrics:(id)arg1 usingClient:(id)arg2;
+- (void)logMetrics:(id)arg1 withDimensions:(id)arg2 usingClient:(id)arg3;
 - (id)nextTasksForRunStatus:(int)arg1;
 - (int)run;
 - (int)runTask;

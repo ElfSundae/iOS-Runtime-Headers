@@ -51,12 +51,14 @@
 - (id /* block */)frameLatencyBlock;
 - (id /* block */)frameLifetimeBlock;
 - (id)frameSeedToAccumulatedStateDict;
+- (void)handleDeviceReboot;
 - (bool)handleSignpostEvent:(id)arg1;
 - (bool)handleSignpostInterval:(id)arg1;
 - (void)handleSignpostIntervalBegin:(id)arg1;
 - (id /* block */)hidLatencyBlock;
 - (id)init;
 - (bool)isConciseFormat;
+- (id)newConfiguredExtractor;
 - (id /* block */)renderBlock;
 - (void)setCommitIntervalBlock:(id /* block */)arg1;
 - (void)setContextInfoBlock:(id /* block */)arg1;

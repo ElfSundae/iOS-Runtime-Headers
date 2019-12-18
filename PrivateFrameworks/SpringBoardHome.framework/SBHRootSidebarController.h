@@ -28,6 +28,7 @@
 
 - (void).cxx_destruct;
 - (void)_addEditButton;
+- (bool)_canShowWhileLocked;
 - (void)_configureLayoutMargins;
 - (void)_configureWidgetViewController;
 - (void)_updateDockHeightConstraint;

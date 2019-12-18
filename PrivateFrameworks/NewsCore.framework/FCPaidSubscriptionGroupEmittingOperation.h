@@ -9,7 +9,10 @@
 @property (nonatomic, retain) FCPaidSubscriptionCursor *toCursor;
 
 - (id)_additionalFeedItemsTransformationLimitedToNumberOfFeedItems:(unsigned long long)arg1 withOptions:(long long)arg2;
+- (void)_constructClassicGroupForChannelWithIdentifier:(id)arg1 usingFeedItems:(id)arg2 feedFilterOptions:(long long)arg3 completionBlock:(id /* block */)arg4;
 - (void)_constructGroupForChannelWithIdentifier:(id)arg1 usingFeedItems:(id)arg2 feedFilterOptions:(long long)arg3 completionBlock:(id /* block */)arg4;
+- (void)_constructSupergroupForChannelWithGroupConfig:(id)arg1 forYouConfig:(id)arg2 usingFeedItems:(id)arg3 feedFilterOptions:(long long)arg4 completionBlock:(id /* block */)arg5;
+- (void)_continueWithEnumerator:(id)arg1 groupedFeedItems:(id)arg2 validPurchasedTagIDs:(id)arg3;
 - (id)_createGroupForChannel:(id)arg1 headlines:(id)arg2;
 - (id)_feedItemsTransformationWithOptions:(long long)arg1;
 - (void)_fetchAdditionalFeedItemsForChannel:(id)arg1 feedRange:(id)arg2 block:(id /* block */)arg3;

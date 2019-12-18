@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INSendMessageAttachment : NSObject <INFileEnumerable, INJSONSerializable> {
+@interface INSendMessageAttachment : NSObject <INEnumerable, INJSONSerializable> {
     bool  _currentLocation;
     INFile * _file;
     NSURL * _speechDataURL;
@@ -26,8 +26,7 @@
 - (id)_dictionaryRepresentation;
 - (id)_initWithCurrentLocation:(bool)arg1 file:(id)arg2 speechDataURL:(id)arg3;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
-- (void)_intents_enumerateFileURLsWithBlock:(id /* block */)arg1 mutate:(bool)arg2;
-- (void)_intents_enumerateFilesWithBlock:(id /* block */)arg1 mutate:(bool)arg2;
+- (bool)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(id /* block */)arg2;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (bool)currentLocation;
 - (void)encodeWithCoder:(id)arg1;

@@ -33,6 +33,7 @@
 - (unsigned long long)payloadFormat;
 - (unsigned long long)payloadLength;
 - (long long)priority;
+- (unsigned int)pushFlags;
 - (unsigned long long)pushType;
 - (id)rawTimeoutTime;
 - (long long)sendInterface;
@@ -50,6 +51,7 @@
 - (void)setPayloadFormat:(unsigned long long)arg1;
 - (void)setPayloadLength:(unsigned long long)arg1;
 - (void)setPriority:(long long)arg1;
+- (void)setPushFlags:(unsigned int)arg1;
 - (void)setPushType:(unsigned long long)arg1;
 - (void)setSendInterface:(long long)arg1;
 - (void)setSendRetried:(bool)arg1;

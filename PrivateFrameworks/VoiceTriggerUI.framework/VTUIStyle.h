@@ -87,7 +87,6 @@
 - (double)primaryButtonHeight;
 - (double)primaryButtonHorizontalInset;
 - (double)proxAboutLinkFirstBaselineFromTop;
-- (double)proxAboutLinkHeight;
 - (id)proxCancelFont;
 - (double)proxContainerCornerRadius;
 - (double)proxContainerHorizontalVerticalPadding;

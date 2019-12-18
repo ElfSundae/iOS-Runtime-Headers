@@ -5,7 +5,7 @@
 
 @required
 
-- (NSArray *)_accessoryViewsForPreviewPlatterPresentationController:(_UIPreviewPlatterPresentationController *)arg1 layoutAnchor:(struct { unsigned long long x1; unsigned long long x2; })arg2;
+- (NSArray *)_accessoryViewsForPreviewPlatterPresentationController:(_UIPreviewPlatterPresentationController *)arg1;
 - (void)_previewPlatterPresentationController:(_UIPreviewPlatterPresentationController *)arg1 beginDragWithTouch:(UITouch *)arg2;
 - (void)_previewPlatterPresentationControllerDidBeginPanInteraction:(_UIPreviewPlatterPresentationController *)arg1;
 - (void)_previewPlatterPresentationControllerDidEndPanInteraction:(_UIPreviewPlatterPresentationController *)arg1;

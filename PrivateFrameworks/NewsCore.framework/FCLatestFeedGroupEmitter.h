@@ -13,14 +13,16 @@
 @property (nonatomic, readonly) bool isRequiredByFollowingEmitters;
 @property (nonatomic, readonly) long long requiredForYouContentTypes;
 @property (nonatomic, readonly) bool requiresHeavyweightContent;
+@property (nonatomic, readonly) bool shouldEmitContentInFavoritesOnlyMode;
 @property (readonly) Class superclass;
 
++ (bool)canMergeGroupsUnconditionally;
 + (id)groupEmitterIdentifier;
 
-- (bool)canMergeGroupsUnconditionally;
 - (id)emittableGroupTypes;
 - (id)operationToEmitGroupWithContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;
 - (long long)requiredForYouContentTypes;
+- (bool)shouldEmitContentInFavoritesOnlyMode;
 - (bool)wantsToEmitGroupInContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;
 - (bool)wantsToInsertGroupInContext:(id)arg1;
 

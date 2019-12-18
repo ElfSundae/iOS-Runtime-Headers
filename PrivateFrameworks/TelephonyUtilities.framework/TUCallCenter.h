@@ -102,6 +102,7 @@
 - (bool)anyCallIsEndpointOnCurrentDevice;
 - (bool)anyCallIsHostedOnCurrentDevice;
 - (bool)anyCallPassesTest:(id /* block */)arg1;
+- (void)applicationWillLaunchForStartCallInteraction:(id)arg1;
 - (id)audioAndVideoCallsWithStatus:(int)arg1;
 - (id)audioDeviceController;
 - (id)audioOrVideoCallWithStatus:(int)arg1;

@@ -47,11 +47,6 @@
 - (bool)hk_intersectsDateIntervalWithStartDate:(id)arg1 endDate:(id)arg2;
 - (id)hk_prettyString;
 
-// Image: /System/Library/Frameworks/SensorKit.framework/SensorKit
-
-+ (id)srDateIntervalWithDate:(id)arg1 fuzzTimeInterval:(double)arg2;
-+ (id)srDateIntervalWithDate:(id)arg1 roundDownToNearest:(double)arg2 duration:(double)arg3;
-
 // Image: /System/Library/PrivateFrameworks/ClassroomKit.framework/ClassroomKit
 
 - (bool)crk_containsCurrentDate;
@@ -82,5 +77,10 @@
 + (id)mtDateIntervalWithEndDate:(id)arg1 duration:(double)arg2;
 
 - (bool)mtContainsDate:(id)arg1;
+
+// Image: /System/Library/PrivateFrameworks/SensorKit.framework/SensorKit
+
++ (id)srDateIntervalWithDate:(id)arg1 fuzzTimeInterval:(double)arg2;
++ (id)srDateIntervalWithDate:(id)arg1 roundDownToNearest:(double)arg2 duration:(double)arg3;
 
 @end

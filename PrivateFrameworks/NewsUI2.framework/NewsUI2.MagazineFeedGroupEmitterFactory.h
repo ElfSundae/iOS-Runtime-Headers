@@ -5,14 +5,20 @@
 @interface NewsUI2.MagazineFeedGroupEmitterFactory : Swift._SwiftObject {
     void appConfigurationManager;
     void bundlePurchasePrewarmer;
+    void channelPromotedArticlesService;
     void context;
     void currentIssuesChecker;
     void diversityPenalty;
+    void feedPersonalizingEngine;
+    void formatService;
+    void headlineService;
     void issueModelFactory;
     void issueService;
     void magazineCategoryService;
+    void newspaperGroupService;
     void offlineIssueList;
     void personalizationService;
+    void sectionHeadlinesService;
     void tagService;
     void topicClusteringService;
 }

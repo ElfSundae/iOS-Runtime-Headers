@@ -5,6 +5,6 @@
 
 @required
 
-- (STTextTangierDocumentRoot *)documentRoot;
+- (SXTextTangierDocumentRoot *)documentRoot;
 
 @end

@@ -24,6 +24,8 @@
 - (void)__hostDidUpdateDisplay:(FBSDisplayConfiguration *)arg1;
 - (void)__hostDisablesAutomaticKeyboardBehavior:(bool)arg1;
 - (void)__hostReadyToReceiveMessagesFromServiceViewController;
+- (void)__hostSceneDidEnterBackground;
+- (void)__hostSceneWillEnterForeground;
 - (void)__hostViewDidAppear:(bool)arg1;
 - (void)__hostViewDidDisappear:(bool)arg1;
 - (void)__hostViewDidMoveToScreenWithFBSDisplayIdentity:(void *)arg1 newHostingHandleReplyHandler:(void *)arg2; // needs 2 arg types, found 7: FBSDisplayIdentity *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, _UIHostedWindowHostingHandle *, void*

@@ -14,6 +14,8 @@
     LiveFSFPExtensionHelper * ext;
     bool  historyReset;
     bool  isActive;
+    unsigned int  postedSelfDelete;
+    unsigned int  postedSelfUpdate;
     NSMutableSet * updatedItems;
 }
 
@@ -31,8 +33,8 @@
 + (id)newWithEnumeratedItem:(id)arg1 extension:(id)arg2 error:(id*)arg3;
 
 - (void).cxx_destruct;
-- (void)addInterestedItem:(id)arg1 newName:(id)arg2;
-- (void)applyDelete:(id)arg1 newTombstone:(id)arg2;
+- (void)addInterestedItem:(id)arg1 newName:(id)arg2 forSelf:(bool)arg3;
+- (void)applyDelete:(id)arg1 newTombstone:(id)arg2 toSelf:(bool)arg3;
 - (void)currentSyncAnchorWithCompletionHandler:(id /* block */)arg1;
 - (id)dc;
 - (void)doShutdown;

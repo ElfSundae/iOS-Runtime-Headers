@@ -12,6 +12,8 @@
 - (bool)isWhitelisted;
 - (NSString *)paidFeedIDForSection:(NSString *)arg1 bin:(long long)arg2;
 - (NSArray *)sectionIDs;
+- (NSString *)supergroupConfigJson;
+- (NSString *)supergroupKnobsJson;
 - (bool)supportsNotifications;
 
 @end

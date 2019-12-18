@@ -5,38 +5,28 @@
 @interface CNUICoreFamilyMemberContactsStore : NSObject <CNUICoreFamilyMemberContactsUpdating> {
     FAFamilyMember * _familyMember;
     <CNUICoreContactStoreFacade> * _familyMemberScopedContactStore;
-    <CNUICoreContactStoreFacade> * _mainContactStore;
     <CNSchedulerProvider> * _schedulerProvider;
 }
 
 @property (nonatomic, readonly) <CNScheduler> *backgroundOrImmediateScheduler;
 @property (nonatomic, readonly) FAFamilyMember *familyMember;
 @property (nonatomic, readonly) <CNUICoreContactStoreFacade> *familyMemberScopedContactStore;
-@property (nonatomic, readonly) <CNUICoreContactStoreFacade> *mainContactStore;
 @property (nonatomic, readonly) <CNSchedulerProvider> *schedulerProvider;
 
 - (void).cxx_destruct;
 - (id)backgroundOrImmediateScheduler;
-- (void)commonInitWithWithFamilyMemberScopedContactStoreFacade:(id)arg1 mainContactStoreFacade:(id)arg2 familyMember:(id)arg3 schedulerProvider:(id)arg4;
 - (id)contactsFoundAndNotFoundInFamilyMemberContainerFuture:(id)arg1;
-- (id)contactsInsertedIntoFamilyMemberContainerIfMissingFuture:(id)arg1 tryToRefetchContactsFromMainStore:(bool)arg2 preserveEditsToProvidedContactsOverContactsFoundInFamilyMemberStore:(bool)arg3;
-- (id)contactsRefetchedFromMainStoreIfFound:(id)arg1;
+- (id)contactsInsertedIntoFamilyMemberContainerIfMissingFuture:(id)arg1 preserveEditsToProvidedContactsOverContactsFoundInFamilyMemberStore:(bool)arg2;
 - (id)familyMember;
 - (id)familyMemberScopedContactStore;
 - (id)init;
-- (id)initWithFamilyMemberScopedContactStore:(id)arg1 familyMember:(id)arg2 schedulerProvider:(id)arg3;
-- (id)initWithFamilyMemberScopedContactStore:(id)arg1 mainContactStore:(id)arg2 familyMember:(id)arg3 schedulerProvider:(id)arg4;
-- (id)initWithFamilyMemberScopedContactStoreFacade:(id)arg1 mainContactStoreFacade:(id)arg2 familyMember:(id)arg3 schedulerProvider:(id)arg4;
-- (id)mainContactStore;
+- (id)initWithFamilyMember:(id)arg1 schedulerProvider:(id)arg2;
+- (id)initWithFamilyMemberScopedContactStoreFacade:(id)arg1 familyMember:(id)arg2 schedulerProvider:(id)arg3;
 - (id)schedulerProvider;
 - (id)updateContactListByAddingContacts:(id)arg1;
-- (id)updateContactListByAddingContacts:(id)arg1 tryToRefetchContactsFromMainStore:(bool)arg2;
-- (id)updateContactListByAddingContactsFromCandidateContacts:(id)arg1;
 - (id)updateContactListByRemovingContacts:(id)arg1;
 - (id)updateContactListByUpdatingContacts:(id)arg1;
 - (id)updateContactWhitelistByAddingContacts:(id)arg1;
-- (id)updateContactWhitelistByAddingContacts:(id)arg1 tryToRefetchContactsFromMainStore:(bool)arg2;
-- (id)updateContactWhitelistByAddingContactsFromCandidateContacts:(id)arg1;
 - (id)updateContactWhitelistByRemovingContacts:(id)arg1;
 
 @end

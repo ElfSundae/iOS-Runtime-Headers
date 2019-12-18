@@ -4,6 +4,7 @@
 
 @interface NewsArticles.ArticleViewerPageViewControllerProvider : Swift._SwiftObject {
     void articleModule;
+    void interstitialAdModule;
     void replicaModule;
 }
 

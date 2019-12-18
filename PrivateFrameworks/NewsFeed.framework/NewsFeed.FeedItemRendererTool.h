@@ -5,7 +5,8 @@
 @interface NewsFeed.FeedItemRendererTool : Swift._SwiftObject {
     void debugColors;
     void debugEnabled;
-    void debugViewLayoutViewFactory;
+    void debugInspectViewLayoutViewFactory;
+    void fontManager;
     void rendererEnvironment;
     void shineImageFactory;
 }

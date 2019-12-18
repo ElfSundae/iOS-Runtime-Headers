@@ -5,6 +5,7 @@
 @interface STiCloudOrganizationSettings : STCoreOrganizationSettings
 
 @property (nonatomic, retain) STiCloudOrganization *organization;
+@property (nonatomic, copy) NSString *recoveryAltDSID;
 
 - (id)computeUniqueIdentifier;
 - (id)dictionaryRepresentation;

@@ -8,7 +8,7 @@
     bool  _requireUserIDs;
 }
 
-@property (nonatomic) NSString *containerIdentifier;
+@property (nonatomic, copy) NSString *containerIdentifier;
 @property (nonatomic, copy) CKDContainerInfo *containerInfo;
 @property (nonatomic) bool requireUserIDs;
 

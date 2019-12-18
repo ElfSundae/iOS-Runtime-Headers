@@ -27,8 +27,8 @@
 @property (nonatomic) bool hasBeenSubmitted;
 @property (nonatomic) bool inferredAllowsCellular;
 @property (nonatomic) bool inferredPreferAnonymousRequests;
-@property (nonatomic) NSString *inferredSourceApplicationBundleIdentifier;
-@property (nonatomic) NSString *inferredSourceApplicationSecondaryIdentifier;
+@property (nonatomic, retain) NSString *inferredSourceApplicationBundleIdentifier;
+@property (nonatomic, retain) NSString *inferredSourceApplicationSecondaryIdentifier;
 @property (nonatomic) bool isCKInternalMetric;
 @property (nonatomic) bool isPushTriggerFired;
 @property (nonatomic, readonly) NSUUID *metricUUID;

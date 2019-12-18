@@ -3,7 +3,6 @@
  */
 
 @interface CNContactListViewController : UITableViewController <CNAvatarCardControllerDelegate, CNAvatarViewControllerDelegate, CNContactDataSourceDelegate, CNContactListBannerViewDelegate, CNContactViewControllerDelegate, CNUIObjectViewControllerDelegate, CNVCardImportControllerDelegate, CNVCardImportControllerPresentationDelegate, INKContentControllerObserver, UIGestureRecognizerDelegate, UISearchBarDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UITableViewDragDestinationDelegate, UITableViewDragSourceDelegate> {
-    bool  _allowsSearching;
     CNAvatarCardController * _cardController;
     CNContactFormatter * _contactFormatter;
     CNContactListStyleApplier * _contactListStyleApplier;
@@ -16,6 +15,7 @@
     INKContent * _infoContent;
     INKContentController * _infoContentController;
     UIView * _infoContentView;
+    bool  _isHandlingSearch;
     CNAvatarViewController * _meBannerAvatarController;
     CNContactListBannerView * _meContactBanner;
     NSString * _meContactBannerFootnoteLabel;
@@ -45,7 +45,6 @@
     CNVCardImportController * _vCardImportController;
 }
 
-@property (nonatomic) bool allowsSearching;
 @property (nonatomic, retain) CNAvatarCardController *cardController;
 @property (nonatomic, retain) CNContactFormatter *contactFormatter;
 @property (nonatomic, retain) CNContactListStyleApplier *contactListStyleApplier;
@@ -61,6 +60,7 @@
 @property (nonatomic, retain) INKContent *infoContent;
 @property (nonatomic, retain) INKContentController *infoContentController;
 @property (nonatomic, retain) UIView *infoContentView;
+@property (nonatomic) bool isHandlingSearch;
 @property (nonatomic, retain) CNAvatarViewController *meBannerAvatarController;
 @property (nonatomic, retain) CNContactListBannerView *meContactBanner;
 @property (nonatomic, copy) NSString *meContactBannerFootnoteLabel;
@@ -109,7 +109,6 @@
 - (void)_tableView:(id)arg1 performDropWithCoordinator:(id)arg2;
 - (void)_updateCountStringNow:(bool)arg1;
 - (void)_updateTableViewRowHeight;
-- (bool)allowsSearching;
 - (void)applyStyle;
 - (long long)avatarCardController:(id)arg1 presentationResultForLocation:(struct CGPoint { double x1; double x2; })arg2;
 - (void)avatarCardControllerWillBeginPreviewInteraction:(id)arg1;
@@ -141,6 +140,7 @@
 - (void)didDismissSearchController:(id)arg1;
 - (void)didPresentSearchController:(id)arg1;
 - (void)didUpdateContentForAvatarViewController:(id)arg1;
+- (void)disableSearchUI;
 - (id)dragItemsForIndexPath:(id)arg1;
 - (id)emergencyContactIdentifiers;
 - (id)environment;
@@ -192,7 +192,6 @@
 - (bool)selectContact:(id)arg1 animated:(bool)arg2 scrollPosition:(long long)arg3;
 - (void)selectRowAtIndexPath:(id)arg1 animated:(bool)arg2 scrollPosition:(long long)arg3;
 - (id)selectedContacts;
-- (void)setAllowsSearching:(bool)arg1;
 - (void)setCardController:(id)arg1;
 - (void)setContactFormatter:(id)arg1;
 - (void)setContactListStyleApplier:(id)arg1;
@@ -203,6 +202,7 @@
 - (void)setInfoContent:(id)arg1;
 - (void)setInfoContentController:(id)arg1;
 - (void)setInfoContentView:(id)arg1;
+- (void)setIsHandlingSearch:(bool)arg1;
 - (void)setMeBannerAvatarController:(id)arg1;
 - (void)setMeContactBanner:(id)arg1;
 - (void)setMeContactBannerFootnoteLabel:(id)arg1;

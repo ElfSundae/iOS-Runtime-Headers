@@ -18,6 +18,7 @@
 @property (nonatomic, readonly) bool isRequiredByFollowingEmitters;
 @property (nonatomic, readonly) long long requiredForYouContentTypes;
 @property (nonatomic, readonly) bool requiresHeavyweightContent;
+@property (nonatomic, readonly) bool shouldEmitContentInFavoritesOnlyMode;
 @property (readonly) Class superclass;
 
 + (id)groupEmitterIdentifier;
@@ -32,6 +33,7 @@
 - (long long)requiredForYouContentTypes;
 - (void)setHeadlineClusterOrderer:(id)arg1;
 - (void)setHeadlineClusterer:(id)arg1;
+- (bool)shouldEmitContentInFavoritesOnlyMode;
 - (bool)supportsPagination;
 - (bool)wantsToEmitGroupInContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;
 - (bool)wantsToInsertGroupInContext:(id)arg1;

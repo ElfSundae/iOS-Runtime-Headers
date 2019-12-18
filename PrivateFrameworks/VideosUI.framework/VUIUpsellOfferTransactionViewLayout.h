@@ -20,6 +20,7 @@
 - (double)disclaimerBottomMargin;
 - (id)disclaimerTextLayout;
 - (id)init;
-- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })safeAreaInsets;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })safeAreaInsetsPad;
+- (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })safeAreaInsetsPhone;
 
 @end

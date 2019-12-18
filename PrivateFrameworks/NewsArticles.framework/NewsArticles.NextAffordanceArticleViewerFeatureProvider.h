@@ -4,6 +4,7 @@
 
 @interface NewsArticles.NextAffordanceArticleViewerFeatureProvider : Swift._SwiftObject {
     void nextAffordanceVisibilityProvider;
+    void styler;
 }
 
 @end

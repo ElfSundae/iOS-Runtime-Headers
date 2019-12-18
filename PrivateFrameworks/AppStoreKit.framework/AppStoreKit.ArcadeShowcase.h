@@ -4,6 +4,7 @@
 
 @interface AppStoreKit.ArcadeShowcase : Swift._SwiftObject {
     void iconArtworks;
+    void impressionMetrics;
     void subscribedAction;
     void subscribedDescription;
     void unsubscribedAction;

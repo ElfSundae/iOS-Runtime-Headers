@@ -9,6 +9,7 @@
     unsigned long long  domainAvailability;
     long long  eventCountLimit;
     long long  eventsPerPeriod;
+    NSString * formattedName;
     bool  isAvailable;
     bool  isHistorical;
     bool  isInstant;
@@ -31,6 +32,7 @@
 @property (nonatomic, readonly) unsigned long long domainAvailability;
 @property (nonatomic, readonly) long long eventCountLimit;
 @property (nonatomic, readonly) long long eventsPerPeriod;
+@property (nonatomic, readonly) NSString *formattedName;
 @property (nonatomic, readonly) bool isAvailable;
 @property (nonatomic, readonly) bool isHistorical;
 @property (nonatomic, readonly) bool isInstant;
@@ -57,6 +59,7 @@
 - (unsigned long long)domainAvailability;
 - (long long)eventCountLimit;
 - (long long)eventsPerPeriod;
+- (id)formattedName;
 - (id)initFromDictionary:(id)arg1 defaultProperties:(id)arg2;
 - (bool)isAvailable;
 - (bool)isHistorical;

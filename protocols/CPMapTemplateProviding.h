@@ -10,7 +10,6 @@
 - (void)hostSetMapButton:(NSUUID *)arg1 imageSet:(CPImageSet *)arg2;
 - (void)hostSetMapButtons:(NSArray *)arg1;
 - (void)hostSetPanInterfaceVisible:(bool)arg1 animated:(bool)arg2;
-- (void)hostStartNavigationSessionForTrip:(void *)arg1 reply:(void *)arg2; // needs 2 arg types, found 7: CPTrip *, id /* block */, /* Warning: Unrecognized filer type: '<' using 'void*' */ void*, void, id /* block */, <CPNavigationSessionProviding> *, void*
 - (void)hostUpdateTravelEstimates:(CPTravelEstimates *)arg1 forTripIdentifier:(NSUUID *)arg2;
 - (void)setHostAutoHidesNavigationBar:(bool)arg1;
 - (void)setHostGuidanceBackgroundColor:(UIColor *)arg1;

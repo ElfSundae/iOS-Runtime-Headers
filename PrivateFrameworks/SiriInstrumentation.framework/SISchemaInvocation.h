@@ -2,19 +2,15 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaInvocation : PBCodable <NSSecureCoding, SISchemaInvocation> {
+@interface SISchemaInvocation : PBCodable {
     int  _invocationAction;
     int  _invocationSource;
     SISchemaViewContainer * _viewContainer;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) int invocationAction;
 @property (nonatomic) int invocationSource;
 @property (nonatomic, readonly) NSData *jsonData;
-@property (readonly) Class superclass;
 @property (nonatomic, retain) SISchemaViewContainer *viewContainer;
 
 - (void).cxx_destruct;

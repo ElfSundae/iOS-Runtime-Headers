@@ -21,6 +21,7 @@
 - (void)setSigningGroup:(id)arg1;
 - (void)setSigningQueue:(id)arg1;
 - (id)signedCredentialForRequest:(id)arg1 withPersistence:(unsigned long long)arg2;
+- (id)signedCredentialForUrl:(id)arg1 userAgent:(id)arg2 withPersistence:(unsigned long long)arg3;
 - (id)signingGroup;
 - (id)signingQueue;
 

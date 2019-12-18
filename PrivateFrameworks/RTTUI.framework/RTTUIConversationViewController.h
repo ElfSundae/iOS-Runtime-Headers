@@ -38,6 +38,7 @@
 + (id)viewControllerForConversation:(id)arg1;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_define:(id)arg1;
 - (void)_processRealtimeTimeout;
 - (void)_scrollToIndexPathIfNecessary:(id)arg1 animated:(bool)arg2;

@@ -14,6 +14,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)_connectToServiceWithCompletion:(id /* block */)arg1;
 - (id)_remoteViewController;
 - (void)_sceneDidEnterBackground:(id)arg1;

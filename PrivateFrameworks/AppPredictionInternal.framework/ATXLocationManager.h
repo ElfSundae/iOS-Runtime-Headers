@@ -46,6 +46,7 @@
 - (id)init;
 - (id)initWithGPS:(id)arg1 routine:(id)arg2 stateStore:(id)arg3 now:(id)arg4;
 - (bool)isAvailableLocationOfInterestType:(long long)arg1;
+- (bool)locationEnabled;
 - (id)locationOfInterestAtCurrentLocation;
 - (id)now;
 - (double)predictedExitDateTimeout;

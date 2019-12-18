@@ -59,9 +59,11 @@
 - (void).cxx_destruct;
 - (void)_installPreview:(id)arg1 inClippingView:(id)arg2 transformView:(id)arg3;
 - (void)_modelUpdates;
+- (id)_overrideTraitCollectionForView:(id)arg1 combinedWithTraits:(id)arg2;
 - (double)_pathShadowAlphaForExpansionProgress:(double)arg1;
 - (void)_prepareAnimatableProperties;
 - (bool)_previewIsLikelyOpaque:(id)arg1;
+- (bool)_previewPrefersApplyingMask:(id)arg1;
 - (double)_rectangularShadowAlphaForExpansionProgress:(double)arg1;
 - (void)_updateClippingViews;
 - (void)_updateCollapsedChrome;

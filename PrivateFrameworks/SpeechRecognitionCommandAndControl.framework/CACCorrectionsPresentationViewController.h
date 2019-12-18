@@ -36,6 +36,7 @@
 @property (nonatomic, readonly) long long zOrder;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
 - (id)alternatives;
 - (id)correctionViewController;

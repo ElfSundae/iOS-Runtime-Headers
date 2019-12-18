@@ -33,6 +33,7 @@
 - (bool)needsToSetRestrictionsPasscode;
 - (bool)performMigrationFromMCXSettings:(id)arg1 error:(id*)arg2;
 - (bool)permitWebFilterURL:(id)arg1 pageTitle:(id)arg2 error:(id*)arg3;
+- (id)primaryiCloudCardDAVAccountIdentifierWithError:(id*)arg1;
 - (void)requestToManageContactsForDSID:(id)arg1 completionHandler:(id /* block */)arg2;
 - (void)screenTimeStateWithCompletionHandler:(id /* block */)arg1;
 - (void)screenTimeSyncStateWithCompletionHandler:(id /* block */)arg1;

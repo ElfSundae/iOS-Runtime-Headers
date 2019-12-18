@@ -37,6 +37,7 @@
 - (id)defaultProvider;
 - (id)delegateToQueue;
 - (id)dialRequestForRecentCall:(id)arg1;
+- (void)donateUserIntentForProviderWithIdentifier:(id)arg1;
 - (id)emergencyProvider;
 - (id)faceTimeProvider;
 - (id)init;

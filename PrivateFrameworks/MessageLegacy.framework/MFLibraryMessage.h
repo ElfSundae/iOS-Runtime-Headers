@@ -3,7 +3,7 @@
  */
 
 @interface MFLibraryMessage : MFMailMessage <EDLibraryMessage> {
-    unsigned long long  _conversationFlags;
+    _Atomic unsigned long long  _conversationFlags;
     long long  _libraryID;
     long long  _mailboxID;
     NSString * _messageID;

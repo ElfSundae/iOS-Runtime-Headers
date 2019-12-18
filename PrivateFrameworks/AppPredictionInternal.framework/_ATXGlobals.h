@@ -34,6 +34,8 @@
 - (double)appActionTrendingLaunchDecayHalflife;
 - (double)appActionUnlockTimeDecayHalflife;
 - (double)appActionWifiSSIDLaunchDecayHalflife;
+- (double)appAndActionCoarseTimePowLocationDecayHalflife;
+- (double)appAndActionSpecificTimePowLocationDecayHalflife;
 - (int)appConnectionMinAverageLaunches;
 - (int)appConnectionMinTotalLaunches;
 - (double)appConnectionSessionObjectLogSamplingRate;

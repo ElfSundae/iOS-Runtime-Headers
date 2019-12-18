@@ -5,6 +5,6 @@
 
 @required
 
-- (<SXComponentInteractionHandler> *)componentInteractionHandlerForInteraction:(id <SXWebContentInteraction>)arg1;
+- (<SXComponentInteractionHandler> *)componentInteractionHandlerForInteraction:(id <SWInteraction>)arg1;
 
 @end

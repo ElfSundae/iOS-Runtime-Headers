@@ -52,20 +52,22 @@
 - (long long)articleRecirculationPopularFeedQueryTimeRange;
 - (unsigned long long)bestOfBundleFeedGroupKind;
 - (long long)criticalStorageThreshold;
-- (NSString *)description;
 - (bool)disableThumbnailsForArticleRecirculation;
 - (long long)emailSignupRequiredAppLaunchCount;
 - (bool)enableBadgeInSpotlightTabBar;
+- (bool)enableLocationBasedAutofavorites;
 - (long long)feedContentExposureTestMaximumInterval;
 - (NSString *)feedNavigationConfigJSON;
 - (bool)isArticleToolbarCompressionEnabled;
 - (bool)isExpired;
 - (NSString *)issueArticleRecirculationConfigJSON;
 - (unsigned long long)likeDislikeBehavior;
+- (NSString *)localAreasMappingResourceId;
 - (long long)lowStorageThreshold;
 - (long long)maximumTrendingGroupSizeiPad;
 - (long long)maximumTrendingGroupSizeiPhone;
 - (NSString *)translationMapResourceID;
+- (NSString *)webEmbedContentBlockerOverrides;
 - (NSString *)webEmbedContentBlockers;
 
 @end

@@ -25,6 +25,7 @@
 @property float minRateForAudioPlayback;
 @property (copy) NSString *multichannelAudioStrategy;
 @property (nonatomic) unsigned long long preferredVideoDecoderGPURegistryID;
+@property (getter=_preservesAudioSessionSampleRate, setter=_setPreservesAudioSessionSampleRate:, nonatomic) bool preservesAudioSessionSampleRate;
 @property (nonatomic) bool preventsDisplaySleepDuringVideoPlayback;
 @property (nonatomic, readonly) long long status;
 
@@ -139,6 +140,7 @@
 - (id)_playbackDisplaysForFigPlayer;
 - (void)_playerLayer:(id)arg1 replaceVideoLayer:(id)arg2 with:(id)arg3;
 - (float)_playerVolume;
+- (bool)_preservesAudioSessionSampleRate;
 - (bool)_preventsSleepDuringVideoPlayback;
 - (float)_rate;
 - (id)_rateDidChangeNotificationPayloadForAVFRateChangeReason:(id)arg1 rateChangeIdentifier:(id)arg2;
@@ -172,6 +174,7 @@
 - (void)_setPausesAudioVisualPlaybackInBackground:(bool)arg1;
 - (void)_setPendingFigPlayerProperty:(id)arg1 forKey:(id)arg2;
 - (void)_setPreferredLanguageList:(id)arg1;
+- (void)_setPreservesAudioSessionSampleRate:(bool)arg1;
 - (void)_setPreventsSleepDuringVideoPlayback:(bool)arg1;
 - (void)_setStoppingFadeOutDuration:(float)arg1;
 - (void)_setUserVolume:(float)arg1;

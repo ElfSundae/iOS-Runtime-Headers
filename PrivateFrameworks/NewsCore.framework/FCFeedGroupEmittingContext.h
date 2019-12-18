@@ -66,7 +66,7 @@
 - (id)allArticleIDs;
 - (id)allGroupIDs;
 - (id)articleIDs;
-- (id)articleIDsContainedByGroupType:(long long)arg1;
+- (id)articleIDsContainedByGroupsWithSourceIdentifier:(id)arg1;
 - (id)cloudContext;
 - (id)clusterIDs;
 - (id)configuration;
@@ -74,7 +74,7 @@
 - (unsigned long long)countOfGroupsFromPageWithType:(long long)arg1;
 - (unsigned long long)countOfPrecedingAdjacentGroupsWithTypes:(id)arg1;
 - (id)creationDateOfFollowingGroupWithType:(long long)arg1;
-- (id)creationDateOfGroupWithType:(long long)arg1;
+- (id)creationDateOfGroupWithSourceIdentifier:(id)arg1;
 - (unsigned long long)desiredHeadlineCount;
 - (id)edition;
 - (id)editionKeyDate;
@@ -89,7 +89,7 @@
 - (id)followingEdition;
 - (id)followingGroups;
 - (id)forYouCatchUpOperation;
-- (id)groupFromPageWithType:(long long)arg1;
+- (id)groupFromPageWithSourceIdentifier:(id)arg1;
 - (id)groupIDs;
 - (id)groupOfGroupType:(long long)arg1;
 - (id)groupsFromPage;
@@ -103,12 +103,13 @@
 - (bool)pageHasExhaustedGroupsWithTypes:(id)arg1;
 - (bool)pageHasPrecedingGroupWithSourceIdentifier:(id)arg1;
 - (bool)pageIsWaitingForFirstGroupFromSourceIdentifier:(id)arg1;
-- (bool)pageWillContainExpandedNewGroupWithType:(long long)arg1;
+- (bool)pageWillContainExpandedNewGroupWithSourceIdentifier:(id)arg1;
 - (bool)pageWillHaveGroupWithSourceIdentifier:(id)arg1;
 - (id)pendingGroups;
 - (id)pendingGroupsFromOtherSessions;
 - (id)personalizer;
 - (id)precedingAdjacentHeadlinesFromGroupType:(long long)arg1;
+- (id)precedingAndPendingTopicIDsInSession;
 - (long long)precedingGroupType;
 - (id)precedingGroups;
 - (id)precedingNewFavoriteTagIDs;

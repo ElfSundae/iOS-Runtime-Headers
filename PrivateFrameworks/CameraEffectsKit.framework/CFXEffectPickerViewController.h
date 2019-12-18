@@ -33,6 +33,7 @@
 - (void)CFX_loadEffectsForType:(id)arg1;
 - (void)CFX_restartPreviewing;
 - (void)CFX_stopPreviewing;
+- (bool)_canShowWhileLocked;
 - (id)delegate;
 - (id)effectLoadingQueue;
 - (void)effectPickerView:(id)arg1 didPickEffectAtIndex:(long long)arg2;

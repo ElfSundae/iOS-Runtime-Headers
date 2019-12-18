@@ -59,6 +59,7 @@
 @property (nonatomic, readonly) NSNumber *searchRenderTimeout;
 @property (nonatomic, readonly) NSURL *searchURL;
 @property (nonatomic, readonly) bool sendGeoEnvironmentHeader;
+@property (nonatomic, readonly, copy) NSArray *skuUploadWhitelist;
 @property (nonatomic, readonly) unsigned long long smartHistoryCompletionReturnCount;
 @property (nonatomic, readonly) bool smartHistoryEnabled;
 @property (nonatomic, readonly) bool smartHistoryFeatureFeedbackEnabled;
@@ -155,6 +156,7 @@
 - (id)searchRenderTimeout;
 - (id)searchURL;
 - (bool)sendGeoEnvironmentHeader;
+- (id)skuUploadWhitelist;
 - (unsigned long long)smartHistoryCompletionReturnCount;
 - (bool)smartHistoryEnabled;
 - (bool)smartHistoryFeatureFeedbackEnabled;

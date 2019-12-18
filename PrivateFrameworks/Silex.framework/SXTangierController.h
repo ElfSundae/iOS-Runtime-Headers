@@ -2,28 +2,28 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXTangierController : NSObject <STTextTangierInteractiveCanvasControllerDataSource, STTextTangierInteractiveCanvasControllerDelegate, SXTextComponentLayoutHosting, SXTextSelecting, SXViewportChangeListener> {
+@interface SXTangierController : NSObject <SXTextComponentLayoutHosting, SXTextSelecting, SXTextTangierInteractiveCanvasControllerDataSource, SXTextTangierInteractiveCanvasControllerDelegate, SXViewportChangeListener> {
     UIView * _aboveRepsHost;
     <SXComponentActionHandler> * _componentActionHandler;
     <SXComponentController> * _componentController;
     <SXComponentInteractionManager> * _componentInteractionManager;
-    STTextTangierCanvasViewController * _cvc;
+    SXTextTangierCanvasViewController * _cvc;
     <SXTangierControllerDelegate> * _delegate;
-    STTangierRepDirectLayerHostProvider * _directLayerHostProvider;
+    SXTangierRepDirectLayerHostProvider * _directLayerHostProvider;
     bool  _disableClippingForTiles;
-    STTextTangierDocumentRoot * _documentRoot;
+    SXTextTangierDocumentRoot * _documentRoot;
     <SXTangierDragItemProvider> * _dragItemProvider;
     bool  _enclosingCanvasScrolling;
-    STTextTangierInteractiveCanvasController * _icc;
+    SXTextTangierInteractiveCanvasController * _icc;
     unsigned long long  _initialSubviewCount;
     UIView * _overlayRepsHost;
     bool  _performedInitialLayoutAndRender;
     NSMutableSet * _presentedTextViews;
     bool  _preventScrollViewDidScrollReentrance;
     bool  _rebuildFlows;
-    STScrollView * _scrollView;
+    SXScrollView * _scrollView;
     TSWPSelection * _storedSelection;
-    STTangierTextRenderCollector * _textRenderCollector;
+    SXTangierTextRenderCollector * _textRenderCollector;
     UIView * _underRepsHost;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
@@ -37,17 +37,17 @@
 @property (nonatomic, readonly) <SXComponentActionHandler> *componentActionHandler;
 @property (nonatomic, readonly) <SXComponentController> *componentController;
 @property (nonatomic, readonly) <SXComponentInteractionManager> *componentInteractionManager;
-@property (nonatomic, readonly) STTextTangierCanvasViewController *cvc;
+@property (nonatomic, readonly) SXTextTangierCanvasViewController *cvc;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) <SXTangierControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, readonly) STTangierRepDirectLayerHostProvider *directLayerHostProvider;
+@property (nonatomic, readonly) SXTangierRepDirectLayerHostProvider *directLayerHostProvider;
 @property (nonatomic) bool disableClippingForTiles;
 @property (nonatomic, readonly, retain) TSKDocumentRoot *documentRoot;
 @property (nonatomic, readonly) <SXTangierDragItemProvider> *dragItemProvider;
 @property (getter=isEnclosingCanvasScrolling, nonatomic) bool enclosingCanvasScrolling;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) STTextTangierInteractiveCanvasController *icc;
+@property (nonatomic, readonly) SXTextTangierInteractiveCanvasController *icc;
 @property (nonatomic) unsigned long long initialSubviewCount;
 @property (nonatomic, readonly) bool interactiveCanvasControllerAllowsHyperlinkInteraction;
 @property (nonatomic, readonly) bool isCanvasInteractive;
@@ -57,7 +57,7 @@
 @property (nonatomic, readonly) NSMutableSet *presentedTextViews;
 @property (nonatomic) bool preventScrollViewDidScrollReentrance;
 @property (nonatomic) bool rebuildFlows;
-@property (nonatomic, retain) STScrollView *scrollView;
+@property (nonatomic, retain) SXScrollView *scrollView;
 @property (nonatomic) bool selectionEnabled;
 @property (nonatomic, readonly) bool shouldClipToScrollViewBoundsInVisibleBounds;
 @property (nonatomic, readonly) bool shouldPopKnobsOutsideEnclosingScrollView;
@@ -69,7 +69,7 @@
 @property (nonatomic, readonly) bool spellCheckingSuppressed;
 @property (nonatomic, retain) TSWPSelection *storedSelection;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) STTangierTextRenderCollector *textRenderCollector;
+@property (nonatomic, readonly) SXTangierTextRenderCollector *textRenderCollector;
 @property (nonatomic, readonly) UIView *underRepsHost;
 @property (nonatomic, readonly) struct os_unfair_lock_s { unsigned int x1; } unfairLock;
 @property (nonatomic, retain) SXViewport *viewport;

@@ -55,7 +55,7 @@
 - (void)finishWhitelistedContactsTasks;
 - (void)flushEditingSession;
 - (id)initWithDataSource:(id)arg1 familyInfoRetriever:(id)arg2 schedulerProvider:(id)arg3;
-- (id)initWithDataSource:(id)arg1 mainContactStore:(id)arg2 schedulerProvider:(id)arg3;
+- (id)initWithDataSource:(id)arg1 schedulerProvider:(id)arg2;
 - (id)mainContactStore;
 - (void)notifyObserverContactItemsChange;
 - (id)observer;

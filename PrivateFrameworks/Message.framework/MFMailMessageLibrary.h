@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Message.framework/Message
  */
 
-@interface MFMailMessageLibrary : MFMessageLibrary <EDMessageChangeHookResponder, EDProtectedDataReconciliationHookResponder, EFContentProtectionObserver> {
+@interface MFMailMessageLibrary : MFMessageLibrary <EDMessageChangeHookResponder, EDProtectedDataReconciliationHookResponder, EFContentProtectionObserver, EFSignpostable> {
     NSString * _activeAccountClause;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
@@ -55,6 +55,7 @@
 @property (nonatomic, retain) EDMessageQueryParser *queryParser;
 @property (nonatomic, retain) <EFScheduler> *reconciliationCleanupScheduler;
 @property (nonatomic, retain) EDSearchableIndexScheduler *searchableIndexScheduler;
+@property (readonly) unsigned long long signpostID;
 @property (readonly) Class superclass;
 
 + (void)_renameLibraryAtPath:(id)arg1;
@@ -65,6 +66,7 @@
 + (id)propertyMapper;
 + (void)removeLibraryOnNextLaunch;
 + (void)setDefaultInstance:(id)arg1;
++ (id)signpostLog;
 
 - (void).cxx_destruct;
 - (id)UIDsToDeleteInMailbox:(id)arg1;
@@ -223,7 +225,7 @@
 - (id)loadMeetingMetadataForMessage:(id)arg1;
 - (long long)loadMoreMessagesForThreadContainingMessage:(id)arg1 hasNoMoreMessages:(bool*)arg2;
 - (long long)mailboxIDForURLString:(id)arg1;
-- (long long)mailboxIDForURLString:(id)arg1 createIfNecesary:(bool)arg2;
+- (long long)mailboxIDForURLString:(id)arg1 createIfNecessary:(bool)arg2;
 - (id)mailboxURLForMessage:(id)arg1;
 - (id)mailboxURLsForIDs:(id)arg1;
 - (id)mailboxUidForMessage:(id)arg1;
@@ -326,6 +328,7 @@
 - (void)setStoredIntegerPropertyWithName:(id)arg1 value:(id)arg2;
 - (void)setSummary:(id)arg1 forMessage:(id)arg2;
 - (bool)shouldCancel;
+- (unsigned long long)signpostID;
 - (id)sqlQueryWithConversionLogForQuery:(id)arg1;
 - (void)start;
 - (long long)statusCountDeltaForMailbox:(id)arg1;

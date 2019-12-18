@@ -29,6 +29,7 @@
 - (id)avatarRecord;
 - (id)captureFlashViewWithSize:(struct CGSize { double x1; double x2; })arg1 alpha:(double)arg2;
 - (id)compositeImageDataForImage:(id)arg1 backgroundColor:(id)arg2;
+- (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })computeFullscreenImageRectForScreenWithSize:(struct CGSize { double x1; double x2; })arg1;
 - (id)createImagePickerForEditingImageData:(id)arg1 withCropRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2 customBackgroundColor:(id)arg3;
 - (id)delegate;
 - (id)fullScreenImageFromImage:(id)arg1 inSize:(struct CGSize { double x1; double x2; })arg2;
@@ -42,6 +43,7 @@
 - (void)photoPickerVariantListController:(id)arg1 didSelectProviderItem:(id)arg2;
 - (void)photoPickerVariantListControllerDidCancel:(id)arg1;
 - (void)presentImagePickerForImage:(id)arg1 fadeIn:(bool)arg2 completion:(id /* block */)arg3;
+- (id)renderImage:(id)arg1 inRect:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg2;
 - (void)setDelegate:(id)arg1;
 - (void)setImageWithAlpha:(id)arg1;
 - (void)setOriginalItem:(id)arg1;

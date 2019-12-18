@@ -27,6 +27,9 @@
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })absoluteTextViewFrame;
 - (id)accessibilityContextualLabelForTextView:(id)arg1;
 - (id)accessibilityCustomRotorMembershipForTextView:(id)arg1;
+- (id)accessibilityHint;
+- (id)accessibilityLabel;
+- (id)accessibilityValue;
 - (id)componentIdentifierForTextView:(id)arg1;
 - (void)didMoveToSuperview;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4;

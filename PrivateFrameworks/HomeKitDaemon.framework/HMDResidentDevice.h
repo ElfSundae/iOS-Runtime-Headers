@@ -3,7 +3,6 @@
  */
 
 @interface HMDResidentDevice : HMFObject <HMDBackingStoreObjectProtocol, HMDDeviceControllerDelegate, HMFDumpState, HMFLogging, NSSecureCoding> {
-    HMFUnfairLock * __lock;
     long long  _batteryState;
     bool  _confirmed;
     HMDDevice * _device;
@@ -11,6 +10,7 @@
     bool  _enabled;
     HMDHome * _home;
     NSUUID * _identifier;
+    HMFUnfairLock * _lock;
     bool  _lowBattery;
     bool  _reachable;
     HMDResidentDeviceManager * _residentDeviceManager;
@@ -19,7 +19,7 @@
 @property (nonatomic) long long batteryState;
 @property (getter=isBlocked, readonly) bool blocked;
 @property (nonatomic, readonly) unsigned long long capabilities;
-@property (getter=isConfirmed, nonatomic) bool confirmed;
+@property (getter=isConfirmed, nonatomic, readonly) bool confirmed;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) HMDDevice *device;
@@ -78,7 +78,6 @@
 - (id)residentDeviceManager;
 - (id)runtimeState;
 - (void)setBatteryState:(long long)arg1;
-- (void)setConfirmed:(bool)arg1;
 - (void)setDevice:(id)arg1;
 - (void)setEnabled:(bool)arg1;
 - (void)setHome:(id)arg1;

@@ -38,6 +38,7 @@
 - (id)_tempNameForTableName:(id)arg1;
 - (id)_transformedManyToManys;
 - (void)addEntityMigrationDescription:(id)arg1;
+- (void)appendDefaultValueStatementsToCompleteMigration:(id)arg1 migrationContext:(struct _NSSQLMigrationContext { id x1; })arg2;
 - (void)appendStatementsToCompleteMigration:(id)arg1 migrationContext:(struct _NSSQLMigrationContext { id x1; })arg2;
 - (void)appendStatementsToCreateOrDropTables:(id)arg1 migrationContext:(struct _NSSQLMigrationContext { id x1; })arg2;
 - (void)appendStatementsToPerformMigration:(id)arg1 migrationContext:(struct _NSSQLMigrationContext { id x1; })arg2;

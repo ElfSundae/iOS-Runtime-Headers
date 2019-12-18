@@ -44,8 +44,8 @@
 - (void)LIUpdateVolumeWideUpdatedName:(id)arg1 interestedItem:(id)arg2;
 - (void)addEnumerator:(id)arg1;
 - (bool)addedToExtension;
-- (void)applyAddAcrossEnumerators:(id)arg1 newName:(id)arg2;
-- (void)applyDeleteAcrossEnumerators:(id)arg1 newTombstone:(id)arg2;
+- (void)applyAddAcrossEnumerators:(id)arg1 newName:(id)arg2 forSelf:(bool)arg3;
+- (void)applyDeleteAcrossEnumerators:(id)arg1 newTombstone:(id)arg2 toSelf:(bool)arg3;
 - (id)containerID;
 - (id)contentsSortedByDate;
 - (id)contentsSortedByName;

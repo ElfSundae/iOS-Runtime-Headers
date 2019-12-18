@@ -5,6 +5,7 @@
 @interface SPUISearchViewController : UIViewController <APUIShortLookViewControllerDelegate, SFFeedbackListener, SPUIResultsViewDelegate, SPUISearchHeaderDelegate, SearchUIFirstTimeExperienceDelegate, SearchUIResultsViewDelegate, UIGestureRecognizerDelegate> {
     NSMutableSet * _allHeaderViews;
     <SPUISearchViewControllerDelegate> * _delegate;
+    unsigned long long  _feedbackBackgroundTaskIdentifier;
     SPUISearchFirstTimeViewController * _firstTimeExperienceViewController;
     bool  _internetOverrideForPPT;
     bool  _lastQueryWasAuthenticated;
@@ -24,6 +25,7 @@
 @property (nonatomic) <SPUISearchViewControllerDelegate> *delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) double distanceToTopOfAppIcons;
+@property unsigned long long feedbackBackgroundTaskIdentifier;
 @property (retain) SPUISearchFirstTimeViewController *firstTimeExperienceViewController;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) SPUISearchHeader *headerView;
@@ -72,6 +74,8 @@
 - (void)dismissCancelButtonAnimated;
 - (void)dismissIfNecessaryForIconDrag;
 - (double)distanceToTopOfAppIcons;
+- (void)endBackgroundTaskIfNeeded;
+- (unsigned long long)feedbackBackgroundTaskIdentifier;
 - (void)firstTimeExperienceContinueButtonPressed;
 - (id)firstTimeExperienceViewController;
 - (id)forwardingTargetForSelector:(SEL)arg1;
@@ -86,9 +90,8 @@
 - (void)launchSiriWithUtteranceText:(id)arg1 source:(long long)arg2;
 - (id)legibilitySettings;
 - (id)lockScreenFooterView;
-- (void)performSearchWithQuery:(id)arg1 forSuggestions:(bool)arg2;
 - (void)performSearchWithSuggestion:(id)arg1;
-- (void)performTestSearchWithQuery:(id)arg1 event:(unsigned long long)arg2 sourcePreference:(long long)arg3;
+- (void)performTestSearchWithQuery:(id)arg1 event:(unsigned long long)arg2 sourcePreference:(unsigned long long)arg3;
 - (unsigned long long)presentationMode;
 - (id)proactiveResultViewController;
 - (id)proactiveResultsTestingObject;
@@ -112,6 +115,7 @@
 - (void)sendActionFeedbackFromShortLookViewController:(id)arg1 isPunchout:(bool)arg2;
 - (void)setAllHeaderViews:(id)arg1;
 - (void)setDelegate:(id)arg1;
+- (void)setFeedbackBackgroundTaskIdentifier:(unsigned long long)arg1;
 - (void)setFirstTimeExperienceViewController:(id)arg1;
 - (void)setInternetOverrideForPPT:(bool)arg1;
 - (void)setInternetOverrideToDisable:(bool)arg1;
@@ -131,6 +135,7 @@
 - (void)shortLookViewController:(id)arg1 willDisplayLongLookWithReason:(long long)arg2;
 - (id)shortLookViewControllerForResult:(id)arg1;
 - (void)showVerticalScrollIndicators:(bool)arg1;
+- (void)spotlightDidBackground;
 - (id)testingHelper;
 - (double)timeAtDismissal;
 - (void)updateHeaderViewsWithBlock:(id /* block */)arg1;

@@ -17,7 +17,7 @@
 - (bool)isSymLink;
 - (bool)isZoneRoot;
 - (BRCItemID *)itemID;
-- (NSNumber *)ownerKey;
+- (BRCUserRowID *)ownerKey;
 - (BRCServerZone *)serverZone;
 - (BRCAccountSession *)session;
 - (void)setSharingOptions:(unsigned long long)arg1;

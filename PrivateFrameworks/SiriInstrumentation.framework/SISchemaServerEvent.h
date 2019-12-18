@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaServerEvent : PBCodable <NSSecureCoding, SISchemaServerEvent> {
+@interface SISchemaServerEvent : PBCodable {
     SISchemaServerEventMetadata * _eventMetadata;
     SISchemaConversationTrace * _serverConversationTrace;
     SISchemaDeviceFixedContext * _serverDeviceFixedContext;
@@ -12,21 +12,14 @@
     unsigned long long  _whichEvent_Type;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic, retain) SISchemaServerEventMetadata *eventMetadata;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, retain) SISchemaConversationTrace *serverConversationTrace;
 @property (nonatomic, retain) SISchemaDeviceFixedContext *serverDeviceFixedContext;
 @property (nonatomic, retain) SISchemaSpeechResultSelected *speechResultSelected;
-@property (readonly) Class superclass;
 @property (nonatomic, retain) SISchemaTurnInteraction *turnInteraction;
 @property (nonatomic, retain) SISchemaUserSpeechDuration *userSpeechDuration;
 @property (nonatomic, readonly) unsigned long long whichEvent_Type;
-
-+ (Class)getEventTypeClassForTag:(int)arg1;
-+ (id)getTagForEventTypeClass:(Class)arg1;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
@@ -40,7 +33,6 @@
 - (id)serverConversationTrace;
 - (id)serverDeviceFixedContext;
 - (void)setEventMetadata:(id)arg1;
-- (void)setEventType:(id)arg1;
 - (void)setServerConversationTrace:(id)arg1;
 - (void)setServerDeviceFixedContext:(id)arg1;
 - (void)setSpeechResultSelected:(id)arg1;

@@ -5,7 +5,7 @@
 @interface NUArticleWebViewController : UIViewController <NULoadable, UIScrollViewDelegate, WKNavigationDelegatePrivate> {
     FCArticle * _article;
     <NULoadingDelegate> * _loadingDelegate;
-    SXWebCrashRetryThrottler * _webCrashRetryThrottler;
+    SWCrashRetryThrottler * _webCrashRetryThrottler;
     WKWebView * _webView;
 }
 
@@ -15,7 +15,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) <NULoadingDelegate> *loadingDelegate;
 @property (readonly) Class superclass;
-@property (nonatomic, readonly) SXWebCrashRetryThrottler *webCrashRetryThrottler;
+@property (nonatomic, readonly) SWCrashRetryThrottler *webCrashRetryThrottler;
 @property (nonatomic, readonly) WKWebView *webView;
 
 + (id)webViewConfiguration;

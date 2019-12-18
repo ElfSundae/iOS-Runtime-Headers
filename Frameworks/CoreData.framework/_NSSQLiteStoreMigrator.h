@@ -9,6 +9,7 @@
     NSMutableArray * _cloudKitUpdateStatements;
     NSSQLiteConnection * _connection;
     NSMutableDictionary * _copiedEntityMigrations;
+    NSMutableArray * _defaultValueStatements;
     NSMutableArray * _derivationsToDrop;
     NSMutableArray * _derivationsToRun;
     NSSQLModel * _dstModel;

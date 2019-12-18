@@ -13,8 +13,8 @@
 @property (nonatomic, readonly) <SXSubscriptionButtonTextProviding> *textProvider;
 
 - (void).cxx_destruct;
-- (id)buttonText;
 - (id)initWithTextProvider:(id)arg1;
+- (id)textForComponent:(id)arg1;
 - (id)textProvider;
 
 @end

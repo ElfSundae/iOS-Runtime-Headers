@@ -24,6 +24,8 @@
 @property (nonatomic, copy) NSNumber *dsid;
 @property (readonly, copy) NSString *effectivePasscode;
 @property (copy) NSString *effectivePasscode;
+@property (readonly, copy) NSString *effectiveRecoveryAltDSID;
+@property (copy) NSString *effectiveRecoveryAltDSID;
 @property (nonatomic, copy) NSString *familyMemberType;
 @property (nonatomic, copy) NSString *familyName;
 @property (nonatomic, retain) STFamilyOrganizationSettings *familySettings;
@@ -70,6 +72,7 @@
 + (id)keyPathsForValuesAffectingCommunicationWhileLimitedPolicy;
 + (id)keyPathsForValuesAffectingContactManagementState;
 + (id)keyPathsForValuesAffectingEffectivePasscode;
++ (id)keyPathsForValuesAffectingEffectiveRecoveryAltDSID;
 + (id)keyPathsForValuesAffectingLocalizedFullName;
 + (id)keyPathsForValuesAffectingManaged;
 + (id)keyPathsForValuesAffectingManaging;
@@ -91,6 +94,7 @@
 - (bool)contactsEditable;
 - (void)didChangeValueForKey:(id)arg1;
 - (id)effectivePasscode;
+- (id)effectiveRecoveryAltDSID;
 - (id)iCloudLogoutConfigurationIdentifier;
 - (bool)isManaged;
 - (bool)isManaging;
@@ -107,6 +111,7 @@
 - (void)setContactManagementState:(long long)arg1;
 - (void)setContactsEditable:(bool)arg1;
 - (void)setEffectivePasscode:(id)arg1;
+- (void)setEffectiveRecoveryAltDSID:(id)arg1;
 - (void)setScreenTimeEnabled:(bool)arg1;
 - (void)setShareWebUsage:(bool)arg1;
 - (void)setSyncingEnabled:(bool)arg1;

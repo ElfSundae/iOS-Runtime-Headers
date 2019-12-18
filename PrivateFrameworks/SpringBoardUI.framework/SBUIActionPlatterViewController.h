@@ -29,6 +29,7 @@
 @property (nonatomic) unsigned long long systemInteractionStartIndex;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_handleLongPressGestureRecognizer:(id)arg1;
 - (void)_updateKeylineViews;
 - (id)actions;

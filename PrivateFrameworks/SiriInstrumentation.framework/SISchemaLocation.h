@@ -2,20 +2,16 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaLocation : PBCodable <NSSecureCoding, SISchemaLocation> {
+@interface SISchemaLocation : PBCodable {
     float  _horizontalAccuracyInMeters;
     float  _latitude;
     float  _longitude;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) float horizontalAccuracyInMeters;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic) float latitude;
 @property (nonatomic) float longitude;
-@property (readonly) Class superclass;
 
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

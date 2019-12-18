@@ -12,6 +12,7 @@
 + (double)_preferredContentSizeWidth;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_segmentedControlDidChangeValue:(id)arg1;
 - (id)delegate;
 - (long long)eraserType;

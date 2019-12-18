@@ -11,7 +11,6 @@
 @property (nonatomic, readonly) NSString *startDate;
 @property (nonatomic, readonly) NSString *title;
 
-- (id)URLWithValue:(id)arg1 withType:(int)arg2;
 - (id)notesWithValue:(id)arg1 withType:(int)arg2;
 
 @end

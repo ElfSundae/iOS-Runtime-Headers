@@ -23,7 +23,7 @@
 - (void)addSubsequentLaunch:(id)arg1;
 - (void)dealloc;
 - (void)decayByFactor:(double)arg1;
-- (void)decayWithHalfLife:(double)arg1;
+- (void)decayWithHalfLifeInDays:(double)arg1;
 - (void)deleteAllInformation;
 - (void)deleteDataForLaunch:(id)arg1;
 - (void)deleteDataForLaunches:(id)arg1;

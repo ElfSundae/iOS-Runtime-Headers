@@ -16,6 +16,7 @@
     unsigned long long  _calledWaypointForMapItem;
     NSError * _fakeError;
     struct NSArray { Class x1; } * _fakeMapItems;
+    NSMutableDictionary * _fakeMapItemsPerHandleData;
     NSMutableDictionary * _fakeMapItemsPerPOICategory;
     NSArray * _fakeTraffic;
     GEOComposedWaypoint * _fakeWaypoint;
@@ -49,6 +50,7 @@
 - (bool)composedWaypointForMapItem:(id)arg1 completion:(id /* block */)arg2;
 - (void)configureBrokenCallBackPromise;
 - (void)configureError:(id)arg1;
+- (void)configureMapItem:(struct GEOMapItemStorage { Class x1; id x2; id x3; id x4; id x5; id x6; id x7; id x8; id x9; id x10; id x11; unsigned int x12; unsigned int x13; struct os_unfair_lock_s { unsigned int x_14_1_1; } x14; struct { unsigned int x_15_1_1 : 1; unsigned int x_15_1_2 : 1; unsigned int x_15_1_3 : 1; unsigned int x_15_1_4 : 1; unsigned int x_15_1_5 : 1; unsigned int x_15_1_6 : 1; unsigned int x_15_1_7 : 1; unsigned int x_15_1_8 : 1; unsigned int x_15_1_9 : 1; unsigned int x_15_1_10 : 1; unsigned int x_15_1_11 : 1; unsigned int x_15_1_12 : 1; unsigned int x_15_1_13 : 1; unsigned int x_15_1_14 : 1; unsigned int x_15_1_15 : 1; unsigned int x_15_1_16 : 1; unsigned int x_15_1_17 : 1; unsigned int x_15_1_18 : 1; } x15; }*)arg1 forHandleData:(struct NSData { Class x1; }*)arg2;
 - (void)configureMapItems:(struct NSArray { Class x1; }*)arg1;
 - (void)configureMapItems:(struct NSArray { Class x1; }*)arg1 forPOICategory:(id)arg2;
 - (void)configureTraffic:(id)arg1;

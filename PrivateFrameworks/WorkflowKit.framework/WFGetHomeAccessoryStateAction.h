@@ -2,14 +2,21 @@
    Image: /System/Library/PrivateFrameworks/WorkflowKit.framework/WorkflowKit
  */
 
-@interface WFGetHomeAccessoryStateAction : WFAction
+@interface WFGetHomeAccessoryStateAction : WFAction <WFHomeManagerEventObserver>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 // Image: /System/Library/PrivateFrameworks/WorkflowKit.framework/WorkflowKit
 
 + (id)homeAccessoryStateActionWithHome:(id)arg1;
 
 - (id)characteristic;
+- (void)dealloc;
 - (id)home;
+- (void)homeManagerDidUpdateHomes:(id)arg1;
 - (id)homeName;
 - (void)initializeParameters;
 - (id)localizedAttribution;

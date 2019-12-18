@@ -6,6 +6,7 @@
     NSString * _aliasTarget;
     long long  _birthtime;
     BRFieldCKInfo * _ckInfo;
+    BRCUserRowID * _creatorRowID;
     long long  _favoriteRank;
     NSData * _finderTags;
     bool  _hiddenExt;
@@ -25,6 +26,7 @@
 @property (nonatomic, readonly) NSString *aliasTarget;
 @property (nonatomic) long long birthtime;
 @property (nonatomic, retain) BRFieldCKInfo *ckInfo;
+@property (nonatomic, retain) BRCUserRowID *creatorRowID;
 @property (nonatomic) long long favoriteRank;
 @property (nonatomic, retain) NSData *finderTags;
 @property (getter=isHiddenExt, nonatomic) bool hiddenExt;
@@ -53,6 +55,7 @@
 - (bool)checkStateWithItemID:(id)arg1 logToFile:(struct __sFILE { char *x1; int x2; int x3; short x4; short x5; struct __sbuf { char *x_6_1_1; int x_6_1_2; } x6; int x7; void *x8; int (*x9)(); int (*x10)(); int (*x11)(); int (*x12)(); struct __sbuf { char *x_13_1_1; int x_13_1_2; } x13; struct __sFILEX {} *x14; int x15; unsigned char x16[3]; unsigned char x17[1]; struct __sbuf { char *x_18_1_1; int x_18_1_2; } x18; int x19; long long x20; }*)arg2;
 - (id)ckInfo;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (id)creatorRowID;
 - (id)description;
 - (id)descriptionWithContext:(id)arg1 origName:(id)arg2;
 - (unsigned long long)diffAgainst:(id)arg1;
@@ -76,6 +79,7 @@
 - (id)representableName;
 - (void)setBirthtime:(long long)arg1;
 - (void)setCkInfo:(id)arg1;
+- (void)setCreatorRowID:(id)arg1;
 - (void)setFavoriteRank:(long long)arg1;
 - (void)setFinderTags:(id)arg1;
 - (void)setHiddenExt:(bool)arg1;

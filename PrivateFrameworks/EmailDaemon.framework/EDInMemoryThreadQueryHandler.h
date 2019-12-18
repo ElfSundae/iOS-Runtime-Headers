@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/EmailDaemon.framework/EmailDaemon
  */
 
-@interface EDInMemoryThreadQueryHandler : EDMessageRepositoryQueryHandler <EDMessageQueryHelperDelegate, EFContentProtectionObserver, EFLoggable> {
+@interface EDInMemoryThreadQueryHandler : EDMessageRepositoryQueryHandler <EDMessageQueryHelperDelegate, EFContentProtectionObserver, EFLoggable, EMCollectionItemIDStateCapturerDelegate> {
     NSMutableDictionary * _changesWhilePaused;
     id /* block */  _comparator;
     NSObject<OS_dispatch_queue> * _contentProtectionQueue;
@@ -19,6 +19,7 @@
     <EDRemoteSearchProvider> * _remoteSearchProvider;
     NSObject<OS_dispatch_queue> * _resultQueue;
     <EFScheduler> * _scheduler;
+    EMCollectionItemIDStateCapturer * _stateCapturer;
     NSMutableDictionary * _threadsByConversationID;
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
@@ -44,6 +45,7 @@
 @property (nonatomic, readonly) NSObject<OS_dispatch_queue> *resultQueue;
 @property (nonatomic, readonly) <EMMessageListItemQueryResultsObserver> *resultsObserverIfNotPaused;
 @property (nonatomic, readonly) <EFScheduler> *scheduler;
+@property (nonatomic, readonly) EMCollectionItemIDStateCapturer *stateCapturer;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) EDUpdateThrottler *updateThrottler;
 @property (nonatomic, readonly) EDVIPManager *vipManager;
@@ -87,6 +89,8 @@
 - (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 vipManager:(id)arg4 remoteSearchProvider:(id)arg5 observer:(id)arg6 observationIdentifier:(id)arg7;
 - (bool)isInitialized;
 - (bool)isPaused;
+- (id)itemIDsForStateCaptureWithErrorString:(id*)arg1;
+- (id)labelForStateCapture;
 - (id)mailboxScope;
 - (id)messageQueryHelper;
 - (id)messageSortDescriptors;
@@ -113,6 +117,7 @@
 - (void)setIsPaused:(bool)arg1;
 - (void)setMessageQueryHelper:(id)arg1;
 - (void)start;
+- (id)stateCapturer;
 - (void)tearDown;
 - (void)test_tearDown;
 - (id)threadForObjectID:(id)arg1 error:(id*)arg2;

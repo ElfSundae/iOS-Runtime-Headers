@@ -16,8 +16,10 @@
 - (void)_hideBannerView;
 - (id)bannerView;
 - (id)containingView;
+- (void)dismissBannerView;
 - (id)initWithContainingView:(id)arg1;
 - (void)presentBannerViewWithText:(id)arg1 type:(long long)arg2;
+- (void)presentBannerViewWithText:(id)arg1 type:(long long)arg2 duration:(double)arg3;
 - (void)setBannerView:(id)arg1;
 
 @end

@@ -17,6 +17,7 @@
 @property (retain) NSString *searchWebQuery;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)altURL;
 - (bool)inPlatter;
 - (void)loadView;

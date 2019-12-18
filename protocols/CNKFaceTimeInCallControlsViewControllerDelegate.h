@@ -7,6 +7,7 @@
 
 - (void)didCreateTableViewForInCallControlsViewController:(CNKFaceTimeInCallControlsViewController *)arg1;
 - (void)inCallControlsViewController:(CNKFaceTimeInCallControlsViewController *)arg1 didTap:(long long)arg2;
+- (void)resetEffectsState;
 
 @optional
 

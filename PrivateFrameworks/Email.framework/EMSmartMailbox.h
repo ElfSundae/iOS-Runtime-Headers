@@ -23,6 +23,7 @@
 + (id)vipMailboxWithMailboxScope:(id)arg1;
 
 - (void).cxx_destruct;
+- (bool)_shouldArchiveByDefault;
 - (unsigned long long)hash;
 - (id)initWithType:(long long)arg1 mailboxType:(long long)arg2 name:(id)arg3 mailboxScope:(id)arg4 predicateGenerator:(id /* block */)arg5;
 - (bool)isEqual:(id)arg1;

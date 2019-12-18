@@ -8,11 +8,15 @@
     void coverIssueViewRenderer;
     void featuredHeadlineViewRenderer;
     void featuredIssueHeadlineViewRenderer;
+    void formatLayoutViewRenderer;
+    void formatRegistrationIdentifiers;
     void gapOfflineViewRenderer;
     void gapViewRenderer;
     void imageHeadlineViewRenderer;
     void issueViewRenderer;
     void orderedHeadlineViewRenderer;
+    void webEmbedViewControllerReuseManager;
+    void webEmbedViewRenderer;
 }
 
 @end

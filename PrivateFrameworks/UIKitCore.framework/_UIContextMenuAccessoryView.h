@@ -21,6 +21,7 @@
 @property (nonatomic) int trackingAxis;
 
 - (struct { unsigned long long x1; unsigned long long x2; })anchor;
+- (struct CGPoint { double x1; double x2; })attachmentOffsetWithReferenceFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1;
 - (id)initWithFrame:(struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })arg1 configuration:(struct { unsigned long long x1; struct { unsigned long long x_2_1_1; unsigned long long x_2_1_2; } x2; struct CGPoint { double x_3_1_1; double x_3_1_2; } x3; int x4; })arg2;
 - (unsigned long long)location;
 - (struct CGPoint { double x1; double x2; })offset;

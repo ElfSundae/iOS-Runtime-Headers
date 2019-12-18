@@ -39,6 +39,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (bool)_commandStringIsValid:(id)arg1 checkForLength:(bool)arg2;
 - (bool)_hasValidActionWithErrorText:(inout id*)arg1;
 - (bool)_hasValidSpokenStringWithErrorText:(inout id*)arg1;

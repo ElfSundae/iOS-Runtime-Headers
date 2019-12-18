@@ -2,12 +2,14 @@
    Image: /System/Library/PrivateFrameworks/ChatKit.framework/ChatKit
  */
 
-@interface CKChatController : CKCoreChatController <AFContextProvider, CKActionMenuGestureRecognizerButtonDelegate, CKBrowserDragControllerTranscriptDelegate, CKChatInputControllerDelegate, CKDetailsControllerDelegate, CKEffectPickerViewControllerDelegate, CKExtensionConsumer, CKFullScreenBalloonViewControllerDelegate, CKFunCameraViewControllerDelegate, CKMessageEntryViewDelegate, CKNavbarCanvasViewControllerDelegate, CKNicknameBannerViewDelegate, CKNicknameUpdatesViewControllerDelegate, CKOnboardingControllerDelegate, CKReaderViewControllerDelegate, CKSendAnimationBalloonProvider, CKSendAnimationManagerDelegate, CKThrowAnimationManagerDelegate, CKTrimControllerDelegate, CKUnexpectedlyLoggedOutNotificationViewDelegate, CKVideoMessageRecordingViewControllerDelegate, CNContactPickerDelegate, ILClassificationUIExtensionHostViewControllerDelegate, PHPhotoLibraryChangeObserver, PKAddPassesViewControllerDelegate, QLPreviewControllerDelegate, SGSuggestionPresenterDelegate, UIDragInteractionDelegate, UIDropInteractionDelegate, UIGestureRecognizerDelegate, UIInteractionProgressObserver, UIPopoverPresentationControllerDelegate, UITextDropDelegate, UITextPasteDelegate, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, UIViewControllerTransitioningDelegate, _UIClickInteractionDelegate> {
+@interface CKChatController : CKCoreChatController <AFContextProvider, CKActionMenuGestureRecognizerButtonDelegate, CKBrowserDragControllerTranscriptDelegate, CKChatInputControllerDelegate, CKDetailsControllerDelegate, CKEffectPickerViewControllerDelegate, CKExtensionConsumer, CKFullScreenBalloonViewControllerDelegate, CKFunCameraViewControllerDelegate, CKMessageEntryViewDelegate, CKNavbarCanvasViewControllerDelegate, CKNicknameBannerViewDelegate, CKNicknameUpdatesViewControllerDelegate, CKOnboardingControllerDelegate, CKReaderViewControllerDelegate, CKSendAnimationBalloonProvider, CKSendAnimationManagerDelegate, CKStickerDetailViewControllerDelegate, CKThrowAnimationManagerDelegate, CKTrimControllerDelegate, CKUnexpectedlyLoggedOutNotificationViewDelegate, CKVideoMessageRecordingViewControllerDelegate, CNContactPickerDelegate, ILClassificationUIExtensionHostViewControllerDelegate, PHPhotoLibraryChangeObserver, PKAddPassesViewControllerDelegate, QLPreviewControllerDelegate, SGSuggestionPresenterDelegate, UIDragInteractionDelegate, UIDropInteractionDelegate, UIGestureRecognizerDelegate, UIInteractionProgressObserver, UIPopoverPresentationControllerDelegate, UITextDropDelegate, UITextPasteDelegate, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, UIViewControllerTransitioningDelegate, _UIClickInteractionDelegate> {
+    long long  _acknowledgmentToSend;
     UIToolbar * _actionsToolbar;
     CKAudioTrimViewController * _audioTrimController;
     IMScheduledUpdater * _autorotationUpdater;
     CKComposition * _compositionBeingTrimmed;
     CNContactPickerViewController * _contactPicker;
+    STConversationContext * _conversationContext;
     IMNickname * _currentNickname;
     id /* block */  _deferredPresentationBlock;
     id /* block */  _deferredSendAnimationBlock;
@@ -45,6 +47,7 @@
     long long  _lastKnownDeviceOrientation;
     double  _lastLaidOutWidth;
     NSString * _lastSeenGUID;
+    UIView * _lockoutView;
     CKNavbarCanvasViewController * _navbarCanvasViewController;
     bool  _needToScrollToBottom;
     CKNicknameBannerView * _nicknameBanner;
@@ -85,12 +88,14 @@
     CKVideoTrimController * _videoTrimController;
 }
 
+@property (nonatomic) long long acknowledgmentToSend;
 @property (nonatomic, retain) UIToolbar *actionsToolbar;
 @property (nonatomic, retain) CKAudioTrimViewController *audioTrimController;
 @property (nonatomic, retain) IMScheduledUpdater *autorotationUpdater;
 @property (nonatomic, retain) CKComposition *composition;
 @property (nonatomic, retain) CKComposition *compositionBeingTrimmed;
 @property (nonatomic, retain) CNContactPickerViewController *contactPicker;
+@property (nonatomic, retain) STConversationContext *conversationContext;
 @property (nonatomic, retain) IMNickname *currentNickname;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic, copy) id /* block */ deferredPresentationBlock;
@@ -125,6 +130,7 @@
 @property (nonatomic) long long lastKnownDeviceOrientation;
 @property (nonatomic) double lastLaidOutWidth;
 @property (nonatomic, retain) NSString *lastSeenGUID;
+@property (nonatomic, retain) UIView *lockoutView;
 @property (nonatomic, retain) CKNavbarCanvasViewController *navbarCanvasViewController;
 @property (nonatomic) bool needToScrollToBottom;
 @property (nonatomic, retain) CKNicknameBannerView *nicknameBanner;
@@ -160,7 +166,9 @@
 @property (nonatomic, retain) CKVideoTrimController *videoTrimController;
 
 - (void).cxx_destruct;
+- (void)__raiseGestureRecognized:(id)arg1;
 - (id)_actionsToolbar;
+- (bool)_alwaysShowNicknameBanners;
 - (id)_api_dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
 - (void)_api_dropInteraction:(id)arg1 sessionDidEnter:(id)arg2;
 - (id)_api_dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
@@ -171,11 +179,14 @@
 - (void)_autorotationUpdaterFired;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_avoidanceInsets;
 - (void)_backbuttonPressed;
+- (id)_balloonViewForCellAtIndexPath:(id)arg1;
 - (void)_callButtonPressedWithVideoEnabled:(bool)arg1;
 - (bool)_canReloadEntryView;
 - (bool)_canShowBackButtonView;
 - (bool)_chatShowsUnexpectedlyLoggedOutNotification;
+- (bool)_clickyOrbEnabled;
 - (void)_confirmReadReceiptSettings;
+- (id)_contextMenuActionsForChatItem:(id)arg1;
 - (void)_conversationJoinStateDidChange:(id)arg1;
 - (void)_conversationParticipantsChanged:(id)arg1;
 - (struct CGRect { struct CGPoint { double x_1_1_1; double x_1_1_2; } x1; struct CGSize { double x_2_1_1; double x_2_1_2; } x2; })_convertedNavigationBarFrameInSendAnimationContainerView:(id)arg1;
@@ -183,7 +194,9 @@
 - (double)_currentScrollDelta;
 - (void)_dataDetectorsDidDismissNotification:(id)arg1;
 - (void)_dataDetectorsWillPresentNotification:(id)arg1;
+- (void)_dealloc;
 - (void)_deleteSelectedMessages:(id)arg1;
+- (void)_deleteStickerWithTransferGUID:(id)arg1;
 - (void)_detailsButtonPressed;
 - (void)_didSendCompositionInConversation:(id)arg1;
 - (void)_dismissNicknameBannerView:(id)arg1 completion:(id /* block */)arg2;
@@ -204,6 +217,7 @@
 - (void)_handleChatItemDidChange:(id)arg1;
 - (void)_handleIsUnexpectedlyLoggedOutChanged:(id)arg1;
 - (bool)_hasExistingBannerMatchingStyle:(unsigned long long)arg1 withNicknames:(id)arg2;
+- (bool)_hasPreviewViewControllerForChatItem:(id)arg1;
 - (void)_initializeEffectPicker;
 - (void)_initializeNavigationBarCanvasViewIfNecessary;
 - (id)_interfaceActionsForChatItem:(id)arg1;
@@ -217,18 +231,24 @@
 - (double)_maxEntryViewHeight;
 - (id)_meContact;
 - (bool)_mediaObjectNeedsTrimming:(id)arg1;
+- (id)_menuForChatItem:(id)arg1;
 - (id)_menuTitleForChatItem:(id)arg1;
 - (bool)_multiwayAvailable;
 - (id)_navigationControllerToPop;
 - (id)_nicknameBannerUpdatesAndStyle:(unsigned long long*)arg1;
+- (id)_parentChatItemForIndexPath:(id)arg1;
+- (id)_parentIndexPathForCellAtIndexPath:(id)arg1;
 - (void)_passKitUIDismissed:(id)arg1;
 - (void)_performResume;
+- (void)_presentAppStoreForAdamID:(id)arg1;
 - (void)_presentBrowserForPlugin:(id)arg1;
 - (void)_presentBrowserOrAppStoreForAdamID:(id)arg1 url:(id)arg2 identifier:(id)arg3;
 - (void)_presentDetailsViewController;
 - (void)_presentEffectPicker;
 - (void)_presentNicknameBannerView:(id)arg1 completion:(id /* block */)arg2;
 - (void)_presentSentWithSiriUI;
+- (id)_previewingViewControllerForHitView:(id)arg1 indexPath:(id)arg2;
+- (id)_previewingViewControllerForLocation:(struct CGPoint { double x1; double x2; })arg1 inSourceView:(id)arg2;
 - (id)_progressBarHostView;
 - (void)_raiseToListenSettingChanged:(id)arg1;
 - (void)_replaceNicknameBannerView:(id)arg1 withNewBannerView:(id)arg2 completion:(id /* block */)arg3;
@@ -245,6 +265,7 @@
 - (bool)_shouldShowAcknowledgmentPickerForBalloon;
 - (bool)_shouldShowNicknameOnboardingFlow;
 - (bool)_shouldShowReadRecieptAlert;
+- (bool)_shouldShowVotingViewForChatItem:(id)arg1;
 - (bool)_shouldValidatePayloadBeforeSendingPayload:(id)arg1;
 - (void)_showMapViewerForMediaObject:(id)arg1;
 - (bool)_showNicknameBannerIfNeeded;
@@ -255,6 +276,7 @@
 - (void)_showVCardViewerForMediaObject:(id)arg1;
 - (void)_sizeEffectPickerWindow;
 - (bool)_smsEnabled;
+- (void)_stickerDetailViewControllerCloseButtonPressed:(id)arg1;
 - (void)_stickerTranscriptScrollDisplayLinkFired;
 - (void)_textInputModeDidChange:(id)arg1;
 - (void)_transferFinishedNotification:(id)arg1;
@@ -268,6 +290,7 @@
 - (void)_updateTranscriptOffsetForBannerView;
 - (void)_validateAndSendComposition:(id)arg1 completion:(id /* block */)arg2;
 - (void)_willSendComposition:(id)arg1 inConversation:(id)arg2;
+- (long long)acknowledgmentToSend;
 - (void)actionMenuGestureRecognizerButtonDidTouchDownButton:(id)arg1;
 - (void)actionMenuGestureRecognizerButtonDidTouchUpInsideButton:(id)arg1;
 - (void)actionMenuGestureRecognizerButtonGestureDidBegin:(id)arg1;
@@ -339,6 +362,7 @@
 - (void)contactPickerDidCancel:(id)arg1;
 - (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
 - (void)controller:(id)arg1 didCompleteClassificationRequest:(id)arg2 withResponse:(id)arg3;
+- (id)conversationContext;
 - (id)createAlertControllerForAccountComposition:(id)arg1 completion:(id /* block */)arg2;
 - (void)createContactWithNickname:(id)arg1;
 - (id)currentNickname;
@@ -402,6 +426,7 @@
 - (double)gradientBottomPlaceholderHeight;
 - (void)hideMediaPickerAnimated:(bool)arg1;
 - (void)hideMediaPickerAnimated:(bool)arg1 completion:(id /* block */)arg2;
+- (void)hideStickersAssociatedWithChatItem:(id)arg1;
 - (id)imagePickerController;
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (void)imagePickerControllerDidCancel:(id)arg1;
@@ -422,6 +447,7 @@
 - (void)invalidateEntryViewForNewCompose;
 - (id)invisibleInkEffectControllerForPreviewController:(id)arg1;
 - (bool)isAnimatingMessageSend;
+- (bool)isChatAllowedByScreenTime:(id)arg1;
 - (bool)isCollapsed;
 - (bool)isFunCamPresented;
 - (bool)isHandwritingLandscape;
@@ -443,9 +469,12 @@
 - (long long)lastKnownDeviceOrientation;
 - (double)lastLaidOutWidth;
 - (id)lastSeenGUID;
+- (void)layoutLockoutView;
 - (void)loadChatInputController;
 - (void)loadView;
+- (id)lockoutView;
 - (void)makeEntryViewActiveAfterSend;
+- (void)messageAcknowledgmentPickerViewController:(id)arg1 didPickAcknowledgment:(long long)arg2;
 - (void)messageEntryView:(id)arg1 didTapMediaObject:(id)arg2;
 - (bool)messageEntryView:(id)arg1 shouldInsertMediaObjects:(id)arg2;
 - (void)messageEntryView:(id)arg1 shouldShowAppStrip:(bool)arg2 animated:(bool)arg3;
@@ -490,6 +519,7 @@
 - (void)presentActionMenuForAccountSelection:(id)arg1 completion:(id /* block */)arg2;
 - (void)presentAppStoreForURL:(id)arg1 fromSourceApplication:(id)arg2;
 - (void)presentPhotosApp;
+- (void)presentStickerDetailControllerWithStickers:(id)arg1;
 - (void)presentTrimControllerForMediaObject:(id)arg1;
 - (void)presentViewController:(id)arg1;
 - (void)presentViewController:(id)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
@@ -550,6 +580,7 @@
 - (void)sendSticker:(id)arg1;
 - (void)sendSticker:(id)arg1 withDragTarget:(id)arg2;
 - (void)sendStickerWithMediaObject:(id)arg1 parentMessagePartChatItem:(id)arg2;
+- (void)setAcknowledgmentToSend:(long long)arg1;
 - (void)setActionsToolbar:(id)arg1;
 - (void)setAudioTrimController:(id)arg1;
 - (void)setAutorotationUpdater:(id)arg1;
@@ -557,6 +588,7 @@
 - (void)setCompositionBeingTrimmed:(id)arg1;
 - (void)setContactPicker:(id)arg1;
 - (void)setConversation:(id)arg1;
+- (void)setConversationContext:(id)arg1;
 - (void)setCurrentNickname:(id)arg1;
 - (void)setDeferredPresentationBlock:(id /* block */)arg1;
 - (void)setDeferredSendAnimationBlock:(id /* block */)arg1;
@@ -589,6 +621,7 @@
 - (void)setLastLaidOutWidth:(double)arg1;
 - (void)setLastSeenGUID:(id)arg1;
 - (void)setLocalUserIsComposing:(bool)arg1 withPluginBundleID:(id)arg2 typingIndicatorData:(id)arg3;
+- (void)setLockoutView:(id)arg1;
 - (void)setNavbarCanvasViewController:(id)arg1;
 - (void)setNeedToScrollToBottom:(bool)arg1;
 - (void)setNicknameBanner:(id)arg1;
@@ -643,12 +676,15 @@
 - (bool)showNicknameSharingOnboarding;
 - (void)showSMSReportSpamExtensionControllerForMessages:(id)arg1;
 - (void)showScreenTimeShieldIfNeeded;
+- (void)showStickersAssociatedWithChatItem:(id)arg1 completion:(id /* block */)arg2;
 - (void)showUpdatePromptForNickname:(id)arg1 sourceView:(id)arg2 completionBlock:(id /* block */)arg3;
 - (void)showViewerForMediaObject:(id)arg1;
 - (void)stageAssetArchive:(id)arg1 skipShelf:(bool)arg2 completionHandler:(id /* block */)arg3;
 - (void)startCommitPayload:(id)arg1 forConversation:(id)arg2;
 - (void)startDeferredEditingPayload:(id)arg1 forConversation:(id)arg2;
 - (void)startTrimmingMediaObjectsInComposition:(id)arg1;
+- (void)stickerDetailViewController:(id)arg1 deletedStickerWithTransferGUID:(id)arg2;
+- (void)stickerDetailViewController:(id)arg1 selectedStickerPackWithAdamID:(id)arg2;
 - (id)stickerInfoDictionaryWithLayoutIntent:(unsigned long long)arg1 parentPreviewWidth:(double)arg2 xScalar:(double)arg3 yScalar:(double)arg4 scale:(double)arg5 rotation:(double)arg6;
 - (double)stickerTranscriptScrollDelta;
 - (id)stickerTranscriptScrollDisplayLink;
@@ -678,20 +714,27 @@
 - (double)topInsetPadding;
 - (void)traitCollectionDidChange:(id)arg1;
 - (id)transcriptBottomContentOffsetAtSuspend;
+- (id)transcriptCollectionViewController:(id)arg1 accessoriesForContextMenuWithConfiguration:(id)arg2 layoutAnchor:(struct { unsigned long long x1; unsigned long long x2; })arg3;
 - (void)transcriptCollectionViewController:(id)arg1 balloonView:(id)arg2 tappedForChatItem:(id)arg3;
 - (bool)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestCommitPayload:(id)arg2 forPlugin:(id)arg3 allowAllCommits:(bool)arg4 error:(id*)arg5;
 - (bool)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestCommitSticker:(id)arg2 forPlugin:(id)arg3 allowAllCommits:(bool)arg4 error:(id*)arg5;
 - (void)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestPresentationStyle:(unsigned long long)arg2 forChatItem:(id)arg3 allowAllStyles:(bool)arg4;
 - (void)transcriptCollectionViewController:(id)arg1 balloonViewDidRequestStartEditingPayload:(id)arg2 forPlugin:(id)arg3 completionHandler:(id /* block */)arg4;
+- (id)transcriptCollectionViewController:(id)arg1 contextMenuConfigurationForItemAtIndexPath:(id)arg2 point:(struct CGPoint { double x1; double x2; })arg3;
 - (void)transcriptCollectionViewController:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 didEndImpactEffectAnimationWithSendAnimationContext:(id)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 didTapAttributionButtonForChatItem:(id)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 didTapPluginStatusButtonForChatItem:(id)arg2;
+- (id)transcriptCollectionViewController:(id)arg1 previewForDismissingContextMenuWithConfiguration:(id)arg2;
+- (id)transcriptCollectionViewController:(id)arg1 previewForHighlightingContextMenuWithConfiguration:(id)arg2;
 - (bool)transcriptCollectionViewController:(id)arg1 shouldCleanupFullscreenEffectUI:(id)arg2;
 - (bool)transcriptCollectionViewController:(id)arg1 shouldSetupFullscreenEffectUI:(id)arg2;
+- (id)transcriptCollectionViewController:(id)arg1 styleForContextMenuWithConfiguration:(id)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 willBeginImpactEffectAnimationWithSendAnimationContext:(id)arg2;
 - (void)transcriptCollectionViewController:(id)arg1 willDisplayBalloonForGUID:(id)arg2;
+- (void)transcriptCollectionViewController:(id)arg1 willEndContextMenuInteractionWithConfiguration:(id)arg2 animator:(id)arg3;
+- (void)transcriptCollectionViewController:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (void)transcriptCollectionViewControllerChatItemsDidChange:(id)arg1;
 - (void)transcriptCollectionViewControllerDidInset:(id)arg1;
 - (void)transcriptCollectionViewControllerDisplaySMSSpamReporting:(id)arg1;

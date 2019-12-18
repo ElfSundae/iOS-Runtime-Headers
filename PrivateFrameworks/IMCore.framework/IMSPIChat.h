@@ -7,6 +7,7 @@
     NSString * _displayName;
     NSString * _guid;
     NSArray * _handles;
+    bool  _isBlackholed;
     bool  _isGroup;
     NSString * _serviceName;
 }
@@ -15,6 +16,7 @@
 @property (retain) NSString *displayName;
 @property (retain) NSString *guid;
 @property (retain) NSArray *handles;
+@property (readonly) bool isBlackholed;
 @property bool isGroup;
 @property (retain) NSString *serviceName;
 
@@ -29,6 +31,7 @@
 - (id)guid;
 - (id)handles;
 - (id)initWithChatRecord:(struct _IMDChatRecordStruct { }*)arg1;
+- (bool)isBlackholed;
 - (bool)isGroup;
 - (id)serviceName;
 - (void)setChatIdentifier:(id)arg1;

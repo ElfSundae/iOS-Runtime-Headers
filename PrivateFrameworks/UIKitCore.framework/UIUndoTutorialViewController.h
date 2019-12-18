@@ -11,6 +11,7 @@
 @property (nonatomic, retain) UIUndoTutorialView *tutorialView;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id /* block */)completionHandler;
 - (void)doneButtonPressed;
 - (id)initWithCompletionHandler:(id /* block */)arg1;

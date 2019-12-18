@@ -28,6 +28,7 @@
 - (bool)isMemberOfChat:(id)arg1;
 - (id)messageSendHandlerDelegate;
 - (id)recipientDisambiguationResultsFromMultipleRelevantChats:(id)arg1;
+- (bool)recipientHandleResolutionResultsAllowedByScreentime:(id)arg1;
 - (id)recipientsResolutionFailureResultWithResult:(id)arg1 forRecipient:(id)arg2 amongRecipients:(id)arg3;
 - (void)resolveContentForSendMessage:(id)arg1 withCompletion:(id /* block */)arg2;
 - (id)resolveMessageContentWithString:(id)arg1;

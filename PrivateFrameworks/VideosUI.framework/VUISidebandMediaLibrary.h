@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (void)_activeAccountDidChange:(id)arg1;
+- (void)_deleteOrphanedDownloads;
 - (void)_deleteVideoManagedObjects:(id)arg1;
 - (id)_downloadedVideosForNonSignedInUsers;
 - (void)_dumpDatabaseToLogIfEnabled;

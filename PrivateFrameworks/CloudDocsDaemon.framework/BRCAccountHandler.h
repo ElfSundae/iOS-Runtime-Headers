@@ -25,6 +25,7 @@
 + (id)accountIDPath;
 + (id)dbAccountID;
 + (bool)destroyCurrentAccountSynchronously;
++ (bool)icloudAccountIsInCarry;
 + (id)icloudDriveAccountID;
 + (id)mobileDocsAccountID;
 + (id)primaryiCloudAccount;

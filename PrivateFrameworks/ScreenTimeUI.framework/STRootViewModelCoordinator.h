@@ -11,8 +11,8 @@
     bool  _isLocalUser;
     STAdminPersistenceController * _persistenceController;
     NSObject<STTimeAllowancesViewModelCoordinator> * _timeAllowancesCoordinator;
+    long long  _usageContext;
     NSObject<STUsageDetailsViewModelCoordinator> * _usageDetailsCoordinator;
-    long long  _usageHistoryType;
     NSNumber * _usageReportType;
     NSNumber * _userDSID;
     NSString * _userName;
@@ -33,8 +33,8 @@
 @property (readonly) STAdminPersistenceController *persistenceController;
 @property (readonly) Class superclass;
 @property (readonly) NSObject<STTimeAllowancesViewModelCoordinator> *timeAllowancesCoordinator;
+@property (readonly) long long usageContext;
 @property (readonly) NSObject<STUsageDetailsViewModelCoordinator> *usageDetailsCoordinator;
-@property (readonly) long long usageHistoryType;
 @property (readonly, copy) NSNumber *usageReportType;
 @property (nonatomic, copy) NSNumber *userDSID;
 @property (nonatomic, copy) NSString *userName;
@@ -48,17 +48,18 @@
 - (void)_passcodeSessionHasEnded:(id)arg1;
 - (void)_registerForPersistentStoreNotifications;
 - (void)_registerForWillResignActiveNotifications;
+- (void)_setPIN:(id)arg1 recoveryAltDSID:(id)arg2 shouldSetRecoveryAppleID:(bool)arg3 completionHandler:(id /* block */)arg4;
 - (id)contentPrivacyCoordinator;
 - (id)coordinatorForChild:(id)arg1 deviceIdentifier:(id)arg2 usageReportType:(id)arg3;
 - (id)coordinatorsByChildDSID;
 - (id)deviceIdentifier;
-- (void)enableScreenTimeWithPIN:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)enableScreenTimeWithPIN:(id)arg1 recoveryAltDSID:(id)arg2 completionHandler:(id /* block */)arg3;
 - (id)fetchedResultsController;
 - (void)groupResultsControllerDidChangeContents:(id)arg1;
 - (bool)hasAlreadyEnteredPINForSession;
 - (bool)hasShownMiniBuddy;
 - (id)init;
-- (id)initWithUserDSID:(id)arg1 deviceIdentifier:(id)arg2 usageReportType:(id)arg3 usageHistoryType:(long long)arg4;
+- (id)initWithUserDSID:(id)arg1 deviceIdentifier:(id)arg2 usageReportType:(id)arg3 usageContext:(long long)arg4;
 - (bool)isLocalUser;
 - (bool)isPasscodeEnabled;
 - (void)loadViewModelRightNow;
@@ -73,6 +74,7 @@
 - (void)setHasShownMiniBuddy:(bool)arg1;
 - (void)setIsLocalUser:(bool)arg1;
 - (void)setPIN:(id)arg1 completionHandler:(id /* block */)arg2;
+- (void)setPIN:(id)arg1 recoveryAltDSID:(id)arg2 completionHandler:(id /* block */)arg3;
 - (void)setScreenTimeEnabled:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)setScreenTimeSyncingEnabled:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (void)setShareWebUsageEnabled:(bool)arg1 completionHandler:(id /* block */)arg2;
@@ -80,8 +82,8 @@
 - (void)setUserName:(id)arg1;
 - (void)setViewModel:(id)arg1;
 - (id)timeAllowancesCoordinator;
+- (long long)usageContext;
 - (id)usageDetailsCoordinator;
-- (long long)usageHistoryType;
 - (id)usageReportType;
 - (id)userDSID;
 - (id)userName;

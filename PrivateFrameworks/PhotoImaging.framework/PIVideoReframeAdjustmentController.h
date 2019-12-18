@@ -10,6 +10,7 @@
 + (id)keyframesKey;
 + (id)stabCropRectKey;
 
+- (id)copyKeyframesTrimmingToTimeRange:(struct { struct { long long x_1_1_1; int x_1_1_2; unsigned int x_1_1_3; long long x_1_1_4; } x1; struct { long long x_2_1_1; int x_2_1_2; unsigned int x_2_1_3; long long x_2_1_4; } x2; })arg1;
 - (bool)isEqual:(id)arg1 forKeys:(id)arg2;
 - (id)keyframes;
 - (void)setKeyframes:(id)arg1;

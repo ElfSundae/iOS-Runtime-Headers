@@ -15,7 +15,7 @@
 @property (nonatomic, copy) NSData *_address;
 @property (nonatomic, readonly, copy) NSData *address;
 @property (nonatomic, copy) NSData *advertisementData;
-@property (nonatomic, retain) NSData *data;
+@property (nonatomic, copy) NSData *data;
 @property (nonatomic, copy) NSData *reserved;
 @property (nonatomic) long long rssi;
 @property (nonatomic, copy) NSDate *scanDate;

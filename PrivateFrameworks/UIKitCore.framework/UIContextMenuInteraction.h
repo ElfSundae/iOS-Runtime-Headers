@@ -48,7 +48,7 @@
 + (id)_deferredMenuPlaceholder;
 
 - (void).cxx_destruct;
-- (id)_accessoryViewsForPreviewPlatterPresentationController:(id)arg1 layoutAnchor:(struct { unsigned long long x1; unsigned long long x2; })arg2;
+- (id)_accessoryViewsForPreviewPlatterPresentationController:(id)arg1;
 - (unsigned long long)_actualLayoutForPreferredLayout:(unsigned long long)arg1 withConfiguration:(id)arg2;
 - (void)_clickPresentationInteraction:(id)arg1 dragSessionDidEndForItems:(id)arg2;
 - (id)_clickPresentationInteraction:(id)arg1 interactionEffectForTargetedPreview:(id)arg2;

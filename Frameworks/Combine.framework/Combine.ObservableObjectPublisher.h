@@ -3,7 +3,9 @@
  */
 
 @interface Combine.ObservableObjectPublisher : Swift._SwiftObject {
-    void subject;
+    void connections;
+    void identifier;
+    void lock;
 }
 
 @end

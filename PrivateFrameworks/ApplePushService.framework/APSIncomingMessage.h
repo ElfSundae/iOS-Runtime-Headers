@@ -10,6 +10,7 @@
 @property (getter=wasFromStorage, nonatomic) bool fromStorage;
 @property (getter=wasLastMessageFromStorage, nonatomic) bool lastMessageFromStorage;
 @property (nonatomic) long long priority;
+@property (nonatomic) unsigned int pushFlags;
 @property (nonatomic) unsigned long long pushType;
 @property (nonatomic, copy) NSDate *timestamp;
 @property (nonatomic, copy) NSData *token;
@@ -24,11 +25,13 @@
 - (id)initWithCoder:(id)arg1;
 - (bool)isTracingEnabled;
 - (long long)priority;
+- (unsigned int)pushFlags;
 - (unsigned long long)pushType;
 - (void)setCheckpointTrace:(id)arg1;
 - (void)setFromStorage:(bool)arg1;
 - (void)setLastMessageFromStorage:(bool)arg1;
 - (void)setPriority:(long long)arg1;
+- (void)setPushFlags:(unsigned int)arg1;
 - (void)setPushType:(unsigned long long)arg1;
 - (void)setTimestamp:(id)arg1;
 - (void)setToken:(id)arg1;

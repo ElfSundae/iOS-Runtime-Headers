@@ -12,7 +12,7 @@
 @property (retain) NSMutableDictionary *mapProtectionClassToBundleIdToItem;
 @property (retain) NSMutableArray *sectionCSItems;
 
-+ (id)getRenderEngagementCounts;
++ (id)copyRenderEngagementCounts;
 + (id)sharedInstance;
 
 - (void).cxx_destruct;

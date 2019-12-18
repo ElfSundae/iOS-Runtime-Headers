@@ -5,13 +5,11 @@
 @interface CNHandleStringClassification : NSObject <NSCopying, NSSecureCoding> {
     NSArray * _emailAddresses;
     NSArray * _phoneNumbers;
-    NSArray * _postalAddresses;
     NSArray * _unknown;
 }
 
 @property (nonatomic, readonly, copy) NSArray *emailAddresses;
 @property (nonatomic, readonly, copy) NSArray *phoneNumbers;
-@property (nonatomic, readonly, copy) NSArray *postalAddresses;
 @property (nonatomic, readonly, copy) NSArray *unknown;
 
 + (bool)supportsSecureCoding;
@@ -24,10 +22,9 @@
 - (unsigned long long)hash;
 - (id)initWithBuilder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithEmailAddresses:(id)arg1 phoneNumbers:(id)arg2 postalAddresses:(id)arg3 unknown:(id)arg4;
+- (id)initWithEmailAddresses:(id)arg1 phoneNumbers:(id)arg2 unknown:(id)arg3;
 - (bool)isEqual:(id)arg1;
 - (id)phoneNumbers;
-- (id)postalAddresses;
 - (id)unknown;
 
 @end

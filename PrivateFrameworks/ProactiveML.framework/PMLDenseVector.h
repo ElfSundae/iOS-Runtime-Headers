@@ -14,6 +14,7 @@
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
+- (float)cosineDistanceFrom:(id)arg1;
 - (unsigned long long)count;
 - (id)data;
 - (float)density;
@@ -25,6 +26,7 @@
 - (id)initWithFloats:(const float*)arg1 count:(unsigned long long)arg2;
 - (id)initWithFloatsNoCopy:(float*)arg1 count:(unsigned long long)arg2 deallocator:(id /* block */)arg3;
 - (id)initWithFloatsNoCopy:(float*)arg1 count:(unsigned long long)arg2 freeWhenDone:(bool)arg3;
+- (id)initWithNumbers:(id)arg1;
 - (float)l1norm;
 - (float)l2norm;
 - (float)maxValue;

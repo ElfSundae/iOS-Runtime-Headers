@@ -43,6 +43,8 @@
 + (bool)shouldPredictRecipient:(id)arg1 withDate:(id)arg2 andRecipientDate:(id)arg3;
 + (id)slotSetFromAction:(id)arg1;
 + (id)slotSetsForAction:(id)arg1;
++ (id)stringForCoarseTimePOWLocation:(id)arg1 timeZone:(id)arg2 location:(id)arg3 locationEnabled:(bool)arg4;
++ (id)stringForSpecificTimeDOWLocation:(id)arg1 timeZone:(id)arg2 location:(id)arg3 locationEnabled:(bool)arg4;
 + (id)stringForTimeOfDayAndDayOfWeek:(id)arg1 timeZone:(id)arg2;
 + (id)swapUserActivityString:(id)arg1 withActionKey:(id)arg2 withNewTitle:(id)arg3 withNewDateString:(id)arg4;
 + (id)timeOfDayAndDayOfWeekForDate:(id)arg1 timeZone:(id)arg2;

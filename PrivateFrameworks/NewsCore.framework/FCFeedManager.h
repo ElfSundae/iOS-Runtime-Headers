@@ -7,7 +7,7 @@
     NSMapTable * _feedDescriptorsByID;
     NFMutexLock * _feedDescriptorsLock;
     <FCFeedPersonalizing> * _feedPersonalizer;
-    FCAsyncSerialQueue * _feedUpdateQueue;
+    NSObject<OS_dispatch_group> * _forYouPrefetchGroup;
     long long  _savedStoriesCount;
 }
 
@@ -15,7 +15,7 @@
 @property (nonatomic, retain) NSMapTable *feedDescriptorsByID;
 @property (nonatomic, retain) NFMutexLock *feedDescriptorsLock;
 @property (nonatomic, retain) <FCFeedPersonalizing> *feedPersonalizer;
-@property (nonatomic, retain) FCAsyncSerialQueue *feedUpdateQueue;
+@property (nonatomic, retain) NSObject<OS_dispatch_group> *forYouPrefetchGroup;
 @property (nonatomic) long long savedStoriesCount;
 
 + (id)_identifierForFeedName:(id)arg1;
@@ -35,16 +35,17 @@
 - (id)feedDescriptorsByID;
 - (id)feedDescriptorsLock;
 - (id)feedPersonalizer;
-- (id)feedUpdateQueue;
+- (id)forYouPrefetchGroup;
 - (id)init;
 - (id)initWithCloudContext:(id)arg1;
+- (void)notifyWhenForYouPrefetchIsCompleteWithBlock:(id /* block */)arg1;
 - (void)prefetchForYouWithHighPriority:(bool)arg1 completionHandler:(id /* block */)arg2;
 - (long long)savedStoriesCount;
 - (void)setContext:(id)arg1;
 - (void)setFeedDescriptorsByID:(id)arg1;
 - (void)setFeedDescriptorsLock:(id)arg1;
 - (void)setFeedPersonalizer:(id)arg1;
-- (void)setFeedUpdateQueue:(id)arg1;
+- (void)setForYouPrefetchGroup:(id)arg1;
 - (void)setSavedStoriesCount:(long long)arg1;
 
 @end

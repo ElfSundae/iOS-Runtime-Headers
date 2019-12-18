@@ -17,6 +17,7 @@
     bool  _giveTitleCellKeyboardFocus;
     bool  _hasAppeared;
     bool  _isIgnoringCellHeightChange;
+    bool  _isTextEditing;
     long long  _lastAuthorizationStatus;
     double  _leftButtonSpace;
     UIBarButtonItem * _leftButtonSpacer;
@@ -44,6 +45,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) <EKCalendarItemEditorDelegate> *editorDelegate;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) bool isTextEditing;
 @property (nonatomic) double navBarLeftContentInset;
 @property (nonatomic) double navBarRightContentInset;
 @property (nonatomic, retain) EKChangeSet *originalChangeSet;
@@ -135,6 +137,7 @@
 - (bool)hasAttachmentChanges;
 - (bool)hasUnsavedChanges;
 - (id)init;
+- (bool)isTextEditing;
 - (void)loadView;
 - (double)navBarLeftContentInset;
 - (double)navBarRightContentInset;
@@ -159,6 +162,7 @@
 - (void)setCanHideDoneAndCancelButtons:(bool)arg1;
 - (void)setEditItemVisibility:(int)arg1 animated:(bool)arg2;
 - (void)setEditorDelegate:(id)arg1;
+- (void)setIsTextEditing:(bool)arg1;
 - (void)setNavBarLeftContentInset:(double)arg1;
 - (void)setNavBarRightContentInset:(double)arg1;
 - (void)setOriginalChangeSet:(id)arg1;

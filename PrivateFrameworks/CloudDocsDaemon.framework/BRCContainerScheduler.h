@@ -23,6 +23,12 @@
     unsigned int  _sharedDBSyncState;
     struct _BRCOperation { Class x1; id x2; unsigned char x3[16]; } * _sharedDatabaseSyncOperation;
     BRCDeadlineSource * _sharedDatabaseSyncSource;
+    BRCSyncOperationThrottle * _sideCarSyncDownThrottle;
+    struct _BRCOperation { Class x1; id x2; unsigned char x3[16]; } * _sideCarSyncOperation;
+    BRCSideCarSyncPersistedState * _sideCarSyncPersistedState;
+    BRCDeadlineSource * _sideCarSyncSource;
+    unsigned int  _sideCarSyncState;
+    BRCSyncOperationThrottle * _sideCarSyncUpThrottle;
     NSObject<OS_dispatch_group> * _syncGroup;
     BRCDeadlineScheduler * _syncScheduler;
     BRCSyncBudgetThrottle * _syncUpBudget;
@@ -37,6 +43,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSObject<OS_dispatch_group> *initialSyncDownGroup;
 @property (nonatomic, readonly) BRCAccountSession *session;
+@property (nonatomic, readonly) BRCSideCarSyncPersistedState *sideCarSyncPersistedState;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) NSObject<OS_dispatch_group> *syncGroup;
 @property (nonatomic, readonly) BRCDeadlineScheduler *syncScheduler;
@@ -49,6 +56,7 @@
 - (void)_scheduleUpdatePushTopicsRegistration;
 - (void)_syncScheduleForContainersMetadata;
 - (void)_syncScheduleForSharedDatabase;
+- (void)_syncScheduleForSideCar;
 - (void)_syncScheduleForZoneHealth;
 - (void)_unscheduleClientZone:(id)arg1;
 - (void)_updatePushTopicsRegistration;
@@ -65,6 +73,7 @@
 - (id)initWithAccountSession:(id)arg1;
 - (id)initialSyncDownGroup;
 - (void)notifyAfterNextZoneHealthSyncDown:(id /* block */)arg1;
+- (void)receivedUpdatedSideCarServerChangeToken:(id)arg1 requestID:(unsigned long long)arg2;
 - (void)receivedUpdatedZoneHealthServerChangeToken:(id)arg1 requestID:(unsigned long long)arg2;
 - (void)redoZonePCSPreperation;
 - (void)refreshPushRegistrationAfterAppsListChanged;
@@ -72,9 +81,12 @@
 - (void)schedulePeriodicSyncIfNecessaryInGroup:(id)arg1;
 - (void)scheduleSyncDownForContainerMetadataWithGroup:(id)arg1;
 - (void)scheduleSyncDownForSharedDatabaseImmediately:(bool)arg1;
+- (void)scheduleSyncDownForSideCarWithGroup:(id)arg1;
 - (void)scheduleSyncDownForZoneHealthWithGroup:(id)arg1;
+- (void)scheduleSyncUpForSideCar;
 - (id)session;
 - (void)setup;
+- (id)sideCarSyncPersistedState;
 - (void)syncContextDidBecomeBackground:(id)arg1;
 - (void)syncContextDidBecomeForeground:(id)arg1;
 - (id)syncGroup;

@@ -8,6 +8,7 @@
     TAFilterVisitsSettings * _filterVisitsSettings;
     bool  _peopleDensityEnabled;
     TAScanRequestSettings * _scanRequestSettings;
+    TATrackingAvoidanceServiceSettings * _serviceSettings;
     TAStoreSettings * _storeSettings;
     bool  _trackingAvoidanceEnabled;
 }
@@ -17,6 +18,7 @@
 @property (nonatomic, retain) TAFilterVisitsSettings *filterVisitsSettings;
 @property (nonatomic) bool peopleDensityEnabled;
 @property (nonatomic, retain) TAScanRequestSettings *scanRequestSettings;
+@property (nonatomic, retain) TATrackingAvoidanceServiceSettings *serviceSettings;
 @property (nonatomic, retain) TAStoreSettings *storeSettings;
 @property (nonatomic) bool trackingAvoidanceEnabled;
 
@@ -37,11 +39,13 @@
 - (id)initWithSettings:(id)arg1;
 - (bool)peopleDensityEnabled;
 - (id)scanRequestSettings;
+- (id)serviceSettings;
 - (void)setFilterGeneralSettings:(id)arg1;
 - (void)setFilterSingleVisitSettings:(id)arg1;
 - (void)setFilterVisitsSettings:(id)arg1;
 - (void)setPeopleDensityEnabled:(bool)arg1;
 - (void)setScanRequestSettings:(id)arg1;
+- (void)setServiceSettings:(id)arg1;
 - (void)setSettings:(id)arg1;
 - (void)setStoreSettings:(id)arg1;
 - (void)setTrackingAvoidanceEnabled:(bool)arg1;

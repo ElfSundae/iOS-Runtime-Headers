@@ -28,6 +28,7 @@
 + (id)cloudDocsMangledID;
 + (id)desktopMangledID;
 + (id)documentsMangledID;
++ (id)sideCarMangledID;
 + (bool)supportsSecureCoding;
 + (bool)validateContainerID:(id)arg1;
 + (bool)validateMangledIDString:(id)arg1;

@@ -8,6 +8,7 @@
     int  _mapType;
     NSObject<OS_dispatch_queue> * _optionsSerialQueue;
     MapsSuggestionsShortcutManager * _shortcutManager;
+    MapsSuggestionsUser * _user;
 }
 
 @property (nonatomic, retain) GEOAutomobileOptions *automobileOptions;
@@ -51,5 +52,6 @@
 - (struct NSArray { Class x1; }*)topSuggestionsFromStorageFile:(id)arg1 sink:(id)arg2 count:(unsigned long long)arg3 transportType:(int)arg4;
 - (bool)topSuggestionsFromStorageFile:(id)arg1 sink:(id)arg2 count:(unsigned long long)arg3 transportType:(int)arg4 callback:(id /* block */)arg5 onQueue:(id)arg6;
 - (struct NSString { Class x1; }*)uniqueName;
+- (id)user;
 
 @end

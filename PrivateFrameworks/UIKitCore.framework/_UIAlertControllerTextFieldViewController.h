@@ -20,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (double)_bottomMarginForTextFields;
+- (bool)_canShowWhileLocked;
 - (void)_returnKeyPressedInTextField:(id)arg1;
 - (void)_updatePreferredContentSize;
 - (id)addTextFieldWithPlaceholder:(id)arg1;

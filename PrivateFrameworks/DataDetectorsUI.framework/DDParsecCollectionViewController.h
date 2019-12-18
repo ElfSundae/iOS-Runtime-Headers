@@ -36,6 +36,7 @@
 
 - (void).cxx_destruct;
 - (bool)_allowsStylingSheetsAsCards;
+- (bool)_canShowWhileLocked;
 - (id)_containedRemoteViewController;
 - (void)_interactionEnded;
 - (void)_updatePreferredContentSize;

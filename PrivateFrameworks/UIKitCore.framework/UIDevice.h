@@ -253,6 +253,10 @@
 - (long long)sbf_animatedBlurRadiusGraphicsQuality;
 - (long long)sbf_homeGrabberGraphicsQuality;
 
+// Image: /System/Library/PrivateFrameworks/Stocks/StocksAnalytics.framework/StocksAnalytics
+
+- (id)sa_buildVersion;
+
 // Image: /System/Library/PrivateFrameworks/TSUtility.framework/TSUtility
 
 + (id)platformString;

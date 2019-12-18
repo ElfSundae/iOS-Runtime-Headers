@@ -300,6 +300,12 @@
     double  _startOffsetY;
     _UIStaticScrollBar * _staticScrollBar;
     id  _swipe;
+    struct CGPoint { 
+        double x; 
+        double y; 
+    }  _telemetryOffsetChangeDistance;
+    double  _telemetryOffsetChangeTime;
+    double  _telemetryZoomChangeDistance;
     double  _topLayoutInsetForSidebar;
     UIScrollViewDelayedTouchesBeganGestureRecognizer * _touchDelayGestureRecognizer;
     long long  _touchLevel;
@@ -922,6 +928,7 @@
 - (bool)allowsMultipleFingers;
 - (bool)alwaysBounceHorizontal;
 - (bool)alwaysBounceVertical;
+- (void)animator:(id)arg1 startAnimation:(id)arg2;
 - (void)animator:(id)arg1 stopAnimation:(id)arg2 fraction:(float)arg3;
 - (bool)automaticallyAdjustsScrollIndicatorInsets;
 - (struct CGPoint { double x1; double x2; })autoscrollContentOffset;

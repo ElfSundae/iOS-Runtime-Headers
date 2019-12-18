@@ -4,6 +4,7 @@
 
 @interface CKSettingsMessagesController : CNFRegListController <AKAppleIDAuthenticationDelegate, CKOnboardingControllerDelegate, CNFRegWizardControllerDelegate, CNMeCardSharingSettingsViewControllerDelegate, IMCloudKitEventHandler> {
     id  _beginMappingID;
+    CKBlackholeConversationListViewController * _blackholeConversationListViewController;
     CKNSExtension * _ckExtension;
     IMCTXPCServiceSubscriptionInfo * _ctSubscriptionInfo;
     CKFilteringListController * _filteringController;
@@ -15,6 +16,7 @@
 }
 
 @property (retain) id beginMappingID;
+@property (nonatomic, retain) CKBlackholeConversationListViewController *blackholeConversationListViewController;
 @property (nonatomic, retain) CKNSExtension *ckExtension;
 @property (nonatomic, retain) IMCTXPCServiceSubscriptionInfo *ctSubscriptionInfo;
 @property (readonly, copy) NSString *debugDescription;
@@ -64,10 +66,12 @@
 - (void)_updateUIWithError:(id)arg1;
 - (void)applicationDidResume;
 - (void)applicationWillSuspend;
+- (id)areJunkFilteringReceiptsEnabled:(id)arg1;
 - (id)areReadReceiptsEnabled:(id)arg1;
 - (id)audioMessageSettingsSpecifierIdentifiers;
 - (bool)authenticationController:(id)arg1 shouldContinueWithAuthenticationResults:(id)arg2 error:(id)arg3 forContext:(id)arg4;
 - (id)beginMappingID;
+- (id)blackholeConversationListViewController;
 - (id)blacklistSettingsSpecifierIdentifiers;
 - (id)bundle;
 - (id)characterCountSpecifierIdentifiers;
@@ -99,6 +103,7 @@
 - (bool)isPersonalCompanionEnabled;
 - (id)isSiriToneNotificationEnabled:(id)arg1;
 - (id)junkConversationsRowIdentifier;
+- (id)junkFilterReceiptsRowIdentifier;
 - (id)logName;
 - (id)madridAccountsSpecifierIdentifiers;
 - (id)madridSigninButtonTextForSpecifier:(id)arg1;
@@ -120,11 +125,13 @@
 - (id)sendAsSMSIdentifiers;
 - (void)setAudioMessageAutoKeep:(id)arg1 specifier:(id)arg2;
 - (void)setBeginMappingID:(id)arg1;
+- (void)setBlackholeConversationListViewController:(id)arg1;
 - (void)setCkExtension:(id)arg1;
 - (void)setConversationListFilteringEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setCtSubscriptionInfo:(id)arg1;
 - (void)setDeliveryReportsEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setFilteringController:(id)arg1;
+- (void)setJunkFilteringReceiptsEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setKeepMessages:(id)arg1 specifier:(id)arg2;
 - (void)setMMSEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setMadridEnabled:(id)arg1 specifier:(id)arg2;
@@ -149,6 +156,7 @@
 - (bool)shouldShowDeliveryReceipts;
 - (bool)shouldShowGenericSettings;
 - (bool)shouldShowJunkConversationsRow;
+- (bool)shouldShowJunkFilteringReceipts;
 - (bool)shouldShowMadridAccounts;
 - (bool)shouldShowMadridSignin;
 - (bool)shouldShowMadridSwitch;

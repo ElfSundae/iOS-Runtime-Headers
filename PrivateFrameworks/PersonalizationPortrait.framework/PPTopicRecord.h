@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PersonalizationPortrait.framework/PersonalizationPortrait
  */
 
-@interface PPTopicRecord : NSObject <NSCopying, NSMutableCopying, NSSecureCoding> {
+@interface PPTopicRecord : NSObject <NSCopying, NSMutableCopying, NSSecureCoding, PPRecord> {
     unsigned long long  _algorithm;
     BOOL  _bucketizedSentimentScore;
     double  _decayRate;

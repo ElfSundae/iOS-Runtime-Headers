@@ -12,6 +12,8 @@
     NSString * _moreVideosArticleListID;
     NSMutableArray * _specialEventArticleIDs;
     NSString * _spotlightArticleID;
+    NSString * _todayFeedConfiguration;
+    NSMutableArray * _todayFeedTopStoriesArticleIDs;
     NSMutableArray * _topStoriesCombinedArticleIDs;
     NSMutableArray * _topVideosArticleIDs;
     NSString * _trendingArticleListID;
@@ -28,10 +30,13 @@
 @property (nonatomic, readonly) bool hasCoverArticlesArticleListID;
 @property (nonatomic, readonly) bool hasMoreVideosArticleListID;
 @property (nonatomic, readonly) bool hasSpotlightArticleID;
+@property (nonatomic, readonly) bool hasTodayFeedConfiguration;
 @property (nonatomic, readonly) bool hasTrendingArticleListID;
 @property (nonatomic, retain) NSString *moreVideosArticleListID;
 @property (nonatomic, retain) NSMutableArray *specialEventArticleIDs;
 @property (nonatomic, retain) NSString *spotlightArticleID;
+@property (nonatomic, retain) NSString *todayFeedConfiguration;
+@property (nonatomic, retain) NSMutableArray *todayFeedTopStoriesArticleIDs;
 @property (nonatomic, retain) NSMutableArray *topStoriesCombinedArticleIDs;
 @property (nonatomic, retain) NSMutableArray *topVideosArticleIDs;
 @property (nonatomic, retain) NSString *trendingArticleListID;
@@ -40,6 +45,7 @@
 + (Class)editorialArticleListIDsType;
 + (Class)editorialSectionTagIDsType;
 + (Class)specialEventArticleIDsType;
++ (Class)todayFeedTopStoriesArticleIDsType;
 + (Class)topStoriesCombinedArticleIDsType;
 + (Class)topVideosArticleIDsType;
 
@@ -47,6 +53,7 @@
 - (void)addEditorialArticleListIDs:(id)arg1;
 - (void)addEditorialSectionTagIDs:(id)arg1;
 - (void)addSpecialEventArticleIDs:(id)arg1;
+- (void)addTodayFeedTopStoriesArticleIDs:(id)arg1;
 - (void)addTopStoriesCombinedArticleIDs:(id)arg1;
 - (void)addTopVideosArticleIDs:(id)arg1;
 - (id)base;
@@ -57,6 +64,7 @@
 - (void)clearEditorialArticleListIDs;
 - (void)clearEditorialSectionTagIDs;
 - (void)clearSpecialEventArticleIDs;
+- (void)clearTodayFeedTopStoriesArticleIDs;
 - (void)clearTopStoriesCombinedArticleIDs;
 - (void)clearTopVideosArticleIDs;
 - (id)configuration;
@@ -76,6 +84,7 @@
 - (bool)hasCoverArticlesArticleListID;
 - (bool)hasMoreVideosArticleListID;
 - (bool)hasSpotlightArticleID;
+- (bool)hasTodayFeedConfiguration;
 - (bool)hasTrendingArticleListID;
 - (unsigned long long)hash;
 - (bool)isEqual:(id)arg1;
@@ -91,6 +100,8 @@
 - (void)setMoreVideosArticleListID:(id)arg1;
 - (void)setSpecialEventArticleIDs:(id)arg1;
 - (void)setSpotlightArticleID:(id)arg1;
+- (void)setTodayFeedConfiguration:(id)arg1;
+- (void)setTodayFeedTopStoriesArticleIDs:(id)arg1;
 - (void)setTopStoriesCombinedArticleIDs:(id)arg1;
 - (void)setTopVideosArticleIDs:(id)arg1;
 - (void)setTrendingArticleListID:(id)arg1;
@@ -98,6 +109,10 @@
 - (id)specialEventArticleIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)specialEventArticleIDsCount;
 - (id)spotlightArticleID;
+- (id)todayFeedConfiguration;
+- (id)todayFeedTopStoriesArticleIDs;
+- (id)todayFeedTopStoriesArticleIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)todayFeedTopStoriesArticleIDsCount;
 - (id)topStoriesCombinedArticleIDs;
 - (id)topStoriesCombinedArticleIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)topStoriesCombinedArticleIDsCount;

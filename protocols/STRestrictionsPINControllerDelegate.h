@@ -5,6 +5,6 @@
 
 @required
 
-- (bool)validatePIN:(NSString *)arg1;
+- (bool)validatePIN:(NSString *)arg1 forPINController:(STRestrictionsPINController *)arg2;
 
 @end

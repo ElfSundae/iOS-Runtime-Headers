@@ -127,6 +127,8 @@
 - (void)_clearUpdates;
 - (id)_committedSnapshotForObject:(id)arg1;
 - (void)_copyChildObject:(id)arg1 toParentObject:(id)arg2 fromChildContext:(id)arg3;
+- (unsigned long long)_countForFetchRequest:(id)arg1 error:(id*)arg2;
+- (unsigned long long)_countForFetchRequest_:(id)arg1 error:(id*)arg2;
 - (unsigned long long)_countWithMergedChangesForRequest:(id)arg1 possibleChanges:(id)arg2 possibleDeletes:(id)arg3 error:(id*)arg4;
 - (unsigned long long)_countWithNoChangesForRequest:(id)arg1 error:(id*)arg2;
 - (void)_createAndPostChangeNotification:(id)arg1 deletions:(id)arg2 updates:(id)arg3 refreshes:(id)arg4 deferrals:(id)arg5 wasMerge:(bool)arg6;

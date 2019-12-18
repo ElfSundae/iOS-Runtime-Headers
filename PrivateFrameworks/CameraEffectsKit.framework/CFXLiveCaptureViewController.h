@@ -70,6 +70,7 @@
 - (void)CFX_livePreviewRotated:(id)arg1;
 - (void)CFX_livePreviewTapped:(id)arg1;
 - (void)CFX_setAnimationEnabledForOverlays:(bool)arg1;
+- (bool)_canShowWhileLocked;
 - (void)cancelVideoRecording;
 - (long long)captureMode;
 - (void)clearFaceTrackingRenderer;

@@ -18,6 +18,7 @@
 @property (nonatomic, readonly) NSString *daSyncToken;
 @property (nonatomic, readonly) bool daWasMigrated;
 @property (nonatomic, readonly) bool didChooseToMigrate;
+@property (nonatomic, readonly) bool didChooseToMigrateLocally;
 @property (nonatomic, readonly) bool didFinishMigration;
 @property (nonatomic, retain) NSString *displayName;
 @property (nonatomic, readonly) NSString *externalIdentifier;

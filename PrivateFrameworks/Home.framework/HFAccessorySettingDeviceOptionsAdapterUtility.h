@@ -52,7 +52,7 @@
 - (id)linkIsActivatedFuture;
 - (id)mediaProfileContainer;
 - (unsigned long long)mode;
-- (id)requestSysdiagnose;
+- (id)requestSysdiagnoseWithRequest:(id)arg1 options:(id)arg2;
 - (id)restartAccessories;
 - (id)restartAccessory;
 - (void)setDelegate:(id)arg1;

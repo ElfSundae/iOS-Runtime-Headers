@@ -6,6 +6,7 @@
     void controller;
     void hasVisitedTableOfContents;
     void resolver;
+    void router;
 }
 
 @end

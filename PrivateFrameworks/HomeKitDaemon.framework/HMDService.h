@@ -52,7 +52,6 @@
 @property (nonatomic, copy) NSString *expectedConfiguredName;
 @property (readonly) unsigned long long hash;
 @property (getter=isHidden, nonatomic) bool hidden;
-@property (nonatomic, readonly) HMDHome *home;
 @property (nonatomic, copy) NSNumber *instanceID;
 @property (nonatomic, retain) NSNumber *labelIndex;
 @property (nonatomic, retain) NSNumber *labelNamespace;

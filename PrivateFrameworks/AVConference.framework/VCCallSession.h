@@ -428,7 +428,6 @@
 - (void)handlePrimaryConnectionChanged:(id)arg1 oldPrimaryConnection:(id)arg2;
 - (void)handleReceivedPiggybackBlobIDS:(id)arg1;
 - (void)handleReceivedPiggybackBlobLegacy:(id)arg1;
-- (bool)handshakeComplete:(struct SSLContext { }*)arg1 withError:(struct __CFError {}**)arg2;
 - (id)imageAttributeRules;
 - (id)init;
 - (id)initWithDeviceRole:(int)arg1 transportType:(unsigned int)arg2 isGKVoiceChat:(bool)arg3 reportingHierarchyToken:(id)arg4;

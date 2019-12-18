@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/Silex.framework/Silex
  */
 
-@interface SXScrollViewController : UIViewController <STScrollViewDelegate, SXAdControllerPresentationDelegate, SXComponentHosting, SXContextMenuManagerDelegate, SXDocumentSectionHosting, SXFormatInteractorDelegate, SXKeyboardSupport, SXPresentationDelegate, SXPresentationEnvironment, SXScrollPositionRestoring, SXTangierControllerDelegate, SXViewportChangeListener, UIGestureRecognizerDelegate> {
+@interface SXScrollViewController : UIViewController <SXAdControllerPresentationDelegate, SXComponentHosting, SXContextMenuManagerDelegate, SXDocumentSectionHosting, SXFormatInteractorDelegate, SXKeyboardSupport, SXPresentationDelegate, SXPresentationEnvironment, SXScrollPositionRestoring, SXScrollViewDelegate, SXTangierControllerDelegate, SXViewportChangeListener, UIGestureRecognizerDelegate> {
     <SXDOMObjectProviding> * _DOMObjectProvider;
     <SXAdControllerContainer> * _adControllerContainer;
     <SXAdDocumentStateManager> * _adDocumentStateManager;

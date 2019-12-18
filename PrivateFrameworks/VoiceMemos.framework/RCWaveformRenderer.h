@@ -94,6 +94,7 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)_clearRenderingState;
 - (void)_draw:(double)arg1;
 - (double)_duration;

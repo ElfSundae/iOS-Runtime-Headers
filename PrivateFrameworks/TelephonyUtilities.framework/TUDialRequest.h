@@ -4,6 +4,7 @@
 
 @interface TUDialRequest : NSObject <NSCopying, NSSecureCoding, TUCallRequest, TUFilteredRequest, TUVideoRequest> {
     NSString * _audioSourceIdentifier;
+    CNGeminiManager * _contactGeminiManager;
     NSString * _contactIdentifier;
     NSDate * _dateDialed;
     bool  _dialAssisted;
@@ -47,6 +48,7 @@
 
 @property (nonatomic, readonly) NSURL *URL;
 @property (nonatomic, copy) NSString *audioSourceIdentifier;
+@property (nonatomic, retain) CNGeminiManager *contactGeminiManager;
 @property (nonatomic, copy) NSString *contactIdentifier;
 @property (nonatomic, retain) NSDate *dateDialed;
 @property (readonly, copy) NSString *debugDescription;
@@ -124,6 +126,7 @@
 - (bool)boolValueForQueryItemWithName:(id)arg1 inURLComponents:(id)arg2;
 - (id)bundleIdentifier;
 - (id)callProviderFromURLComponents:(id)arg1 video:(bool*)arg2;
+- (id)contactGeminiManager;
 - (id)contactIdentifier;
 - (id)contactIdentifierFromURLComponents:(id)arg1;
 - (id)contactIdentifierURLQueryItem;
@@ -197,6 +200,7 @@
 - (id)senderIdentityClient;
 - (int)service;
 - (void)setAudioSourceIdentifier:(id)arg1;
+- (void)setContactGeminiManager:(id)arg1;
 - (void)setContactIdentifier:(id)arg1;
 - (void)setDateDialed:(id)arg1;
 - (void)setDestinationID:(id)arg1;

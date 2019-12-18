@@ -54,7 +54,6 @@
 
 - (void).cxx_destruct;
 - (id)_backgroundImageForItemAtIndexPath:(id)arg1;
-- (bool)_canShowWhileLocked;
 - (id)_circularImageWithSize:(struct CGSize { double x1; double x2; })arg1 color:(id)arg2;
 - (void)_performFeedbackIfNeeded;
 - (void)_resetControlsAtIndexPath:(id)arg1;

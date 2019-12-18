@@ -4,11 +4,6 @@
 
 @interface TSImages : NSObject
 
-+ (id)actionSheetBlock;
-+ (id)actionSheetFollow;
-+ (id)actionSheetStopSuggesting;
-+ (id)actionSheetUnblock;
-+ (id)actionSheetUnfollow;
 + (id)blockHUD;
 + (id)followHUD;
 + (id)iconArticleMarkingDelete;

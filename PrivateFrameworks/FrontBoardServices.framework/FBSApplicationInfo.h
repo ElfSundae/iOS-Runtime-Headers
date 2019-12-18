@@ -43,6 +43,7 @@
     bool  _restricted;
     NSURL * _sandboxURL;
     NSString * _sdkVersion;
+    NSString * _shortVersionString;
     NSString * _signerIdentity;
     unsigned long long  _supportedInterfaceOrientations;
     bool  _supportsMultiwindow;
@@ -91,6 +92,7 @@
 @property (getter=isRestricted, nonatomic, readonly) bool restricted;
 @property (nonatomic, readonly) NSURL *sandboxURL;
 @property (nonatomic, readonly, copy) NSString *sdkVersion;
+@property (nonatomic, readonly, copy) NSString *shortVersionString;
 @property (nonatomic, readonly) long long signatureState;
 @property (nonatomic, readonly, copy) NSString *signerIdentity;
 @property (readonly) Class superclass;
@@ -157,6 +159,7 @@
 - (id)sdkVersion;
 - (void)setInterfaceOrientation:(long long)arg1;
 - (void)setSupportedInterfaceOrientations:(unsigned long long)arg1;
+- (id)shortVersionString;
 - (id)signerIdentity;
 - (id)succinctDescriptionBuilder;
 - (unsigned long long)supportedInterfaceOrientations;

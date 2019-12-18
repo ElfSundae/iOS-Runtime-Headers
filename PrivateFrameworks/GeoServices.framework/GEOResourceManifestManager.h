@@ -78,6 +78,7 @@
 - (id)allResourceNames;
 - (id)allResourcePaths;
 - (id)authToken;
+- (id)bestLocalizedStringForDisplayStringAtIndex:(unsigned long long)arg1;
 - (void)cancelCurrentManifestUpdate;
 - (id)captureStatePlistWithHints:(struct os_state_hints_s { unsigned int x1; char *x2; unsigned int x3; unsigned int x4; }*)arg1;
 - (void)closeServerConnection;

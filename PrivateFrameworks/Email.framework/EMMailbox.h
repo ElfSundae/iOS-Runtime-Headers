@@ -36,6 +36,7 @@
 @property (nonatomic, readonly) EMMailboxObjectID *parentID;
 @property (nonatomic, readonly, copy) NSString *redactedName;
 @property (nonatomic, retain) EMMailboxRepository *repository;
+@property (nonatomic, readonly) bool shouldArchiveByDefault;
 @property (readonly) Class superclass;
 @property (nonatomic, readonly) bool supportsSelectAll;
 @property (nonatomic) long long type;
@@ -62,6 +63,7 @@
 - (void).cxx_destruct;
 - (bool)_canArchiveForMailboxType:(long long)arg1;
 - (void)_commonInitName:(id)arg1 accountIdentifier:(id)arg2 type:(long long)arg3 canContainMessages:(bool)arg4 children:(id)arg5 parentID:(id)arg6 builder:(id /* block */)arg7;
+- (bool)_shouldArchiveByDefault;
 - (id)account;
 - (id)accountIdentifier;
 - (bool)canArchive;
@@ -96,6 +98,7 @@
 - (void)setParentFromMailboxes:(id)arg1;
 - (void)setRepository:(id)arg1;
 - (void)setType:(long long)arg1;
+- (bool)shouldArchiveByDefault;
 - (bool)supportsSelectAll;
 - (long long)type;
 

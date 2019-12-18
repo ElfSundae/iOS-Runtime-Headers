@@ -3,6 +3,11 @@
  */
 
 @interface _PSKNNModel : NSObject {
+    unsigned long long  __PSKnnMessagesZkwTopNFilter;
+    unsigned long long  __PSKnnModelRecencyMarginToPromoteShares;
+    unsigned long long  __PSKnnModelRecencyMarginToPromoteSharesMatchingBundleId;
+    unsigned long long  __PSKnnModelRecencyMarginToRetainShares;
+    unsigned long long  __PSKnnTopKShares;
     _PSContactResolver * _contactResolver;
     NSArray * _filterBundleIds;
     _CDInteractionStore * _interactionStore;
@@ -12,6 +17,11 @@
     _CDInteractionCache * _shareInteractionCache;
 }
 
+@property (nonatomic) unsigned long long _PSKnnMessagesZkwTopNFilter;
+@property (nonatomic) unsigned long long _PSKnnModelRecencyMarginToPromoteShares;
+@property (nonatomic) unsigned long long _PSKnnModelRecencyMarginToPromoteSharesMatchingBundleId;
+@property (nonatomic) unsigned long long _PSKnnModelRecencyMarginToRetainShares;
+@property (nonatomic) unsigned long long _PSKnnTopKShares;
 @property (nonatomic, readonly) _PSContactResolver *contactResolver;
 @property (nonatomic, readonly) NSArray *filterBundleIds;
 @property (nonatomic, readonly) _CDInteractionStore *interactionStore;
@@ -21,6 +31,11 @@
 @property (nonatomic, retain) _CDInteractionCache *shareInteractionCache;
 
 - (void).cxx_destruct;
+- (unsigned long long)_PSKnnMessagesZkwTopNFilter;
+- (unsigned long long)_PSKnnModelRecencyMarginToPromoteShares;
+- (unsigned long long)_PSKnnModelRecencyMarginToPromoteSharesMatchingBundleId;
+- (unsigned long long)_PSKnnModelRecencyMarginToRetainShares;
+- (unsigned long long)_PSKnnTopKShares;
 - (id)candidatePropertyFromCandidates:(id)arg1;
 - (id)contactResolver;
 - (id)extractNearestNeighborLabelsForQueryResult:(id)arg1 andNeighbors:(id)arg2 frequencyOnly:(bool)arg3 rankerType:(long long)arg4 contactsOnly:(bool)arg5;
@@ -55,11 +70,17 @@
 - (id)rankedZkwSuggestionsWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
 - (void)setMessageInteractionCache:(id)arg1;
 - (void)setShareInteractionCache:(id)arg1;
+- (void)set_PSKnnMessagesZkwTopNFilter:(unsigned long long)arg1;
+- (void)set_PSKnnModelRecencyMarginToPromoteShares:(unsigned long long)arg1;
+- (void)set_PSKnnModelRecencyMarginToPromoteSharesMatchingBundleId:(unsigned long long)arg1;
+- (void)set_PSKnnModelRecencyMarginToRetainShares:(unsigned long long)arg1;
+- (void)set_PSKnnTopKShares:(unsigned long long)arg1;
 - (id)shareInteractionCache;
 - (id)sliceStart:(unsigned long long)arg1 end:(unsigned long long)arg2 ofArray:(id)arg3;
 - (id)splitShareLabels:(id)arg1 suggestionDate:(id)arg2 contextBundleId:(id)arg3;
 - (long long)suggestionExists:(id)arg1 withValue:(id)arg2 inArray:(id)arg3;
 - (id)suggestionProxiesWithPredictionContext:(id)arg1;
 - (id)targetBundleIdsForFilterBundlesIds:(id)arg1;
+- (void)updateModelProperities:(id)arg1;
 
 @end

@@ -29,6 +29,7 @@
     id /* block */  _removedItemsBlock;
     id /* block */  _resultsBlock;
     EFPromise * _resultsPromise;
+    NSError * _simulatedFailedQueryError;
 }
 
 @property (nonatomic, copy) NSString *bundleIdentifier;
@@ -44,6 +45,7 @@
 @property (nonatomic, copy) NSArray *fetchAttributes;
 @property (nonatomic, copy) id /* block */ gatheredBlock;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, readonly) bool isCancelled;
 @property (nonatomic, readonly) bool isFinished;
 @property (nonatomic) bool live;
 @property (nonatomic) bool liveQueryDidGather;
@@ -59,6 +61,7 @@
 @property (nonatomic, copy) id /* block */ removedItemsBlock;
 @property (nonatomic, copy) id /* block */ resultsBlock;
 @property (readonly) unsigned long long signpostID;
+@property (nonatomic, retain) NSError *simulatedFailedQueryError;
 @property (readonly) Class superclass;
 
 + (id)_modifierStringFromModifiers:(unsigned long long)arg1;
@@ -76,6 +79,7 @@
 
 - (void).cxx_destruct;
 - (void)_cancel;
+- (void)_cancelQuery;
 - (void)_changeCount:(long long)arg1;
 - (void)_changedItems:(id)arg1;
 - (void)_completed;
@@ -113,6 +117,7 @@
 - (id /* block */)gatheredBlock;
 - (id)init;
 - (id)initWithExpression:(id)arg1 builder:(id /* block */)arg2;
+- (bool)isCancelled;
 - (bool)isFinished;
 - (bool)live;
 - (bool)liveQueryDidGather;
@@ -148,7 +153,10 @@
 - (void)setRankingQueries:(id)arg1;
 - (void)setRemovedItemsBlock:(id /* block */)arg1;
 - (void)setResultsBlock:(id /* block */)arg1;
+- (void)setSimulatedFailedQueryError:(id)arg1;
 - (unsigned long long)signpostID;
+- (void)simulateFailedQueryWithError:(id)arg1;
+- (id)simulatedFailedQueryError;
 - (void)start;
 
 @end

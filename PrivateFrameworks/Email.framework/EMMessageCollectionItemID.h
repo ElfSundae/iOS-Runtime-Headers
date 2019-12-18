@@ -12,6 +12,7 @@
 + (id)messageCollectionItemIDForDatabaseID:(long long)arg1;
 + (id)messageCollectionItemIDForMessageIDHeaderHash:(id)arg1 mailboxScope:(id)arg2;
 + (bool)supportsSecureCoding;
++ (id)unarchivingObjectClassSet;
 
 - (id)copyWithZone:(struct _NSZone { }*)arg1;
 - (void)encodeWithCoder:(id)arg1;

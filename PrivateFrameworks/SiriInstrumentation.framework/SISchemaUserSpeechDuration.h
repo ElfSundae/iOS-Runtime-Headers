@@ -2,18 +2,14 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaUserSpeechDuration : PBCodable <NSSecureCoding, SISchemaUserSpeechDuration> {
+@interface SISchemaUserSpeechDuration : PBCodable {
     long long  _durationMs;
     NSString * _resultCandidateId;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) long long durationMs;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, copy) NSString *resultCandidateId;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;

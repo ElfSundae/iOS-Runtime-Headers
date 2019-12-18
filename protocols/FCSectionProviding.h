@@ -6,5 +6,7 @@
 @required
 
 - (NSString *)parentID;
+- (FCSectionSupergroupKnobs *)supergroupKnobs;
+- (NSString *)supergroupKnobsJson;
 
 @end

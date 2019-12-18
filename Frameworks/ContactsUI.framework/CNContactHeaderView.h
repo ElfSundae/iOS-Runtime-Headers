@@ -19,6 +19,7 @@
     <CNPresenterDelegate> * _presenterDelegate;
     bool  _shouldShowBelowNavigationTitle;
     bool  _shouldUseConstrainedMaxHeight;
+    bool  _showMonogramsOnly;
     CNContactHeaderViewSizeAttributes * _sizeAttributes;
     bool  _visibleToScrollViews;
 }
@@ -43,6 +44,7 @@
 @property (nonatomic) <CNPresenterDelegate> *presenterDelegate;
 @property (nonatomic) bool shouldShowBelowNavigationTitle;
 @property (nonatomic) bool shouldUseConstrainedMaxHeight;
+@property (nonatomic) bool showMonogramsOnly;
 @property (nonatomic, retain) CNContactHeaderViewSizeAttributes *sizeAttributes;
 @property (readonly) Class superclass;
 @property (nonatomic) bool visibleToScrollViews;
@@ -105,10 +107,12 @@
 - (void)setPresenterDelegate:(id)arg1;
 - (void)setShouldShowBelowNavigationTitle:(bool)arg1;
 - (void)setShouldUseConstrainedMaxHeight:(bool)arg1;
+- (void)setShowMonogramsOnly:(bool)arg1;
 - (void)setSizeAttributes:(id)arg1;
 - (void)setVisibleToScrollViews:(bool)arg1;
 - (bool)shouldShowBelowNavigationTitle;
 - (bool)shouldUseConstrainedMaxHeight;
+- (bool)showMonogramsOnly;
 - (id)sizeAttributes;
 - (void)updateConstraints;
 - (void)updateFontSizes;

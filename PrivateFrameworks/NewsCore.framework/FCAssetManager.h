@@ -59,6 +59,7 @@
 - (id)cacheCoordinator;
 - (void)cacheCoordinator:(id)arg1 flushKeysWithWriteLock:(id)arg2;
 - (unsigned long long)cacheCoordinatorCurrentSizeWithReadLock:(id)arg1;
+- (void)d_resetAssetHandle:(id)arg1;
 - (id)directoryURLForCachedAssets;
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1;
 - (id)init;

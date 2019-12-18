@@ -35,6 +35,7 @@
 @property (nonatomic) UIButton *unlockButton;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (void)beginAuthentication;
 - (id)contentSizeCategory;
 - (void)contentSizeCategoryDidChange:(id)arg1;

@@ -7,6 +7,7 @@
     PKDiscoveryCard * _card;
     PKDiscoveryCallToAction * _footerLockup;
     NSString * _itemIdentifier;
+    long long  _priority;
     bool  _requestedBadge;
     NSArray * _shelves;
     long long  _variant;
@@ -17,6 +18,7 @@
 @property (nonatomic, readonly) PKDiscoveryCard *card;
 @property (nonatomic, readonly) PKDiscoveryCallToAction *footerLockup;
 @property (nonatomic, retain) NSString *itemIdentifier;
+@property (nonatomic) long long priority;
 @property (getter=hasRequestedBadge, nonatomic, readonly) bool requestedBadge;
 @property (nonatomic, readonly) NSArray *shelves;
 @property (nonatomic, readonly) long long variant;
@@ -39,9 +41,11 @@
 - (id)itemIdentifier;
 - (void)localizeWithBundle:(id)arg1;
 - (void)localizeWithBundle:(id)arg1 table:(id)arg2;
+- (long long)priority;
 - (void)setActionOnDismiss:(id /* block */)arg1;
 - (void)setForItem:(id)arg1;
 - (void)setItemIdentifier:(id)arg1;
+- (void)setPriority:(long long)arg1;
 - (id)shelves;
 - (long long)variant;
 - (long long)version;

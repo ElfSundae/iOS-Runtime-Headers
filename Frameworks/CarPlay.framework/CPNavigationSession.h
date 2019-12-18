@@ -3,14 +3,14 @@
  */
 
 @interface CPNavigationSession : NSObject {
+    <CPNavigationSessionManaging> * _manager;
     CPMapTemplate * _mapTemplate;
-    <CPNavigationSessionProviding> * _provider;
     CPTrip * _trip;
     NSArray * _upcomingManeuvers;
 }
 
+@property (nonatomic, retain) <CPNavigationSessionManaging> *manager;
 @property (nonatomic) CPMapTemplate *mapTemplate;
-@property (nonatomic, retain) <CPNavigationSessionProviding> *provider;
 @property (nonatomic, retain) CPTrip *trip;
 @property (nonatomic, copy) NSArray *upcomingManeuvers;
 
@@ -18,12 +18,12 @@
 - (id)_currentTripId;
 - (void)cancelTrip;
 - (void)finishTrip;
-- (id)initWithTrip:(id)arg1 provider:(id)arg2 mapTemplate:(id)arg3;
+- (id)initWithTrip:(id)arg1 manager:(id)arg2 mapTemplate:(id)arg3;
+- (id)manager;
 - (id)mapTemplate;
 - (void)pauseTripForReason:(unsigned long long)arg1 description:(id)arg2;
-- (id)provider;
+- (void)setManager:(id)arg1;
 - (void)setMapTemplate:(id)arg1;
-- (void)setProvider:(id)arg1;
 - (void)setTrip:(id)arg1;
 - (void)setUpcomingManeuvers:(id)arg1;
 - (id)trip;

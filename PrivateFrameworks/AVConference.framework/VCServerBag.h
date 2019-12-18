@@ -16,6 +16,7 @@
 }
 
 + (void)checkKeysAgainstHardcodedPrefs:(id)arg1;
++ (void)clearBagWithRefreshIntervalInSeconds:(int)arg1;
 + (void)pullStoreBagKeys;
 + (void)retrieveBag;
 + (id)sharedInstance;

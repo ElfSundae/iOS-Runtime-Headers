@@ -2,7 +2,8 @@
    Image: /System/Library/Frameworks/SafariServices.framework/SafariServices
  */
 
-@interface SFWebViewController : UIViewController <SFFormAutoFillControllerDelegate, WKNavigationDelegatePrivate, WKUIDelegatePrivate, _SFDialogControllerDelegate, _SFDialogPresenting, _SFDialogViewControllerPresenting, _SFWebViewDelegate, _WKInputDelegate> {
+@interface SFWebViewController : UIViewController <SFFormAutoFillControllerDelegate, WKNavigationDelegatePrivate, WKUIDelegatePrivate, _SFDialogControllerDelegate, _SFDialogPresenting, _SFDialogViewControllerPresenting, _SFWebViewDelegate, _WKInputDelegate, _WKWebAuthenticationPanelDelegate> {
+    _SFDialog<_SFAuthenticatorDialog> * _authenticatorDialog;
     _SFFormAutoFillController * _autoFillController;
     <SFWebViewControllerDelegate> * _delegate;
     _SFDialogController * _dialogController;
@@ -62,6 +63,7 @@
 - (void)_webView:(id)arg1 requestGeolocationAuthorizationForURL:(id)arg2 frame:(id)arg3 decisionHandler:(id /* block */)arg4;
 - (void)_webView:(id)arg1 requestStorageAccessPanelForDomain:(id)arg2 underCurrentDomain:(id)arg3 completionHandler:(id /* block */)arg4;
 - (void)_webView:(id)arg1 requestUserMediaAuthorizationForDevices:(unsigned long long)arg2 url:(id)arg3 mainFrameURL:(id)arg4 decisionHandler:(id /* block */)arg5;
+- (void)_webView:(id)arg1 runWebAuthenticationPanel:(id)arg2 initiatedByFrame:(id)arg3 completionHandler:(id /* block */)arg4;
 - (bool)_webView:(id)arg1 shouldIncludeAppLinkActionsForElement:(id)arg2;
 - (void)_webView:(id)arg1 willPerformClientRedirectToURL:(id)arg2 delay:(double)arg3;
 - (void)_webView:(id)arg1 willStartInputSession:(id)arg2;
@@ -94,6 +96,8 @@
 - (bool)isLoading;
 - (void)loadView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
+- (void)panel:(id)arg1 dismissWebAuthenticationPanelWithResult:(long long)arg2;
+- (void)panel:(id)arg1 updateWebAuthenticationPanel:(long long)arg2;
 - (void)presentDialog:(id)arg1 sender:(id)arg2;
 - (void)presentViewController:(id)arg1 animated:(bool)arg2 completion:(id /* block */)arg3;
 - (void)setDelegate:(id)arg1;

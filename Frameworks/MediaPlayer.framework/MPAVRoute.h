@@ -37,6 +37,7 @@
 @property (nonatomic, readonly) NSArray *auxiliaryDevices;
 @property (nonatomic, readonly) NSDictionary *avRouteDescription;
 @property (getter=isB298Route, nonatomic, readonly) bool b298Route;
+@property (getter=isB364Route, nonatomic, readonly) bool b364Route;
 @property (getter=isB419Route, nonatomic, readonly) bool b419Route;
 @property (getter=isB444Route, nonatomic, readonly) bool b444Route;
 @property (nonatomic, readonly) MPAVBatteryLevel *batteryLevel;
@@ -119,6 +120,7 @@
 - (bool)isAirpodsRoute;
 - (bool)isAppleTVRoute;
 - (bool)isB298Route;
+- (bool)isB364Route;
 - (bool)isB419Route;
 - (bool)isB444Route;
 - (bool)isBeatsSoloRoute;

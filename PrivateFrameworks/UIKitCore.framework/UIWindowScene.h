@@ -144,6 +144,7 @@
 - (void)_unregisterSceneActionsHandler:(id)arg1;
 - (void)_unregisterSettingsDiffActionsForKey:(id)arg1;
 - (void)_updateClientSettingsToInterfaceOrientation:(long long)arg1 withAnimationDuration:(double)arg2;
+- (void)_updateTraitCollection;
 - (void)_updateVisibleWindowOrderWithTest:(id /* block */)arg1;
 - (id)_visibleWindows;
 - (void)_windowDidBecomeKey:(id)arg1;

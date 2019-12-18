@@ -3,13 +3,13 @@
  */
 
 @interface SXWebContentComponentInteractionHandler : NSObject <SXComponentInteractionHandler> {
-    <SXWebContentInteraction> * _interaction;
+    <SWInteraction> * _interaction;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, readonly) <SXWebContentInteraction> *interaction;
+@property (nonatomic, readonly) <SWInteraction> *interaction;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

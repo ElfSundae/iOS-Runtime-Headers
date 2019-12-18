@@ -33,6 +33,7 @@
 @property (nonatomic) bool suppressGroupSuggestions;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)_conversationList;
 - (BOOL)_serviceColorForRecipients:(id)arg1;
 - (id)_statusQueryController;

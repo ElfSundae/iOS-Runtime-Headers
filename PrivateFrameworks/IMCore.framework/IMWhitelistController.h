@@ -6,23 +6,19 @@
     DMFApplicationPolicyMonitor * _appPolicyMonitor;
     NSMutableDictionary * _bundleIDPolicyMap;
     TUCallProviderManager * _callProviderManager;
-    NSMutableDictionary * _conversationContextToParticipantIDsHash;
     NSSet * _emergencyNumbersSet;
-    NSMutableDictionary * _participantIDsHashToChat;
-    NSMutableDictionary * _participantIDsHashToConversationContext;
+    IMCommLimitsPolicyCache * _policyCache;
     NSObject<OS_dispatch_queue> * _screenTimeDispatchQueue;
 }
 
 @property (nonatomic, retain) DMFApplicationPolicyMonitor *appPolicyMonitor;
 @property (nonatomic, retain) NSMutableDictionary *bundleIDPolicyMap;
 @property (nonatomic, retain) TUCallProviderManager *callProviderManager;
-@property (nonatomic, retain) NSMutableDictionary *conversationContextToParticipantIDsHash;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, retain) NSSet *emergencyNumbersSet;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, retain) NSMutableDictionary *participantIDsHashToChat;
-@property (nonatomic, retain) NSMutableDictionary *participantIDsHashToConversationContext;
+@property (nonatomic, retain) IMCommLimitsPolicyCache *policyCache;
 @property (nonatomic, retain) NSObject<OS_dispatch_queue> *screenTimeDispatchQueue;
 @property (readonly) Class superclass;
 
@@ -32,8 +28,7 @@
 
 - (void).cxx_destruct;
 - (void)_addObserversToChat:(id)arg1;
-- (void)_participantStateForChatChanged:(id)arg1;
-- (void)_participantsForChatChanged:(id)arg1;
+- (void)_participantsForChatDidChange:(id)arg1;
 - (bool)allowedToShowAppExtensionWithBundleIdentifier:(id)arg1;
 - (bool)allowedToShowConversationForChat:(id)arg1 sync:(bool)arg2;
 - (bool)allowedToShowConversationWithHandleIDs:(id)arg1 sync:(bool)arg2 context:(id*)arg3;
@@ -41,27 +36,21 @@
 - (id)bundleIDPolicyMap;
 - (id)callProviderManager;
 - (id)conversationContextForChat:(id)arg1;
-- (id)conversationContextToParticipantIDsHash;
 - (id)emergencyNumbersSet;
 - (void)fetchScreenTimeAppPolicy;
 - (id)init;
 - (void)initializeContext:(id)arg1 participantIDsHash:(id)arg2;
-- (bool)isFetchingScreenTimeContextForParticipantIDsHash:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void*)arg4;
-- (id)participantIDsHashToChat;
-- (id)participantIDsHashToConversationContext;
+- (id)policyCache;
 - (void)providersChangedForProviderManager:(id)arg1;
-- (void)refetchScreenTimePolicyForChat:(id)arg1;
 - (void)registerForScreenTimeNotifications;
 - (void)reloadEmergencyNumbersSet;
 - (id)screenTimeDispatchQueue;
 - (void)setAppPolicyMonitor:(id)arg1;
 - (void)setBundleIDPolicyMap:(id)arg1;
 - (void)setCallProviderManager:(id)arg1;
-- (void)setConversationContextToParticipantIDsHash:(id)arg1;
 - (void)setEmergencyNumbersSet:(id)arg1;
-- (void)setParticipantIDsHashToChat:(id)arg1;
-- (void)setParticipantIDsHashToConversationContext:(id)arg1;
+- (void)setPolicyCache:(id)arg1;
 - (void)setScreenTimeDispatchQueue:(id)arg1;
 
 @end

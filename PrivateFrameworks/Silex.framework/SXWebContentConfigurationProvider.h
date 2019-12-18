@@ -5,6 +5,7 @@
 @interface SXWebContentConfigurationProvider : NSObject <SXPresentationAttributesObserver, SXWebContentConfigurationProvider> {
     id /* block */  _changeBlock;
     NSLocale * _locale;
+    <SXWebContentLocationProvider> * _locationProvider;
     <SXPresentationAttributesProvider> * _presentationAttributesProvider;
     <SXStoreFrontProvider> * _storeFrontProvider;
 }
@@ -14,6 +15,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSLocale *locale;
+@property (nonatomic, readonly) <SXWebContentLocationProvider> *locationProvider;
 @property (nonatomic, readonly) <SXPresentationAttributesProvider> *presentationAttributesProvider;
 @property (nonatomic, readonly) <SXStoreFrontProvider> *storeFrontProvider;
 @property (readonly) Class superclass;
@@ -21,9 +23,10 @@
 - (void).cxx_destruct;
 - (id /* block */)changeBlock;
 - (id)configurationForSize:(struct CGSize { double x1; double x2; })arg1 dataSources:(id)arg2;
-- (id)initWithPresentationAttributesProvider:(id)arg1 storeFrontProvider:(id)arg2 locale:(id)arg3;
+- (id)initWithPresentationAttributesProvider:(id)arg1 storeFrontProvider:(id)arg2 locale:(id)arg3 locationProvider:(id)arg4;
 - (void)invokeChangeListener;
 - (id)locale;
+- (id)locationProvider;
 - (void)onChange:(id /* block */)arg1;
 - (void)presentationAttributesDidChangeFrom:(id)arg1 toAttributes:(id)arg2;
 - (id)presentationAttributesProvider;

@@ -3,7 +3,9 @@
  */
 
 @interface STLockoutViewController : UIViewController <CNContactViewControllerDelegate, LOViewController, STLockoutPolicyControllerDelegate> {
+    NSString * _applicationName;
     NSObject<OS_dispatch_group> * _approvalAnimationGroup;
+    UIResponder * _customNextResponder;
     bool  _didFinishDismissing;
     NSObject<OS_dispatch_group> * _dismissingAnimationGroup;
     bool  _forSnapshot;
@@ -29,7 +31,9 @@
     <STLockoutViewControllerDelegate> * _viewControllerDelegate;
 }
 
+@property (readonly) NSString *applicationName;
 @property (nonatomic, copy) NSString *bundleIdentifier;
+@property (nonatomic) UIResponder *customNextResponder;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly) bool didFinishDismissing;
@@ -39,16 +43,17 @@
 @property UIButton *mainButton;
 @property (nonatomic) bool mainButtonAlwaysHidden;
 @property UILabel *messageLabel;
+@property (nonatomic) UIResponder *nextResponder;
 @property UIButton *okButton;
 @property long long okButtonAction;
 @property (nonatomic) bool okButtonAlwaysHidden;
 @property (nonatomic, retain) STLockoutPolicyController *policyController;
 @property (readonly) Class superclass;
 @property UILabel *titleLabel;
-@property (nonatomic, retain) STBlockingBackdropView *view;
+@property (nonatomic, retain) UIVisualEffectView *view;
 @property (nonatomic) <LOViewControllerDelegate> *viewControllerDelegate;
 @property (nonatomic) <STLockoutViewControllerDelegate> *viewControllerDelegate;
-@property (nonatomic, readonly) STBlockingBackdropView *viewIfLoaded;
+@property (nonatomic, readonly) UIVisualEffectView *viewIfLoaded;
 
 + (id)_applicationNameForBundleIdentifier:(id)arg1;
 + (id)_applicationNameForWebsiteURL:(id)arg1;
@@ -58,6 +63,7 @@
 + (id)lockoutViewControllerWithBundleIdentifier:(id)arg1 contactsHandles:(id)arg2;
 + (id)lockoutViewControllerWithBundleIdentifier:(id)arg1 conversationContext:(id)arg2 contactStore:(id)arg3;
 + (id)lockoutViewControllerWithCategoryIdentifier:(id)arg1;
++ (id)lockoutViewControllerWithConversationContext:(id)arg1 bundleIdentifier:(id)arg2 contactStore:(id)arg3 applicationName:(id)arg4;
 + (id)lockoutViewControllerWithWebsiteURL:(id)arg1;
 + (id)messageForApplicationName:(id)arg1 style:(long long)arg2;
 + (id)messageForBundleIdentifier:(id)arg1 style:(long long)arg2;
@@ -74,6 +80,7 @@
 - (bool)_actionUnlockedEnterScreenTimePasscodeActionSheet;
 - (bool)_authenticatedApproveActionSheet;
 - (void)_authenticatedApproveForAdditionalTime:(double)arg1;
+- (bool)_canShowWhileLocked;
 - (void)_changeMainButtonToAddContact;
 - (void)_changeMainButtonToAskForMore;
 - (void)_changeMainButtonToEnterScreenTimePasscode;
@@ -115,9 +122,11 @@
 - (void)_unlockWithSuccessMainCompletion:(id /* block */)arg1;
 - (void)_updateMainButtonVisibility;
 - (void)_updateOKButtonVisibility;
+- (id)applicationName;
 - (id)bundleIdentifier;
 - (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
 - (void)contentSizeCategoryDidChangeNotification:(id)arg1;
+- (id)customNextResponder;
 - (void)dealloc;
 - (bool)didFinishDismissing;
 - (id)hourglassView;
@@ -135,12 +144,14 @@
 - (bool)okButtonAlwaysHidden;
 - (id)policyController;
 - (void)setBundleIdentifier:(id)arg1;
+- (void)setCustomNextResponder:(id)arg1;
 - (void)setDidFinishDismissing:(bool)arg1;
 - (void)setForSnapshot:(bool)arg1;
 - (void)setHourglassView:(id)arg1;
 - (void)setMainButton:(id)arg1;
 - (void)setMainButtonAlwaysHidden:(bool)arg1;
 - (void)setMessageLabel:(id)arg1;
+- (void)setNextResponder:(id)arg1;
 - (void)setOkButton:(id)arg1;
 - (void)setOkButtonAction:(long long)arg1;
 - (void)setOkButtonAlwaysHidden:(bool)arg1;

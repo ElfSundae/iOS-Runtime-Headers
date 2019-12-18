@@ -18,6 +18,7 @@
 + (bool)supportsSecureCoding;
 
 - (void).cxx_destruct;
+- (id)_initWithNotification:(id)arg1 actionIdentifier:(id)arg2 originIdentifier:(id)arg3 targetConnectionEndpoint:(id)arg4 targetSceneIdentifier:(id)arg5;
 - (id)_initWithNotification:(id)arg1 actionIdentifier:(id)arg2 originIdentifier:(id)arg3 targetConnectionEndpoint:(id)arg4 targetSceneIdentifier:(id)arg5 userText:(id)arg6;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

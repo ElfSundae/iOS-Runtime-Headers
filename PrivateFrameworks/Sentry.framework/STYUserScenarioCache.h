@@ -52,6 +52,7 @@
 - (id)lifecycleScenarios;
 - (id)loadWhitelist:(id)arg1 platform:(id)arg2 bundles:(id)arg3;
 - (id)processBundleIdForSignpostInterval:(id)arg1;
+- (int)processIdForSignpostEvent:(id)arg1;
 - (bool)processWhitelisted:(id)arg1 error:(id*)arg2;
 - (id)responsivenessThresholdsForWhitelistedCategories;
 - (id)responsivenessThresholdsForWhitelistedNames;

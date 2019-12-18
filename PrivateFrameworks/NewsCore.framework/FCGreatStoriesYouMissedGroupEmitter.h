@@ -18,6 +18,7 @@
 @property (nonatomic) unsigned long long limit;
 @property (nonatomic, readonly) long long requiredForYouContentTypes;
 @property (nonatomic, readonly) bool requiresHeavyweightContent;
+@property (nonatomic, readonly) bool shouldEmitContentInFavoritesOnlyMode;
 @property (readonly) Class superclass;
 
 + (bool)greatStoriesMayEmit:(id)arg1;
@@ -33,6 +34,7 @@
 - (long long)requiredForYouContentTypes;
 - (void)setContext:(id)arg1;
 - (void)setLimit:(unsigned long long)arg1;
+- (bool)shouldEmitContentInFavoritesOnlyMode;
 - (bool)wantsToEmitGroupInContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;
 - (bool)wantsToInsertGroupInContext:(id)arg1;
 

@@ -45,6 +45,7 @@
 - (void).cxx_destruct;
 - (void)_autoJoinSwitchChanged:(id)arg1;
 - (void)_autoLoginSwitchChanged:(id)arg1;
+- (bool)_canShowWhileLocked;
 - (void)_contentSizeCategoryDidChange:(id)arg1;
 - (void)_httpProxyAuthChanged:(id)arg1;
 - (void)_httpProxyConfigChanged:(long long)arg1;

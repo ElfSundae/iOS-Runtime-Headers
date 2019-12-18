@@ -2,7 +2,7 @@
    Image: /System/Library/Frameworks/Intents.framework/Intents
  */
 
-@interface INIntentResponse : NSObject <INCacheableContainer, INFileEnumerable, INGenericIntentResponse, INImageProxyInjecting, INIntentResponseExport, INIntentSlotComposing, INKeyImageProducing, INRuntimeObject, NSCopying, NSSecureCoding> {
+@interface INIntentResponse : NSObject <INCacheableContainer, INEnumerable, INGenericIntentResponse, INImageProxyInjecting, INIntentResponseExport, INIntentSlotComposing, INKeyImageProducing, INRuntimeObject, NSCopying, NSSecureCoding> {
     long long  __stage;
     bool  __userConfirmationRequired;
     _INPBIntentResponse * _backingStore;
@@ -61,7 +61,7 @@
 - (bool)_commonInit;
 - (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
 - (id)_dictionaryRepresentation;
-- (void)_enumerateWithValueProcessingBlock:(id /* block */)arg1 mutate:(bool)arg2;
+- (bool)_enumerateWithValueProcessingBlock:(id /* block */)arg1;
 - (id)_inCodable;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (void)_injectProxiesForImages:(id /* block */)arg1 completion:(id /* block */)arg2;
@@ -70,8 +70,7 @@
 - (id)_intentResponseCodableCode;
 - (long long)_intentResponseCode;
 - (id)_intents_cacheableObjects;
-- (void)_intents_enumerateFileURLsWithBlock:(id /* block */)arg1 mutate:(bool)arg2;
-- (void)_intents_enumerateFilesWithBlock:(id /* block */)arg1 mutate:(bool)arg2;
+- (bool)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(id /* block */)arg2;
 - (long long)_intents_toggleState;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (bool)_isSuccess;

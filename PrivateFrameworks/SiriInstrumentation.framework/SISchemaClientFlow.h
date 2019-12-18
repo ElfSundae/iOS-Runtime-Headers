@@ -2,16 +2,12 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaClientFlow : PBCodable <NSSecureCoding, SISchemaClientFlow> {
+@interface SISchemaClientFlow : PBCodable {
     NSString * _clientFlowPayload;
 }
 
 @property (nonatomic, copy) NSString *clientFlowPayload;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)clientFlowPayload;

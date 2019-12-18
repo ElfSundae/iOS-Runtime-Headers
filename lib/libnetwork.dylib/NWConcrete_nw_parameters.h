@@ -54,8 +54,9 @@
         unsigned int multipath_force_enable : 1; 
         unsigned int allow_duplicate_state_updates : 1; 
         unsigned int always_open_listener_socket : 1; 
+        unsigned int enable_tls_experiments : 1; 
         unsigned int tls_should_trust_invalid_certificates : 1; 
-        unsigned int __pad_bits : 2; 
+        unsigned int skip_probe_sampling : 1; 
     }  value;
 }
 

@@ -2,18 +2,14 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaSpeechResultSelected : PBCodable <NSSecureCoding, SISchemaSpeechResultSelected> {
+@interface SISchemaSpeechResultSelected : PBCodable {
     NSString * _resultCandidateId;
     int  _source;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, copy) NSString *resultCandidateId;
 @property (nonatomic) int source;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;

@@ -320,6 +320,7 @@
 @property (getter=_searchFullPageOnFocusUpdate, setter=_setSearchFullPageOnFocusUpdate:, nonatomic) bool searchFullPageOnFocusUpdate;
 @property (nonatomic, retain) _UIFocusFastScrollingIndexBarEntry *selectedIndexTitleEntry;
 @property (readonly) Class superclass;
+@property (nonatomic) bool tu_deriveVisibleBoundsFromContainingScrollView;
 @property (nonatomic, readonly) NSArray *visibleCells;
 @property (getter=_visibleViews, nonatomic, readonly) NSArray *visibleViews;
 
@@ -401,7 +402,7 @@
 - (long long)_dataSourceSectionIndexForPresentationSectionIndex:(long long)arg1;
 - (id)_dataSourceSectionIndexTitles;
 - (bool)_dataSourceSupportsReordering;
-- (void)_decrementSuspendLayoutCount;
+- (void)_decrementUpdateAnimationCount;
 - (struct UIEdgeInsets { double x1; double x2; double x3; double x4; })_defaultLayoutMargins;
 - (id)_defaultTargetedPreviewForIdentifier:(id)arg1;
 - (id)_delegateActual;
@@ -471,7 +472,7 @@
 - (id)_horizontalIndexTitleBar;
 - (struct CGPoint { double x1; double x2; })_horizontalIndexTitleBarOffset;
 - (id)_identityTracker:(bool)arg1;
-- (void)_incrementSuspendLayoutCount;
+- (void)_incrementUpdateAnimationCount;
 - (id)_indexBarEntries;
 - (id)_indexPathAfterShadowUpdatesForIndexPath:(id)arg1;
 - (id)_indexPathBeforeShadowUpdatesForIndexPath:(id)arg1;
@@ -494,6 +495,7 @@
 - (void)_invalidateLayoutIfNecessaryForReload;
 - (void)_invalidateLayoutWithContext:(id)arg1;
 - (void)_invalidateWithBlock:(id /* block */)arg1;
+- (bool)_isConnectedToDiffableDataSource;
 - (bool)_isCurrentlyPerformingLegacyReordering;
 - (bool)_isDragDestinationInteractivelyReordering;
 - (bool)_isEditing;
@@ -898,6 +900,11 @@
 
 - (bool)tv_isFocusOnNonOwnedCell;
 - (struct CGSize { double x1; double x2; })tv_sizeThatFits:(struct CGSize { double x1; double x2; })arg1 withContentInset:(struct UIEdgeInsets { double x1; double x2; double x3; double x4; })arg2;
+
+// Image: /System/Library/PrivateFrameworks/TeaUI.framework/TeaUI
+
+- (void)setTu_deriveVisibleBoundsFromContainingScrollView:(bool)arg1;
+- (bool)tu_deriveVisibleBoundsFromContainingScrollView;
 
 // Image: /System/Library/PrivateFrameworks/VideosUI.framework/VideosUI
 

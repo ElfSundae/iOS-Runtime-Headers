@@ -19,6 +19,7 @@
 + (id)templateViewControllerForTemplateModel:(id)arg1;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)_initWithTemplateModel:(id)arg1;
 - (id)delegate;
 - (bool)isActive;

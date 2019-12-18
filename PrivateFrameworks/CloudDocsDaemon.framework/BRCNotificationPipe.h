@@ -7,6 +7,7 @@
     BRCXPCClient * _client;
     <BRCNotificationPipeDelegate> * _delegate;
     NSMutableSet * _externalAppLibraries;
+    NSObject<OS_dispatch_group> * _gatherGroup;
     BRCDataOrDocsScopeGatherer * _gatherer;
     bool  _hasProgressUpdatesInFlight;
     bool  _hasUpdatesInFlight;
@@ -17,6 +18,7 @@
     NSMutableDictionary * _pendingProgressUpdatesByID;
     NSObject<OS_dispatch_queue> * _queue;
     <BRItemNotificationReceiving> * _receiver;
+    unsigned long long  _secondaryGatherMaxRank;
     bool  _volumeIsCaseSensitive;
     NSString * _watchForBundleID;
     unsigned short  _watchItemOptions;
@@ -49,6 +51,7 @@
 - (void)_gatherIfNeededAndFlushAsync;
 - (id)_initWithManager:(id)arg1 startingRank:(unsigned long long)arg2;
 - (int)_isInterestingUpdate:(id)arg1;
+- (void)_prepareForSecondGatherWithRank:(unsigned long long)arg1;
 - (void)_processProgressUpdates:(id)arg1;
 - (void)_registerAsWatcherIfNeeded;
 - (void)_stopWatchingItems;

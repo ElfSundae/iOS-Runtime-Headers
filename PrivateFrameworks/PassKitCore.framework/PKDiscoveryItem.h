@@ -4,12 +4,14 @@
 
 @interface PKDiscoveryItem : PKDiscoveryObject <NSCopying, NSSecureCoding> {
     NSURL * _layoutBundleURL;
+    long long  _priority;
     bool  _shouldBadge;
     NSArray * _supportedLocalizations;
     long long  _type;
 }
 
 @property (nonatomic, copy) NSURL *layoutBundleURL;
+@property (nonatomic) long long priority;
 @property (nonatomic) bool shouldBadge;
 @property (nonatomic, retain) NSArray *supportedLocalizations;
 @property (nonatomic) long long type;
@@ -23,7 +25,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (id)layoutBundleURL;
+- (long long)priority;
 - (void)setLayoutBundleURL:(id)arg1;
+- (void)setPriority:(long long)arg1;
 - (void)setShouldBadge:(bool)arg1;
 - (void)setSupportedLocalizations:(id)arg1;
 - (void)setType:(long long)arg1;

@@ -23,6 +23,7 @@
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
 - (double)bottomMarginWithBaselineMargin:(double)arg1 maximumContentSizeCategory:(id)arg2;
 - (id)labelName;
+- (unsigned long long)numberOfLinesRequiredForTextWidth:(double)arg1;
 - (bool)requiresMoreThanOneLineForTextWidth:(double)arg1;
 - (void)setHighlighted:(bool)arg1;
 - (void)setLabelName:(id)arg1;

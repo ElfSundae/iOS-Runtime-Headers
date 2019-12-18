@@ -16,6 +16,7 @@
         unsigned int paidSubscriptionConversionPointType : 1; 
         unsigned int parentFeedType : 1; 
         unsigned int resultType : 1; 
+        unsigned int storekitError : 1; 
         unsigned int arrivedFromAd : 1; 
         unsigned int sawSubscriptionSheet : 1; 
         unsigned int subscriptionOnlyArticlePreview : 1; 
@@ -30,6 +31,7 @@
     bool  _sawSubscriptionSheet;
     NSString * _sectionId;
     NSString * _sourceChannelId;
+    int  _storekitError;
     bool  _subscriptionOnlyArticlePreview;
     NSData * _subscriptionPurchaseSessionId;
 }
@@ -60,6 +62,7 @@
 @property (nonatomic) bool hasSawSubscriptionSheet;
 @property (nonatomic, readonly) bool hasSectionId;
 @property (nonatomic, readonly) bool hasSourceChannelId;
+@property (nonatomic) bool hasStorekitError;
 @property (nonatomic) bool hasSubscriptionOnlyArticlePreview;
 @property (nonatomic, readonly) bool hasSubscriptionPurchaseSessionId;
 @property (nonatomic, retain) NSString *iadQtoken;
@@ -72,6 +75,7 @@
 @property (nonatomic) bool sawSubscriptionSheet;
 @property (nonatomic, retain) NSString *sectionId;
 @property (nonatomic, retain) NSString *sourceChannelId;
+@property (nonatomic) int storekitError;
 @property (nonatomic) bool subscriptionOnlyArticlePreview;
 @property (nonatomic, retain) NSData *subscriptionPurchaseSessionId;
 
@@ -79,6 +83,7 @@
 - (int)StringAsGroupType:(id)arg1;
 - (int)StringAsPaidSubscriptionConversionPointType:(id)arg1;
 - (int)StringAsParentFeedType:(id)arg1;
+- (int)StringAsStorekitError:(id)arg1;
 - (bool)arrivedFromAd;
 - (id)articleId;
 - (id)articleViewingSessionId;
@@ -109,6 +114,7 @@
 - (bool)hasSawSubscriptionSheet;
 - (bool)hasSectionId;
 - (bool)hasSourceChannelId;
+- (bool)hasStorekitError;
 - (bool)hasSubscriptionOnlyArticlePreview;
 - (bool)hasSubscriptionPurchaseSessionId;
 - (unsigned long long)hash;
@@ -140,6 +146,7 @@
 - (void)setHasParentFeedType:(bool)arg1;
 - (void)setHasResultType:(bool)arg1;
 - (void)setHasSawSubscriptionSheet:(bool)arg1;
+- (void)setHasStorekitError:(bool)arg1;
 - (void)setHasSubscriptionOnlyArticlePreview:(bool)arg1;
 - (void)setIadQtoken:(id)arg1;
 - (void)setIssueData:(id)arg1;
@@ -151,9 +158,12 @@
 - (void)setSawSubscriptionSheet:(bool)arg1;
 - (void)setSectionId:(id)arg1;
 - (void)setSourceChannelId:(id)arg1;
+- (void)setStorekitError:(int)arg1;
 - (void)setSubscriptionOnlyArticlePreview:(bool)arg1;
 - (void)setSubscriptionPurchaseSessionId:(id)arg1;
 - (id)sourceChannelId;
+- (int)storekitError;
+- (id)storekitErrorAsString:(int)arg1;
 - (bool)subscriptionOnlyArticlePreview;
 - (id)subscriptionPurchaseSessionId;
 - (void)writeTo:(id)arg1;

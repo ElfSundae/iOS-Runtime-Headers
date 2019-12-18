@@ -11,6 +11,7 @@
 
 - (void).cxx_destruct;
 - (void)_calculateLayoutFrames;
+- (bool)_shouldShowAvatarForWidth:(double)arg1;
 - (void)_updateAvatarView;
 - (id)avatarView;
 - (id)avatarView:(id)arg1 orderedPropertiesForProperties:(id)arg2 category:(id)arg3;

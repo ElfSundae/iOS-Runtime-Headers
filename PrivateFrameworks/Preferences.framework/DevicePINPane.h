@@ -14,6 +14,7 @@
     DevicePINKeypadContainerView * _keypadContainerView;
     bool  _numericKeyboard;
     id /* block */  _passcodeOptionsHandler;
+    NSString * _passcodeOptionsTitle;
     UIView<PINEntryView> * _pinView;
     bool  _playSound;
     bool  _simplePIN;
@@ -32,6 +33,7 @@
 @property (nonatomic) long long keyboardAppearance;
 @property (nonatomic) long long keyboardType;
 @property (nonatomic, copy) id /* block */ passcodeOptionsHandler;
+@property (nonatomic, copy) NSString *passcodeOptionsTitle;
 @property (nonatomic, copy) UITextInputPasswordRules *passwordRules;
 @property (nonatomic, retain) UIView<PINEntryView> *pinView;
 @property (nonatomic) long long returnKeyType;
@@ -70,6 +72,7 @@
 - (void)layoutSubviews;
 - (void)okButtonPressed;
 - (id /* block */)passcodeOptionsHandler;
+- (id)passcodeOptionsTitle;
 - (id)password;
 - (id)pinView;
 - (void)pinView:(id)arg1 pinEntered:(id)arg2;
@@ -85,6 +88,7 @@
 - (void)setPINLength:(unsigned int)arg1;
 - (void)setPINPolicyString:(id)arg1 visible:(bool)arg2;
 - (void)setPasscodeOptionsHandler:(id /* block */)arg1;
+- (void)setPasscodeOptionsTitle:(id)arg1;
 - (void)setPinView:(id)arg1;
 - (void)setSimplePIN:(bool)arg1 requiresKeyboard:(bool)arg2;
 - (void)setSimplePIN:(bool)arg1 requiresKeyboard:(bool)arg2 numericOnly:(bool)arg3;

@@ -24,6 +24,7 @@
 - (int (*)copyAnswer;
 - (id)developerIdentityProviderDeletionConfirmationMessage;
 - (unsigned long long)deviceType;
+- (void)fetchDeviceManagedSetTopBoxProfileWithCompletion:(id /* block */)arg1;
 - (void)fetchSetTopBoxProfileWithCompletion:(id /* block */)arg1;
 - (id)init;
 - (bool)isRunningACustomerBuild;

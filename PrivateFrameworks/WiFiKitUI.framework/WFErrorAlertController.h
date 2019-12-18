@@ -12,6 +12,7 @@
 + (id)errorAlertControllerWithContext:(id)arg1;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)context;
 - (void)setContext:(id)arg1;
 

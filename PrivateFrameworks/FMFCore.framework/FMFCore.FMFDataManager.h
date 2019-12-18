@@ -3,7 +3,8 @@
  */
 
 @interface FMFCore.FMFDataManager : Swift._SwiftObject {
-    void cacheBlob;
+    void _cacheBlob;
+    void cacheBlobQueue;
     void config;
     void contactMatchingCache;
     void contactsController;

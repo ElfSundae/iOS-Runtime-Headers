@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/PersonalizationPortrait.framework/PersonalizationPortrait
  */
 
-@interface PPLocationRecord : NSObject <NSCopying, NSMutableCopying, NSSecureCoding> {
+@interface PPLocationRecord : NSObject <NSCopying, NSMutableCopying, NSSecureCoding, PPRecord> {
     unsigned char  _algorithm;
     BOOL  _bucketizedSentimentScore;
     NSArray * _contextualNamedEntities;

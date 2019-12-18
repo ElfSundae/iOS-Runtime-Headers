@@ -3,7 +3,6 @@
  */
 
 @interface NewsArticles.SharingActivityItemFactory : Swift._SwiftObject {
-    void alertPresenter;
     void featureAvailability;
     void followingManager;
     void readingHistory;

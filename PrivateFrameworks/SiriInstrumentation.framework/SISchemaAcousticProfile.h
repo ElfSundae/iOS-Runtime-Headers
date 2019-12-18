@@ -2,16 +2,12 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaAcousticProfile : PBCodable <NSSecureCoding, SISchemaAcousticProfile> {
+@interface SISchemaAcousticProfile : PBCodable {
     NSData * _a;
 }
 
 @property (nonatomic, copy) NSData *a;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)a;

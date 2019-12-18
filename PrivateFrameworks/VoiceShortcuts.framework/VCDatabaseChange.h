@@ -14,6 +14,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, readonly, copy) WFDatabaseObjectDescriptor *descriptor;
+@property (nonatomic, readonly) unsigned long long estimatedSize;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSString *objectIdentifier;
 @property (nonatomic, copy) WFRecord *record;
@@ -29,6 +30,7 @@
 - (id)database;
 - (id)description;
 - (id)descriptor;
+- (unsigned long long)estimatedSize;
 - (id)initWithDescriptor:(id)arg1 inDatabase:(id)arg2 changeType:(long long)arg3;
 - (id)initWithObjectIdentifier:(id)arg1 changeType:(long long)arg2;
 - (id)objectIdentifier;

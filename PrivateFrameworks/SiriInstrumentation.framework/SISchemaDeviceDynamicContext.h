@@ -2,19 +2,15 @@
    Image: /System/Library/PrivateFrameworks/SiriInstrumentation.framework/SiriInstrumentation
  */
 
-@interface SISchemaDeviceDynamicContext : PBCodable <NSSecureCoding, SISchemaDeviceDynamicContext> {
+@interface SISchemaDeviceDynamicContext : PBCodable {
     NSString * _countryCode;
     SISchemaLocation * _location;
     double  _timeIntervalSince1970;
 }
 
 @property (nonatomic, copy) NSString *countryCode;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) NSData *jsonData;
 @property (nonatomic, retain) SISchemaLocation *location;
-@property (readonly) Class superclass;
 @property (nonatomic) double timeIntervalSince1970;
 
 - (void).cxx_destruct;

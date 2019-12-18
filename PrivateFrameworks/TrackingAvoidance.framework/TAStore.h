@@ -32,16 +32,14 @@
 - (void)addTACLVisit:(id)arg1 andAppendOutgoingRequestsTo:(id)arg2;
 - (void)addTAEvent:(id)arg1 andAppendOutgoingRequestsTo:(id)arg2;
 - (void)addTAGeoNavigationNotification:(id)arg1;
-- (void)addTALocation:(id)arg1;
 - (void)addTALocationLite:(id)arg1;
 - (void)addTALocationOfInterest:(id)arg1;
 - (void)addTAPeopleDensityResult:(id)arg1;
 - (void)addTASPAdvertisement:(id)arg1 andAppendOutgoingRequestsTo:(id)arg2;
+- (void)addTAScanCompleted:(id)arg1;
 - (void)addTASystemState:(id)arg1;
 - (void)addTAUserActivity:(id)arg1;
 - (void)addTAVehicleStateHint:(id)arg1;
-- (void)addTAWildAdvertisement:(id)arg1;
-- (void)addTAWildStaticAdvertisement:(id)arg1;
 - (id)clock;
 - (void)closeLatestInterVisitSnapshot:(id)arg1;
 - (id)description;

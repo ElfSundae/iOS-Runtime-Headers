@@ -74,7 +74,7 @@
 - (bool)_bouncePathMatchIfNecessaryWithLookup:(id)arg1 localItem:(id)arg2 serverItem:(id)arg3 bounceNamespace:(unsigned char)arg4 applyNamespace:(unsigned char)arg5;
 - (bool)_canUpdatePathMatch:(const struct { id x1; id x2; id x3; id x4; unsigned long long x5; }*)arg1 hasAdditionsToApply:(bool)arg2;
 - (void)_clearNamespace:(unsigned char)arg1;
-- (void)_fetchFaultedPathMatch;
+- (void)_fetchFaultedMatch;
 - (void)_fetchIDMatch;
 - (void)_fetchPathMatch;
 - (void)_fetchRelPath;
@@ -96,6 +96,7 @@
 - (void)clearFaultedItem;
 - (void)clearReservedItem;
 - (void)closePaths;
+- (bool)copyItemAtURLToGenstore:(id)arg1 forItem:(id)arg2 error:(id*)arg3;
 - (id)db;
 - (id)description;
 - (void)didApplyChangesAtPath:(id)arg1 filename:(id)arg2 li:(id)arg3 si:(id)arg4;
@@ -126,6 +127,7 @@
 - (id)reservedServerItem;
 - (bool)resolveAndKeepOpenWithError:(id*)arg1;
 - (bool)resolveParentAndKeepOpenMustExist:(bool)arg1 errcode:(int*)arg2;
+- (bool)trashItemIfNecessary:(id)arg1 atURL:(id)arg2 error:(id*)arg3;
 - (bool)tryToDeleteItemInNamespace:(unsigned char)arg1;
 - (void)tryToUpdateItemInNamespace:(unsigned char)arg1 withDstLookup:(id)arg2;
 - (id)url;

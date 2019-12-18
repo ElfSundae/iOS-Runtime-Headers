@@ -199,6 +199,7 @@
 + (void)assetIsAutoloopMedia:(id)arg1 completionHandler:(id /* block */)arg2;
 
 - (bool)ql_canBeRotated;
+- (struct CGSize { double x1; double x2; })ql_imageSizeOfFirstVideoTrack;
 
 // Image: /System/Library/PrivateFrameworks/IMSharedUI.framework/IMSharedUI
 

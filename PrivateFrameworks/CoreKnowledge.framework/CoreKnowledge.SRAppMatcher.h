@@ -6,6 +6,7 @@
     void allowedBundleIDs;
     void db;
     void domain;
+    void entitySet;
     void memorableEntities;
 }
 

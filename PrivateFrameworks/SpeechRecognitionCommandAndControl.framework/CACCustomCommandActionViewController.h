@@ -19,6 +19,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (bool)_shouldDisallowSelectingRowAtIndexPath:(id)arg1;
 - (id)_stringFromPasteboardDataArray:(id)arg1;
 - (void)_updateForAction:(long long)arg1;

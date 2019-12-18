@@ -13,7 +13,6 @@
 @property (nonatomic, retain) CSTopHitSearchQuery *topHitSearchQuery;
 
 - (void).cxx_destruct;
-- (id)conversationIDForLibraryIndex:(long long)arg1;
 - (id)foundItems;
 - (id)initWithTopHitSearchQuery:(id)arg1 foundItems:(id)arg2;
 - (id)libraryIdentifiers;

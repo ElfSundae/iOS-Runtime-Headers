@@ -59,8 +59,10 @@
 @property (nonatomic) bool userAutoJoinEnabled;
 
 - (void).cxx_destruct;
+- (bool)_canShowWhileLocked;
 - (id)_cellForNetworkRecord:(id)arg1 tableView:(id)arg2 indexPath:(id)arg3;
 - (void)_chooseOtherNetworkTapped:(id)arg1;
+- (id)_debugSectionStringFromSections:(id)arg1;
 - (void)_enableWAPISwitchChanged:(id)arg1;
 - (id)_nameOfSection:(long long)arg1;
 - (void)_notifyBuddyWiFiPickerIsVisble:(bool)arg1;

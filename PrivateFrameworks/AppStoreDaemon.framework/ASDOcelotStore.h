@@ -30,6 +30,7 @@
 - (void)sbsyncWithDuration:(id)arg1 completionBlock:(id /* block */)arg2;
 - (void)sendPayoutWithCompletionBlock:(id /* block */)arg1;
 - (void)sendSummaryWithCompletionBlock:(id /* block */)arg1;
+- (void)subscriptionDetailsWithCompletionBlock:(id /* block */)arg1;
 - (void)subscriptionStateWithCompletionBlock:(id /* block */)arg1;
 - (void)topAppsForAccount:(id)arg1 completionBlock:(id /* block */)arg2;
 

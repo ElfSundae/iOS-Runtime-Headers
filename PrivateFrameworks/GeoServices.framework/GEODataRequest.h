@@ -2,7 +2,7 @@
    Image: /System/Library/PrivateFrameworks/GeoServices.framework/GeoServices
  */
 
-@interface GEODataRequest : NSObject <GEOStateCapturing> {
+@interface GEODataRequest : NSObject {
     BOOL  _HTTPMethod;
     bool  _HTTPShouldHandleCookies;
     NSURL * _URL;
@@ -42,15 +42,11 @@
 @property (nonatomic, readonly, copy) NSData *bodyData;
 @property (nonatomic, copy) NSData *cachedData;
 @property (nonatomic, readonly) unsigned long long constraints;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) struct { int x1; union { int x_2_1_1; int x_2_1_2; int x_2_1_3; } x2; } kind;
 @property (nonatomic, readonly) unsigned long long multipathAlternatePort;
 @property (nonatomic, readonly) unsigned long long multipathServiceType;
 @property (nonatomic, readonly) bool needsProxy;
 @property (nonatomic, readonly) <GEORequestCounterTicket> *requestCounterTicket;
-@property (readonly) Class superclass;
 @property (nonatomic, readonly) GEODataRequestThrottlerToken *throttleToken;
 @property (nonatomic, readonly) double timeoutInterval;
 @property (nonatomic, readonly) NSObject<OS_xpc_object> *xpcRequest;
@@ -66,7 +62,6 @@
 - (id)backgroundSessionIdentifier;
 - (id)bodyData;
 - (id)cachedData;
-- (id)captureStateWithHints:(struct os_state_hints_s { unsigned int x1; char *x2; unsigned int x3; unsigned int x4; }*)arg1;
 - (unsigned long long)constraints;
 - (id)description;
 - (id)init;

@@ -2,8 +2,7 @@
    Image: /System/Library/Frameworks/MapKit.framework/MapKit
  */
 
-@interface MKPlaceholderGridCache : NSObject <GEOResourceManifestTileGroupObserver> {
-    GEOActiveTileGroup * _activeTileGroup;
+@interface MKPlaceholderGridCache : NSObject {
     UIImage * _darkGrid;
     MKMapSnapshotter * _darkSnapshotter;
     UIImage * _lightGrid;
@@ -11,14 +10,13 @@
     struct os_unfair_lock_s { 
         unsigned int _os_unfair_lock_opaque; 
     }  _lock;
+    struct os_unfair_lock_s { 
+        unsigned int _os_unfair_lock_opaque; 
+    }  _snapshotterLock;
 }
 
 @property (nonatomic, readonly) UIImage *darkGrid;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, readonly) UIImage *lightGrid;
-@property (readonly) Class superclass;
 
 + (id)unretainedInstance;
 
@@ -27,10 +25,8 @@
 - (void)_saveDarkGrid:(id)arg1;
 - (void)_saveLightGrid:(id)arg1;
 - (id)darkGrid;
-- (void)dealloc;
 - (id)init;
 - (id)lightGrid;
 - (void)loadPlaceholderGridImages;
-- (void)resourceManifestManager:(id)arg1 didChangeActiveTileGroup:(id)arg2 fromOldTileGroup:(id)arg3;
 
 @end

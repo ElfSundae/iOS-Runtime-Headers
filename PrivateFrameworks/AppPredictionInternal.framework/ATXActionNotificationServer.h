@@ -31,7 +31,8 @@
 - (void)_postTestNotification;
 - (void)_postTestNotificationWithPredictionCount:(long long)arg1;
 - (void)_setupNotifications;
-- (void)_verifyNotificationCountAtMostExpectedMax:(unsigned long long)arg1;
+- (unsigned long long)deliveredNotificationCount;
+- (bool)hasLockscreenPrediction;
 - (id)init;
 - (void)postNotificationForATXAction:(id)arg1 actionResponse:(id)arg2;
 - (void)postNotificationForATXActionResponse:(id)arg1;
